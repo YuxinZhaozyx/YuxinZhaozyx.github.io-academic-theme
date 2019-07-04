@@ -1,0 +1,2027 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Source Themes Academic 4.3.1">
+
+  
+
+  
+  
+  
+  
+  
+    
+    
+    
+  
+  
+
+  <meta name="author" content="Yuxin Zhao 赵煜新">
+
+  
+  
+  
+    
+  
+  <meta name="description" content="实现用户服务的 web 和 service 微服务">
+
+  
+  <link rel="alternate" hreflang="en-us" href="https://YuxinZhaozyx.github.io/post/gomicrobookshop-project/dev-note-1/">
+
+  
+
+
+  
+
+  
+  
+  
+  <meta name="theme-color" content="#2962ff">
+  
+
+  
+  
+  
+  
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css" integrity="sha256-uFVgMKfistnJAfoCUQigIl+JfUaP47GrRKjf6CTPVmw=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.css" integrity="sha256-PF6MatZtiJ8/c9O9HQ8uSUXr++R9KBYu4gbNG5511WE=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" integrity="sha256-ygkqlh3CYSUri3LhQxzdcm0n1EQvH2Y+U5S2idbLtxs=" crossorigin="anonymous">
+
+    
+    
+    
+      
+    
+    
+      
+      
+        
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/github.min.css" crossorigin="anonymous" title="hl-light">
+          <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/dracula.min.css" crossorigin="anonymous" title="hl-dark" disabled>
+        
+      
+    
+
+    
+
+    
+
+  
+
+  
+  
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700|Roboto:400,400italic,700|Roboto+Mono&display=swap">
+  
+
+  
+  
+  
+  <link rel="stylesheet" href="/css/academic.min.3834c081887e44130d565828d71a7178.css">
+
+  
+    
+    
+    
+    
+      
+    
+    
+    
+    <link rel="stylesheet" href="/css/academic.a8a5fb8fad028b2fbed0e450cd8d7016.css">
+  
+
+  
+  
+  
+
+  
+
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="icon" type="image/png" href="/img/icon.png">
+  <link rel="apple-touch-icon" type="image/png" href="/img/icon-192.png">
+
+  <link rel="canonical" href="https://YuxinZhaozyx.github.io/post/gomicrobookshop-project/dev-note-1/">
+
+  
+  
+  
+  
+    
+  
+  <meta property="twitter:card" content="summary_large_image">
+  
+  <meta property="og:site_name" content="YuxinZhao">
+  <meta property="og:url" content="https://YuxinZhaozyx.github.io/post/gomicrobookshop-project/dev-note-1/">
+  <meta property="og:title" content="GoMicroBookshop项目开发笔记-1 | YuxinZhao">
+  <meta property="og:description" content="实现用户服务的 web 和 service 微服务"><meta property="og:image" content="https://YuxinZhaozyx.github.io/post/gomicrobookshop-project/dev-note-1/featured.jpg">
+  <meta property="twitter:image" content="https://YuxinZhaozyx.github.io/post/gomicrobookshop-project/dev-note-1/featured.jpg"><meta property="og:locale" content="en-us">
+  
+  <meta property="article:published_time" content="2019-07-04T23:23:03&#43;08:00">
+  
+  <meta property="article:modified_time" content="2019-07-04T23:23:03&#43;08:00">
+  
+
+  
+
+
+  
+
+
+
+
+
+  <title>GoMicroBookshop项目开发笔记-1 | YuxinZhao</title>
+
+</head>
+
+
+<body id="top" data-spy="scroll" data-target="#TableOfContents" data-offset="71" >
+
+  <aside class="search-results" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>Search</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="Search..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" role="textbox" spellcheck="false" type="search">
+        
+      </div>
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+  
+<nav class="navbar navbar-light fixed-top navbar-expand-lg py-0" id="navbar-main">
+  <div class="container">
+
+    
+      <a class="navbar-brand" href="/">YuxinZhao</a>
+      
+      <button type="button" class="navbar-toggler" data-toggle="collapse"
+              data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+        <span><i class="fas fa-bars"></i></span>
+      </button>
+      
+
+    
+    <div class="collapse navbar-collapse" id="navbar">
+
+      
+      
+      <ul class="navbar-nav mr-auto">
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#about"><span>Home</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#posts"><span>Posts</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#projects"><span>Projects</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#contact"><span>Contact</span></a>
+        </li>
+
+        
+        
+
+      
+      </ul>
+      <ul class="navbar-nav ml-auto">
+      
+
+        
+
+        
+        <li class="nav-item">
+          <a class="nav-link js-search" href="#"><i class="fas fa-search" aria-hidden="true"></i></a>
+        </li>
+        
+
+        
+
+        
+        <li class="nav-item">
+          <a class="nav-link js-dark-toggle" href="#"><i class="fas fa-moon" aria-hidden="true"></i></a>
+        </li>
+        
+
+      </ul>
+
+    </div>
+  </div>
+</nav>
+
+
+  <article class="article" itemscope itemtype="http://schema.org/Article">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+
+<div class="article-container pt-3">
+  <h1 itemprop="name">GoMicroBookshop项目开发笔记-1</h1>
+
+  
+  <p class="page-subtitle">第一章 用户服务</p>
+  
+
+  
+
+
+
+<meta content="2019-07-04 23:23:03 &#43;0800 CST" itemprop="datePublished">
+<meta content="2019-07-04 23:23:03 &#43;0800 CST" itemprop="dateModified">
+
+<div class="article-metadata">
+
+  
+  
+  
+  
+  <div>
+    
+
+
+
+  <span itemprop="author name" itemtype="http://schema.org/Person"><a href="/authors/yuxinzhao/">Yuxin Zhao 赵煜新</a></span>
+
+  </div>
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+    
+    <time>Jul 4, 2019</time>
+  </span>
+  
+
+  
+
+  
+  <span class="middot-divider"></span>
+  <span class="article-reading-time">
+    10 min read
+  </span>
+  
+
+  
+  
+
+  
+  
+  <span class="middot-divider"></span>
+  <span class="article-categories">
+    <i class="fas fa-folder"></i>
+    <a href="/categories/project-note/">project-note</a></span>
+  
+
+  
+    
+<div class="share-box" aria-hidden="true">
+  <ul class="share">
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://twitter.com/intent/tweet?url=https://YuxinZhaozyx.github.io/post/gomicrobookshop-project/dev-note-1/&amp;text=GoMicroBookshop%e9%a1%b9%e7%9b%ae%e5%bc%80%e5%8f%91%e7%ac%94%e8%ae%b0-1" target="_blank" rel="noopener" class="share-btn-twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.facebook.com/sharer.php?u=https://YuxinZhaozyx.github.io/post/gomicrobookshop-project/dev-note-1/&amp;t=GoMicroBookshop%e9%a1%b9%e7%9b%ae%e5%bc%80%e5%8f%91%e7%ac%94%e8%ae%b0-1" target="_blank" rel="noopener" class="share-btn-facebook">
+          <i class="fab fa-facebook-f"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="mailto:?subject=GoMicroBookshop%e9%a1%b9%e7%9b%ae%e5%bc%80%e5%8f%91%e7%ac%94%e8%ae%b0-1&amp;body=https://YuxinZhaozyx.github.io/post/gomicrobookshop-project/dev-note-1/" target="_blank" rel="noopener" class="share-btn-email">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.linkedin.com/shareArticle?url=https://YuxinZhaozyx.github.io/post/gomicrobookshop-project/dev-note-1/&amp;title=GoMicroBookshop%e9%a1%b9%e7%9b%ae%e5%bc%80%e5%8f%91%e7%ac%94%e8%ae%b0-1" target="_blank" rel="noopener" class="share-btn-linkedin">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://web.whatsapp.com/send?text=GoMicroBookshop%e9%a1%b9%e7%9b%ae%e5%bc%80%e5%8f%91%e7%ac%94%e8%ae%b0-1%20https://YuxinZhaozyx.github.io/post/gomicrobookshop-project/dev-note-1/" target="_blank" rel="noopener" class="share-btn-whatsapp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://service.weibo.com/share/share.php?url=https://YuxinZhaozyx.github.io/post/gomicrobookshop-project/dev-note-1/&amp;title=GoMicroBookshop%e9%a1%b9%e7%9b%ae%e5%bc%80%e5%8f%91%e7%ac%94%e8%ae%b0-1" target="_blank" rel="noopener" class="share-btn-weibo">
+          <i class="fab fa-weibo"></i>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+
+
+  
+
+</div>
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="btn-links mb-3">
+  
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+  
+  <a class="btn btn-outline-primary my-1 mr-1" href="/project/gomicrobookshop/">
+    Project
+  </a>
+  
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+
+</div>
+
+
+<div class="article-header article-container featured-image-wrapper mt-4 mb-4" style="max-width: 720px; max-height: 418px;">
+  <div style="position: relative">
+    <img src="/post/gomicrobookshop-project/dev-note-1/featured_huf1cd1c1b59220aee6296caa95cb97389_220526_720x0_resize_q90_lanczos.jpg" alt="" class="featured-image">
+    <span class="article-header-caption">Gopher</span>
+  </div>
+</div>
+
+
+
+  <div class="article-container">
+
+    <div class="article-style" itemprop="articleBody">
+      
+
+<h2 id="第一章-用户服务">第一章 用户服务</h2>
+
+<p>本章节我们实现用户服务，用户服务分为两层，web层（user-web）与服务层（user-srv），前者提供http接口，后者向web提供RPC服务。</p>
+
+<ul>
+<li>user-web 以下简称<strong>web</strong></li>
+<li>user-srv 以下简称<strong>service</strong></li>
+</ul>
+
+<p><strong>web</strong>服务主要向用户提供如下接口</p>
+
+<ul>
+<li>登录与token颁发</li>
+<li>鉴权</li>
+</ul>
+
+<p>我们不提供注册接口，一来增加不必要的代码量，我们的核心还是介绍如何使用Micro组件。</p>
+
+<p><strong>server</strong>服务主要向所有内部服务提供用户查询接口：</p>
+
+<ul>
+<li>根据userName用户名查询用户</li>
+</ul>
+
+<p>在开发应用之前，我们要先定义好命名空间。</p>
+
+<table>
+<thead>
+<tr>
+<th>服务</th>
+<th>命名空间</th>
+<th>说明</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>接入层API</td>
+<td>mu.micro.book.web</td>
+<td>负责代理所有<strong>mu.micro.book.web</strong>下游的web应用，比如<strong>mu.micro.book.web.user</strong>等</td>
+</tr>
+
+<tr>
+<td>用户web</td>
+<td>mu.micro.book.web.user</td>
+<td>接收API下放的路由为/user请求</td>
+</tr>
+
+<tr>
+<td>用户服务</td>
+<td>mu.micro.book.srv.user</td>
+<td>对架构内应用提供user查询服务</td>
+</tr>
+</tbody>
+</table>
+
+<p><img src="https://github.com/YuxinZhaozyx/GoMicroBookshop/raw/master/image/part1_framework_namespace.png" alt="img" /></p>
+
+<h3 id="user-srv">user-srv</h3>
+
+<p>user-srv的各组件如下表所示</p>
+
+<table>
+<thead>
+<tr>
+<th>启动顺序</th>
+<th>组件</th>
+<th>作用</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>1</td>
+<td>basic</td>
+<td>初始化配置与解析配置文件，初始化数据库等基础组件</td>
+</tr>
+
+<tr>
+<td>2</td>
+<td>model</td>
+<td>模型层，提供业务数据</td>
+</tr>
+
+<tr>
+<td>3</td>
+<td>handler</td>
+<td>接入层，提供对外接口，并向model层调用请求数据</td>
+</tr>
+</tbody>
+</table>
+
+<p>Micro有提供代码生成器指令<a href="https://github.com/micro-in-cn/all-in-one/tree/master/middle-practices/micro-new" target="_blank"><strong>new</strong></a>，它可以新建服务模板代码，把基本所需的目录结构建好，省去大家挖坑的时间。</p>
+
+<h4 id="新建模板">新建模板</h4>
+
+<pre><code class="language-shell">micro new --namespace=mu.micro.book --type=srv --alias=user github.com/YuxinZhaozyx/GoMicroBookshop/user-srv
+</code></pre>
+
+<p>模板生成在<strong>user-srv</strong>目录，其结构如下</p>
+
+<pre><code>.
+├── main.go
+├── plugin.go
+├── handler
+│   └── user.go
+├── subscriber
+│   └── user.go
+├── proto/user
+│   └── user.proto
+├── Dockerfile
+├── Makefile
+└── README.md
+</code></pre>
+
+<p>修改后</p>
+
+<pre><code>.
+├── main.go
+├── plugin.go
+├── basic
+│   └── config               * 配置类
+│   │   └── config.go        * 初始化配置类
+│   │   └── consul.go        * consul配置结构体
+│   │   └── mysql.go         * mysql配置结构体
+│   │   └── profiles.go      * 配置文件树辅助类
+│   └── db                   * 数据库相关
+│   │    └── db.go           * 初始化数据库
+│   │    └── mysql.go        * mysql数据库相关
+│   └── basic.go             * 初始化基础组件
+├── conf                     * 配置文件目录
+├── handler
+│   └── user.go              * 将名称改为user
+├── model                    * 增加模型层，用于与数据库交换数据
+│   └── user                 * 用户模型类
+│   │   └── user.go          * 初始化用户模型类
+│   │   └── user_get.go      * 封装获取用户数据类业务
+│   └── model.go             * 初始化模型层
+├── proto/user    
+│   └── user.proto           * 将名称改为user
+├── Dockerfile
+├── Makefile
+└── README.md
+</code></pre>
+
+<p><strong>目录解释：basic, model, conf</strong></p>
+
+<p>basic, model 目录与micro无关，只是为了实现MVC架构。</p>
+
+<ul>
+<li><strong>basic</strong> 负责初始化基础组件，比如数据库、配置等</li>
+<li><strong>model</strong> 负责封装业务逻辑</li>
+<li><strong>conf</strong> 配置文件目录，现在我们还没用配置中心，暂先用文件的方式</li>
+</ul>
+
+<h4 id="定义user原型">定义User原型</h4>
+
+<p>在user.proto中定义User原型，暂且定义以下字段，足够登录，显示用户基本信息、异常信息即可</p>
+
+<pre><code>syntax = &quot;proto3&quot;;
+
+package mu.micro.book.srv.user;
+
+service User {
+    rpc QueryUserByName(Request) returns (Response) {}
+}
+
+message user {
+    int64 id = 1;
+    string name = 2;
+    string pwd = 3;
+    uint64 createTime = 4;
+    uint64 updateTime = 5;
+}
+
+message Error {
+    int32 code = 1;
+    string detail = 2;
+}
+
+message Request {
+    string userID = 1;
+    string userName = 2;
+    string userPwd = 3;
+}
+
+message Response {
+    bool success = 1;
+    Error error = 2;
+    user user = 3;
+}
+</code></pre>
+
+<p>上面定义了User服务的基本原型结构，包含用户<strong>User</strong>，请求<strong>Request</strong>与响应结构<strong>Response</strong>，还定义了查询用户的方法<strong>QueryUserByName</strong>。</p>
+
+<p>下面我们生成类型与服务方法：</p>
+
+<pre><code class="language-shell">protoc --proto_path=. --go_out=. --micro_out=. proto/user/user.proto
+</code></pre>
+
+<p>执行后会生成 proto/user/user.micro.go 和 proto/user/user.pb.go 两个文件。</p>
+
+<h4 id="数据库与配置">数据库与配置</h4>
+
+<h5 id="创建user表">创建User表</h5>
+
+<p>选用MySQL作为数据库，以下是建表语句</p>
+
+<pre><code class="language-sql">CREATE DATABASE `micro_book_mall` /*!40100 DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_bin */;
+USE `micro_book_mall`;
+
+CREATE TABLE `user`
+(
+    `id`           int(10) unsigned                                              NOT NULL AUTO_INCREMENT COMMENT '主键',
+    `user_id`      int(10) unsigned                                                       DEFAULT NULL COMMENT '用户id',
+    `user_name`    varchar(20) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci  NOT NULL COMMENT '用户名',
+    `pwd`          varchar(128) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL COMMENT '密码',
+    `created_time` timestamp(3)                                                  NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
+    `updated_time` timestamp(3)                                                  NOT NULL DEFAULT CURRENT_TIMESTAMP(3) ON UPDATE CURRENT_TIMESTAMP(3),
+    PRIMARY KEY (`id`),
+    UNIQUE KEY `user_user_name_uindex` (`user_name`),
+    UNIQUE KEY `user_user_id_uindex` (`user_id`)
+) ENGINE = InnoDB
+  DEFAULT CHARSET = utf8mb4
+  COLLATE = utf8mb4_bin COMMENT ='用户表';
+
+INSERT INTO user (user_id, user_name, pwd) VALUE (10001, 'micro', '1234');
+</code></pre>
+
+<h5 id="基本组件配置">基本组件配置</h5>
+
+<p>基础组件(basic)目前主要的功能是初始化配置与数据库。它的入口代码(basic/basic.go)是一个<strong>Init</strong>初始化方法，负责初始化其下所有组件。</p>
+
+<pre><code>package basic
+
+import (
+    &quot;github.com/YuxinZhaozyx/GoMicroBookshop/user-srv/basic/config&quot;
+    &quot;github.com/YuxinZhaozyx/GoMicroBookshop/user-srv/basic/db&quot;
+)
+
+func Init() {
+    config.Init()
+    db.Init()
+}
+</code></pre>
+
+<h5 id="配置config">配置config</h5>
+
+<p>加载配置我们会使用到<a href="https://github.com/micro/go-micro/config" target="_blank">go-config</a>里面的本地文件配置。相关示例可以参考<a href="https://github.com/micro-in-cn/all-in-one/tree/master/basic-practices/micro-config" target="_blank">go-config示例</a>。</p>
+
+<p>配置文件在 conf/ 文件夹下。</p>
+
+<pre><code>application.yml         # 根配置文件
+application-db.yml      # 数据库配置文件
+application-consul.yml  # consul服务发现配置文件
+</code></pre>
+
+<p>根配置文件application.yml如下</p>
+
+<pre><code>app:
+  profiles:
+    include: consul, db
+</code></pre>
+
+<p>起名为<strong>application.yml</strong>是参考了Spring-boot风格。我们把consul和db配置分到独立的文件中。</p>
+
+<p>通过解析<code>app.profiles.include</code>来加载指定的配置文件。当然也可以全部写在<strong>application.yml</strong>中，只是我觉得挤在一起的配置不优雅。</p>
+
+<p>初始化配置的过程大致如下：</p>
+
+<table>
+<thead>
+<tr>
+<th>顺序</th>
+<th>过程</th>
+<th>说明</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td>1</td>
+<td>加载application.yml</td>
+<td>读取conf目录下application.yml文件</td>
+</tr>
+
+<tr>
+<td>2</td>
+<td>解析profiles属性</td>
+<td>如果有该属性则找到include值，该值就是指定需要引入的conf下的配置文件</td>
+</tr>
+
+<tr>
+<td>3</td>
+<td>解析include</td>
+<td>解析出include配置【值】，并组合成文件名，文件名规则为[application-值.yml]</td>
+</tr>
+
+<tr>
+<td>4</td>
+<td>读取include声明文件</td>
+<td>读取配置文件值</td>
+</tr>
+
+<tr>
+<td>5</td>
+<td>解析配置</td>
+<td>将配置文件中的值解析到配置对象中</td>
+</tr>
+</tbody>
+</table>
+
+<p>以下是它的核心代码(basic/config/config.go)</p>
+
+<pre><code>// Init 初始化配置
+func Init() {
+    m.Lock()
+    defer m.Unlock()
+
+    if inited {
+        log.Logf(&quot;[Init] 配置已经初始化过&quot;)
+        return
+    }
+
+    // 加载yml配置
+    // 先加载基础配置
+    appPath, _ := filepath.Abs(filepath.Dir(filepath.Join(&quot;.&quot;+sp, sp)))
+
+    pt := filepath.Join(appPath, &quot;conf&quot;)
+    os.Chdir(appPath)
+
+    // 找到application.yml文件
+    if err = config.Load(file.NewSource(file.WithPath(pt + sp + &quot;application.yml&quot;))); err != nil {
+        panic(err)
+    }
+
+    // 找到需要引入的新配置文件
+    if err = config.Get(defaultRootPath, &quot;profiles&quot;).Scan(&amp;profiles); err != nil {
+        panic(err)
+    }
+
+    log.Logf(&quot;[Init] 加载配置文件：path: %s, %+v\n&quot;, pt+sp+&quot;application.yml&quot;, profiles)
+
+    // 开始导入新文件
+    if len(profiles.GetInclude()) &gt; 0 {
+        include := strings.Split(profiles.GetInclude(), &quot;,&quot;)
+
+        sources := make([]source.Source, len(include))
+        for i := 0; i &lt; len(include); i++ {
+            filePath := pt + string(filepath.Separator) + defaultConfigFilePrefix + strings.TrimSpace(include[i]) + &quot;.yml&quot;
+
+            log.Logf(&quot;[Init] 加载配置文件：path: %s\n&quot;, filePath)
+
+            sources[i] = file.NewSource(file.WithPath(filePath))
+        }
+
+        // 加载include的文件
+        if err = config.Load(sources...); err != nil {
+            panic(err)
+        }
+    }
+
+    // 赋值
+    config.Get(defaultRootPath, &quot;consul&quot;).Scan(&amp;consulConfig)
+    config.Get(defaultRootPath, &quot;mysql&quot;).Scan(&amp;mysqlConfig)
+
+    // 标记已经初始化
+    inited = true
+}
+</code></pre>
+
+<p>我们目前定义了三个配置结构，它们在basic的<a href="https://github.com/YuxinZhaozyx/GoMicroBookshop/blob/master/user-srv/basic/config" target="_blank">config</a>目录下</p>
+
+<ul>
+<li><a href="https://github.com/YuxinZhaozyx/GoMicroBookshop/blob/master/user-srv/basic/config/profiles.go" target="_blank">profiles</a></li>
+<li><a href="https://github.com/YuxinZhaozyx/GoMicroBookshop/blob/master/user-srv/basic/config/consul.go" target="_blank">consul</a></li>
+
+<li><p><a href="https://github.com/YuxinZhaozyx/GoMicroBookshop/blob/master/user-srv/basic/config/mysql.go" target="_blank">mysql</a>：</p>
+
+<pre><code>// defaultProfiles 属性配置文件
+type defaultProfiles struct {
+Include string `json:&quot;include&quot;`
+}
+
+// defaultConsulConfig 默认consul 配置
+type defaultConsulConfig struct {
+Enabled bool   `json:&quot;enabled&quot;`
+Host    string `json:&quot;host&quot;`
+Port    int    `json:&quot;port&quot;`
+}
+
+// defaultMysqlConfig mysql 配置
+type defaultMysqlConfig struct {
+URL               string `json:&quot;url&quot;`
+Enable            bool   `json:&quot;enabled&quot;`
+MaxIdleConnection int    `json:&quot;maxIdleConnection&quot;`
+MaxOpenConnection int    `json:&quot;maxOpenConnection&quot;`
+}
+</code></pre></li>
+</ul>
+
+<h5 id="数据库初始化">数据库初始化</h5>
+
+<pre><code>// user-srv/basic/db/db.go
+package db
+
+import (
+    &quot;database/sql&quot;
+    &quot;fmt&quot;
+    &quot;sync&quot;
+
+    &quot;github.com/YuxinZhaozyx/GoMicroBookshop/user-srv/basic/config&quot;
+    &quot;github.com/micro/go-micro/util/log&quot;
+)
+
+var (
+    inited bool
+    mysqlDB *sql.DB
+    m sync.RWMutex
+)
+
+// Init 初始化数据库
+func Init() {
+    m.Lock()
+    defer m.Unlock()
+
+    var err error
+    
+    if inited{
+        err = fmt.Errorf(&quot;[Init] db 已经初始化过了&quot;)
+        log.Logf(err.Error())
+        return
+    }
+
+    // 如果配置声明使用mysql
+    if config.GetMysqlConfig().GetEnabled(){
+        initMysql()
+    }
+
+    inited = true
+}
+
+// GetDB 获取数据库
+func GetDB() *sql.DB {
+    return mysqlDB
+}
+// user-srv/basic/db/mysql.go
+package db
+
+import (
+    &quot;database/sql&quot;
+
+    &quot;github.com/YuxinZhaozyx/GoMicroBookshop/user-srv/basic/config&quot;
+    &quot;github.com/micro/go-micro/util/log&quot;
+    
+    _ &quot;github.com/go-sql-driver/mysql&quot;
+)
+
+func initMysql() {
+    var err error
+
+    // 创建连接
+    mysqlDB, err = sql.Open(&quot;mysql&quot;, config.GetMysqlConfig().GetURL())
+    if err != nil {
+        log.Fatal(err)
+        panic(err)
+    }
+
+    // 最大连接数
+    mysqlDB.SetMaxOpenConns(config.GetMysqlConfig().GetMaxOpenConnection())
+
+    // 最大闲置数
+    mysqlDB.SetMaxIdleConns(config.GetMysqlConfig().GetMaxIdleConnection())
+
+    // 激活链接
+    if err = mysqlDB.Ping(); err != nil {
+        log.Fatal(err)
+    }
+}
+</code></pre>
+
+<h4 id="用户模型服务">用户模型服务</h4>
+
+<p>/user-srv/model/user/user.go</p>
+
+<pre><code>package user
+
+import (
+    &quot;fmt&quot;
+    &quot;sync&quot;
+
+    proto &quot;github.com/YuxinZhaozyx/GoMicroBookshop/user-srv/proto/user&quot;
+)
+
+var (
+    s *service
+    m sync.RWMutex
+)
+
+// service 服务
+type service struct {
+}
+
+// Service 用户服务类
+type Service interface {
+    // QueryUserByName 根据用户名获取用户
+    QueryUserByName(userName string) (ret *proto.User, err error)
+}
+
+// GetService 获取服务类
+func GetService() (Service, error) {
+    if s == nil {
+        return nil, fmt.Errorf(&quot;[GetService] GetService 未初始化&quot;)
+    }
+    return s, nil
+}
+
+// Init 初始化用户服务层
+func Init() {
+    m.Lock()
+    defer m.Unlock()
+
+    if s != nil {
+        return
+    }
+
+    s = &amp;service{}
+}
+</code></pre>
+
+<p>/user-srv/model/user/user_get.go</p>
+
+<pre><code>package user
+
+import (
+    &quot;github.com/YuxinZhaozyx/GoMicroBookshop/user-srv/basic/db&quot;
+    proto &quot;github.com/YuxinZhaozyx/GoMicroBookshop/user-srv/proto/user&quot;
+    &quot;github.com/micro/go-micro/util/log&quot;
+)
+
+func (s *service) QueryUserByName(userName string) (ret *proto.User, err error) {
+    queryString := `SELECT user_id, user_name, pwd FROM user WHERE user_name = ?`
+
+    // 获取数据库
+    o := db.GetDB()
+
+    ret = &amp;proto.User{}
+
+    // 查询
+    err = o.QueryRow(queryString, userName).Scan(&amp;ret.Id, &amp;ret.Name, &amp;ret.Pwd)
+    if err != nil {
+        log.Logf(&quot;[QueryUserByName] 查询数据失败， err: %s&quot;, err)
+        return
+    }
+    return
+}
+</code></pre>
+
+<p>/user-srv/model/model.go</p>
+
+<pre><code>package model
+
+import &quot;github.com/YuxinZhaozyx/GoMicroBookshop/user-srv/model/user&quot;
+
+// Init 初始化模型层
+func Init() {
+    user.Init()
+}
+</code></pre>
+
+<h4 id="handler">Handler</h4>
+
+<p>/user-srv/handler/user.go</p>
+
+<pre><code>package handler
+
+import (
+    &quot;context&quot;
+
+    &quot;github.com/micro/go-micro/util/log&quot;
+
+    model &quot;github.com/YuxinZhaozyx/GoMicroBookshop/user-srv/model/user&quot;
+    proto &quot;github.com/YuxinZhaozyx/GoMicroBookshop/user-srv/proto/user&quot;
+)
+
+type Service struct{}
+
+var (
+    userService model.Service
+)
+
+// Init 初始化handler
+func Init() {
+    var err error
+    userService, err = model.GetService()
+    if err != nil {
+        log.Fatal(&quot;[Init] 初始化Handler错误&quot;)
+        return
+    }
+}
+
+// QueryUserByName 通过参数中的名字返回用户
+func (e *Service) QueryUserByName(ctx context.Context, req *proto.Request, rsp *proto.Response) error {
+    user, err := userService.QueryUserByName(req.UserName)
+    if err != nil {
+        rsp.Success = false
+        rsp.Error = &amp;proto.Error{
+            Code:   500,
+            Detail: err.Error(),
+        }
+
+        return err
+    }
+
+    rsp.User = user
+    rsp.Success = true
+    return nil
+}
+</code></pre>
+
+<p>handler直接调用模型层方法获取数据并回传给rsp结构。</p>
+
+<h4 id="main">main</h4>
+
+<p>main.go</p>
+
+<pre><code>package main
+
+import (
+    &quot;fmt&quot;
+    &quot;time&quot;
+
+    &quot;github.com/micro/cli&quot;
+    &quot;github.com/micro/go-micro&quot;
+    &quot;github.com/micro/go-micro/registry&quot;
+    &quot;github.com/micro/go-micro/registry/consul&quot;
+    &quot;github.com/micro/go-micro/util/log&quot;
+
+    &quot;github.com/YuxinZhaozyx/GoMicroBookshop/user-srv/basic&quot;
+    &quot;github.com/YuxinZhaozyx/GoMicroBookshop/user-srv/basic/config&quot;
+    &quot;github.com/YuxinZhaozyx/GoMicroBookshop/user-srv/handler&quot;
+    &quot;github.com/YuxinZhaozyx/GoMicroBookshop/user-srv/model&quot;
+
+    user &quot;github.com/YuxinZhaozyx/GoMicroBookshop/user-srv/proto/user&quot;
+)
+
+func main() {
+
+    // 初始化配置、数据库等信息
+    basic.Init()
+
+    // 使用consul注册
+    micReg := consul.NewRegistry(registryOptions)
+
+    // New Service 新建服务
+    service := micro.NewService(
+        micro.Name(&quot;mu.micro.book.srv.user&quot;),
+        micro.Registry(micReg),
+        micro.Version(&quot;latest&quot;),
+    )
+
+    // Initialise service 初始化服务
+    service.Init(
+        micro.Action(func(c *cli.Context) {
+            // 初始化模型层
+            model.Init()
+            // 初始化handler
+            handler.Init()
+        }),
+    )
+
+    // Register Handler 注册服务
+    user.RegisterUserHandler(service.Server(), new(handler.Service))
+
+    // Run service 启动服务
+    if err := service.Run(); err != nil {
+        log.Fatal(err)
+    }
+}
+
+func registryOptions(ops *registry.Options) {
+    consulCfg := config.GetConsulConfig()
+    ops.Timeout = time.Second * 5
+    ops.Addrs = []string{fmt.Sprintf(&quot;%s:%d&quot;, consulCfg.GetHost(), consulCfg.GetPort())}
+}
+</code></pre>
+
+<p>代码中我们默认使用consul作为注册中心，被在Action中初始化基础组件与模型层。</p>
+
+<div class="alert alert-note">
+  <div>
+    因为handler依赖model，所以初始化handler要在初始化模型层之后执行。
+  </div>
+</div>
+
+<h4 id="启动">启动</h4>
+
+<p><strong>启动consul</strong></p>
+
+<pre><code class="language-shell">consul agent -dev
+</code></pre>
+
+<p><strong>启动user-srv</strong></p>
+
+<pre><code class="language-shell">go run main.go plugin.go
+</code></pre>
+
+<p>输出:</p>
+
+<pre><code class="language-shell">2019/06/29 22:26:48 [Init] 加载配置文件：path: e:\go\src\github.com\YuxinZhaozyx\GoMicroBookshop\user-srv\conf\application.yml, {Include:consul, db}
+2019/06/29 22:26:48 [Init] 加载配置文件：path: e:\go\src\github.com\YuxinZhaozyx\GoMicroBookshop\user-srv\conf\application-consul.yml
+2019/06/29 22:26:48 [Init] 加载配置文件：path: e:\go\src\github.com\YuxinZhaozyx\GoMicroBookshop\user-srv\conf\application-db.yml
+2019/06/29 22:26:48 Transport [http] Listening on [::]:56789
+2019/06/29 22:26:48 Broker [http] Connected to [::]:56790
+2019/06/29 22:26:48 Registry [consul] Registering node: mu.micro.book.srv.user-f51e60e1-cebf-4599-874c-8230d3113300
+</code></pre>
+
+<h4 id="测试">测试</h4>
+
+<pre><code class="language-shell">micro --registry=consul call mu.micro.book.srv.user User.QueryUserByName &quot;{\&quot;userName\&quot;: \&quot;micro\&quot;}&quot;
+</code></pre>
+
+<p>输出:</p>
+
+<pre><code class="language-json">{
+        &quot;success&quot;: true,
+        &quot;user&quot;: {
+                &quot;id&quot;: 10001,
+                &quot;name&quot;: &quot;micro&quot;,
+                &quot;pwd&quot;: &quot;1234&quot;
+        }
+}
+</code></pre>
+
+<p>user-srv服务搭建完成。</p>
+
+<h3 id="user-web">user-web</h3>
+
+<p><strong>web</strong>服务负责暴露接口给用户，用户请求登录，<strong>web</strong>通过用户名<strong>userName</strong>向<strong>service</strong>获取用户信息，再比对密码，正确则登录成功，反之返回错误。</p>
+
+<p>请求链如下图</p>
+
+<p><a href="https://github.com/micro-in-cn/tutorials/blob/master/microservice-in-micro/docs/part1_user_login_process.png" target="_blank"><img src="https://github.com/YuxinZhaozyx/GoMicroBookshop/raw/master/image/part1_user_login_process.png" alt="img" /></a></p>
+
+<h4 id="新建模板-1">新建模板</h4>
+
+<pre><code class="language-shell">micro new --namespace=mu.micro.book --type=web --alias=user github.com/YuxinZhaozyx/GoMicroBookshop/user-web
+</code></pre>
+
+<p><strong>目录树</strong></p>
+
+<p>生成的目录树</p>
+
+<pre><code>.
+├── main.go
+├── plugin.go
+├── handler
+│   └── handler.go
+├── html
+│   └── index.html
+├── Dockerfile
+├── Makefile
+└── README.md
+</code></pre>
+
+<p>修改后：</p>
+
+<pre><code>.
+├── main.go
+├── plugin.go
+├── basic
+│   └── config
+│   │   └── config.go
+│   │   └── consul.go
+│   │   └── profiles.go
+│   └── basic.go
+├── conf
+│   └── application.yml
+│   └── application-consul.yml
+├── handler
+│   └── handler.go
+├── Dockerfile
+├── Makefile
+└── README.md
+</code></pre>
+
+<p>go-web是一个很简单的web开发库，它不像其它go语言的web框架有那么多工具集，它核心在两个方面</p>
+
+<ul>
+<li>让程序支持http请求</li>
+<li>天生属于Micro生态</li>
+</ul>
+
+<p>它不需要额外的代码就可以注册到Micro生态中，和其它类型的服务一样。</p>
+
+<p><strong>web</strong>核心有三个地方</p>
+
+<ul>
+<li><a href="https://github.com/YuxinZhaozyx/GoMicroBookshop/blob/master/user-web/basic/config/config.go" target="_blank">config.go</a> 负责加载配置</li>
+<li><a href="https://github.com/YuxinZhaozyx/GoMicroBookshop/blob/master/user-web/handler/handler.go" target="_blank">handler.go</a> 负责处理请求</li>
+<li><a href="https://github.com/YuxinZhaozyx/GoMicroBookshop/blob/master/user-web/main.go" target="_blank">main.go</a> 程序运行入口</li>
+</ul>
+
+<h4 id="config">config</h4>
+
+<p>设置类似user-srv的设置，但去除mysql的配置。</p>
+
+<p>user-web/basic/config/config.go</p>
+
+<pre><code>package config
+
+import (
+    &quot;os&quot;
+    &quot;path/filepath&quot;
+    &quot;strings&quot;
+    &quot;sync&quot;
+
+    &quot;github.com/micro/go-micro/config&quot;
+    &quot;github.com/micro/go-micro/config/source&quot;
+    &quot;github.com/micro/go-micro/config/source/file&quot;
+    &quot;github.com/micro/go-micro/util/log&quot;
+)
+
+var (
+    err error
+)
+
+var (
+    defaultRootPath         = &quot;app&quot;
+    defaultConfigFilePrefix = &quot;application-&quot;
+    consulConfig            defaultConsulConfig
+    profiles                defaultProfiles
+    m                       sync.RWMutex
+    inited                  bool
+)
+
+// Init 初始化配置
+func Init() {
+    m.Lock()
+    defer m.Unlock()
+
+    if inited {
+        log.Logf(&quot;[Init] 配置已经初始化过&quot;)
+        return
+    }
+
+    // 加载yml配置
+    // 先加载基础配置
+    appPath, _ := filepath.Abs(filepath.Dir(filepath.Join(&quot;./&quot;, string(filepath.Separator))))
+
+    pt := filepath.Join(appPath, &quot;conf&quot;)
+    os.Chdir(appPath)
+
+    // 找到application.yml文件
+    if err = config.Load(file.NewSource(file.WithPath(pt + &quot;/application.yml&quot;))); err != nil {
+        panic(err)
+    }
+
+    // 找到需要引入的新配置文件
+    if err = config.Get(defaultRootPath, &quot;profiles&quot;).Scan(&amp;profiles); err != nil {
+        panic(err)
+    }
+
+    log.Logf(&quot;[Init] 加载配置文件：path: %s, %+v\n&quot;, pt+&quot;/application.yml&quot;, profiles)
+
+    // 开始导入新文件
+    if len(profiles.GetInclude()) &gt; 0 {
+        include := strings.Split(profiles.GetInclude(), &quot;,&quot;)
+
+        sources := make([]source.Source, len(include))
+        for i := 0; i &lt; len(include); i++ {
+            filePath := pt + string(filepath.Separator) + defaultConfigFilePrefix + strings.TrimSpace(include[i]) + &quot;.yml&quot;
+
+            log.Logf(&quot;[Init] 加载配置文件：path: %s\n&quot;, filePath)
+
+            sources[i] = file.NewSource(file.WithPath(filePath))
+        }
+
+        // 加载include的文件
+        if err = config.Load(sources...); err != nil {
+            panic(err)
+        }
+    }
+
+    // 赋值
+    config.Get(defaultRootPath, &quot;consul&quot;).Scan(&amp;consulConfig)
+
+    // 标记已经初始化
+    inited = true
+}
+
+// GetConsulConfig 获取Consul配置
+func GetConsulConfig() (ret ConsulConfig) {
+    return consulConfig
+}
+</code></pre>
+
+<p>user-web/basic/config/consul.go</p>
+
+<pre><code>package config
+
+// ConsulConfig consul 配置
+type ConsulConfig interface {
+    GetEnabled() bool
+    GetPort() int
+    GetHost() string
+}
+
+// defaultConsulConfig 默认consul 配置
+type defaultConsulConfig struct {
+    Enabled bool   `json:&quot;enabled&quot;`
+    Host    string `json:&quot;host&quot;`
+    Port    int    `json:&quot;port&quot;`
+}
+
+// GetPort consul 端口
+func (c defaultConsulConfig) GetPort() int {
+    return c.Port
+}
+
+// GetEnabled consul 激活
+func (c defaultConsulConfig) GetEnabled() bool {
+    return c.Enabled
+}
+
+// GetHost consul 主机地址
+func (c defaultConsulConfig) GetHost() string {
+    return c.Host
+}
+</code></pre>
+
+<p>user-web/basic/config/profiles.go</p>
+
+<pre><code>package config
+
+// Profiles 属性配置文件
+type Profiles interface {
+    GetInclude() string
+}
+
+// defaultProfiles 属性配置文件
+type defaultProfiles struct {
+    Include string `json:&quot;include&quot;`
+}
+
+// Include 包含的配置文件
+// 名称前缀为&quot;application-&quot;，格式为yml，如：&quot;application-xxx.yml&quot;
+// 多个文件名以逗号隔开，并省略掉前缀&quot;application-&quot;，如：dn, jpush, mysql
+func (p defaultProfiles) GetInclude() string {
+    return p.Include
+}
+</code></pre>
+
+<h4 id="handler-1">handler</h4>
+
+<p>user-web/handler/handler.go</p>
+
+<pre><code>package handler
+
+import (
+    &quot;context&quot;
+    &quot;encoding/json&quot;
+    &quot;net/http&quot;
+    &quot;time&quot;
+
+    user &quot;github.com/YuxinZhaozyx/GoMicroBookshop/user-srv/proto/user&quot;
+    &quot;github.com/micro/go-micro/client&quot;
+    &quot;github.com/micro/go-micro/util/log&quot;
+)
+
+var (
+    serviceClient user.UserService
+)
+
+// Error 错误结构体
+type Error struct {
+    Code   string `json:&quot;code&quot;`
+    Detail string `json:&quot;detail&quot;`
+}
+
+func Init() {
+    serviceClient = user.NewUserService(&quot;mu.micro.book.srv.user&quot;, client.DefaultClient)
+}
+
+// Login 登录入口
+func Login(w http.ResponseWriter, r *http.Request) {
+    // 只接受POST请求
+    if r.Method != &quot;POST&quot; {
+        log.Logf(&quot;非法请求&quot;)
+        http.Error(w, &quot;非法请求&quot;, 400)
+        return
+    }
+
+    r.ParseForm()
+
+    // 调用后台服务
+    rsp, err := serviceClient.QueryUserByName(context.TODO(), &amp;user.Request{
+        UserName: r.Form.Get(&quot;userName&quot;),
+    })
+    if err != nil {
+        http.Error(w, err.Error(), 500)
+        return
+    }
+
+    // 返回结果
+    response := map[string]interface{}{
+        &quot;ref&quot;: time.Now().UnixNano(),
+    }
+
+    if rsp.User.Pwd == r.Form.Get(&quot;pwd&quot;) {
+        response[&quot;success&quot;] = rsp.Success
+
+        // 干掉密码返回
+        rsp.User.Pwd = &quot;&quot;
+        response[&quot;data&quot;] = rsp.User
+    } else {
+        response[&quot;success&quot;] = false
+        response[&quot;error&quot;] = &amp;Error{
+            Detail: &quot;密码错误&quot;,
+        }
+    }
+
+    w.Header().Add(&quot;Content-Type&quot;, &quot;application/json; charset=utf-8&quot;)
+
+    // encode and write the response as json 返回json结构
+    if err := json.NewEncoder(w).Encode(response); err != nil {
+        http.Error(w, err.Error(), 500)
+        return
+    }
+}
+</code></pre>
+
+<h4 id="main-1">main</h4>
+
+<p>user-web/main.go</p>
+
+<pre><code>package main
+
+import (
+    &quot;fmt&quot;
+    &quot;time&quot;
+
+    &quot;github.com/micro/go-micro/util/log&quot;
+
+    &quot;github.com/YuxinZhaozyx/GoMicroBookshop/user-web/basic&quot;
+    &quot;github.com/YuxinZhaozyx/GoMicroBookshop/user-web/basic/config&quot;
+    &quot;github.com/YuxinZhaozyx/GoMicroBookshop/user-web/handler&quot;
+    &quot;github.com/micro/cli&quot;
+    &quot;github.com/micro/go-micro/registry&quot;
+    &quot;github.com/micro/go-micro/registry/consul&quot;
+    &quot;github.com/micro/go-micro/web&quot;
+)
+
+func main() {
+    // 初始化配置
+    basic.Init()
+
+    // 使用consul注册
+    micReg := consul.NewRegistry(registryOptions)
+
+    // create new web service 创建新服务
+    service := web.NewService(
+        web.Name(&quot;mu.micro.book.web.user&quot;),
+        web.Version(&quot;latest&quot;),
+        web.Registry(micReg),
+        web.Address(&quot;:8088&quot;),
+    )
+
+    // initialise service 初始化服务
+    if err := service.Init(
+        web.Action(func(c *cli.Context) {
+            // 初始化handler
+            handler.Init()
+        }),
+    ); err != nil {
+        log.Fatal(err)
+    }
+
+    // register call handler 注册登录接口
+    service.HandleFunc(&quot;/user/login&quot;, handler.Login)
+
+    // run service 运行服务
+    if err := service.Run(); err != nil {
+        log.Fatal(err)
+    }
+}
+
+func registryOptions(ops *registry.Options) {
+    consulCfg := config.GetConsulConfig()
+    ops.Timeout = time.Second * 5
+    ops.Addrs = []string{fmt.Sprintf(&quot;%s:%d&quot;, consulCfg.GetHost(), consulCfg.GetPort())}
+}
+</code></pre>
+
+<p>handler里定义了错误结构体<strong>Error</strong>、<strong>Init</strong>、<strong>Login</strong>方法。</p>
+
+<ul>
+<li><strong>Init</strong> 用来初始化handler需要用到的服务客户端</li>
+<li><strong>Login</strong> 处理登录请求</li>
+</ul>
+
+<p><strong>Login</strong>在解析完参数后，通过RPC调用<strong>service</strong>的<strong>QueryUserByName</strong>方法。查出的结果后再进行密码匹配。</p>
+
+<p>匹配成功后便返回用户信息。</p>
+
+<h4 id="启动-1">启动</h4>
+
+<p><strong>启动consul</strong></p>
+
+<pre><code class="language-shell">consul agent -dev
+</code></pre>
+
+<p><strong>运行api</strong></p>
+
+<pre><code class="language-shell">micro --registry=consul --api_namespace=mu.micro.book.web  api --handler=web
+</code></pre>
+
+<p><strong>运行user-srv</strong></p>
+
+<pre><code class="language-shell">cd user-srv
+go run main.go plugin.go 
+</code></pre>
+
+<p><strong>运行user-web</strong></p>
+
+<pre><code class="language-shell">cd user-web
+go run main.go
+</code></pre>
+
+<h4 id="测试-1">测试</h4>
+
+<pre><code class="language-shell">curl --request POST --url http://127.0.0.1:8088/user/login --header &quot;Content-Type:application/x-www-form-urlencoded&quot; --data &quot;userName=micro&amp;pwd=1234&quot;
+</code></pre>
+
+<p>错误输出：</p>
+
+<pre><code class="language-json">{&quot;id&quot;:&quot;go.micro.client&quot;,&quot;code&quot;:500,&quot;detail&quot;:&quot;connection error: dial tcp: address fdf5:da13:de04::e58:59504: too many colons in address&quot;,&quot;status&quot;:&quot;Internal Server Error&quot;}
+</code></pre>
+
+<p>go-micro暂不支持ipv6，待解决。</p>
+
+<p>正确输出：</p>
+
+<pre><code class="language-json">{&quot;data&quot;:{&quot;id&quot;:10001,&quot;name&quot;:&quot;micro&quot;},&quot;ref&quot;:1561869942897349500,&quot;success&quot;:true}
+</code></pre>
+
+<p>隔日重启后各服务分配到的是ipv4而不是ipv6地址，程序正常执行，未找到原因，待解决。</p>
+
+    </div>
+
+    
+
+<div class="article-tags">
+  
+  <a class="badge badge-light" href="/tags/golang/">golang</a>
+  
+  <a class="badge badge-light" href="/tags/micro/">micro</a>
+  
+  <a class="badge badge-light" href="/tags/go-micro/">go-micro</a>
+  
+  <a class="badge badge-light" href="/tags/micro-service/">micro service</a>
+  
+</div>
+
+
+
+    
+      
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+  
+
+
+
+
+
+  
+  
+  
+    
+  
+  
+  <div class="media author-card" itemscope itemtype="http://schema.org/Person">
+    
+      
+      <img class="portrait mr-3" src="/authors/yuxinzhao/avatar_hu53c49a6bf84423129c94a7ea41b67289_336578_250x250_fill_q90_lanczos_center.jpg" itemprop="image" alt="Avatar">
+    
+
+    <div class="media-body">
+      <h5 class="card-title" itemprop="name"><a href="https://YuxinZhaozyx.github.io/">Yuxin Zhao 赵煜新</a></h5>
+      <h6 class="card-subtitle">Student of Software Engineering</h6>
+      <p class="card-text" itemprop="description">My research interests include Artificial Intelligence, Micro Service and Engineering.</p>
+      <ul class="network-icon" aria-hidden="true">
+        
+          
+          
+          
+            
+          
+          
+          
+          
+          
+            
+          
+          <li>
+            <a itemprop="sameAs" href="/#contact" >
+              <i class="fas fa-envelope"></i>
+            </a>
+          </li>
+        
+          
+          
+          
+            
+          
+          
+          
+          
+          
+            
+          
+          <li>
+            <a itemprop="sameAs" href="https://github.com/YuxinZhaozyx" target="_blank" rel="noopener">
+              <i class="fab fa-github"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+
+
+      
+      
+      <div class="article-widget">
+        <div class="hr-light"></div>
+        <h3>Related</h3>
+        <ul>
+          
+          <li><a href="/post/gomicrobookshop-project/dev-note-0/">GoMicroBookshop项目开发笔记-0</a></li>
+          
+          <li><a href="/project/gomicrobookshop/">GoMicroBookshop</a></li>
+          
+        </ul>
+      </div>
+      
+    
+
+    
+
+    
+
+
+  </div>
+</article>
+
+      
+
+    
+    
+    
+    <script src="/js/mathjax-config.js"></script>
+    
+
+    
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js" integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js" integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" integrity="sha256-X5PoE3KU5l+JcX+w09p/wHl9AzK333C4hJ2I9S5mD4M=" crossorigin="anonymous"></script>
+
+      
+
+      
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/highlight.min.js" integrity="sha256-aYTdUrn6Ow1DDgh5JTc3aDGnnju48y/1c8s1dgkYPQ8=" crossorigin="anonymous"></script>
+        
+      
+
+      
+      
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS_CHTML-full" integrity="sha256-GhM+5JHb6QUzOQPXSJLEWP7R73CbkisjzK5Eyij4U9w=" crossorigin="anonymous" async></script>
+      
+    
+
+    
+    
+
+    
+    
+    
+
+    
+    
+    <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    
+    
+    <script>
+      const search_index_filename = "/index.json";
+      const i18n = {
+        'placeholder': "Search...",
+        'results': "results found",
+        'no_results': "No results found"
+      };
+      const content_type = {
+        'post': "Posts",
+        'project': "Projects",
+        'publication' : "Publications",
+        'talk' : "Talks"
+        };
+    </script>
+    
+
+    
+    
+
+    
+    
+    <script id="search-hit-fuse-template" type="text/x-template">
+      <div class="search-hit" id="summary-{{key}}">
+      <div class="search-hit-content">
+        <div class="search-hit-name">
+          <a href="{{relpermalink}}">{{title}}</a>
+          <div class="article-metadata search-hit-type">{{type}}</div>
+          <p class="search-hit-description">{{snippet}}</p>
+        </div>
+      </div>
+      </div>
+    </script>
+    
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js" integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
+    
+
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    
+    
+    
+    <script src="/js/academic.min.8cd55d839906ab9f8f6514a7081b20c1.js"></script>
+
+    
+
+
+
+
+
+
+  
+  <div class="container">
+    <footer class="site-footer">
+  
+
+  <p class="powered-by">
+    Copyright &copy; 2019 YuxinZhao &middot; 
+
+    Powered by the
+    <a href="https://sourcethemes.com/academic/" target="_blank" rel="noopener">Academic theme</a> for
+    <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a>.
+
+    
+    <span class="float-right" aria-hidden="true">
+      <a href="#" id="back_to_top">
+        <span class="button_icon">
+          <i class="fas fa-chevron-up fa-2x"></i>
+        </span>
+      </a>
+    </span>
+    
+  </p>
+</footer>
+
+  </div>
+  
+
+  
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Cite</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="tex hljs"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> Copy
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> Download
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

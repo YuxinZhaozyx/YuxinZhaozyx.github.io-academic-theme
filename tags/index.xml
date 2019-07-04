@@ -7,7 +7,7 @@
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
     <language>en-us</language>
     <copyright>Copyright &amp;copy; {year} YuxinZhao</copyright>
-    <lastBuildDate>Thu, 04 Jul 2019 12:27:03 +0800</lastBuildDate>
+    <lastBuildDate>Thu, 04 Jul 2019 23:23:03 +0800</lastBuildDate>
     
 	    <atom:link href="https://YuxinZhaozyx.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
@@ -15,7 +15,7 @@
     <item>
       <title>go-micro</title>
       <link>https://YuxinZhaozyx.github.io/tags/go-micro/</link>
-      <pubDate>Thu, 04 Jul 2019 12:27:03 +0800</pubDate>
+      <pubDate>Thu, 04 Jul 2019 23:23:03 +0800</pubDate>
       
       <guid>https://YuxinZhaozyx.github.io/tags/go-micro/</guid>
       <description></description>
@@ -24,7 +24,7 @@
     <item>
       <title>golang</title>
       <link>https://YuxinZhaozyx.github.io/tags/golang/</link>
-      <pubDate>Thu, 04 Jul 2019 12:27:03 +0800</pubDate>
+      <pubDate>Thu, 04 Jul 2019 23:23:03 +0800</pubDate>
       
       <guid>https://YuxinZhaozyx.github.io/tags/golang/</guid>
       <description></description>
@@ -33,7 +33,7 @@
     <item>
       <title>micro</title>
       <link>https://YuxinZhaozyx.github.io/tags/micro/</link>
-      <pubDate>Thu, 04 Jul 2019 12:27:03 +0800</pubDate>
+      <pubDate>Thu, 04 Jul 2019 23:23:03 +0800</pubDate>
       
       <guid>https://YuxinZhaozyx.github.io/tags/micro/</guid>
       <description></description>
@@ -42,9 +42,36 @@
     <item>
       <title>micro service</title>
       <link>https://YuxinZhaozyx.github.io/tags/micro-service/</link>
-      <pubDate>Thu, 04 Jul 2019 12:27:03 +0800</pubDate>
+      <pubDate>Thu, 04 Jul 2019 23:23:03 +0800</pubDate>
       
       <guid>https://YuxinZhaozyx.github.io/tags/micro-service/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>LaTeX</title>
+      <link>https://YuxinZhaozyx.github.io/tags/latex/</link>
+      <pubDate>Thu, 04 Jul 2019 20:04:20 +0800</pubDate>
+      
+      <guid>https://YuxinZhaozyx.github.io/tags/latex/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>markdown</title>
+      <link>https://YuxinZhaozyx.github.io/tags/markdown/</link>
+      <pubDate>Thu, 04 Jul 2019 20:04:20 +0800</pubDate>
+      
+      <guid>https://YuxinZhaozyx.github.io/tags/markdown/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>math</title>
+      <link>https://YuxinZhaozyx.github.io/tags/math/</link>
+      <pubDate>Thu, 04 Jul 2019 20:04:20 +0800</pubDate>
+      
+      <guid>https://YuxinZhaozyx.github.io/tags/math/</guid>
       <description></description>
     </item>
     

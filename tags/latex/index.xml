@@ -1,0 +1,687 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>LaTeX on YuxinZhao</title>
+    <link>https://YuxinZhaozyx.github.io/tags/latex/</link>
+    <description>Recent content in LaTeX on YuxinZhao</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
+    <language>en-us</language>
+    <copyright>Copyright &amp;copy; {year} YuxinZhao</copyright>
+    <lastBuildDate>Thu, 04 Jul 2019 20:04:20 +0800</lastBuildDate>
+    
+	    <atom:link href="https://YuxinZhaozyx.github.io/tags/latex/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>$\LaTeX$ Math Symbols</title>
+      <link>https://YuxinZhaozyx.github.io/post/latex-math-symbols/</link>
+      <pubDate>Thu, 04 Jul 2019 20:04:20 +0800</pubDate>
+      
+      <guid>https://YuxinZhaozyx.github.io/post/latex-math-symbols/</guid>
+      <description>
+
+&lt;p&gt;Summary of LaTeX Math Symbols&lt;/p&gt;
+
+&lt;p&gt;$\LaTeX$数学符号汇总&lt;/p&gt;
+
+&lt;h2 id=&#34;function-symbol-and-special-characters-函数-符号及特殊字符&#34;&gt;Function, symbol and special characters 函数、符号及特殊字符&lt;/h2&gt;
+
+&lt;h3 id=&#34;tone-声调&#34;&gt;Tone 声调&lt;/h3&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&#34;left&#34;&gt;Syntax 语法&lt;/th&gt;
+&lt;th align=&#34;center&#34;&gt;Effect 效果&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;\bar{x}&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;$$\bar{x}$$&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;\acute{\eta}&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;$$\acute{\eta}$$&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;\check{\alpha}&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;$$\check{\alpha}$$&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;\grave{\eta}&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;$$\grave{\eta}$$&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;\breve{a}&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;$$\breve{a}$$&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;\ddot{y}&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;$$\ddot{y}$$&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;\dot{x}&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;$$\dot{x}$$&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;\hat{\alpha}&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;$$\hat{\alpha}$$&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;\tilde{\iota}&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;$$\tilde{\iota} $$&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h3 id=&#34;function-函数&#34;&gt;Function 函数&lt;/h3&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&#34;left&#34;&gt;Syntax 语法&lt;/th&gt;
+&lt;th align=&#34;center&#34;&gt;Effect 效果&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;\sin\theta&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;$$\sin\theta$$&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;\cos\theta&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;$$\cos\theta$$&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;\tan\theta&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;$$\tan\theta$$&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;\arcsin\frac{L}{r}&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;$$\arcsin\frac{L}{r}$$&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;\arccos\frac{T}{r}&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;$$\arccos\frac{T}{r}$$&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;\arctan\frac{L}{T}&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;$$\arctan\frac{L}{T}$$&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;\sinh g&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;$$\sinh g$$&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;\cosh h&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;$$\cosh h$$&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;\tanh i&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;$$\tanh i$$&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;\operatorname{sh}j&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;$$\operatorname{sh}j$$&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;\operatorname{argsh}k&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;$$\operatorname{argsh}k$$&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;\operatorname{ch}h&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;$$\operatorname{ch}h$$&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;\operatorname{argch}l&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;$$\operatorname{argch}l$$&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;\operatorname{th}i&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;$$\operatorname{th}i$$&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;\operatorname{argth}m&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;$$\operatorname{argth}m$$&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;k&#39;(x)=\lim_{\Delta x\to 0}\frac{k(x)-k(x-\Delta x)}{\Deltax}&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;$$k&amp;rsquo;(x)=\lim_{\Delta x\to 0}\frac{k(x)-k(x-\Delta x)}{\Delta}$$&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;\limsup S&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;$$\limsup S$$&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;\liminf I&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;$$\liminf I$$&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;\max H&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;$$\max H$$&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;\min L&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;$$\min L$$&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;\inf s&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;$$\inf s$$&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;\sup t&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;$$\sup t$$&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;\exp t&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;$$\exp t$$&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;\ln X&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;$$\ln X$$&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;\lg X&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;$$\lg X$$&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;\log X&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;$$\log X$$&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;\log_\alpha X&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;$$\log_\alpha X$$&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;\ker x&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;$$\ker x$$&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;\deg x&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;$$\deg x$$&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;\gcd(T,U,V,W,X)&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;$$\gcd(T,U,V,W,X)$$&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;\Pr x&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;$$\Pr x$$&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;\det x&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;$$\det x$$&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;\hom x&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;$$\hom x$$&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;\arg x&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;$$\arg x$$&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;\dim x&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;$$\dim x$$&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;\lim_{t\to n}T&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;$$\lim_{t\to n}T$$&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h3 id=&#34;congruent-同余&#34;&gt;Congruent 同余&lt;/h3&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&#34;left&#34;&gt;Syntax 语法&lt;/th&gt;
+&lt;th align=&#34;center&#34;&gt;Effect 效果&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;\pmod{m}&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;$$\pmod{m}$$&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;a \bmod b&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;$$a \bmod b$$&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h3 id=&#34;differential-微分&#34;&gt;Differential 微分&lt;/h3&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&#34;left&#34;&gt;Syntax 语法&lt;/th&gt;
+&lt;th align=&#34;center&#34;&gt;Effect 效果&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;\nabla&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;$$\nabla$$&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;\partial x&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;$$\partial x$$&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;\mathrm{d}x&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;$$\mathrm{d}x$$&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;\dot x&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;$$\dot x$$&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;\ddot x&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;$$\ddot x$$&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h3 id=&#34;set-集合&#34;&gt;Set 集合&lt;/h3&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&#34;left&#34;&gt;Syntax 语法&lt;/th&gt;
+&lt;th align=&#34;center&#34;&gt;Effect 效果&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;\forall&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;$$\forall$$&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;\exists&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;$$\exists$$&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;\emptyset&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;$$\emptyset$$&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;\varnothing&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;$$\varnothing$$&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;\ni&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;$$\ni$$&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;\not\in&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;$$\not\in$$&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;\notin&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;$$\notin$$&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;\subset&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;$$\subset$$&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;\supset&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;$$\supset$$&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;\supseteq&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;$$\supseteq$$&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;\cap&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;$$\cap$$&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;\bigcap&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;$$\bigcap$$&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;\bigcap&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;$$\bigcap$$&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;\biguplus&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;$$\biguplus$$&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;\sqsubset&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;$$\sqsubset$$&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;\sqsubseteq&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;$$\sqsubseteq$$&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;\sqsupseteq&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;$$\sqsupseteq$$&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;\sqcap&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;$$\sqcap$$&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;\sqcup&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;$$\sqcup$$&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;\bigsqcup&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;$$\bigsqcup$$&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h3 id=&#34;logic-逻辑&#34;&gt;Logic 逻辑&lt;/h3&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&#34;left&#34;&gt;Syntax 语法&lt;/th&gt;
+&lt;th align=&#34;center&#34;&gt;Effect 效果&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;p&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;$$p$$&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;\land&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;$$\land$$&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;\wedge&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;$$\wedge$$&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;\bigwedge&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;$$\bigwedge$$&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;\bar{q} \to p&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;$$\bar{q} \to p$$&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;\lor&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;$$\lor$$&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;\vee&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;$$\vee$$&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;\bigvee&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;$$\bigvee$$&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;\lnot&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;$$\lnot$$&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;\neg q&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;$$\neg q$$&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;\setminus&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;$$\setminus$$&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;\smallsetminus&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;$$\smallsetminus$$&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h3 id=&#34;radication-开方&#34;&gt;Radication  开方&lt;/h3&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&#34;left&#34;&gt;Syntax 语法&lt;/th&gt;
+&lt;th align=&#34;center&#34;&gt;Effect 效果&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;\sqrt{3}&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;$$\sqrt{3}$$&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;\sqrt[n]{3}&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;$$\sqrt[n]{3}$$&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h3 id=&#34;relation-关系&#34;&gt;Relation 关系&lt;/h3&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&#34;left&#34;&gt;Syntax 语法&lt;/th&gt;
+&lt;th align=&#34;center&#34;&gt;Effect 效果&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;\Delta ABC\sim\Delta XYZ&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;$$\Delta ABC\sim\Delta XYZ$$&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;\sqrt{3}\approx1.732050808\ldots&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;$$\sqrt{3}\approx1.732050808\ldots$$&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;\simeq&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;$$\simeq$$&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;\cong&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;$$\cong$$&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;\dot=&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;$$\dot=$$&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;\ggg&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;$$\ggg$$&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;\gg&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;$$\gg$$&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;&amp;gt;&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;$$&amp;gt;$$&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;\ge&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;$$\ge$$&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;\geqq&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;$$\geqq$$&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;=&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;$$=$$&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;\leq&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;$$\leq$$&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;\leqq&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;$$\leqq$$&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;&amp;lt;&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;$$&amp;lt;$$&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;\ll&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;$$\ll$$&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;\lll&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;$$\lll$$&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;(x-y)^2\equiv(-x+y)^2\equiv x^2-2xy+y^2&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;$$(x-y)^2\equiv(-x+y)^2\equiv x^2-2xy+y^2$$&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;x\not\equiv N&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;$$x\not\equiv N$$&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;x\ne A&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;$$x\ne A$$&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;x\neq C&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;$$x\neq C$$&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;t\propto v&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;$$t\propto v$$&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;\pm&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;$$\pm$$&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;&lt;code&gt;\mp&lt;/code&gt;&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;$$\mp$$&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;div class=&#34;alert alert-note&#34;&gt;
+  &lt;div&gt;
+    To be continue   未完待续
+  &lt;/div&gt;
+&lt;/div&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
