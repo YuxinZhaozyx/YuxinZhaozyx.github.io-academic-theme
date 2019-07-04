@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>project on YuxinZhao</title>
+    <link>https://YuxinZhaozyx.github.io/categories/project/</link>
+    <description>Recent content in project on YuxinZhao</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
+    <language>en-us</language>
+    <copyright>Copyright &amp;copy; {year} YuxinZhao</copyright>
+    <lastBuildDate>Thu, 04 Jul 2019 12:27:03 +0800</lastBuildDate>
+    
+	    <atom:link href="https://YuxinZhaozyx.github.io/categories/project/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>GoMicroBookshop</title>
+      <link>https://YuxinZhaozyx.github.io/project/gomicrobookshop/</link>
+      <pubDate>Thu, 04 Jul 2019 12:27:03 +0800</pubDate>
+      
+      <guid>https://YuxinZhaozyx.github.io/project/gomicrobookshop/</guid>
+      <description>
+
+&lt;p&gt;A bookshop project for my go-micro and micro service learning.&lt;/p&gt;
+
+&lt;p&gt;本项目依据项目 &lt;a href=&#34;https://github.com/micro-in-cn/tutorials/tree/master/microservice-in-micro&#34; target=&#34;_blank&#34;&gt;microservice-in-cn&lt;/a&gt; 学习&lt;a href=&#34;https://github.com/micro/micro&#34; target=&#34;_blank&#34;&gt;micro&lt;/a&gt;工具链以及微服务。&lt;/p&gt;
+
+&lt;h1 id=&#34;项目简介&#34;&gt;项目简介&lt;/h1&gt;
+
+&lt;p&gt;本项目为一个网上书店。&lt;/p&gt;
+
+&lt;h2 id=&#34;业务模块&#34;&gt;业务模块&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;用户&lt;/strong&gt;，users&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;库存&lt;/strong&gt;，inventory&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;权限&lt;/strong&gt;，auth&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;订单&lt;/strong&gt;，orders&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;支付&lt;/strong&gt;，payment&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;服务抽象结构&#34;&gt;服务抽象结构&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://github.com/YuxinZhaozyx/GoMicroBookshop/blob/master/image/design.png&#34; target=&#34;_blank&#34;&gt;&lt;img src=&#34;image/design.png&#34; alt=&#34;img&#34; /&gt;&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;用户、订单、支付服务都会有对外暴露接口，故而它们各自有web层。web层app之间不会互相调用，它们只会与非web层的应用交互。&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

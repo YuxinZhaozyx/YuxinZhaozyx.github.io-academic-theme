@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tags on YuxinZhao</title>
+    <link>https://YuxinZhaozyx.github.io/tags/</link>
+    <description>Recent content in Tags on YuxinZhao</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
+    <language>en-us</language>
+    <copyright>Copyright &amp;copy; {year} YuxinZhao</copyright>
+    <lastBuildDate>Thu, 04 Jul 2019 12:27:03 +0800</lastBuildDate>
+    
+	    <atom:link href="https://YuxinZhaozyx.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>go-micro</title>
+      <link>https://YuxinZhaozyx.github.io/tags/go-micro/</link>
+      <pubDate>Thu, 04 Jul 2019 12:27:03 +0800</pubDate>
+      
+      <guid>https://YuxinZhaozyx.github.io/tags/go-micro/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>golang</title>
+      <link>https://YuxinZhaozyx.github.io/tags/golang/</link>
+      <pubDate>Thu, 04 Jul 2019 12:27:03 +0800</pubDate>
+      
+      <guid>https://YuxinZhaozyx.github.io/tags/golang/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>micro</title>
+      <link>https://YuxinZhaozyx.github.io/tags/micro/</link>
+      <pubDate>Thu, 04 Jul 2019 12:27:03 +0800</pubDate>
+      
+      <guid>https://YuxinZhaozyx.github.io/tags/micro/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>micro service</title>
+      <link>https://YuxinZhaozyx.github.io/tags/micro-service/</link>
+      <pubDate>Thu, 04 Jul 2019 12:27:03 +0800</pubDate>
+      
+      <guid>https://YuxinZhaozyx.github.io/tags/micro-service/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

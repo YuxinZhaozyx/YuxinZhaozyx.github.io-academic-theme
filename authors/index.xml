@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Authors on YuxinZhao</title>
+    <link>https://YuxinZhaozyx.github.io/authors/</link>
+    <description>Recent content in Authors on YuxinZhao</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
+    <language>en-us</language>
+    <copyright>Copyright &amp;copy; {year} YuxinZhao</copyright>
+    <lastBuildDate>Thu, 04 Jul 2019 12:27:03 +0800</lastBuildDate>
+    
+	    <atom:link href="https://YuxinZhaozyx.github.io/authors/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title></title>
+      <link>https://YuxinZhaozyx.github.io/authors/yuxinzhao/</link>
+      <pubDate>Thu, 04 Jul 2019 12:27:03 +0800</pubDate>
+      
+      <guid>https://YuxinZhaozyx.github.io/authors/yuxinzhao/</guid>
+      <description>&lt;p&gt;I&amp;rsquo;m a college student of software engineering at the South China University of Technology. My research interests include artificial intelligence, micro service and engineering.&lt;/p&gt;
+
+&lt;p&gt;我是华南理工大学软件工程专业的一名大学生。我的研究兴趣包括人工智能、微服务和软件工程。&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>https://YuxinZhaozyx.github.io/authors/admin/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://YuxinZhaozyx.github.io/authors/admin/</guid>
+      <description>&lt;p&gt;Nelson Bighetti is a professor of artificial intelligence at the Stanford AI Lab. His research interests include distributed robotics, mobile computing and programmable matter. He leads the Robotic Neurobiology group, which develops self-reconfiguring robots, systems of self-organizing robots, and mobile sensor networks.&lt;/p&gt;
+
+&lt;p&gt;Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed neque elit, tristique placerat feugiat ac, facilisis vitae arcu. Proin eget egestas augue. Praesent ut sem nec arcu pellentesque aliquet. Duis dapibus diam vel metus tempus vulputate.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
