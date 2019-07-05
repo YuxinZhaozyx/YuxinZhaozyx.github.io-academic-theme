@@ -644,6 +644,14 @@ gitment.render('container')
 &lt;script src=&quot;https://www.wenjunjiang.win/js/gitment.js&quot;&gt;&lt;/script&gt;
 </code></pre>
 
+<p>或者</p>
+
+<pre><code class="language-html">&lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdn.jsdelivr.net/gh/theme-next/theme-next-gitment@1/default.css&quot;&gt;
+&lt;script src=&quot;https://cdn.jsdelivr.net/gh/theme-next/theme-next-gitment@1/gitment.browser.js&quot;&gt;&lt;/script&gt;
+</code></pre>
+
+<p>目前来看后者更稳定一点。</p>
+
   </div>
 </div>
 
@@ -752,8 +760,8 @@ $ vi layouts/partials/comments.html
     &lt;link rel=&quot;stylesheet&quot; href=&quot;https://billts.site/extra_css/gitment.css&quot;&gt;
     &lt;script src=&quot;https://billts.site/js/gitment.js&quot;&gt;&lt;/script&gt;
     {{ else }}
-    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://www.wenjunjiang.win/css/gitment.css&quot;&gt;
-    &lt;script src=&quot;https://www.wenjunjiang.win/js/gitment.js&quot;&gt;&lt;/script&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdn.jsdelivr.net/gh/theme-next/theme-next-gitment@1/default.css&quot;&gt;
+    &lt;script src=&quot;https://cdn.jsdelivr.net/gh/theme-next/theme-next-gitment@1/gitment.browser.js&quot;&gt;&lt;/script&gt;
     {{ end }}
 
     &lt;script&gt;
@@ -797,6 +805,8 @@ $ vi layouts/partials/comments.html
 <p>[4]  <a href="https://github.com/imsun/gitment/issues/116" target="_blank">Validation Failed ID长度问题建议 #116</a></p>
 
 <p>[5]  <a href="https://github.com/imsun/gitment/issues/170" target="_blank">[object ProgressEvent] #170</a></p>
+
+<p>[6]  <a href="https://github.com/imsun/gitment/issues/102" target="_blank">网站无法访问了？ #102</a></p>
 
     </div>
 
@@ -903,7 +913,6 @@ $ vi layouts/partials/comments.html
     
 <section id="comments">
 	<div id="gitmentContainer"></div>
-	
 	
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/theme-next/theme-next-gitment@1/default.css">
 	<script src="https://cdn.jsdelivr.net/gh/theme-next/theme-next-gitment@1/gitment.browser.js"></script>

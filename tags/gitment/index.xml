@@ -111,6 +111,14 @@ gitment.render(&#39;container&#39;)
 &amp;lt;script src=&amp;quot;https://www.wenjunjiang.win/js/gitment.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;
 
+&lt;p&gt;或者&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;link rel=&amp;quot;stylesheet&amp;quot; href=&amp;quot;https://cdn.jsdelivr.net/gh/theme-next/theme-next-gitment@1/default.css&amp;quot;&amp;gt;
+&amp;lt;script src=&amp;quot;https://cdn.jsdelivr.net/gh/theme-next/theme-next-gitment@1/gitment.browser.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;目前来看后者更稳定一点。&lt;/p&gt;
+
   &lt;/div&gt;
 &lt;/div&gt;
 
@@ -219,8 +227,8 @@ $ vi layouts/partials/comments.html
     &amp;lt;link rel=&amp;quot;stylesheet&amp;quot; href=&amp;quot;https://billts.site/extra_css/gitment.css&amp;quot;&amp;gt;
     &amp;lt;script src=&amp;quot;https://billts.site/js/gitment.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;
     {{ else }}
-    &amp;lt;link rel=&amp;quot;stylesheet&amp;quot; href=&amp;quot;https://www.wenjunjiang.win/css/gitment.css&amp;quot;&amp;gt;
-    &amp;lt;script src=&amp;quot;https://www.wenjunjiang.win/js/gitment.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;
+    &amp;lt;link rel=&amp;quot;stylesheet&amp;quot; href=&amp;quot;https://cdn.jsdelivr.net/gh/theme-next/theme-next-gitment@1/default.css&amp;quot;&amp;gt;
+    &amp;lt;script src=&amp;quot;https://cdn.jsdelivr.net/gh/theme-next/theme-next-gitment@1/gitment.browser.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;
     {{ end }}
 
     &amp;lt;script&amp;gt;
@@ -264,6 +272,8 @@ $ vi layouts/partials/comments.html
 &lt;p&gt;[4]  &lt;a href=&#34;https://github.com/imsun/gitment/issues/116&#34; target=&#34;_blank&#34;&gt;Validation Failed ID长度问题建议 #116&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;[5]  &lt;a href=&#34;https://github.com/imsun/gitment/issues/170&#34; target=&#34;_blank&#34;&gt;[object ProgressEvent] #170&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;[6]  &lt;a href=&#34;https://github.com/imsun/gitment/issues/102&#34; target=&#34;_blank&#34;&gt;网站无法访问了？ #102&lt;/a&gt;&lt;/p&gt;
 </description>
     </item>
     
