@@ -7,10 +7,19 @@
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
     <language>en-us</language>
     <copyright>Copyright &amp;copy; {year} YuxinZhao</copyright>
-    <lastBuildDate>Thu, 04 Jul 2019 23:23:03 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 05 Jul 2019 17:20:59 +0800</lastBuildDate>
     
 	    <atom:link href="https://YuxinZhaozyx.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>hugo</title>
+      <link>https://YuxinZhaozyx.github.io/categories/hugo/</link>
+      <pubDate>Fri, 05 Jul 2019 17:20:59 +0800</pubDate>
+      
+      <guid>https://YuxinZhaozyx.github.io/categories/hugo/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>project-note</title>

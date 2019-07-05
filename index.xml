@@ -7,10 +7,265 @@
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
     <language>en-us</language>
     <copyright>Copyright &amp;copy; {year} YuxinZhao</copyright>
-    <lastBuildDate>Thu, 04 Jul 2019 23:23:03 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 05 Jul 2019 17:20:59 +0800</lastBuildDate>
     
 	    <atom:link href="https://YuxinZhaozyx.github.io/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Hugo博客集成Gitment评论模块</title>
+      <link>https://YuxinZhaozyx.github.io/post/gitment-in-hugo/</link>
+      <pubDate>Fri, 05 Jul 2019 17:20:59 +0800</pubDate>
+      
+      <guid>https://YuxinZhaozyx.github.io/post/gitment-in-hugo/</guid>
+      <description>
+
+&lt;h2 id=&#34;前言&#34;&gt;前言&lt;/h2&gt;
+
+&lt;p&gt;我使用的Hugo主题Academic自带Disqus评论模块支持，但由于国内无法访问Disqus，因此我开始寻找其他评论模块，最终选择了Gitment评论模块。&lt;/p&gt;
+
+&lt;h2 id=&#34;我为什么选择gitment&#34;&gt;我为什么选择Gitment？&lt;/h2&gt;
+
+&lt;p&gt;在选择之前我们先看一下有哪些选项可以选择。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Disqus&lt;/strong&gt;:  国外使用较多的评论组件，但国内需要代理才能访问。&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;多说&lt;/strong&gt;:  国内最多用户使用的评论系统，但已于2017年6月停止提供服务。&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;网易云跟帖&lt;/strong&gt;:  网易提供的评论系统，但也于2017月8月停止提供服务。&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;畅言&lt;/strong&gt;:  搜狐提供的评论组件，功能丰富，体验优异；但必须进行域名备案。只要域名备过案就可以通过审核，简单问题复杂化。&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;Gitment&lt;/strong&gt;:   国人&lt;a href=&#34;https://imsun.net/&#34; target=&#34;_blank&#34;&gt;I&amp;rsquo;m Sun&lt;/a&gt;编写的开源评论模块，创新性地将评论放置在github的issue中，作者目前已不再维护。&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;CommentHub&lt;/strong&gt;:  受Gitment启发也是将评论存储在github issue中的评论系统，解决Gitment会在前端暴露Client ID和Client Secret可能造成的安全问题，改进成在后端服务处理业务和存储证书，通过iframe实现评论功能。&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;已停止服务的多说、网易云跟帖和国内无法访问的Disqus无法使用，故排除在选择范围之外。畅言由于需要备案，步骤繁琐不想用。剩下的Gitment和ComementHub实际上很像，CommentHub看上去会更安全一些，因为它不会像Gitment一样暴露Client ID和Client Secret，但其实即便别人获取了我们的Client ID和Client Secret，没有我的github账号依然无法使用，而且只能在我指定的网址才能用，故Gitment还是比较安全的。&lt;/p&gt;
+
+&lt;p&gt;最终我在两者中选择了Gitment (因为CommentHub有点难看)。&lt;/p&gt;
+
+&lt;h2 id=&#34;gitment评论模块介绍&#34;&gt;Gitment评论模块介绍&lt;/h2&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Gitment is a comment system based on GitHub Issues, which can be used in the frontend without any server-side implementation.&lt;/p&gt;
+
+&lt;p&gt;Gitment 是一款基于 GitHub Issues 的评论系统。支持在前端直接引入，不需要任何后端代码。可以在页面进行登录、查看、评论、点赞等操作，同时有完整的 Markdown / GFM 和代码高亮支持。尤为适合各种基于 GitHub Pages 的静态博客或项目页面。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://github.com/imsun/gitment&#34; target=&#34;_blank&#34;&gt;项目地址&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;a href=&#34;https://imsun.github.io/gitment/&#34; target=&#34;_blank&#34;&gt;官方示例&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;基本使用&#34;&gt;基本使用&lt;/h2&gt;
+
+&lt;h3 id=&#34;1-注册oauth-application&#34;&gt;1. 注册OAuth Application&lt;/h3&gt;
+
+&lt;p&gt;需要先在github上注册一个OAuth Application，&lt;a href=&#34;https://github.com/settings/applications/new&#34; target=&#34;_blank&#34;&gt;点击此处&lt;/a&gt;注册。&lt;/p&gt;
+
+&lt;p&gt;Callback URL 填写评论页面对应的域名，如&lt;code&gt;https://YuxinZhaozyx.github.io&lt;/code&gt;。&lt;/p&gt;
+
+&lt;div class=&#34;alert alert-warning&#34;&gt;
+  &lt;div&gt;
+    其他内容可以随便写，但Callback URL一定要填写正确。
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;p&gt;注册成功后会得到一个Client ID和Client Secret，这将被用于之后的用户登录认证。&lt;/p&gt;
+
+&lt;h3 id=&#34;2-引入gitment&#34;&gt;2. 引入Gitment&lt;/h3&gt;
+
+&lt;p&gt;将一下代码添加到你的页面：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;div id=&amp;quot;container&amp;quot;&amp;gt;&amp;lt;/div&amp;gt;
+&amp;lt;link rel=&amp;quot;stylesheet&amp;quot; href=&amp;quot;https://imsun.github.io/gitment/style/default.css&amp;quot;&amp;gt;
+&amp;lt;script src=&amp;quot;https://imsun.github.io/gitment/dist/gitment.browser.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;
+&amp;lt;script&amp;gt;
+var gitment = new Gitment({
+  id: &#39;页面 ID&#39;, // 可选。默认为 location.href
+  owner: &#39;你的 GitHub ID&#39;,
+  repo: &#39;存储评论的 repo&#39;,
+  oauth: {
+    client_id: &#39;你的 client ID&#39;,
+    client_secret: &#39;你的 client secret&#39;,
+  },
+})
+gitment.render(&#39;container&#39;)
+&amp;lt;/script&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;div class=&#34;alert alert-warning&#34;&gt;
+  &lt;div&gt;
+    &lt;code&gt;id&lt;/code&gt;的长度要限制在50个字符内，但也不可为空字符串。详情见&lt;a href=&#34;#问题汇总&#34;&gt;此处&lt;/a&gt;。
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class=&#34;alert alert-warning&#34;&gt;
+  &lt;div&gt;
+    &lt;p&gt;上述代码为gitment作者的示例代码，但作者已停止维护，网址已不可用，可用以下代码代替。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;link rel=&amp;quot;stylesheet&amp;quot; href=&amp;quot;https://www.wenjunjiang.win/css/gitment.css&amp;quot;&amp;gt;
+&amp;lt;script src=&amp;quot;https://www.wenjunjiang.win/js/gitment.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;div class=&#34;alert alert-note&#34;&gt;
+  &lt;div&gt;
+    &lt;p&gt;以上方式会使用最新版本的Gitment，若希望引用确定版本的Gitment，需要使用npm进行安装。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;$ npm install --save gitment
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;使用操作详见&lt;a href=&#34;https://github.com/imsun/gitment#options&#34; target=&#34;_blank&#34;&gt;Gitment Option&lt;/a&gt;。&lt;/p&gt;
+
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&#34;3-初始化评论&#34;&gt;3. 初始化评论&lt;/h3&gt;
+
+&lt;p&gt;页面发布后，你需要访问页面并使用你的 GitHub 账号登录（请确保你的账号是第二步所填 repo 的 owner），点击初始化按钮。&lt;/p&gt;
+
+&lt;p&gt;之后其他用户即可在该页面发表评论。&lt;/p&gt;
+
+&lt;div class=&#34;alert alert-note&#34;&gt;
+  &lt;div&gt;
+    要先&lt;strong&gt;登录&lt;/strong&gt;才能初始化，未登录初始化前可能会显示&lt;code&gt;Error: Comments Not initialized&lt;/code&gt;错误，属正常现象。
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&#34;问题汇总&#34;&gt;问题汇总&lt;/h2&gt;
+
+&lt;h3 id=&#34;1-error-not-found&#34;&gt;1. &lt;code&gt;Error: Not Found&lt;/code&gt;&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;owner或者repo配置错误，注意名字和参考名字的大小写。&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;注意不可设置 &lt;code&gt;id : &amp;quot;&amp;quot;&lt;/code&gt;。&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;2-error-comments-not-initialized&#34;&gt;2. &lt;code&gt;Error: Comments Not initialized&lt;/code&gt;&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;还没有登录，登录之后初始化就可以了。&lt;/li&gt;
+&lt;li&gt;注册OAuth Application时Authorization Callback URL指定地址错误。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;3-error-validation-failed&#34;&gt;3. &lt;code&gt;Error: Validation Failed&lt;/code&gt;&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;id&lt;/code&gt;太长，导致初始化失败。解决方案见问题4。
+
+&lt;ul&gt;
+&lt;li&gt;id`的长度要限制在50个字符内，但也不可为空字符串&lt;/li&gt;
+&lt;li&gt;github issue的标签label有长度限制，label的最大长度为50个字符&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;id&lt;/code&gt;的作用是唯一标识每一篇文章。&lt;/li&gt;
+&lt;li&gt;在gitment创建的issue里，每个issue有两个label，其中一个是&lt;code&gt;gitment&lt;/code&gt;，另一个是&lt;code&gt;id&lt;/code&gt;指定的值。因此&lt;code&gt;id&lt;/code&gt;受到label的限制。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;4-在一篇文章下看到另一篇文章的issue&#34;&gt;4. 在一篇文章下看到另一篇文章的issue&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;两篇文章的&lt;code&gt;id&lt;/code&gt;重复&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;解决方案&#34;&gt;解决方案&lt;/h4&gt;
+
+&lt;p&gt;将文章的&lt;code&gt;id&lt;/code&gt;设置为文章的创建时间，即可保证&lt;code&gt;id&lt;/code&gt;长度不超过50个字符且文章评论不重复。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-js&#34;&gt;  id: {{ .Params.Date }}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;div class=&#34;alert alert-warning&#34;&gt;
+  &lt;div&gt;
+    不要复制前面的某一篇论文而忘记修改时间，否则评论还是会交错的。
+  &lt;/div&gt;
+&lt;/div&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;gitment的汉化版本&#34;&gt;Gitment的汉化版本&lt;/h2&gt;
+
+&lt;p&gt;只需到模板里将原来定义CSS和JS的那两行改成：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;link rel=&amp;quot;stylesheet&amp;quot; href=&amp;quot;https://billts.site/extra_css/gitment.css&amp;quot;&amp;gt;
+&amp;lt;script src=&amp;quot;https://billts.site/js/gitment.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;gitment在hugo-academic主题下的配置&#34;&gt;Gitment在Hugo Academic主题下的配置&lt;/h2&gt;
+
+&lt;p&gt;在hugo建立的根目录下创建目录&lt;code&gt;layouts/partials/&lt;/code&gt;，再在新创建的目录下创建&lt;code&gt;comments.html&lt;/code&gt;用于覆盖Academic主题的&lt;code&gt;comments.html&lt;/code&gt;。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;$ cd &amp;lt;your-hugo-website-root&amp;gt;
+$ mkdir -p layouts/partials/
+$ vi layouts/partials/comments.html
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;div class=&#34;alert alert-note&#34;&gt;
+  &lt;div&gt;
+    注意是在hugo建立的根目录而不是修改&lt;code&gt;themes/academic/&lt;/code&gt;主题下的文件。
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;p&gt;在&lt;code&gt;layouts/partials/comments.html&lt;/code&gt;中输入以下代码：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;{{ if .Site.Params.gitment.language }}
+&amp;lt;section id=&amp;quot;comments&amp;quot;&amp;gt;
+    &amp;lt;div id=&amp;quot;gitmentContainer&amp;quot;&amp;gt;&amp;lt;/div&amp;gt;
+    {{ if eq .Site.Params.gitment.language &amp;quot;zh&amp;quot; }}
+    &amp;lt;link rel=&amp;quot;stylesheet&amp;quot; href=&amp;quot;https://billts.site/extra_css/gitment.css&amp;quot;&amp;gt;
+    &amp;lt;script src=&amp;quot;https://billts.site/js/gitment.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;
+    {{ else }}
+    &amp;lt;link rel=&amp;quot;stylesheet&amp;quot; href=&amp;quot;https://www.wenjunjiang.win/css/gitment.css&amp;quot;&amp;gt;
+    &amp;lt;script src=&amp;quot;https://www.wenjunjiang.win/js/gitment.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;
+    {{ end }}
+
+    &amp;lt;script&amp;gt;
+        var gitment = new Gitment({
+            id: &#39;{{ .Params.Date }}&#39;,
+            owner: {{ .Site.Params.gitment.owner }},
+            repo: {{ .Site.Params.gitment.repo }},
+            oauth: {
+                client_id: {{ .Site.Params.gitment.clientID }},
+                client_secret: {{ .Site.Params.gitment.clientSecret }},
+            },
+        });
+        gitment.render(&#39;gitmentContainer&#39;);
+    &amp;lt;/script&amp;gt;
+&amp;lt;/section&amp;gt;
+
+{{ end }}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;在 &lt;code&gt;config/_default/params.toml&lt;/code&gt;末尾添加以下配置。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-toml&#34;&gt;# Config comments of gitment
+[gitment]
+  language = &amp;quot;en&amp;quot; # set &amp;quot;&amp;quot; to disable comment, &amp;quot;zh&amp;quot; to Chinese, &amp;quot;en&amp;quot; to English
+  owner = &amp;quot;&amp;lt;your-github-name&amp;gt;&amp;quot;
+  repo  = &amp;quot;&amp;lt;the-repo-to-store-comments&amp;gt;&amp;quot;
+  clientID = &amp;quot;&amp;lt;your-client-ID&amp;gt;&amp;quot;
+  clientSecret = &amp;quot;&amp;lt;your-client-secret&amp;gt;&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;至此，评论功能配置完成。&lt;/p&gt;
+
+&lt;h2 id=&#34;参考引用&#34;&gt;参考引用&lt;/h2&gt;
+
+&lt;p&gt;[1]  &lt;a href=&#34;https://imsun.net/posts/gitment-introduction/&#34; target=&#34;_blank&#34;&gt;Gitment：使用 GitHub Issues 搭建评论系统 &lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;[2]  &lt;a href=&#34;https://ihtcboy.com/2018/02/25/2018-02-25_Gitment评论功能接入踩坑教程/&#34; target=&#34;_blank&#34;&gt;Gitment评论功能接入踩坑教程&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;[3]  &lt;a href=&#34;https://github.com/imsun/gitment/issues/95&#34; target=&#34;_blank&#34;&gt;Error: Comments Not Initialized # 95&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;[4]  &lt;a href=&#34;https://github.com/imsun/gitment/issues/116&#34; target=&#34;_blank&#34;&gt;Validation Failed ID长度问题建议 #116&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;[5]  &lt;a href=&#34;https://github.com/imsun/gitment/issues/170&#34; target=&#34;_blank&#34;&gt;[object ProgressEvent] #170&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>GoMicroBookshop项目开发笔记-1</title>
