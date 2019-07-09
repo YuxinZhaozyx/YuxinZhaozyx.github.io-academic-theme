@@ -641,8 +641,9 @@
 <p><style type="text/css">
     table.tableizer-table {
         font-size: 12px;
-        border: 1px solid #CCC;
-        font-family: Arial, Helvetica, sans-serif;
+        table-layout: fixed;
+        width: 100%;
+        border-collapse: collapse;
     }
 </style>
 <table class="tableizer-table">
@@ -651,126 +652,128 @@
         <th>参数</th>
         <th>类型</th>
         <th>可选</th>
-        <th>默认值</th>
         <th>说明</th>
+        <th>默认值</th>
     </tr>
 </thead>
 <tbody>
     <tr>
-        <td><code>clientID</code></td>
+        <td nowrap><code>clientID</code></td>
         <td>String</td>
         <td>no</td>
-        <td><code>null</code></td>
         <td>GitHub Application Client ID</td>
+        <td><code>null</code></td>
     </tr>
     <tr>
-        <td><code>clientSecret</code></td>
+        <td nowrap><code>clientSecret</code></td>
         <td>String</td>
         <td>no</td>
-        <td><code>null</code></td>
         <td>GitHub Application Client Secret</td>
+        <td><code>null</code></td>
     </tr>
     <tr>
-        <td><code>repo</code></td>
+        <td nowrap><code>repo</code></td>
         <td>String</td>
         <td>no</td>
-        <td><code>null</code></td>
         <td>存放评论的gitHub仓库</td>
-    </tr>
-    <tr>
-        <td><code>owner</code></td>
-        <td>String</td>
-        <td>no</td>
         <td><code>null</code></td>
-        <td>存放评论的gitHub仓库的所有者</td>
     </tr>
     <tr>
-        <td><code>admin</code></td>
+        <td nowrap><code>owner</code></td>
+        <td>String</td>
+        <td>no</td>
+        <td>存放评论的gitHub仓库的所有者</td>
+        <td><code>null</code></td>
+    </tr>
+    <tr>
+        <td nowrap><code>admin</code></td>
         <td>Array</td>
         <td>no</td>
-        <td><code>[ owner ]</code></td>
         <td>允许初始化评论的用户（repo的所有者和合作者）</td>
+        <td><code>[ owner ]</code></td>
     </tr>
     <tr>
-        <td><code>id</code></td>
+        <td nowrap><code>id</code></td>
         <td>String</td>
         <td>yes</td>
-        <td><code>location.href</code></td>
         <td>页面的唯一标识，长度必须小于50</td>
+        <td><code>location.href</code></td>
     </tr>
     <tr>
-        <td><code>number</code></td>
+        <td nowrap><code>number</code></td>
         <td>Number</td>
         <td>yes</td>
-        <td>-1</td>
         <td>页面的issueID标识，若未定义number属性则使用id进行定位</td>
+        <td>-1</td>
     </tr>
     <tr>
-        <td><code>labels</code></td>
+        <td nowrap><code>labels</code></td>
         <td>Array</td>
         <td>yes</td>
-        <td><code>['Gitalk']</code></td>
         <td>GitHub issue的标签</td>
+        <td><code>['Gitalk']</code></td>
     </tr>
     <tr>
-        <td><code>title</code></td>
+        <td nowrap><code>title</code></td>
         <td>String</td>
         <td>yes</td>
-        <td><code>document.title</code></td>
         <td>GitHub issue的标题</td>
+        <td><code>document.title</code></td>
     </tr>
     <tr>
-        <td><code>body</code></td>
+        <td nowrap><code>body</code></td>
         <td>String</td>
         <td>yes</td>
-        <td><code>location.href + header.meta[description]</code></td>
         <td>GitHub issue的内容</td>
+        <td><code>location.href + header.meta[description]</code></td>
     </tr>
     <tr>
-        <td><code>language</code></td>
+        <td nowrap><code>language</code></td>
         <td>String</td>
         <td>yes</td>
-        <td><code>navigator.language || navigator.userLanguage</code></td>
         <td>语言，支持[en, zh-CN, zh-TW]</td>
+        <td><code>navigator.language || navigator.userLanguage</code></td>
     </tr>
     <tr>
-        <td><code>perPage</code></td>
+        <td nowrap><code>perPage</code></td>
         <td>Number</td>
         <td>yes</td>
-        <td>10</td>
         <td>每次加载的评论数，最多100</td>
+        <td>10</td>
     </tr>
     <tr>
-        <td><code>distractionFreeMode</code></td>
+        <td nowrap><code>distractionFreeMode</code></td>
         <td>Boolean</td>
         <td>yes</td>
-        <td><code>false</code></td>
         <td>类似Facebook评论框的全屏遮罩效果.</td>
+        <td><code>false</code></td>
     </tr>
     <tr>
-        <td><code>pagerDirection</code></td>
+        <td nowrap><code>pagerDirection</code></td>
         <td>String</td>
         <td>yes</td>
-        <td><code>'last'</code></td>
         <td>评论排序方式， <code>last</code>为按评论创建时间倒叙，<code>first</code>为按创建时间正序。</td>
+        <td><code>'last'</code></td>
     </tr>
     <tr>
-        <td><code>createIssueManually</code></td>
+        <td nowrap><code>createIssueManually</code></td>
         <td>Boolean</td>
         <td>yes</td>
+        <td width=50% nowrap>如果当前页面没有相应的 isssue 且登录的用户属于 admin，则会自动创建 issue。如果设置为 true，则显示一个初始化页面，创建 issue 需要点击 init 按钮。</td>
         <td><code>false</code></td>
-        <td>如果当前页面没有相应的 isssue 且登录的用户属于 admin，则会自动创建 issue。如果设置为 true，则显示一个初始化页面，创建 issue 需要点击 init 按钮。</td>
     </tr>
     <tr>
-        <td><code>proxy</code></td>
+        <td nowrap><code>proxy</code></td>
         <td>String</td>
         <td>yes</td>
-        <td><a href="https://cors-anywhere.herokuapp.com/https://github.com/login/oauth/access_token" target="_blank">https://cors-anywhere.herokuapp.com/https://github.com/login/oauth/access_token</a></td>
-        <td>GitHub oauth请求到反向代理，为了支持CORS</td></tr>
+        <td>GitHub oauth请求到反向代理，为了支持CORS</td>
+        <td nowrap><a href="https://cors-anywhere.herokuapp.com/https://github.com/login/oauth/access_token" target="_blank">https://cors-anywhere.herokuapp.com/https://github.com/login/oauth/access_token</a></td>
+    </tr>
     <tr>
-        <td><code>flipMoveOptions</code></td>
+        <td nowrap><code>flipMoveOptions</code></td>
         <td>Object</td>
         <td>yes</td>
+        <td>评论的参考动画</td>
         <td>
             <code>
             { <br>
@@ -781,14 +784,14 @@
             }
             </code>
         </td>
-        <td>评论的参考动画</td>
     </tr>
     <tr>
-        <td><code>enableHotKey</code></td>
+        <td nowrap><code>enableHotKey</code></td>
         <td>Boolean</td>
         <td>yes</td>
+        <td>启用快捷键(cmd|ctrl + enter) 提交评论</td>
         <td><code>true</code></td>
-        <td>启用快捷键(cmd|ctrl + enter) 提交评论</td></tr>
+    </tr>
 </tbody>
 </table></p>
 
