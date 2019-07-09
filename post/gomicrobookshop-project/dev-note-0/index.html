@@ -771,11 +771,11 @@ go get github.com/micro/micro
 			pagerDirection: "last",
 			createIssueManually:  false ,
 			enableHotKey:  true ,
-			filpMoveOptions: {
-				staggerDelayBy:  null ,
-				appearAnimation:  null ,
-				enterAnimation:  null ,
-				leaveAnimation:  null ,
+			flipMoveOptions: {
+				staggerDelayBy:  150 ,
+				appearAnimation: "elevator",
+				enterAnimation: "elevator",
+				leaveAnimation: "elevator",
 			},
 		});
 		gitalk.render('gitalkContainer');
