@@ -7,10 +7,72 @@
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
     <language>en-us</language>
     <copyright>Copyright &amp;copy; {year} YuxinZhao</copyright>
-    <lastBuildDate>Fri, 05 Jul 2019 17:20:59 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 09 Jul 2019 14:45:33 +0800</lastBuildDate>
     
 	    <atom:link href="https://YuxinZhaozyx.github.io/authors/yuxinzhao/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>git merge命令提示Already up to date</title>
+      <link>https://YuxinZhaozyx.github.io/post/git-merge-already-up-to-date/</link>
+      <pubDate>Tue, 09 Jul 2019 14:45:33 +0800</pubDate>
+      
+      <guid>https://YuxinZhaozyx.github.io/post/git-merge-already-up-to-date/</guid>
+      <description>
+
+&lt;p&gt;假定我有两个分支&lt;code&gt;master&lt;/code&gt;和&lt;code&gt;dev&lt;/code&gt;。当前处在&lt;code&gt;dev&lt;/code&gt;分支。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;$ git merge master
+Already up to date.
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;cause-of-errors-错误原因&#34;&gt;Cause of Errors 错误原因&lt;/h2&gt;
+
+&lt;p&gt;&lt;code&gt;Already up to date&lt;/code&gt;意味着已经是最新的了，即&lt;code&gt;dev&lt;/code&gt;是在&lt;code&gt;master&lt;/code&gt;的基础上修改的，而&lt;code&gt;master&lt;/code&gt;自分出&lt;code&gt;dev&lt;/code&gt;分支后就没修改过，因此&lt;code&gt;dev&lt;/code&gt;分支是最新的，不需要于&lt;code&gt;master&lt;/code&gt;合并，因为合并完的仓库和当前的&lt;code&gt;dev&lt;/code&gt;分支是一模一样的。&lt;/p&gt;
+
+&lt;p&gt;其git分支图如下：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;                 E -- F -- G(dev)
+                /
+A -- B -- C -- D(master)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;其等同于:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;A -- B -- C -- D(master) -- E -- F -- G(dev)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;我们想要做的合并实际上是将&lt;code&gt;master&lt;/code&gt;指向&lt;code&gt;dev&lt;/code&gt;而已。&lt;/p&gt;
+
+&lt;h2 id=&#34;solution-解决方法&#34;&gt;Solution 解决方法&lt;/h2&gt;
+
+&lt;p&gt;多提交一个空的&lt;code&gt;commit&lt;/code&gt;，使两条分支叉开，再合并。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;                 E -- F -- G(dev)
+                /
+A -- B -- C -- D -- H(master)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;                 E -- F -- G(dev)
+                /           \
+A -- B -- C -- D -- H ------ I(master)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;上图中&lt;code&gt;H&lt;/code&gt;是一个不做任何修改的提交，其作用是将&lt;code&gt;master&lt;/code&gt;和&lt;code&gt;dev&lt;/code&gt;分到两个叉开的分支上，使得&lt;code&gt;master&lt;/code&gt;不再是&lt;code&gt;dev&lt;/code&gt;的父节点。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;具体命令:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;# 移动到master分支下
+$ git checkout master
+# 在master提交一个空内容
+$ git commit --allow-empty -m &amp;quot;ready for merging&amp;quot;
+# 合并master和dev分支
+$ git merge dev
+# 移除dev指针(可选)
+$ git branch --delete dev
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
     
     <item>
       <title>Hugo博客集成Gitment评论模块</title>
@@ -2201,7 +2263,7 @@ go get github.com/micro/micro
     <item>
       <title></title>
       <link>https://YuxinZhaozyx.github.io/authors/yuxinzhao/</link>
-      <pubDate>Fri, 05 Jul 2019 17:20:59 +0800</pubDate>
+      <pubDate>Tue, 09 Jul 2019 14:45:33 +0800</pubDate>
       
       <guid>https://YuxinZhaozyx.github.io/authors/yuxinzhao/</guid>
       <description>&lt;p&gt;I&amp;rsquo;m a college student of software engineering at the South China University of Technology. My research interests include artificial intelligence, micro service and engineering.&lt;/p&gt;

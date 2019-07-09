@@ -4,41 +4,58 @@
   
   <url>
     <loc>https://YuxinZhaozyx.github.io/authors/yuxinzhao/</loc>
-    <lastmod>2019-07-05T17:20:59+08:00</lastmod>
+    <lastmod>2019-07-09T14:45:33+08:00</lastmod>
   </url>
   
   <url>
     <loc>https://YuxinZhaozyx.github.io/authors/</loc>
-    <lastmod>2019-07-05T17:20:59+08:00</lastmod>
+    <lastmod>2019-07-09T14:45:33+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://YuxinZhaozyx.github.io/categories/</loc>
-    <lastmod>2019-07-05T17:20:59+08:00</lastmod>
+    <lastmod>2019-07-09T14:45:33+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://YuxinZhaozyx.github.io/post/gitment-in-hugo/</loc>
-    <lastmod>2019-07-05T17:20:59+08:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://YuxinZhaozyx.github.io/post/</loc>
-    <lastmod>2019-07-05T17:20:59+08:00</lastmod>
+    <lastmod>2019-07-09T14:45:33+08:00</lastmod>
   </url>
   
   <url>
     <loc>https://YuxinZhaozyx.github.io/tags/</loc>
-    <lastmod>2019-07-05T17:20:59+08:00</lastmod>
+    <lastmod>2019-07-09T14:45:33+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://YuxinZhaozyx.github.io/</loc>
-    <lastmod>2019-07-05T17:20:59+08:00</lastmod>
+    <lastmod>2019-07-09T14:45:33+08:00</lastmod>
     <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://YuxinZhaozyx.github.io/categories/git/</loc>
+    <lastmod>2019-07-09T14:45:33+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://YuxinZhaozyx.github.io/tags/git/</loc>
+    <lastmod>2019-07-09T14:45:33+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://YuxinZhaozyx.github.io/post/git-merge-already-up-to-date/</loc>
+    <lastmod>2019-07-09T14:45:33+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://YuxinZhaozyx.github.io/post/gitment-in-hugo/</loc>
+    <lastmod>2019-07-05T17:20:59+08:00</lastmod>
   </url>
   
   <url>
@@ -49,6 +66,12 @@
   
   <url>
     <loc>https://YuxinZhaozyx.github.io/tags/comments/</loc>
+    <lastmod>2019-07-05T17:20:59+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://YuxinZhaozyx.github.io/tags/github/</loc>
     <lastmod>2019-07-05T17:20:59+08:00</lastmod>
     <priority>0</priority>
   </url>
