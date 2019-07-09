@@ -28,10 +28,10 @@
   
     
   
-  <meta name="description" content="由于国内无法访问Disqus，hugo-academic主题自带的disqus评论功能无法使用，故而寻求其他评论方法，最后找到了gitment，但也踩了很多的坑。">
+  <meta name="description" content="从使用Gitment到转用Gitalk作为评论模块的历程">
 
   
-  <link rel="alternate" hreflang="en-us" href="https://YuxinZhaozyx.github.io/post/gitment-in-hugo/">
+  <link rel="alternate" hreflang="en-us" href="https://YuxinZhaozyx.github.io/post/gitalk-in-hugo/">
 
   
 
@@ -106,7 +106,7 @@
   <link rel="icon" type="image/png" href="/img/icon.png">
   <link rel="apple-touch-icon" type="image/png" href="/img/icon-192.png">
 
-  <link rel="canonical" href="https://YuxinZhaozyx.github.io/post/gitment-in-hugo/">
+  <link rel="canonical" href="https://YuxinZhaozyx.github.io/post/gitalk-in-hugo/">
 
   
   
@@ -117,26 +117,26 @@
   <meta property="twitter:card" content="summary_large_image">
   
   <meta property="og:site_name" content="YuxinZhao">
-  <meta property="og:url" content="https://YuxinZhaozyx.github.io/post/gitment-in-hugo/">
-  <meta property="og:title" content="Hugo博客集成Gitment评论模块 | YuxinZhao">
-  <meta property="og:description" content="由于国内无法访问Disqus，hugo-academic主题自带的disqus评论功能无法使用，故而寻求其他评论方法，最后找到了gitment，但也踩了很多的坑。"><meta property="og:image" content="https://YuxinZhaozyx.github.io/post/gitment-in-hugo/featured.png">
-  <meta property="twitter:image" content="https://YuxinZhaozyx.github.io/post/gitment-in-hugo/featured.png"><meta property="og:locale" content="en-us">
+  <meta property="og:url" content="https://YuxinZhaozyx.github.io/post/gitalk-in-hugo/">
+  <meta property="og:title" content="Hugo博客集成Gitalk评论模块 | YuxinZhao">
+  <meta property="og:description" content="从使用Gitment到转用Gitalk作为评论模块的历程"><meta property="og:image" content="https://YuxinZhaozyx.github.io/post/gitalk-in-hugo/featured.png">
+  <meta property="twitter:image" content="https://YuxinZhaozyx.github.io/post/gitalk-in-hugo/featured.png"><meta property="og:locale" content="en-us">
   
-  <meta property="article:published_time" content="2019-07-05T17:20:59&#43;08:00">
+  <meta property="article:published_time" content="2019-07-09T16:40:32&#43;08:00">
   
-  <meta property="article:modified_time" content="2019-07-05T17:20:59&#43;08:00">
+  <meta property="article:modified_time" content="2019-07-09T16:40:32&#43;08:00">
   
-
-  
-
 
   
 
 
+  
 
 
 
-  <title>Hugo博客集成Gitment评论模块 | YuxinZhao</title>
+
+
+  <title>Hugo博客集成Gitalk评论模块 | YuxinZhao</title>
 
 </head>
 
@@ -365,23 +365,19 @@
 
   
   
-    
-  
 
 
 <div class="article-container pt-3">
-  <h1 itemprop="name">Hugo博客集成Gitment评论模块</h1>
+  <h1 itemprop="name">Hugo博客集成Gitalk评论模块</h1>
 
-  
-  <p class="page-subtitle">Gitment使用踩坑教程</p>
   
 
   
 
 
 
-<meta content="2019-07-05 17:20:59 &#43;0800 CST" itemprop="datePublished">
-<meta content="2019-07-05 17:20:59 &#43;0800 CST" itemprop="dateModified">
+<meta content="2019-07-09 16:40:32 &#43;0800 CST" itemprop="datePublished">
+<meta content="2019-07-09 16:40:32 &#43;0800 CST" itemprop="dateModified">
 
 <div class="article-metadata">
 
@@ -406,7 +402,7 @@
     
       
     
-    <time>Jul 5, 2019</time>
+    <time>Jul 9, 2019</time>
   </span>
   
 
@@ -415,7 +411,7 @@
   
   <span class="middot-divider"></span>
   <span class="article-reading-time">
-    5 min read
+    4 min read
   </span>
   
 
@@ -443,7 +439,7 @@
       
       
       <li>
-        <a href="https://twitter.com/intent/tweet?url=https://YuxinZhaozyx.github.io/post/gitment-in-hugo/&amp;text=Hugo%e5%8d%9a%e5%ae%a2%e9%9b%86%e6%88%90Gitment%e8%af%84%e8%ae%ba%e6%a8%a1%e5%9d%97" target="_blank" rel="noopener" class="share-btn-twitter">
+        <a href="https://twitter.com/intent/tweet?url=https://YuxinZhaozyx.github.io/post/gitalk-in-hugo/&amp;text=Hugo%e5%8d%9a%e5%ae%a2%e9%9b%86%e6%88%90Gitalk%e8%af%84%e8%ae%ba%e6%a8%a1%e5%9d%97" target="_blank" rel="noopener" class="share-btn-twitter">
           <i class="fab fa-twitter"></i>
         </a>
       </li>
@@ -456,7 +452,7 @@
       
       
       <li>
-        <a href="https://www.facebook.com/sharer.php?u=https://YuxinZhaozyx.github.io/post/gitment-in-hugo/&amp;t=Hugo%e5%8d%9a%e5%ae%a2%e9%9b%86%e6%88%90Gitment%e8%af%84%e8%ae%ba%e6%a8%a1%e5%9d%97" target="_blank" rel="noopener" class="share-btn-facebook">
+        <a href="https://www.facebook.com/sharer.php?u=https://YuxinZhaozyx.github.io/post/gitalk-in-hugo/&amp;t=Hugo%e5%8d%9a%e5%ae%a2%e9%9b%86%e6%88%90Gitalk%e8%af%84%e8%ae%ba%e6%a8%a1%e5%9d%97" target="_blank" rel="noopener" class="share-btn-facebook">
           <i class="fab fa-facebook-f"></i>
         </a>
       </li>
@@ -469,7 +465,7 @@
       
       
       <li>
-        <a href="mailto:?subject=Hugo%e5%8d%9a%e5%ae%a2%e9%9b%86%e6%88%90Gitment%e8%af%84%e8%ae%ba%e6%a8%a1%e5%9d%97&amp;body=https://YuxinZhaozyx.github.io/post/gitment-in-hugo/" target="_blank" rel="noopener" class="share-btn-email">
+        <a href="mailto:?subject=Hugo%e5%8d%9a%e5%ae%a2%e9%9b%86%e6%88%90Gitalk%e8%af%84%e8%ae%ba%e6%a8%a1%e5%9d%97&amp;body=https://YuxinZhaozyx.github.io/post/gitalk-in-hugo/" target="_blank" rel="noopener" class="share-btn-email">
           <i class="fas fa-envelope"></i>
         </a>
       </li>
@@ -482,7 +478,7 @@
       
       
       <li>
-        <a href="https://www.linkedin.com/shareArticle?url=https://YuxinZhaozyx.github.io/post/gitment-in-hugo/&amp;title=Hugo%e5%8d%9a%e5%ae%a2%e9%9b%86%e6%88%90Gitment%e8%af%84%e8%ae%ba%e6%a8%a1%e5%9d%97" target="_blank" rel="noopener" class="share-btn-linkedin">
+        <a href="https://www.linkedin.com/shareArticle?url=https://YuxinZhaozyx.github.io/post/gitalk-in-hugo/&amp;title=Hugo%e5%8d%9a%e5%ae%a2%e9%9b%86%e6%88%90Gitalk%e8%af%84%e8%ae%ba%e6%a8%a1%e5%9d%97" target="_blank" rel="noopener" class="share-btn-linkedin">
           <i class="fab fa-linkedin-in"></i>
         </a>
       </li>
@@ -495,7 +491,7 @@
       
       
       <li>
-        <a href="https://web.whatsapp.com/send?text=Hugo%e5%8d%9a%e5%ae%a2%e9%9b%86%e6%88%90Gitment%e8%af%84%e8%ae%ba%e6%a8%a1%e5%9d%97%20https://YuxinZhaozyx.github.io/post/gitment-in-hugo/" target="_blank" rel="noopener" class="share-btn-whatsapp">
+        <a href="https://web.whatsapp.com/send?text=Hugo%e5%8d%9a%e5%ae%a2%e9%9b%86%e6%88%90Gitalk%e8%af%84%e8%ae%ba%e6%a8%a1%e5%9d%97%20https://YuxinZhaozyx.github.io/post/gitalk-in-hugo/" target="_blank" rel="noopener" class="share-btn-whatsapp">
           <i class="fab fa-whatsapp"></i>
         </a>
       </li>
@@ -508,7 +504,7 @@
       
       
       <li>
-        <a href="https://service.weibo.com/share/share.php?url=https://YuxinZhaozyx.github.io/post/gitment-in-hugo/&amp;title=Hugo%e5%8d%9a%e5%ae%a2%e9%9b%86%e6%88%90Gitment%e8%af%84%e8%ae%ba%e6%a8%a1%e5%9d%97" target="_blank" rel="noopener" class="share-btn-weibo">
+        <a href="https://service.weibo.com/share/share.php?url=https://YuxinZhaozyx.github.io/post/gitalk-in-hugo/&amp;title=Hugo%e5%8d%9a%e5%ae%a2%e9%9b%86%e6%88%90Gitalk%e8%af%84%e8%ae%ba%e6%a8%a1%e5%9d%97" target="_blank" rel="noopener" class="share-btn-weibo">
           <i class="fab fa-weibo"></i>
         </a>
       </li>
@@ -539,10 +535,10 @@
 </div>
 
 
-<div class="article-header article-container featured-image-wrapper mt-4 mb-4" style="max-width: 720px; max-height: 378px;">
+<div class="article-header article-container featured-image-wrapper mt-4 mb-4" style="max-width: 582px; max-height: 203px;">
   <div style="position: relative">
-    <img src="/post/gitment-in-hugo/featured_hu667fa42b7966e4ae298e6d278382e7fa_22772_720x0_resize_lanczos_2.png" alt="" class="featured-image">
-    <span class="article-header-caption">github</span>
+    <img src="/post/gitalk-in-hugo/featured.png" alt="" class="featured-image">
+    <span class="article-header-caption">Gitalk</span>
   </div>
 </div>
 
@@ -555,47 +551,49 @@
 
 <h2 id="前言">前言</h2>
 
-<p>我使用的Hugo主题Academic自带Disqus评论模块支持，但由于国内无法访问Disqus，因此我开始寻找其他评论模块，最终选择了Gitment评论模块。</p>
+<p>在<a href="/post/gitment-in-hugo">先前的文章</a>中，我使用Gitment来作为我的博客的评论模块，但使用一段时间后发现了Gitment的一些缺点，针对这些缺点，我找到了比Gitment功能上更完善的Gitalk。</p>
 
-<h2 id="我为什么选择gitment">我为什么选择Gitment？</h2>
+<h2 id="我为什么选择gitalk">我为什么选择Gitalk?</h2>
 
-<p>在选择之前我们先看一下有哪些选项可以选择。</p>
+<p>在这之前我先说一下我为什么弃坑Gitment，Gitment本身的想法很好，使用github的issue来存储评论，避免了使用第三方的服务而第三方停止提供服务的风险(比如多说和网易云跟帖)。但它也有以下缺点：</p>
 
 <ul>
-<li><p><strong>Disqus</strong>:  国外使用较多的评论组件，但国内需要代理才能访问。</p></li>
-
-<li><p><strong>多说</strong>:  国内最多用户使用的评论系统，但已于2017年6月停止提供服务。</p></li>
-
-<li><p><strong>网易云跟帖</strong>:  网易提供的评论系统，但也于2017月8月停止提供服务。</p></li>
-
-<li><p><strong>畅言</strong>:  搜狐提供的评论组件，功能丰富，体验优异；但必须进行域名备案。只要域名备过案就可以通过审核，简单问题复杂化。</p></li>
-
-<li><p><strong>Gitment</strong>:   国人<a href="https://imsun.net/" target="_blank">I&rsquo;m Sun</a>编写的开源评论模块，创新性地将评论放置在github的issue中，作者目前已不再维护。</p></li>
-
-<li><p><strong>CommentHub</strong>:  受Gitment启发也是将评论存储在github issue中的评论系统，解决Gitment会在前端暴露Client ID和Client Secret可能造成的安全问题，改进成在后端服务处理业务和存储证书，通过iframe实现评论功能。</p></li>
+<li>不兼容移动端</li>
+<li>不支持多语言</li>
+<li>不支持免打扰模式</li>
+<li>不支持快捷键提交</li>
 </ul>
 
-<p>已停止服务的多说、网易云跟帖和国内无法访问的Disqus无法使用，故排除在选择范围之外。畅言由于需要备案，步骤繁琐不想用。剩下的Gitment和ComementHub实际上很像，CommentHub看上去会更安全一些，因为它不会像Gitment一样暴露Client ID和Client Secret，但其实即便别人获取了我们的Client ID和Client Secret，没有我的github账号依然无法使用，而且只能在我指定的网址才能用，故Gitment还是比较安全的。</p>
+<p>上述问题中对我来说最重要并最终让我决定更换评论模块的是Gitment不兼容移动端的缺点。</p>
 
-<p>最终我在两者中选择了Gitment (因为CommentHub有点难看)。</p>
+<p>而Gitalk没有以上的缺点。</p>
 
-<h2 id="gitment评论模块介绍">Gitment评论模块介绍</h2>
+<h2 id="gitalk评论模块介绍">Gitalk评论模块介绍</h2>
 
 <blockquote>
-<p>Gitment is a comment system based on GitHub Issues, which can be used in the frontend without any server-side implementation.</p>
-
-<p>Gitment 是一款基于 GitHub Issues 的评论系统。支持在前端直接引入，不需要任何后端代码。可以在页面进行登录、查看、评论、点赞等操作，同时有完整的 Markdown / GFM 和代码高亮支持。尤为适合各种基于 GitHub Pages 的静态博客或项目页面。</p>
+<p>Gitalk 是一个基于 GitHub Issue 和 Preact 开发的评论插件。</p>
 </blockquote>
 
 <ul>
-<li><p><a href="https://github.com/imsun/gitment" target="_blank">项目地址</a></p></li>
+<li><a href="https://github.com/gitalk/gitalk" target="_blank">项目地址</a></li>
+<li><a href="https://gitalk.github.io/" target="_blank">官方示例</a></li>
+</ul>
 
-<li><p><a href="https://imsun.github.io/gitment/" target="_blank">官方示例</a></p></li>
+<h3 id="特性">特性</h3>
+
+<ul>
+<li>使用 GitHub 登录</li>
+<li>支持多语言 [en, zh-CN, zh-TW, es-ES, fr, ru]</li>
+<li>支持个人或组织</li>
+<li>免干扰模式（设置 <code>distractionFreeMode</code> 为 <code>true</code> 开启）</li>
+<li>快捷键提交评论 （<code>ctrl + enter</code>）</li>
+<li>支持移动端</li>
+<li>自动初始化评论</li>
 </ul>
 
 <h2 id="基本使用">基本使用</h2>
 
-<h3 id="1-注册oauth-application">1. 注册OAuth Application</h3>
+<h3 id="注册oauth-application">注册OAuth Application</h3>
 
 <p>需要先在github上注册一个OAuth Application，<a href="https://github.com/settings/applications/new" target="_blank">点击此处</a>注册。</p>
 
@@ -609,134 +607,196 @@
 
 <p>注册成功后会得到一个Client ID和Client Secret，这将被用于之后的用户登录认证。</p>
 
-<h3 id="2-引入gitment">2. 引入Gitment</h3>
+<h3 id="引入gitalk">引入Gitalk</h3>
 
 <p>将以下代码添加到你的页面：</p>
 
-<pre><code class="language-html">&lt;div id=&quot;container&quot;&gt;&lt;/div&gt;
-&lt;link rel=&quot;stylesheet&quot; href=&quot;https://imsun.github.io/gitment/style/default.css&quot;&gt;
-&lt;script src=&quot;https://imsun.github.io/gitment/dist/gitment.browser.js&quot;&gt;&lt;/script&gt;
-&lt;script&gt;
-var gitment = new Gitment({
-  id: '页面 ID', // 可选。默认为 location.href
-  owner: '你的 GitHub ID',
-  repo: '存储评论的 repo',
-  oauth: {
-    client_id: '你的 client ID',
-    client_secret: '你的 client secret',
-  },
-})
-gitment.render('container')
-&lt;/script&gt;
+<pre><code class="language-html">&lt;section id=&quot;comments&quot;&gt;
+    &lt;div id=&quot;gitalkContainer&quot;&gt;&lt;/div&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css&quot;&gt;
+    &lt;script src=&quot;https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js&quot;&gt;&lt;/script&gt;
+    &lt;script&gt;
+        var gitalk = new Gitalk({
+            clientID: 'GitHub Application Client ID',
+            clientSecret: 'GitHub Application Client Secret',
+            repo: 'GitHub repo',
+            owner: 'GitHub repo owner',
+            admin: ['GitHub repo owner and collaborators, only these guys can initialize github issues'],
+            id: location.pathname,      // Ensure uniqueness and length less than 50
+            distractionFreeMode: false  // Facebook-like distraction free mode
+        });
+        gitalk.render('gitalkContainer');
+    &lt;/script&gt;
+&lt;/section&gt;
 </code></pre>
 
 <div class="alert alert-warning">
   <div>
-    <code>id</code>的长度要限制在50个字符内，但也不可为空字符串。详情见<a href="#问题汇总">此处</a>。
+    <code>id</code>的长度要限制在50个字符内，但也不可为空字符串。
   </div>
 </div>
 
-<div class="alert alert-warning">
-  <div>
-    <p>上述代码为gitment作者的示例代码，但作者已停止维护，网址已不可用，可用以下代码代替。</p>
+<h4 id="参数说明">参数说明</h4>
 
-<pre><code class="language-html">&lt;link rel=&quot;stylesheet&quot; href=&quot;https://www.wenjunjiang.win/css/gitment.css&quot;&gt;
-&lt;script src=&quot;https://www.wenjunjiang.win/js/gitment.js&quot;&gt;&lt;/script&gt;
-</code></pre>
+<p><style type="text/css">
+    table.tableizer-table {
+        font-size: 12px;
+        border: 1px solid #CCC;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+</style>
+<table class="tableizer-table">
+<thead>
+    <tr class="tableizer-firstrow">
+        <th>参数</th>
+        <th>类型</th>
+        <th>可选</th>
+        <th>默认值</th>
+        <th>说明</th>
+    </tr>
+</thead>
+<tbody>
+    <tr>
+        <td><code>clientID</code></td>
+        <td>String</td>
+        <td>no</td>
+        <td><code>null</code></td>
+        <td>GitHub Application Client ID</td>
+    </tr>
+    <tr>
+        <td><code>clientSecret</code></td>
+        <td>String</td>
+        <td>no</td>
+        <td><code>null</code></td>
+        <td>GitHub Application Client Secret</td>
+    </tr>
+    <tr>
+        <td><code>repo</code></td>
+        <td>String</td>
+        <td>no</td>
+        <td><code>null</code></td>
+        <td>存放评论的gitHub仓库</td>
+    </tr>
+    <tr>
+        <td><code>owner</code></td>
+        <td>String</td>
+        <td>no</td>
+        <td><code>null</code></td>
+        <td>存放评论的gitHub仓库的所有者</td>
+    </tr>
+    <tr>
+        <td><code>admin</code></td>
+        <td>Array</td>
+        <td>no</td>
+        <td><code>[ owner ]</code></td>
+        <td>允许初始化评论的用户（repo的所有者和合作者）</td>
+    </tr>
+    <tr>
+        <td><code>id</code></td>
+        <td>String</td>
+        <td>yes</td>
+        <td><code>location.href</code></td>
+        <td>页面的唯一标识，长度必须小于50</td>
+    </tr>
+    <tr>
+        <td><code>number</code></td>
+        <td>Number</td>
+        <td>yes</td>
+        <td>-1</td>
+        <td>页面的issueID标识，若未定义number属性则使用id进行定位</td>
+    </tr>
+    <tr>
+        <td><code>labels</code></td>
+        <td>Array</td>
+        <td>yes</td>
+        <td><code>['Gitalk']</code></td>
+        <td>GitHub issue的标签</td>
+    </tr>
+    <tr>
+        <td><code>title</code></td>
+        <td>String</td>
+        <td>yes</td>
+        <td><code>document.title</code></td>
+        <td>GitHub issue的标题</td>
+    </tr>
+    <tr>
+        <td><code>body</code></td>
+        <td>String</td>
+        <td>yes</td>
+        <td><code>location.href + header.meta[description]</code></td>
+        <td>GitHub issue的内容</td>
+    </tr>
+    <tr>
+        <td><code>language</code></td>
+        <td>String</td>
+        <td>yes</td>
+        <td><code>navigator.language || navigator.userLanguage</code></td>
+        <td>语言，支持[en, zh-CN, zh-TW]</td>
+    </tr>
+    <tr>
+        <td><code>perPage</code></td>
+        <td>Number</td>
+        <td>yes</td>
+        <td>10</td>
+        <td>每次加载的评论数，最多100</td>
+    </tr>
+    <tr>
+        <td><code>distractionFreeMode</code></td>
+        <td>Boolean</td>
+        <td>yes</td>
+        <td><code>false</code></td>
+        <td>类似Facebook评论框的全屏遮罩效果.</td>
+    </tr>
+    <tr>
+        <td><code>pagerDirection</code></td>
+        <td>String</td>
+        <td>yes</td>
+        <td><code>'last'</code></td>
+        <td>评论排序方式， <code>last</code>为按评论创建时间倒叙，<code>first</code>为按创建时间正序。</td>
+    </tr>
+    <tr>
+        <td><code>createIssueManually</code></td>
+        <td>Boolean</td>
+        <td>yes</td>
+        <td><code>false</code></td>
+        <td>如果当前页面没有相应的 isssue 且登录的用户属于 admin，则会自动创建 issue。如果设置为 true，则显示一个初始化页面，创建 issue 需要点击 init 按钮。</td>
+    </tr>
+    <tr>
+        <td><code>proxy</code></td>
+        <td>String</td>
+        <td>yes</td>
+        <td><a href="https://cors-anywhere.herokuapp.com/https://github.com/login/oauth/access_token" target="_blank">https://cors-anywhere.herokuapp.com/https://github.com/login/oauth/access_token</a></td>
+        <td>GitHub oauth请求到反向代理，为了支持CORS</td></tr>
+    <tr>
+        <td><code>flipMoveOptions</code></td>
+        <td>Object</td>
+        <td>yes</td>
+        <td>
+            <code>
+            { <br>
+            &emsp; staggerDelayBy: 150, <br>
+            &emsp; appearAnimation: &lsquo;accordionVertical&rsquo;, <br>
+            &emsp; enterAnimation: &lsquo;accordionVertical&rsquo;, <br>
+            &emsp; leaveAnimation: &lsquo;accordionVertical&rsquo;, <br>
+            }
+            </code>
+        </td>
+        <td>评论的参考动画</td>
+    </tr>
+    <tr>
+        <td><code>enableHotKey</code></td>
+        <td>Boolean</td>
+        <td>yes</td>
+        <td><code>true</code></td>
+        <td>启用快捷键(cmd|ctrl + enter) 提交评论</td></tr>
+</tbody>
+</table></p>
 
-<p>或者</p>
+<h3 id="初始化评论">初始化评论</h3>
 
-<pre><code class="language-html">&lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdn.jsdelivr.net/gh/theme-next/theme-next-gitment@1/default.css&quot;&gt;
-&lt;script src=&quot;https://cdn.jsdelivr.net/gh/theme-next/theme-next-gitment@1/gitment.browser.js&quot;&gt;&lt;/script&gt;
-</code></pre>
+<p>Gitalk不需要像Gitment一样点初始化按钮初始化(除非将<code>createIssueManually</code>选项设置为<code>true</code>)，只需要<code>admin</code>中的任何一名管理员登录账号即可自动初始化。</p>
 
-<p>目前来看后者更稳定一点。</p>
-
-  </div>
-</div>
-
-<div class="alert alert-note">
-  <div>
-    <p>以上方式会使用最新版本的Gitment，若希望引用确定版本的Gitment，需要使用npm进行安装。</p>
-
-<pre><code class="language-shell">$ npm install --save gitment
-</code></pre>
-
-<p>使用操作详见<a href="https://github.com/imsun/gitment#options" target="_blank">Gitment Option</a>。</p>
-
-  </div>
-</div>
-
-<h3 id="3-初始化评论">3. 初始化评论</h3>
-
-<p>页面发布后，你需要访问页面并使用你的 GitHub 账号登录（请确保你的账号是第二步所填 repo 的 owner），点击初始化按钮。</p>
-
-<p>之后其他用户即可在该页面发表评论。</p>
-
-<div class="alert alert-note">
-  <div>
-    要先<strong>登录</strong>才能初始化，未登录初始化前可能会显示<code>Error: Comments Not initialized</code>错误，属正常现象。
-  </div>
-</div>
-
-<h2 id="问题汇总">问题汇总</h2>
-
-<h3 id="1-error-not-found">1. <code>Error: Not Found</code></h3>
-
-<ul>
-<li><p>owner或者repo配置错误，注意名字和参考名字的大小写。</p></li>
-
-<li><p>注意不可设置 <code>id : &quot;&quot;</code>。</p></li>
-</ul>
-
-<h3 id="2-error-comments-not-initialized">2. <code>Error: Comments Not initialized</code></h3>
-
-<ul>
-<li>还没有登录，登录之后初始化就可以了。</li>
-<li>注册OAuth Application时Authorization Callback URL指定地址错误。</li>
-</ul>
-
-<h3 id="3-error-validation-failed">3. <code>Error: Validation Failed</code></h3>
-
-<ul>
-<li><code>id</code>太长，导致初始化失败。解决方案见问题4。
-
-<ul>
-<li>id`的长度要限制在50个字符内，但也不可为空字符串</li>
-<li>github issue的标签label有长度限制，label的最大长度为50个字符</li>
-<li><code>id</code>的作用是唯一标识每一篇文章。</li>
-<li>在gitment创建的issue里，每个issue有两个label，其中一个是<code>gitment</code>，另一个是<code>id</code>指定的值。因此<code>id</code>受到label的限制。</li>
-</ul></li>
-</ul>
-
-<h3 id="4-在一篇文章下看到另一篇文章的issue">4. 在一篇文章下看到另一篇文章的issue</h3>
-
-<ul>
-<li>两篇文章的<code>id</code>重复</li>
-</ul>
-
-<h4 id="解决方案">解决方案</h4>
-
-<p>将文章的<code>id</code>设置为文章的创建时间，即可保证<code>id</code>长度不超过50个字符且文章评论不重复。</p>
-
-<pre><code class="language-js">  id: {{ .Params.Date }}
-</code></pre>
-
-<p><div class="alert alert-warning">
-  <div>
-    不要复制前面的某一篇论文而忘记修改时间，否则评论还是会交错的。
-  </div>
-</div></p>
-
-<h2 id="gitment的汉化版本">Gitment的汉化版本</h2>
-
-<p>只需到模板里将原来定义CSS和JS的那两行改成：</p>
-
-<pre><code class="language-html">&lt;link rel=&quot;stylesheet&quot; href=&quot;https://billts.site/extra_css/gitment.css&quot;&gt;
-&lt;script src=&quot;https://billts.site/js/gitment.js&quot;&gt;&lt;/script&gt;
-</code></pre>
-
-<h2 id="gitment在hugo-academic主题下的配置">Gitment在Hugo Academic主题下的配置</h2>
+<h2 id="gitalk在hugo-academic主题下的配置">Gitalk在Hugo Academic主题下的配置</h2>
 
 <p>在hugo建立的根目录下创建目录<code>layouts/partials/</code>，再在新创建的目录下创建<code>comments.html</code>用于覆盖Academic主题的<code>comments.html</code>。</p>
 
@@ -753,60 +813,61 @@ $ vi layouts/partials/comments.html
 
 <p>在<code>layouts/partials/comments.html</code>中输入以下代码：</p>
 
-<pre><code class="language-html">{{ if .Site.Params.gitment.language }}
+<pre><code class="language-html">{{ if eq .Site.Params.gitalk.on true }}
 &lt;section id=&quot;comments&quot;&gt;
-    &lt;div id=&quot;gitmentContainer&quot;&gt;&lt;/div&gt;
-    {{ if eq .Site.Params.gitment.language &quot;zh&quot; }}
-    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://billts.site/extra_css/gitment.css&quot;&gt;
-    &lt;script src=&quot;https://billts.site/js/gitment.js&quot;&gt;&lt;/script&gt;
-    {{ else }}
-    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdn.jsdelivr.net/gh/theme-next/theme-next-gitment@1/default.css&quot;&gt;
-    &lt;script src=&quot;https://cdn.jsdelivr.net/gh/theme-next/theme-next-gitment@1/gitment.browser.js&quot;&gt;&lt;/script&gt;
-    {{ end }}
+    &lt;div id=&quot;gitalkContainer&quot;&gt;&lt;/div&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css&quot;&gt;
+    &lt;script src=&quot;https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js&quot;&gt;&lt;/script&gt;
 
     &lt;script&gt;
-        var gitment = new Gitment({
-            id: '{{ .Params.Date }}',
-            owner: {{ .Site.Params.gitment.owner }},
-            repo: {{ .Site.Params.gitment.repo }},
-            oauth: {
-                client_id: {{ .Site.Params.gitment.clientID }},
-                client_secret: {{ .Site.Params.gitment.clientSecret }},
+        var gitalk = new Gitalk({
+            clientID: {{ .Site.Params.gitalk.clientID }},
+            clientSecret: {{ .Site.Params.gitalk.clientSecret }},
+            repo: {{ .Site.Params.gitalk.repo }},
+            owner: {{ .Site.Params.gitalk.owner }},
+            admin: {{ .Site.Params.gitalk.admin }},
+            id: '{{ .Params.Date }}',      // Ensure uniqueness and length less than 50
+            labels: {{ .Site.Params.gitalk.labels }},
+            distractionFreeMode: {{ .Site.Params.gitalk.distractionFreeMode }},  // Facebook-like distraction free mode
+            pagerDirection: {{ .Site.Params.gitalk.pagerDirection }},
+            createIssueManually: {{ .Site.Params.gitalk.createIssueManually }},
+            enableHotKey: {{ .Site.Params.gitalk.enableHotKey }},
+            flipMoveOptions: {
+                staggerDelayBy: {{ .Site.Params.gitalk.flipMoveOptions.staggerDelayBy }},
+                appearAnimation: {{ .Site.Params.gitalk.flipMoveOptions.appearAnimation }},
+                enterAnimation: {{ .Site.Params.gitalk.flipMoveOptions.enterAnimation }},
+                leaveAnimation: {{ .Site.Params.gitalk.flipMoveOptions.leaveAnimation }},
             },
         });
-        gitment.render('gitmentContainer');
+        gitalk.render('gitalkContainer');
     &lt;/script&gt;
 &lt;/section&gt;
-
 {{ end }}
 </code></pre>
 
 <p>在 <code>config/_default/params.toml</code>末尾添加以下配置。</p>
 
-<pre><code class="language-toml"># Config comments of gitment
-[gitment]
-  language = &quot;en&quot; # set &quot;&quot; to disable comment, &quot;zh&quot; to Chinese, &quot;en&quot; to English
-  owner = &quot;&lt;your-github-name&gt;&quot;
-  repo  = &quot;&lt;the-repo-to-store-comments&gt;&quot;
-  clientID = &quot;&lt;your-client-ID&gt;&quot;
-  clientSecret = &quot;&lt;your-client-secret&gt;&quot;
+<pre><code class="language-toml"># Config comments of gitalk
+[gitalk]
+  on = true
+  clientID = &quot;ec5806c0144b70a1b32e&quot;
+  clientSecret = &quot;aadae41a3747ffa5b36fd0e13c7e84026db07e0c&quot;
+  repo  = &quot;YuxinZhaozyx.github.io&quot;
+  owner = &quot;YuxinZhaozyx&quot;
+  admin = [&quot;YuxinZhaozyx&quot;]
+  labels = [&quot;Comments&quot;]  # default to [&quot;Gitalk&quot;]
+  distractionFreeMode = false
+  pagerDirection = 'last' # set to 'last' or 'first'
+  createIssueManually = false
+  enableHotKey = true  # cmd | ctrl + enter to commit comment
+  [gitalk.flipMoveOptions]
+    staggerDelayBy = 150
+    appearAnimation = 'elevator'
+    enterAnimation = 'elevator'
+    leaveAnimation = 'elevator'
 </code></pre>
 
 <p>至此，评论功能配置完成。</p>
-
-<h2 id="参考引用">参考引用</h2>
-
-<p>[1]  <a href="https://imsun.net/posts/gitment-introduction/" target="_blank">Gitment：使用 GitHub Issues 搭建评论系统 </a></p>
-
-<p>[2]  <a href="https://ihtcboy.com/2018/02/25/2018-02-25_Gitment评论功能接入踩坑教程/" target="_blank">Gitment评论功能接入踩坑教程</a></p>
-
-<p>[3]  <a href="https://github.com/imsun/gitment/issues/95" target="_blank">Error: Comments Not Initialized # 95</a></p>
-
-<p>[4]  <a href="https://github.com/imsun/gitment/issues/116" target="_blank">Validation Failed ID长度问题建议 #116</a></p>
-
-<p>[5]  <a href="https://github.com/imsun/gitment/issues/170" target="_blank">[object ProgressEvent] #170</a></p>
-
-<p>[6]  <a href="https://github.com/imsun/gitment/issues/102" target="_blank">网站无法访问了？ #102</a></p>
 
     </div>
 
@@ -818,7 +879,7 @@ $ vi layouts/partials/comments.html
   
   <a class="badge badge-light" href="/tags/academic/">academic</a>
   
-  <a class="badge badge-light" href="/tags/gitment/">gitment</a>
+  <a class="badge badge-light" href="/tags/gitalk/">gitalk</a>
   
   <a class="badge badge-light" href="/tags/comments/">comments</a>
   
@@ -908,6 +969,16 @@ $ vi layouts/partials/comments.html
 
       
       
+      <div class="article-widget">
+        <div class="hr-light"></div>
+        <h3>Related</h3>
+        <ul>
+          
+          <li><a href="/post/gitment-in-hugo/">Hugo博客集成Gitment评论模块</a></li>
+          
+        </ul>
+      </div>
+      
     
 
     
@@ -925,7 +996,7 @@ $ vi layouts/partials/comments.html
 			repo: "YuxinZhaozyx.github.io",
 			owner: "YuxinZhaozyx",
 			admin: ["YuxinZhaozyx"],
-			id: '2019-07-05 17:20:59 \x2b0800 CST',      
+			id: '2019-07-09 16:40:32 \x2b0800 CST',      
 			labels: ["Comments"],
 			distractionFreeMode:  false ,  
 			pagerDirection: "last",

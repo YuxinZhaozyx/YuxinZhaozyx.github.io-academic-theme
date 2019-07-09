@@ -78,7 +78,7 @@
 
 &lt;h3 id=&#34;2-引入gitment&#34;&gt;2. 引入Gitment&lt;/h3&gt;
 
-&lt;p&gt;将一下代码添加到你的页面：&lt;/p&gt;
+&lt;p&gt;将以下代码添加到你的页面：&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;div id=&amp;quot;container&amp;quot;&amp;gt;&amp;lt;/div&amp;gt;
 &amp;lt;link rel=&amp;quot;stylesheet&amp;quot; href=&amp;quot;https://imsun.github.io/gitment/style/default.css&amp;quot;&amp;gt;

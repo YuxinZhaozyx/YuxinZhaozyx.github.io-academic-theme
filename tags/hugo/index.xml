@@ -7,10 +7,340 @@
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
     <language>en-us</language>
     <copyright>Copyright &amp;copy; {year} YuxinZhao</copyright>
-    <lastBuildDate>Fri, 05 Jul 2019 17:20:59 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 09 Jul 2019 16:40:32 +0800</lastBuildDate>
     
 	    <atom:link href="https://YuxinZhaozyx.github.io/tags/hugo/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Hugo博客集成Gitalk评论模块</title>
+      <link>https://YuxinZhaozyx.github.io/post/gitalk-in-hugo/</link>
+      <pubDate>Tue, 09 Jul 2019 16:40:32 +0800</pubDate>
+      
+      <guid>https://YuxinZhaozyx.github.io/post/gitalk-in-hugo/</guid>
+      <description>
+
+&lt;h2 id=&#34;前言&#34;&gt;前言&lt;/h2&gt;
+
+&lt;p&gt;在&lt;a href=&#34;https://YuxinZhaozyx.github.io/post/gitment-in-hugo&#34;&gt;先前的文章&lt;/a&gt;中，我使用Gitment来作为我的博客的评论模块，但使用一段时间后发现了Gitment的一些缺点，针对这些缺点，我找到了比Gitment功能上更完善的Gitalk。&lt;/p&gt;
+
+&lt;h2 id=&#34;我为什么选择gitalk&#34;&gt;我为什么选择Gitalk?&lt;/h2&gt;
+
+&lt;p&gt;在这之前我先说一下我为什么弃坑Gitment，Gitment本身的想法很好，使用github的issue来存储评论，避免了使用第三方的服务而第三方停止提供服务的风险(比如多说和网易云跟帖)。但它也有以下缺点：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;不兼容移动端&lt;/li&gt;
+&lt;li&gt;不支持多语言&lt;/li&gt;
+&lt;li&gt;不支持免打扰模式&lt;/li&gt;
+&lt;li&gt;不支持快捷键提交&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;上述问题中对我来说最重要并最终让我决定更换评论模块的是Gitment不兼容移动端的缺点。&lt;/p&gt;
+
+&lt;p&gt;而Gitalk没有以上的缺点。&lt;/p&gt;
+
+&lt;h2 id=&#34;gitalk评论模块介绍&#34;&gt;Gitalk评论模块介绍&lt;/h2&gt;
+
+&lt;blockquote&gt;
+&lt;p&gt;Gitalk 是一个基于 GitHub Issue 和 Preact 开发的评论插件。&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/gitalk/gitalk&#34; target=&#34;_blank&#34;&gt;项目地址&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://gitalk.github.io/&#34; target=&#34;_blank&#34;&gt;官方示例&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;特性&#34;&gt;特性&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;使用 GitHub 登录&lt;/li&gt;
+&lt;li&gt;支持多语言 [en, zh-CN, zh-TW, es-ES, fr, ru]&lt;/li&gt;
+&lt;li&gt;支持个人或组织&lt;/li&gt;
+&lt;li&gt;免干扰模式（设置 &lt;code&gt;distractionFreeMode&lt;/code&gt; 为 &lt;code&gt;true&lt;/code&gt; 开启）&lt;/li&gt;
+&lt;li&gt;快捷键提交评论 （&lt;code&gt;ctrl + enter&lt;/code&gt;）&lt;/li&gt;
+&lt;li&gt;支持移动端&lt;/li&gt;
+&lt;li&gt;自动初始化评论&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;基本使用&#34;&gt;基本使用&lt;/h2&gt;
+
+&lt;h3 id=&#34;注册oauth-application&#34;&gt;注册OAuth Application&lt;/h3&gt;
+
+&lt;p&gt;需要先在github上注册一个OAuth Application，&lt;a href=&#34;https://github.com/settings/applications/new&#34; target=&#34;_blank&#34;&gt;点击此处&lt;/a&gt;注册。&lt;/p&gt;
+
+&lt;p&gt;Callback URL 填写评论页面对应的域名，如&lt;code&gt;https://YuxinZhaozyx.github.io&lt;/code&gt;。&lt;/p&gt;
+
+&lt;div class=&#34;alert alert-warning&#34;&gt;
+  &lt;div&gt;
+    其他内容可以随便写，但Callback URL一定要填写正确。
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;p&gt;注册成功后会得到一个Client ID和Client Secret，这将被用于之后的用户登录认证。&lt;/p&gt;
+
+&lt;h3 id=&#34;引入gitalk&#34;&gt;引入Gitalk&lt;/h3&gt;
+
+&lt;p&gt;将以下代码添加到你的页面：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;section id=&amp;quot;comments&amp;quot;&amp;gt;
+    &amp;lt;div id=&amp;quot;gitalkContainer&amp;quot;&amp;gt;&amp;lt;/div&amp;gt;
+    &amp;lt;link rel=&amp;quot;stylesheet&amp;quot; href=&amp;quot;https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css&amp;quot;&amp;gt;
+    &amp;lt;script src=&amp;quot;https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;
+    &amp;lt;script&amp;gt;
+        var gitalk = new Gitalk({
+            clientID: &#39;GitHub Application Client ID&#39;,
+            clientSecret: &#39;GitHub Application Client Secret&#39;,
+            repo: &#39;GitHub repo&#39;,
+            owner: &#39;GitHub repo owner&#39;,
+            admin: [&#39;GitHub repo owner and collaborators, only these guys can initialize github issues&#39;],
+            id: location.pathname,      // Ensure uniqueness and length less than 50
+            distractionFreeMode: false  // Facebook-like distraction free mode
+        });
+        gitalk.render(&#39;gitalkContainer&#39;);
+    &amp;lt;/script&amp;gt;
+&amp;lt;/section&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;div class=&#34;alert alert-warning&#34;&gt;
+  &lt;div&gt;
+    &lt;code&gt;id&lt;/code&gt;的长度要限制在50个字符内，但也不可为空字符串。
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;h4 id=&#34;参数说明&#34;&gt;参数说明&lt;/h4&gt;
+
+&lt;p&gt;&lt;style type=&#34;text/css&#34;&gt;
+    table.tableizer-table {
+        font-size: 12px;
+        border: 1px solid #CCC;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+&lt;/style&gt;
+&lt;table class=&#34;tableizer-table&#34;&gt;
+&lt;thead&gt;
+    &lt;tr class=&#34;tableizer-firstrow&#34;&gt;
+        &lt;th&gt;参数&lt;/th&gt;
+        &lt;th&gt;类型&lt;/th&gt;
+        &lt;th&gt;可选&lt;/th&gt;
+        &lt;th&gt;默认值&lt;/th&gt;
+        &lt;th&gt;说明&lt;/th&gt;
+    &lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+    &lt;tr&gt;
+        &lt;td&gt;&lt;code&gt;clientID&lt;/code&gt;&lt;/td&gt;
+        &lt;td&gt;String&lt;/td&gt;
+        &lt;td&gt;no&lt;/td&gt;
+        &lt;td&gt;&lt;code&gt;null&lt;/code&gt;&lt;/td&gt;
+        &lt;td&gt;GitHub Application Client ID&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;&lt;code&gt;clientSecret&lt;/code&gt;&lt;/td&gt;
+        &lt;td&gt;String&lt;/td&gt;
+        &lt;td&gt;no&lt;/td&gt;
+        &lt;td&gt;&lt;code&gt;null&lt;/code&gt;&lt;/td&gt;
+        &lt;td&gt;GitHub Application Client Secret&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;&lt;code&gt;repo&lt;/code&gt;&lt;/td&gt;
+        &lt;td&gt;String&lt;/td&gt;
+        &lt;td&gt;no&lt;/td&gt;
+        &lt;td&gt;&lt;code&gt;null&lt;/code&gt;&lt;/td&gt;
+        &lt;td&gt;存放评论的gitHub仓库&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;&lt;code&gt;owner&lt;/code&gt;&lt;/td&gt;
+        &lt;td&gt;String&lt;/td&gt;
+        &lt;td&gt;no&lt;/td&gt;
+        &lt;td&gt;&lt;code&gt;null&lt;/code&gt;&lt;/td&gt;
+        &lt;td&gt;存放评论的gitHub仓库的所有者&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;&lt;code&gt;admin&lt;/code&gt;&lt;/td&gt;
+        &lt;td&gt;Array&lt;/td&gt;
+        &lt;td&gt;no&lt;/td&gt;
+        &lt;td&gt;&lt;code&gt;[ owner ]&lt;/code&gt;&lt;/td&gt;
+        &lt;td&gt;允许初始化评论的用户（repo的所有者和合作者）&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;&lt;code&gt;id&lt;/code&gt;&lt;/td&gt;
+        &lt;td&gt;String&lt;/td&gt;
+        &lt;td&gt;yes&lt;/td&gt;
+        &lt;td&gt;&lt;code&gt;location.href&lt;/code&gt;&lt;/td&gt;
+        &lt;td&gt;页面的唯一标识，长度必须小于50&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;&lt;code&gt;number&lt;/code&gt;&lt;/td&gt;
+        &lt;td&gt;Number&lt;/td&gt;
+        &lt;td&gt;yes&lt;/td&gt;
+        &lt;td&gt;-1&lt;/td&gt;
+        &lt;td&gt;页面的issueID标识，若未定义number属性则使用id进行定位&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;&lt;code&gt;labels&lt;/code&gt;&lt;/td&gt;
+        &lt;td&gt;Array&lt;/td&gt;
+        &lt;td&gt;yes&lt;/td&gt;
+        &lt;td&gt;&lt;code&gt;[&#39;Gitalk&#39;]&lt;/code&gt;&lt;/td&gt;
+        &lt;td&gt;GitHub issue的标签&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;&lt;code&gt;title&lt;/code&gt;&lt;/td&gt;
+        &lt;td&gt;String&lt;/td&gt;
+        &lt;td&gt;yes&lt;/td&gt;
+        &lt;td&gt;&lt;code&gt;document.title&lt;/code&gt;&lt;/td&gt;
+        &lt;td&gt;GitHub issue的标题&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;&lt;code&gt;body&lt;/code&gt;&lt;/td&gt;
+        &lt;td&gt;String&lt;/td&gt;
+        &lt;td&gt;yes&lt;/td&gt;
+        &lt;td&gt;&lt;code&gt;location.href + header.meta[description]&lt;/code&gt;&lt;/td&gt;
+        &lt;td&gt;GitHub issue的内容&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;&lt;code&gt;language&lt;/code&gt;&lt;/td&gt;
+        &lt;td&gt;String&lt;/td&gt;
+        &lt;td&gt;yes&lt;/td&gt;
+        &lt;td&gt;&lt;code&gt;navigator.language || navigator.userLanguage&lt;/code&gt;&lt;/td&gt;
+        &lt;td&gt;语言，支持[en, zh-CN, zh-TW]&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;&lt;code&gt;perPage&lt;/code&gt;&lt;/td&gt;
+        &lt;td&gt;Number&lt;/td&gt;
+        &lt;td&gt;yes&lt;/td&gt;
+        &lt;td&gt;10&lt;/td&gt;
+        &lt;td&gt;每次加载的评论数，最多100&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;&lt;code&gt;distractionFreeMode&lt;/code&gt;&lt;/td&gt;
+        &lt;td&gt;Boolean&lt;/td&gt;
+        &lt;td&gt;yes&lt;/td&gt;
+        &lt;td&gt;&lt;code&gt;false&lt;/code&gt;&lt;/td&gt;
+        &lt;td&gt;类似Facebook评论框的全屏遮罩效果.&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;&lt;code&gt;pagerDirection&lt;/code&gt;&lt;/td&gt;
+        &lt;td&gt;String&lt;/td&gt;
+        &lt;td&gt;yes&lt;/td&gt;
+        &lt;td&gt;&lt;code&gt;&#39;last&#39;&lt;/code&gt;&lt;/td&gt;
+        &lt;td&gt;评论排序方式， &lt;code&gt;last&lt;/code&gt;为按评论创建时间倒叙，&lt;code&gt;first&lt;/code&gt;为按创建时间正序。&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;&lt;code&gt;createIssueManually&lt;/code&gt;&lt;/td&gt;
+        &lt;td&gt;Boolean&lt;/td&gt;
+        &lt;td&gt;yes&lt;/td&gt;
+        &lt;td&gt;&lt;code&gt;false&lt;/code&gt;&lt;/td&gt;
+        &lt;td&gt;如果当前页面没有相应的 isssue 且登录的用户属于 admin，则会自动创建 issue。如果设置为 true，则显示一个初始化页面，创建 issue 需要点击 init 按钮。&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;&lt;code&gt;proxy&lt;/code&gt;&lt;/td&gt;
+        &lt;td&gt;String&lt;/td&gt;
+        &lt;td&gt;yes&lt;/td&gt;
+        &lt;td&gt;&lt;a href=&#34;https://cors-anywhere.herokuapp.com/https://github.com/login/oauth/access_token&#34; target=&#34;_blank&#34;&gt;https://cors-anywhere.herokuapp.com/https://github.com/login/oauth/access_token&lt;/a&gt;&lt;/td&gt;
+        &lt;td&gt;GitHub oauth请求到反向代理，为了支持CORS&lt;/td&gt;&lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;&lt;code&gt;flipMoveOptions&lt;/code&gt;&lt;/td&gt;
+        &lt;td&gt;Object&lt;/td&gt;
+        &lt;td&gt;yes&lt;/td&gt;
+        &lt;td&gt;
+            &lt;code&gt;
+            { &lt;br&gt;
+            &amp;emsp; staggerDelayBy: 150, &lt;br&gt;
+            &amp;emsp; appearAnimation: &amp;lsquo;accordionVertical&amp;rsquo;, &lt;br&gt;
+            &amp;emsp; enterAnimation: &amp;lsquo;accordionVertical&amp;rsquo;, &lt;br&gt;
+            &amp;emsp; leaveAnimation: &amp;lsquo;accordionVertical&amp;rsquo;, &lt;br&gt;
+            }
+            &lt;/code&gt;
+        &lt;/td&gt;
+        &lt;td&gt;评论的参考动画&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;&lt;code&gt;enableHotKey&lt;/code&gt;&lt;/td&gt;
+        &lt;td&gt;Boolean&lt;/td&gt;
+        &lt;td&gt;yes&lt;/td&gt;
+        &lt;td&gt;&lt;code&gt;true&lt;/code&gt;&lt;/td&gt;
+        &lt;td&gt;启用快捷键(cmd|ctrl + enter) 提交评论&lt;/td&gt;&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;初始化评论&#34;&gt;初始化评论&lt;/h3&gt;
+
+&lt;p&gt;Gitalk不需要像Gitment一样点初始化按钮初始化(除非将&lt;code&gt;createIssueManually&lt;/code&gt;选项设置为&lt;code&gt;true&lt;/code&gt;)，只需要&lt;code&gt;admin&lt;/code&gt;中的任何一名管理员登录账号即可自动初始化。&lt;/p&gt;
+
+&lt;h2 id=&#34;gitalk在hugo-academic主题下的配置&#34;&gt;Gitalk在Hugo Academic主题下的配置&lt;/h2&gt;
+
+&lt;p&gt;在hugo建立的根目录下创建目录&lt;code&gt;layouts/partials/&lt;/code&gt;，再在新创建的目录下创建&lt;code&gt;comments.html&lt;/code&gt;用于覆盖Academic主题的&lt;code&gt;comments.html&lt;/code&gt;。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;$ cd &amp;lt;your-hugo-website-root&amp;gt;
+$ mkdir -p layouts/partials/
+$ vi layouts/partials/comments.html
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;div class=&#34;alert alert-note&#34;&gt;
+  &lt;div&gt;
+    注意是在hugo建立的根目录而不是修改&lt;code&gt;themes/academic/&lt;/code&gt;主题下的文件。
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;p&gt;在&lt;code&gt;layouts/partials/comments.html&lt;/code&gt;中输入以下代码：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;{{ if eq .Site.Params.gitalk.on true }}
+&amp;lt;section id=&amp;quot;comments&amp;quot;&amp;gt;
+    &amp;lt;div id=&amp;quot;gitalkContainer&amp;quot;&amp;gt;&amp;lt;/div&amp;gt;
+    &amp;lt;link rel=&amp;quot;stylesheet&amp;quot; href=&amp;quot;https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css&amp;quot;&amp;gt;
+    &amp;lt;script src=&amp;quot;https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js&amp;quot;&amp;gt;&amp;lt;/script&amp;gt;
+
+    &amp;lt;script&amp;gt;
+        var gitalk = new Gitalk({
+            clientID: {{ .Site.Params.gitalk.clientID }},
+            clientSecret: {{ .Site.Params.gitalk.clientSecret }},
+            repo: {{ .Site.Params.gitalk.repo }},
+            owner: {{ .Site.Params.gitalk.owner }},
+            admin: {{ .Site.Params.gitalk.admin }},
+            id: &#39;{{ .Params.Date }}&#39;,      // Ensure uniqueness and length less than 50
+            labels: {{ .Site.Params.gitalk.labels }},
+            distractionFreeMode: {{ .Site.Params.gitalk.distractionFreeMode }},  // Facebook-like distraction free mode
+            pagerDirection: {{ .Site.Params.gitalk.pagerDirection }},
+            createIssueManually: {{ .Site.Params.gitalk.createIssueManually }},
+            enableHotKey: {{ .Site.Params.gitalk.enableHotKey }},
+            flipMoveOptions: {
+                staggerDelayBy: {{ .Site.Params.gitalk.flipMoveOptions.staggerDelayBy }},
+                appearAnimation: {{ .Site.Params.gitalk.flipMoveOptions.appearAnimation }},
+                enterAnimation: {{ .Site.Params.gitalk.flipMoveOptions.enterAnimation }},
+                leaveAnimation: {{ .Site.Params.gitalk.flipMoveOptions.leaveAnimation }},
+            },
+        });
+        gitalk.render(&#39;gitalkContainer&#39;);
+    &amp;lt;/script&amp;gt;
+&amp;lt;/section&amp;gt;
+{{ end }}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;在 &lt;code&gt;config/_default/params.toml&lt;/code&gt;末尾添加以下配置。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-toml&#34;&gt;# Config comments of gitalk
+[gitalk]
+  on = true
+  clientID = &amp;quot;ec5806c0144b70a1b32e&amp;quot;
+  clientSecret = &amp;quot;aadae41a3747ffa5b36fd0e13c7e84026db07e0c&amp;quot;
+  repo  = &amp;quot;YuxinZhaozyx.github.io&amp;quot;
+  owner = &amp;quot;YuxinZhaozyx&amp;quot;
+  admin = [&amp;quot;YuxinZhaozyx&amp;quot;]
+  labels = [&amp;quot;Comments&amp;quot;]  # default to [&amp;quot;Gitalk&amp;quot;]
+  distractionFreeMode = false
+  pagerDirection = &#39;last&#39; # set to &#39;last&#39; or &#39;first&#39;
+  createIssueManually = false
+  enableHotKey = true  # cmd | ctrl + enter to commit comment
+  [gitalk.flipMoveOptions]
+    staggerDelayBy = 150
+    appearAnimation = &#39;elevator&#39;
+    enterAnimation = &#39;elevator&#39;
+    leaveAnimation = &#39;elevator&#39;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;至此，评论功能配置完成。&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Hugo博客集成Gitment评论模块</title>
@@ -78,7 +408,7 @@
 
 &lt;h3 id=&#34;2-引入gitment&#34;&gt;2. 引入Gitment&lt;/h3&gt;
 
-&lt;p&gt;将一下代码添加到你的页面：&lt;/p&gt;
+&lt;p&gt;将以下代码添加到你的页面：&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-html&#34;&gt;&amp;lt;div id=&amp;quot;container&amp;quot;&amp;gt;&amp;lt;/div&amp;gt;
 &amp;lt;link rel=&amp;quot;stylesheet&amp;quot; href=&amp;quot;https://imsun.github.io/gitment/style/default.css&amp;quot;&amp;gt;
