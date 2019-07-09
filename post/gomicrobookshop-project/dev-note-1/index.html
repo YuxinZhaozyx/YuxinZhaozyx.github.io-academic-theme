@@ -1855,8 +1855,6 @@ go run main.go
     
 
     
-
-
 <section id="comments">
 	<div id="gitalkContainer"></div>
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
@@ -1875,6 +1873,12 @@ go run main.go
 			pagerDirection: "last",
 			createIssueManually:  false ,
 			enableHotKey:  true ,
+			filpMoveOptions: {
+				staggerDelayBy:  null ,
+				appearAnimation:  null ,
+				enterAnimation:  null ,
+				leaveAnimation:  null ,
+			},
 		});
 		gitalk.render('gitalkContainer');
 	</script>
