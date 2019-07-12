@@ -7,10 +7,98 @@
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
     <language>en-us</language>
     <copyright>Copyright &amp;copy; {year} YuxinZhao</copyright>
-    <lastBuildDate>Tue, 09 Jul 2019 16:40:32 +0800</lastBuildDate>
+    <lastBuildDate>Fri, 12 Jul 2019 11:45:33 +0800</lastBuildDate>
     
 	    <atom:link href="https://YuxinZhaozyx.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Hugo Academic Icon配置</title>
+      <link>https://YuxinZhaozyx.github.io/post/icons-of-hugo-academic/</link>
+      <pubDate>Fri, 12 Jul 2019 11:45:33 +0800</pubDate>
+      
+      <guid>https://YuxinZhaozyx.github.io/post/icons-of-hugo-academic/</guid>
+      <description>
+
+&lt;p&gt;Academic主题可以使用&lt;a href=&#34;https://fontawesome.com/icons?d=gallery&#34; target=&#34;_blank&#34;&gt;Font Awesome&lt;/a&gt;和&lt;a href=&#34;https://jpswalsh.github.io/academicons/&#34; target=&#34;_blank&#34;&gt;Academicons&lt;/a&gt;的各种图标。但是Academic本身支持的版本不一定是最新的，部分图标因此不会显示。因此本文将介绍如何更换成最新的、速度更快的源。&lt;/p&gt;
+
+&lt;h2 id=&#34;icon包简要介绍&#34;&gt;icon包简要介绍&lt;/h2&gt;
+
+&lt;p&gt;icon包&lt;code&gt;fab&lt;/code&gt;包括以下&lt;strong&gt;品牌&lt;/strong&gt;图标：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;twitter，weixin，weibo，linkedin，github，facebook，pinterest，twitch，youtube，instagram，soundcloud&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://fontawesome.com/icons?d=gallery&amp;amp;s=brands&#34; target=&#34;_blank&#34;&gt;查看所有图标&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;icon包&lt;code&gt;fas&lt;/code&gt;和&lt;code&gt;far&lt;/code&gt;包括以下&lt;strong&gt;常规&lt;/strong&gt;图标：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;传真，信封（电子邮件），评论（论坛）&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://fontawesome.com/icons?d=gallery&amp;amp;s=regular,solid&#34; target=&#34;_blank&#34;&gt;查看所有图标&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;icon包&lt;code&gt;ai&lt;/code&gt;包括以下&lt;strong&gt;学术&lt;/strong&gt;图标：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;cv，google-scholar，arxiv，orcid，researchgate，mendeley&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://jpswalsh.github.io/academicons/&#34; target=&#34;_blank&#34;&gt;查看所有图标&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;在hugo-academic中使用图标&#34;&gt;在Hugo-Academic中使用图标&lt;/h2&gt;
+
+&lt;p&gt;以python图标为例，在&lt;a href=&#34;https://fontawesome.com/icons?d=gallery&amp;amp;q=python&#34; target=&#34;_blank&#34;&gt;Font Awesome&lt;/a&gt;中找到python的编号为“fab fa-python&amp;rdquo;。&lt;/p&gt;
+
+&lt;h3 id=&#34;在skills面板中使用图标&#34;&gt;在skills面板中使用图标：&lt;/h3&gt;
+
+&lt;p&gt;&lt;code&gt;/content/home/skills.md&lt;/code&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-toml&#34;&gt;[[feature]]
+    icon=&amp;quot;python&amp;quot;
+    icon_pack=&amp;quot;fab&amp;quot;
+    name=&amp;quot;Python&amp;quot;
+    description=&amp;quot;80%&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;在about面板中使用图标&#34;&gt;在about面板中使用图标：&lt;/h3&gt;
+
+&lt;p&gt;&lt;code&gt;/content/authors/&amp;lt;author-name&amp;gt;/_index.md&lt;/code&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-toml&#34;&gt;social:
+- icon: python
+  icon_pack: fab
+  link: &amp;quot;...&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;div class=&#34;alert alert-note&#34;&gt;
+  &lt;div&gt;
+    注意: &lt;code&gt;icon&lt;/code&gt;的值不是完整的编号，要去除&lt;code&gt;fa-&lt;/code&gt;前缀。
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&#34;更换hugo-academic主题使用的font-awesome源&#34;&gt;更换Hugo-Academic主题使用的Font Awesome源&lt;/h2&gt;
+
+&lt;p&gt;我们将使用Font Awesome的最新版本5.9.0(截至至2019年7月10日)来代替Academic默认使用的5.6.0版本。&lt;/p&gt;
+
+&lt;p&gt;我使用&lt;a href=&#34;https://cdnjs.com/libraries/font-awesome&#34; target=&#34;_blank&#34;&gt;cdnjs&lt;/a&gt;提供的CDN源，点击&lt;a href=&#34;https://cdnjs.com/libraries/font-awesome&#34; target=&#34;_blank&#34;&gt;此处&lt;/a&gt;查看当前最新版本。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;image/cdnjs-font-awesome.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;分别复制url和sri。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;image/cdnjs-font-awesome-copy.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;修改到&lt;code&gt;themes/academic/data/assets.toml&lt;/code&gt;中。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-toml&#34;&gt;[css.fontAwesome]
+  version = &amp;quot;5.9.0&amp;quot;
+  sri = &amp;quot;sha256-PF6MatZtiJ8/c9O9HQ8uSUXr++R9KBYu4gbNG5511WE=&amp;quot;
+  url = &amp;quot;https://cdnjs.cloudflare.com/ajax/libs/font-awesome/%s/css/all.css&amp;quot;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;更新完成。&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Hugo博客集成Gitalk评论模块</title>
@@ -230,7 +318,7 @@
         &lt;td nowrap&gt;&lt;code&gt;createIssueManually&lt;/code&gt;&lt;/td&gt;
         &lt;td&gt;Boolean&lt;/td&gt;
         &lt;td&gt;yes&lt;/td&gt;
-        &lt;td width=50% nowrap&gt;如果当前页面没有相应的 isssue 且登录的用户属于 admin，则会自动创建 issue。如果设置为 true，则显示一个初始化页面，创建 issue 需要点击 init 按钮。&lt;/td&gt;
+        &lt;td width=50% nowrap&gt;如果当前页面没有相应的 issue 且登录的用户属于 admin，则会自动创建 issue。如果设置为 true，则显示一个初始化页面，创建 issue 需要点击 init 按钮。&lt;/td&gt;
         &lt;td&gt;&lt;code&gt;false&lt;/code&gt;&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;

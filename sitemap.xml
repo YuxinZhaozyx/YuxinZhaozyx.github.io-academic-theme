@@ -4,47 +4,76 @@
   
   <url>
     <loc>https://YuxinZhaozyx.github.io/authors/yuxinzhao/</loc>
-    <lastmod>2019-07-09T16:40:32+08:00</lastmod>
+    <lastmod>2019-07-12T11:45:33+08:00</lastmod>
   </url>
   
   <url>
     <loc>https://YuxinZhaozyx.github.io/authors/</loc>
-    <lastmod>2019-07-09T16:40:32+08:00</lastmod>
+    <lastmod>2019-07-12T11:45:33+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://YuxinZhaozyx.github.io/categories/</loc>
-    <lastmod>2019-07-09T16:40:32+08:00</lastmod>
+    <lastmod>2019-07-12T11:45:33+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://YuxinZhaozyx.github.io/post/icons-of-hugo-academic/</loc>
+    <lastmod>2019-07-12T11:45:33+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://YuxinZhaozyx.github.io/post/</loc>
+    <lastmod>2019-07-12T11:45:33+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://YuxinZhaozyx.github.io/tags/</loc>
+    <lastmod>2019-07-12T11:45:33+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://YuxinZhaozyx.github.io/</loc>
+    <lastmod>2019-07-12T11:45:33+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://YuxinZhaozyx.github.io/tags/academic/</loc>
+    <lastmod>2019-07-12T11:45:33+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://YuxinZhaozyx.github.io/tags/cdnjs/</loc>
+    <lastmod>2019-07-12T11:45:33+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://YuxinZhaozyx.github.io/categories/hugo/</loc>
+    <lastmod>2019-07-12T11:45:33+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://YuxinZhaozyx.github.io/tags/hugo/</loc>
+    <lastmod>2019-07-12T11:45:33+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://YuxinZhaozyx.github.io/tags/icon/</loc>
+    <lastmod>2019-07-12T11:45:33+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://YuxinZhaozyx.github.io/post/gitalk-in-hugo/</loc>
     <lastmod>2019-07-09T16:40:32+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://YuxinZhaozyx.github.io/post/</loc>
-    <lastmod>2019-07-09T16:40:32+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://YuxinZhaozyx.github.io/tags/</loc>
-    <lastmod>2019-07-09T16:40:32+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://YuxinZhaozyx.github.io/</loc>
-    <lastmod>2019-07-09T16:40:32+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://YuxinZhaozyx.github.io/tags/academic/</loc>
-    <lastmod>2019-07-09T16:40:32+08:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>
@@ -61,18 +90,6 @@
   
   <url>
     <loc>https://YuxinZhaozyx.github.io/tags/github/</loc>
-    <lastmod>2019-07-09T16:40:32+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://YuxinZhaozyx.github.io/categories/hugo/</loc>
-    <lastmod>2019-07-09T16:40:32+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://YuxinZhaozyx.github.io/tags/hugo/</loc>
     <lastmod>2019-07-09T16:40:32+08:00</lastmod>
     <priority>0</priority>
   </url>

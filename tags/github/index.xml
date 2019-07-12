@@ -230,7 +230,7 @@
         &lt;td nowrap&gt;&lt;code&gt;createIssueManually&lt;/code&gt;&lt;/td&gt;
         &lt;td&gt;Boolean&lt;/td&gt;
         &lt;td&gt;yes&lt;/td&gt;
-        &lt;td width=50% nowrap&gt;如果当前页面没有相应的 isssue 且登录的用户属于 admin，则会自动创建 issue。如果设置为 true，则显示一个初始化页面，创建 issue 需要点击 init 按钮。&lt;/td&gt;
+        &lt;td width=50% nowrap&gt;如果当前页面没有相应的 issue 且登录的用户属于 admin，则会自动创建 issue。如果设置为 true，则显示一个初始化页面，创建 issue 需要点击 init 按钮。&lt;/td&gt;
         &lt;td&gt;&lt;code&gt;false&lt;/code&gt;&lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
