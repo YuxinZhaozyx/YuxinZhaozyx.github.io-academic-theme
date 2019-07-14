@@ -7,10 +7,64 @@
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
     <language>en-us</language>
     <copyright>Copyright &amp;copy; {year} YuxinZhao</copyright>
-    <lastBuildDate>Fri, 12 Jul 2019 11:45:33 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 14 Jul 2019 13:40:12 +0800</lastBuildDate>
     
 	    <atom:link href="https://YuxinZhaozyx.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Faster R-CNN</title>
+      <link>https://YuxinZhaozyx.github.io/tags/faster-r-cnn/</link>
+      <pubDate>Sun, 14 Jul 2019 13:40:12 +0800</pubDate>
+      
+      <guid>https://YuxinZhaozyx.github.io/tags/faster-r-cnn/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>R-CNN</title>
+      <link>https://YuxinZhaozyx.github.io/tags/r-cnn/</link>
+      <pubDate>Sun, 14 Jul 2019 13:40:12 +0800</pubDate>
+      
+      <guid>https://YuxinZhaozyx.github.io/tags/r-cnn/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>RPN</title>
+      <link>https://YuxinZhaozyx.github.io/tags/rpn/</link>
+      <pubDate>Sun, 14 Jul 2019 13:40:12 +0800</pubDate>
+      
+      <guid>https://YuxinZhaozyx.github.io/tags/rpn/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>VGG</title>
+      <link>https://YuxinZhaozyx.github.io/tags/vgg/</link>
+      <pubDate>Sun, 14 Jul 2019 13:40:12 +0800</pubDate>
+      
+      <guid>https://YuxinZhaozyx.github.io/tags/vgg/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>deep learning</title>
+      <link>https://YuxinZhaozyx.github.io/tags/deep-learning/</link>
+      <pubDate>Sun, 14 Jul 2019 13:40:12 +0800</pubDate>
+      
+      <guid>https://YuxinZhaozyx.github.io/tags/deep-learning/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>object detection</title>
+      <link>https://YuxinZhaozyx.github.io/tags/object-detection/</link>
+      <pubDate>Sun, 14 Jul 2019 13:40:12 +0800</pubDate>
+      
+      <guid>https://YuxinZhaozyx.github.io/tags/object-detection/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>academic</title>

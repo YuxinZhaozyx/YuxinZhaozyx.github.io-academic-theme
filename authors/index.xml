@@ -7,7 +7,7 @@
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
     <language>en-us</language>
     <copyright>Copyright &amp;copy; {year} YuxinZhao</copyright>
-    <lastBuildDate>Fri, 12 Jul 2019 11:45:33 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 14 Jul 2019 13:40:12 +0800</lastBuildDate>
     
 	    <atom:link href="https://YuxinZhaozyx.github.io/authors/index.xml" rel="self" type="application/rss+xml" />
     
@@ -15,13 +15,49 @@
     <item>
       <title></title>
       <link>https://YuxinZhaozyx.github.io/authors/yuxinzhao/</link>
-      <pubDate>Fri, 12 Jul 2019 11:45:33 +0800</pubDate>
+      <pubDate>Sun, 14 Jul 2019 13:40:12 +0800</pubDate>
       
       <guid>https://YuxinZhaozyx.github.io/authors/yuxinzhao/</guid>
       <description>&lt;p&gt;I&amp;rsquo;m a college student of software engineering at the South China University of Technology. My research interests include artificial intelligence, micro service and engineering.&lt;/p&gt;
 
 &lt;p&gt;我是华南理工大学软件工程专业的一名大学生。我的研究兴趣包括人工智能、微服务和软件工程。&lt;/p&gt;
 </description>
+    </item>
+    
+    <item>
+      <title>Jian Sun</title>
+      <link>https://YuxinZhaozyx.github.io/authors/jian-sun/</link>
+      <pubDate>Sun, 14 Jul 2019 11:59:27 +0800</pubDate>
+      
+      <guid>https://YuxinZhaozyx.github.io/authors/jian-sun/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Kaiming He</title>
+      <link>https://YuxinZhaozyx.github.io/authors/kaiming-he/</link>
+      <pubDate>Sun, 14 Jul 2019 11:59:27 +0800</pubDate>
+      
+      <guid>https://YuxinZhaozyx.github.io/authors/kaiming-he/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Ross Girshick</title>
+      <link>https://YuxinZhaozyx.github.io/authors/ross-girshick/</link>
+      <pubDate>Sun, 14 Jul 2019 11:59:27 +0800</pubDate>
+      
+      <guid>https://YuxinZhaozyx.github.io/authors/ross-girshick/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Shaoqing Ren</title>
+      <link>https://YuxinZhaozyx.github.io/authors/shaoqing-ren/</link>
+      <pubDate>Sun, 14 Jul 2019 11:59:27 +0800</pubDate>
+      
+      <guid>https://YuxinZhaozyx.github.io/authors/shaoqing-ren/</guid>
+      <description></description>
     </item>
     
     <item>
