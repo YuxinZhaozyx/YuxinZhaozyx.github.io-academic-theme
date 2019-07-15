@@ -20,8 +20,6 @@
       <guid>https://YuxinZhaozyx.github.io/post/what-is-roi-pooling/</guid>
       <description>
 
-&lt;p&gt;&lt;img src=&#34;featured.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
-
 &lt;p&gt;&lt;a href=&#34;https://YuxinZhaozyx.github.io/post/what-is-roi/&#34;&gt;上文&lt;/a&gt;讲了什么是RoI(Region of Interest, 感兴趣区域)，本文讲述RoI Pooling的概念。&lt;/p&gt;
 
 &lt;h3 id=&#34;roi-pooling-的作用&#34;&gt;RoI Pooling 的作用&lt;/h3&gt;
@@ -59,6 +57,12 @@
 &lt;li&gt;&lt;strong&gt;对每个section做max pooling，可以得到:&lt;/strong&gt;
 &lt;img src=&#34;image/roi-pooling-result.png&#34; alt=&#34;&#34; /&gt;&lt;/li&gt;
 &lt;/ol&gt;
+
+&lt;h2 id=&#34;参考引用&#34;&gt;参考引用&lt;/h2&gt;
+
+&lt;p&gt;[1] &lt;a href=&#34;https://deepsense.ai/region-of-interest-pooling-explained/&#34; target=&#34;_blank&#34;&gt;Region of interest pooling explained&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;[2] &lt;a href=&#34;https://blog.csdn.net/lanran2/article/details/60143861&#34; target=&#34;_blank&#34;&gt;ROI Pooling层解析&lt;/a&gt;&lt;/p&gt;
 </description>
     </item>
     
