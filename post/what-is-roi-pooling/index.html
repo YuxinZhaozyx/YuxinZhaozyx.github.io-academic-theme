@@ -28,10 +28,10 @@
   
     
   
-  <meta name="description" content="Student of Software Engineering">
+  <meta name="description" content="上文讲了什么是RoI(Region of Interest, 感兴趣区域)，本文讲述RoI Pooling的概念。 RoI Pooling 的作用 RoI Pooling是Pooling(池化)的">
 
   
-  <link rel="alternate" hreflang="en-us" href="https://YuxinZhaozyx.github.io/authors/">
+  <link rel="alternate" hreflang="en-us" href="https://YuxinZhaozyx.github.io/post/what-is-roi-pooling/">
 
   
 
@@ -101,44 +101,42 @@
   
 
   
-  <link rel="alternate" href="/authors/index.xml" type="application/rss+xml" title="YuxinZhao">
-  <link rel="feed" href="/authors/index.xml" type="application/rss+xml" title="YuxinZhao">
-  
 
   <link rel="manifest" href="/site.webmanifest">
   <link rel="icon" type="image/png" href="/img/icon.png">
   <link rel="apple-touch-icon" type="image/png" href="/img/icon-192.png">
 
-  <link rel="canonical" href="https://YuxinZhaozyx.github.io/authors/">
+  <link rel="canonical" href="https://YuxinZhaozyx.github.io/post/what-is-roi-pooling/">
 
   
   
   
   
     
-    
   
-  <meta property="twitter:card" content="summary">
+  <meta property="twitter:card" content="summary_large_image">
   
   <meta property="og:site_name" content="YuxinZhao">
-  <meta property="og:url" content="https://YuxinZhaozyx.github.io/authors/">
-  <meta property="og:title" content="Authors | YuxinZhao">
-  <meta property="og:description" content="Student of Software Engineering"><meta property="og:image" content="https://YuxinZhaozyx.github.io/img/icon-192.png">
-  <meta property="twitter:image" content="https://YuxinZhaozyx.github.io/img/icon-192.png"><meta property="og:locale" content="en-us">
+  <meta property="og:url" content="https://YuxinZhaozyx.github.io/post/what-is-roi-pooling/">
+  <meta property="og:title" content="What is RoI Pooling? | YuxinZhao">
+  <meta property="og:description" content="上文讲了什么是RoI(Region of Interest, 感兴趣区域)，本文讲述RoI Pooling的概念。 RoI Pooling 的作用 RoI Pooling是Pooling(池化)的"><meta property="og:image" content="https://YuxinZhaozyx.github.io/post/what-is-roi-pooling/featured.png">
+  <meta property="twitter:image" content="https://YuxinZhaozyx.github.io/post/what-is-roi-pooling/featured.png"><meta property="og:locale" content="en-us">
   
-  <meta property="og:updated_time" content="2019-07-15T11:52:13&#43;08:00">
+  <meta property="article:published_time" content="2019-07-15T11:52:13&#43;08:00">
   
-
-  
-
-
+  <meta property="article:modified_time" content="2019-07-15T11:52:13&#43;08:00">
   
 
+  
+
+
+  
 
 
 
 
-  <title>Authors | YuxinZhao</title>
+
+  <title>What is RoI Pooling? | YuxinZhao</title>
 
 </head>
 
@@ -371,53 +369,388 @@
 </nav>
 
 
-  
-
-
-
-
-
-
-
-
-
-
-
+  <article class="article" itemscope itemtype="http://schema.org/Article">
 
   
 
+
+
+
+
+
+
+
+
+
+
+
+  
+
   
   
+  
+<div class="article-container pt-3">
+  <h1 itemprop="name">What is RoI Pooling?</h1>
+
+  
+  <p class="page-subtitle">本文解释RoI Pooling的概念</p>
+  
+
   
     
-  
-<div class="universal-wrapper pt-3">
-  <h1 itemprop="name">Authors</h1>
+
+
+
+<meta content="2019-07-15 11:52:13 &#43;0800 CST" itemprop="datePublished">
+<meta content="2019-07-15 11:52:13 &#43;0800 CST" itemprop="dateModified">
+
+<div class="article-metadata">
 
   
+  
+  
+  
+  <div>
+    
+
+
+
+  <span itemprop="author name" itemtype="http://schema.org/Person"><a href="/authors/yuxinzhao/">Yuxin Zhao 赵煜新</a></span>
+
+  </div>
+  
+  
 
   
-</div>
-
-
-
-<div class="universal-wrapper">
-  
-
-  <ul>
+  <span class="article-date">
     
     
       
-      <li><a href="https://YuxinZhaozyx.github.io/authors/yuxinzhao/">Yuxin Zhao 赵煜新</a></li>
+    
+    <time>Jul 15, 2019</time>
+  </span>
+  
+
+  
+
+  
+  <span class="middot-divider"></span>
+  <span class="article-reading-time">
+    1 min read
+  </span>
+  
+
+  
+  
+
+  
+  
+  <span class="middot-divider"></span>
+  <span class="article-categories">
+    <i class="fas fa-folder"></i>
+    <a href="/categories/computer-vision/">computer vision</a></span>
+  
+
+  
+    
+<div class="share-box" aria-hidden="true">
+  <ul class="share">
     
       
-      <li><a href="https://YuxinZhaozyx.github.io/authors/admin/">Nelson Bighetti</a></li>
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://twitter.com/intent/tweet?url=https://YuxinZhaozyx.github.io/post/what-is-roi-pooling/&amp;text=What%20is%20RoI%20Pooling?" target="_blank" rel="noopener" class="share-btn-twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.facebook.com/sharer.php?u=https://YuxinZhaozyx.github.io/post/what-is-roi-pooling/&amp;t=What%20is%20RoI%20Pooling?" target="_blank" rel="noopener" class="share-btn-facebook">
+          <i class="fab fa-facebook-f"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="mailto:?subject=What%20is%20RoI%20Pooling?&amp;body=https://YuxinZhaozyx.github.io/post/what-is-roi-pooling/" target="_blank" rel="noopener" class="share-btn-email">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.linkedin.com/shareArticle?url=https://YuxinZhaozyx.github.io/post/what-is-roi-pooling/&amp;title=What%20is%20RoI%20Pooling?" target="_blank" rel="noopener" class="share-btn-linkedin">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://web.whatsapp.com/send?text=What%20is%20RoI%20Pooling?%20https://YuxinZhaozyx.github.io/post/what-is-roi-pooling/" target="_blank" rel="noopener" class="share-btn-whatsapp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://service.weibo.com/share/share.php?url=https://YuxinZhaozyx.github.io/post/what-is-roi-pooling/&amp;title=What%20is%20RoI%20Pooling?" target="_blank" rel="noopener" class="share-btn-weibo">
+          <i class="fab fa-weibo"></i>
+        </a>
+      </li>
     
   </ul>
+</div>
+
 
   
 
 </div>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+</div>
+
+
+
+  <div class="article-container">
+
+    <div class="article-style" itemprop="articleBody">
+      
+
+<p><img src="featured.png" alt="" /></p>
+
+<p><a href="/post/what-is-roi/">上文</a>讲了什么是RoI(Region of Interest, 感兴趣区域)，本文讲述RoI Pooling的概念。</p>
+
+<h3 id="roi-pooling-的作用">RoI Pooling 的作用</h3>
+
+<p>RoI Pooling是Pooling(池化)的一种，而且是针对RoI的池化。它的作用是<strong>输入尺寸不固定的特征图，输出尺寸固定的特征图</strong>。</p>
+
+<h3 id="roi-pooling-的输入">RoI Pooling 的输入</h3>
+
+<ul>
+<li><strong>特征图 feature map</strong>：由原图像通过CNN计算得到的特征图</li>
+<li><strong>感兴趣区域 RoI</strong>: 许多候选框，形状为$1 \times 5 \times 1$ (4 个坐标[x,y,w,h] + 索引[index])</li>
+</ul>
+
+<div class="alert alert-note">
+  <div>
+    <strong>RoI的坐标的参考系是原图(CNN的输入)</strong>，而不是feature map。
+  </div>
+</div>
+
+<h3 id="roi-pooling-的输出">RoI Pooling 的输出</h3>
+
+<p>输出batch个张量，其中batch的值等于RoI的个数，张量大小为(channel, w, h)， w和h人为指定。RoI Pooling的过程就是将一个个尺寸不同的RoI都映射成大小固定的(w, h)的RoI。</p>
+
+<h2 id="图解-roi-pooling">图解 RoI Pooling</h2>
+
+<p>考虑一个 $8 \times 8$ 大小的feature map，一个RoI，以及输出大小为 $2 \times 2$.</p>
+
+<ol>
+<li><strong>输入固定大小的feature map</strong>
+<img src="image/input-feature-map.png" alt="" /></li>
+<li><strong>region proposal 投影后的位置</strong>
+<img src="image/region-proposal.png" alt="" /></li>
+<li><strong>将其划分为 $(2 \times 2)$ 个sections (因为输出大小为$2 \times 2$)</strong>
+<img src="image/max-pooling-sections.png" alt="" /></li>
+<li><strong>对每个section做max pooling，可以得到:</strong>
+<img src="image/roi-pooling-result.png" alt="" /></li>
+</ol>
+
+    </div>
+
+    
+
+<div class="article-tags">
+  
+  <a class="badge badge-light" href="/tags/roi/">RoI</a>
+  
+  <a class="badge badge-light" href="/tags/pooling/">pooling</a>
+  
+  <a class="badge badge-light" href="/tags/computer-vision/">computer vision</a>
+  
+</div>
+
+
+
+    
+      
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+  
+
+
+
+
+
+  
+  
+  
+    
+  
+  
+  <div class="media author-card" itemscope itemtype="http://schema.org/Person">
+    
+      
+      <img class="portrait mr-3" src="/authors/yuxinzhao/avatar_hu53c49a6bf84423129c94a7ea41b67289_336578_250x250_fill_q90_lanczos_center.jpg" itemprop="image" alt="Avatar">
+    
+
+    <div class="media-body">
+      <h5 class="card-title" itemprop="name"><a href="https://YuxinZhaozyx.github.io/">Yuxin Zhao 赵煜新</a></h5>
+      <h6 class="card-subtitle">Student of Software Engineering</h6>
+      <p class="card-text" itemprop="description">My research interests include Artificial Intelligence, Micro Service and Engineering.</p>
+      <ul class="network-icon" aria-hidden="true">
+        
+          
+          
+          
+            
+          
+          
+          
+          
+          
+            
+          
+          <li>
+            <a itemprop="sameAs" href="/#contact" >
+              <i class="fas fa-envelope"></i>
+            </a>
+          </li>
+        
+          
+          
+          
+            
+          
+          
+          
+          
+          
+            
+          
+          <li>
+            <a itemprop="sameAs" href="https://github.com/YuxinZhaozyx" target="_blank" rel="noopener">
+              <i class="fab fa-github"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+
+
+      
+      
+      <div class="article-widget">
+        <div class="hr-light"></div>
+        <h3>Related</h3>
+        <ul>
+          
+          <li><a href="/post/what-is-roi/">What is RoI?</a></li>
+          
+        </ul>
+      </div>
+      
+    
+
+    
+
+    
+<section id="comments">
+	<div id="gitalkContainer"></div>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+	<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+
+	<script>
+		var gitalk = new Gitalk({
+			clientID: "ec5806c0144b70a1b32e",
+			clientSecret: "aadae41a3747ffa5b36fd0e13c7e84026db07e0c",
+			repo: "YuxinZhaozyx.github.io",
+			owner: "YuxinZhaozyx",
+			admin: ["YuxinZhaozyx"],
+			id: '2019-07-15 11:52:13 \x2b0800 CST',      
+			labels: ["Comments"],
+			distractionFreeMode:  false ,  
+			pagerDirection: "last",
+			createIssueManually:  false ,
+			enableHotKey:  true ,
+			flipMoveOptions: {
+				staggerDelayBy:  150 ,
+				appearAnimation: "elevator",
+				enterAnimation: "elevator",
+				leaveAnimation: "elevator",
+			},
+		});
+		gitalk.render('gitalkContainer');
+	</script>
+</section>
+
+
+
+  </div>
+</article>
 
       
 

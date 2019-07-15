@@ -7,7 +7,7 @@
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
     <language>en-us</language>
     <copyright>Copyright &amp;copy; {year} YuxinZhao</copyright>
-    <lastBuildDate>Mon, 15 Jul 2019 11:07:26 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 15 Jul 2019 11:52:13 +0800</lastBuildDate>
     
 	    <atom:link href="https://YuxinZhaozyx.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
@@ -15,7 +15,7 @@
     <item>
       <title>RoI</title>
       <link>https://YuxinZhaozyx.github.io/tags/roi/</link>
-      <pubDate>Mon, 15 Jul 2019 11:07:26 +0800</pubDate>
+      <pubDate>Mon, 15 Jul 2019 11:52:13 +0800</pubDate>
       
       <guid>https://YuxinZhaozyx.github.io/tags/roi/</guid>
       <description></description>
@@ -24,9 +24,18 @@
     <item>
       <title>computer vision</title>
       <link>https://YuxinZhaozyx.github.io/tags/computer-vision/</link>
-      <pubDate>Mon, 15 Jul 2019 11:07:26 +0800</pubDate>
+      <pubDate>Mon, 15 Jul 2019 11:52:13 +0800</pubDate>
       
       <guid>https://YuxinZhaozyx.github.io/tags/computer-vision/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>pooling</title>
+      <link>https://YuxinZhaozyx.github.io/tags/pooling/</link>
+      <pubDate>Mon, 15 Jul 2019 11:52:13 +0800</pubDate>
+      
+      <guid>https://YuxinZhaozyx.github.io/tags/pooling/</guid>
       <description></description>
     </item>
     

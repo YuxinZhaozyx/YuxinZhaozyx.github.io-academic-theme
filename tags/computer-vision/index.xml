@@ -7,10 +7,60 @@
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
     <language>en-us</language>
     <copyright>Copyright &amp;copy; {year} YuxinZhao</copyright>
-    <lastBuildDate>Mon, 15 Jul 2019 11:07:26 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 15 Jul 2019 11:52:13 +0800</lastBuildDate>
     
 	    <atom:link href="https://YuxinZhaozyx.github.io/tags/computer-vision/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>What is RoI Pooling?</title>
+      <link>https://YuxinZhaozyx.github.io/post/what-is-roi-pooling/</link>
+      <pubDate>Mon, 15 Jul 2019 11:52:13 +0800</pubDate>
+      
+      <guid>https://YuxinZhaozyx.github.io/post/what-is-roi-pooling/</guid>
+      <description>
+
+&lt;p&gt;&lt;img src=&#34;featured.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://YuxinZhaozyx.github.io/post/what-is-roi/&#34;&gt;上文&lt;/a&gt;讲了什么是RoI(Region of Interest, 感兴趣区域)，本文讲述RoI Pooling的概念。&lt;/p&gt;
+
+&lt;h3 id=&#34;roi-pooling-的作用&#34;&gt;RoI Pooling 的作用&lt;/h3&gt;
+
+&lt;p&gt;RoI Pooling是Pooling(池化)的一种，而且是针对RoI的池化。它的作用是&lt;strong&gt;输入尺寸不固定的特征图，输出尺寸固定的特征图&lt;/strong&gt;。&lt;/p&gt;
+
+&lt;h3 id=&#34;roi-pooling-的输入&#34;&gt;RoI Pooling 的输入&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;特征图 feature map&lt;/strong&gt;：由原图像通过CNN计算得到的特征图&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;感兴趣区域 RoI&lt;/strong&gt;: 许多候选框，形状为$1 \times 5 \times 1$ (4 个坐标[x,y,w,h] + 索引[index])&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;div class=&#34;alert alert-note&#34;&gt;
+  &lt;div&gt;
+    &lt;strong&gt;RoI的坐标的参考系是原图(CNN的输入)&lt;/strong&gt;，而不是feature map。
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&#34;roi-pooling-的输出&#34;&gt;RoI Pooling 的输出&lt;/h3&gt;
+
+&lt;p&gt;输出batch个张量，其中batch的值等于RoI的个数，张量大小为(channel, w, h)， w和h人为指定。RoI Pooling的过程就是将一个个尺寸不同的RoI都映射成大小固定的(w, h)的RoI。&lt;/p&gt;
+
+&lt;h2 id=&#34;图解-roi-pooling&#34;&gt;图解 RoI Pooling&lt;/h2&gt;
+
+&lt;p&gt;考虑一个 $8 \times 8$ 大小的feature map，一个RoI，以及输出大小为 $2 \times 2$.&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;输入固定大小的feature map&lt;/strong&gt;
+&lt;img src=&#34;image/input-feature-map.png&#34; alt=&#34;&#34; /&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;region proposal 投影后的位置&lt;/strong&gt;
+&lt;img src=&#34;image/region-proposal.png&#34; alt=&#34;&#34; /&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;将其划分为 $(2 \times 2)$ 个sections (因为输出大小为$2 \times 2$)&lt;/strong&gt;
+&lt;img src=&#34;image/max-pooling-sections.png&#34; alt=&#34;&#34; /&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;对每个section做max pooling，可以得到:&lt;/strong&gt;
+&lt;img src=&#34;image/roi-pooling-result.png&#34; alt=&#34;&#34; /&gt;&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+    </item>
     
     <item>
       <title>What is RoI?</title>
