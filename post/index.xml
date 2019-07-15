@@ -7,10 +7,98 @@
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
     <language>en-us</language>
     <copyright>Copyright &amp;copy; {year} YuxinZhao</copyright>
-    <lastBuildDate>Mon, 15 Jul 2019 20:20:32 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 15 Jul 2019 21:05:58 +0800</lastBuildDate>
     
 	    <atom:link href="https://YuxinZhaozyx.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>PR/ROC曲线及其相关性能评价指标</title>
+      <link>https://YuxinZhaozyx.github.io/post/pr-roc/</link>
+      <pubDate>Mon, 15 Jul 2019 21:05:58 +0800</pubDate>
+      
+      <guid>https://YuxinZhaozyx.github.io/post/pr-roc/</guid>
+      <description>
+
+&lt;p&gt;在分类模型的评价标准中，PR曲线和ROC曲线被广泛应用于模型的性能评估。本文对PR曲线和ROC曲线及其相关的性能指标AUC, EER进行介绍。&lt;/p&gt;
+
+&lt;h2 id=&#34;混淆矩阵-confusion-matrix&#34;&gt;混淆矩阵 Confusion Matrix&lt;/h2&gt;
+
+&lt;div style = &#34;text-align:center;&#34; &gt;
+&lt;table align=&#34;center&#34; style= &#34;vertical-align: middle;&#34;&gt;
+    &lt;tr&gt;
+        &lt;td colspan=&#34;2&#34; rowspan=&#34;2&#34;&gt;&lt;/td&gt;
+        &lt;td colspan=&#34;2&#34;&gt;Truth&lt;/td&gt;
+        &lt;td rowspan=&#34;2&#34;&gt; $\sum$ &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt;1&lt;/td&gt;
+        &lt;td&gt;0&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td rowspan=&#34;2&#34;&gt; Estimate &lt;/td&gt;
+        &lt;td&gt; 1&lt;/td&gt;
+        &lt;td&gt; TP &lt;/td&gt;
+        &lt;td&gt; FP &lt;/td&gt;
+        &lt;td&gt; TP+FP &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td&gt; 0 &lt;/td&gt;
+        &lt;td&gt; FN &lt;/td&gt;
+        &lt;td&gt; FP &lt;/td&gt;
+        &lt;td&gt; FN+FP &lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+        &lt;td colspan=&#34;2&#34;&gt; $\sum$ &lt;/td&gt;
+        &lt;td&gt; TP+FN &lt;/td&gt;
+        &lt;td&gt; FP+TN &lt;/td&gt;
+        &lt;td&gt; TP+TN+FP+FN &lt;/td&gt;
+    &lt;/tr&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+
+&lt;ul&gt;
+&lt;li&gt;真正例 (True Positive, TP): 预测值和真实值都为1&lt;/li&gt;
+&lt;li&gt;假正例 (False Positive, FP): 预测值为1，真实值都为0&lt;/li&gt;
+&lt;li&gt;真反例 (True Negative, TN): 预测值和真实值都为0&lt;/li&gt;
+&lt;li&gt;假反例 (False Negative, FN): 预测值为0，真实值都为1&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;由这四个指标衍生出的指标：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;查准率/准确率:                       $ \text{Precision} = \frac{TP}{TP+FP} $&lt;/li&gt;
+&lt;li&gt;查全率/召回率:                       $\text{Recall} = \frac{TP}{TP+FN}$&lt;/li&gt;
+&lt;li&gt;真阳率(True Positive Rate): $\text{TPR} = \frac{TP}{TP+FN}$&lt;/li&gt;
+&lt;li&gt;假阳率(False Positive Rate): $\text{FPR} = \frac{FP}{FP+TN}$&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;roc曲线&#34;&gt;ROC曲线&lt;/h2&gt;
+
+&lt;h3 id=&#34;roc定义&#34;&gt;ROC定义&lt;/h3&gt;
+
+&lt;p&gt;ROC曲线(Receiver Operating Characteristic Curve, 受试者工作特征曲线)是比较分类模型好坏的可视化工具。&lt;/p&gt;
+
+&lt;p&gt;以FPR为x轴，TPR为y轴绘制图。如下图所示。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;image/ROC.jpg&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;在ROC曲线中又可衍生出EER, AUC两个指标。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;EER(equal error rate): TPR=FPR时的值。&lt;/li&gt;
+&lt;li&gt;AUC(area under curve): ROC曲线下的面积&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;pr曲线&#34;&gt;PR曲线&lt;/h2&gt;
+
+&lt;p&gt;PR曲线中P是Precision, R是Recall。&lt;/p&gt;
+
+&lt;p&gt;以Recall为x轴，Precision为y轴。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;image/38381443447279.png&#34; alt=&#34;img&#34; /&gt;&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>What is IoU?</title>
@@ -18,9 +106,9 @@
       <pubDate>Mon, 15 Jul 2019 20:20:32 +0800</pubDate>
       
       <guid>https://YuxinZhaozyx.github.io/post/what-is-iou/</guid>
-      <description>&lt;p&gt;在目标检测任务中常常IoU来计算预测窗口与真实窗口的交叠率。本文介绍IoU的概念。&lt;/p&gt;
+      <description>&lt;p&gt;在目标检测任务中常常用IoU来计算预测窗口与真实窗口的交叠率。本文介绍IoU的概念。&lt;/p&gt;
 
-&lt;p&gt;IoU (Intersection over Union) 是两个窗口的交集与并集面积之比。&lt;/p&gt;
+&lt;p&gt;IoU (Intersection over Union, 交并比) 是两个窗口的交集与并集面积之比。&lt;/p&gt;
 
 &lt;ul&gt;
 &lt;li&gt;区域 Region-1 与 Region-2 的交集如上图黄色区域&lt;/li&gt;

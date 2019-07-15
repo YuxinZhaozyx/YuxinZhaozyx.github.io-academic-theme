@@ -28,10 +28,10 @@
   
     
   
-  <meta name="description" content="Student of Software Engineering">
+  <meta name="description" content="在分类模型的评价标准中，PR曲线和ROC曲线被广泛应用于模型的性能评估。本文对PR曲线和ROC曲线及其相关的性能指标AUC, EER进行介绍。">
 
   
-  <link rel="alternate" hreflang="en-us" href="https://YuxinZhaozyx.github.io/authors/yuxinzhao/">
+  <link rel="alternate" hreflang="en-us" href="https://YuxinZhaozyx.github.io/post/pr-roc/">
 
   
 
@@ -101,15 +101,12 @@
   
 
   
-  <link rel="alternate" href="/authors/yuxinzhao/index.xml" type="application/rss+xml" title="YuxinZhao">
-  <link rel="feed" href="/authors/yuxinzhao/index.xml" type="application/rss+xml" title="YuxinZhao">
-  
 
   <link rel="manifest" href="/site.webmanifest">
   <link rel="icon" type="image/png" href="/img/icon.png">
   <link rel="apple-touch-icon" type="image/png" href="/img/icon-192.png">
 
-  <link rel="canonical" href="https://YuxinZhaozyx.github.io/authors/yuxinzhao/">
+  <link rel="canonical" href="https://YuxinZhaozyx.github.io/post/pr-roc/">
 
   
   
@@ -121,12 +118,14 @@
   <meta property="twitter:card" content="summary">
   
   <meta property="og:site_name" content="YuxinZhao">
-  <meta property="og:url" content="https://YuxinZhaozyx.github.io/authors/yuxinzhao/">
-  <meta property="og:title" content=" | YuxinZhao">
-  <meta property="og:description" content="Student of Software Engineering"><meta property="og:image" content="https://YuxinZhaozyx.github.io/img/icon-192.png">
+  <meta property="og:url" content="https://YuxinZhaozyx.github.io/post/pr-roc/">
+  <meta property="og:title" content="PR/ROC曲线及其相关性能评价指标 | YuxinZhao">
+  <meta property="og:description" content="在分类模型的评价标准中，PR曲线和ROC曲线被广泛应用于模型的性能评估。本文对PR曲线和ROC曲线及其相关的性能指标AUC, EER进行介绍。"><meta property="og:image" content="https://YuxinZhaozyx.github.io/img/icon-192.png">
   <meta property="twitter:image" content="https://YuxinZhaozyx.github.io/img/icon-192.png"><meta property="og:locale" content="en-us">
   
-  <meta property="og:updated_time" content="2019-07-15T21:05:58&#43;08:00">
+  <meta property="article:published_time" content="2019-07-15T21:05:58&#43;08:00">
+  
+  <meta property="article:modified_time" content="2019-07-15T21:05:58&#43;08:00">
   
 
   
@@ -138,7 +137,7 @@
 
 
 
-  <title> | YuxinZhao</title>
+  <title>PR/ROC曲线及其相关性能评价指标 | YuxinZhao</title>
 
 </head>
 
@@ -371,20 +370,7 @@
 </nav>
 
 
-  
-
-
-<section id="profile-page" class="pt-5">
-  <div class="container">
-    
-    
-      
-      
-      
-      
-
-
-
+  <article class="article" itemscope itemtype="http://schema.org/Article">
 
   
 
@@ -396,185 +382,420 @@
 
 
 
-<div class="row" itemprop="author" itemscope itemtype="http://schema.org/Person" itemref="person-email person-address">
-  <div class="col-12 col-lg-4">
-    <div id="profile">
 
-      
-      
-      <img class="portrait" src="/authors/yuxinzhao/avatar_hu53c49a6bf84423129c94a7ea41b67289_336578_250x250_fill_q90_lanczos_center.jpg" itemprop="image" alt="Avatar">
-      
 
-      <div class="portrait-title">
-        <h2 itemprop="name">Yuxin Zhao 赵煜新</h2>
-        <h3 itemprop="jobTitle">Student of Software Engineering</h3>
 
-        
-        <h3 itemprop="worksFor" itemscope itemtype="http://schema.org/Organization">
-          <a href="https://www.scut.edu.cn/" target="_blank" itemprop="url" rel="noopener">
-          <span itemprop="name">South China University of Technology 华南理工大学</span>
-          </a>
-        </h3>
-        
-      </div>
+  
 
-      <link itemprop="url" href="">
+  
+  
+  
+<div class="article-container pt-3">
+  <h1 itemprop="name">PR/ROC曲线及其相关性能评价指标</h1>
 
-      <ul class="network-icon" aria-hidden="true">
-        
-        
-        
-        
-          
-        
-        
-        
-        
-        
-          
-        
-        <li>
-          <a itemprop="sameAs" href="/#contact" >
-            <i class="fas fa-envelope big-icon"></i>
-          </a>
-        </li>
-        
-        
-        
-        
-          
-        
-        
-        
-        
-        
-          
-        
-        <li>
-          <a itemprop="sameAs" href="https://github.com/YuxinZhaozyx" target="_blank" rel="noopener">
-            <i class="fab fa-github big-icon"></i>
-          </a>
-        </li>
-        
-      </ul>
+  
 
-    </div>
-  </div>
-  <div class="col-12 col-lg-8" itemprop="description">
-
-    
+  
     
 
-    <p>I&rsquo;m a college student of software engineering at the South China University of Technology. My research interests include artificial intelligence, micro service and engineering.</p>
-
-<p>我是华南理工大学软件工程专业的一名大学生。我的研究兴趣包括人工智能、微服务和软件工程。</p>
 
 
-    <div class="row">
+<meta content="2019-07-15 21:05:58 &#43;0800 CST" itemprop="datePublished">
+<meta content="2019-07-15 21:05:58 &#43;0800 CST" itemprop="dateModified">
 
-      
-      <div class="col-md-5">
-        <h3>Interests</h3>
-        <ul class="ul-interests">
-          
-          <li>Artificial Intelligence</li>
-          
-          <li>Micro Service</li>
-          
-          <li>Engineering</li>
-          
-        </ul>
-      </div>
-      
+<div class="article-metadata">
 
-      
-      <div class="col-md-7">
-        <h3>Education</h3>
-        <ul class="ul-edu fa-ul">
-          
-          <li>
-            <i class="fa-li fas fa-graduation-cap"></i>
-            <div class="description">
-              <p class="course">BSc in Software Engineering, 2021</p>
-              <p class="institution">South China University of Technology</p>
-            </div>
-          </li>
-          
-        </ul>
-      </div>
-      
+  
+  
+  
+  
+  <div>
+    
 
-    </div>
+
+
+  <span itemprop="author name" itemtype="http://schema.org/Person"><a href="/authors/yuxinzhao/">Yuxin Zhao 赵煜新</a></span>
+
   </div>
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+    
+    <time>Jul 15, 2019</time>
+  </span>
+  
+
+  
+
+  
+  <span class="middot-divider"></span>
+  <span class="article-reading-time">
+    1 min read
+  </span>
+  
+
+  
+  
+
+  
+  
+  <span class="middot-divider"></span>
+  <span class="article-categories">
+    <i class="fas fa-folder"></i>
+    <a href="/categories/computer-vision/">computer vision</a></span>
+  
+
+  
+    
+<div class="share-box" aria-hidden="true">
+  <ul class="share">
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://twitter.com/intent/tweet?url=https://YuxinZhaozyx.github.io/post/pr-roc/&amp;text=PR/ROC%e6%9b%b2%e7%ba%bf%e5%8f%8a%e5%85%b6%e7%9b%b8%e5%85%b3%e6%80%a7%e8%83%bd%e8%af%84%e4%bb%b7%e6%8c%87%e6%a0%87" target="_blank" rel="noopener" class="share-btn-twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.facebook.com/sharer.php?u=https://YuxinZhaozyx.github.io/post/pr-roc/&amp;t=PR/ROC%e6%9b%b2%e7%ba%bf%e5%8f%8a%e5%85%b6%e7%9b%b8%e5%85%b3%e6%80%a7%e8%83%bd%e8%af%84%e4%bb%b7%e6%8c%87%e6%a0%87" target="_blank" rel="noopener" class="share-btn-facebook">
+          <i class="fab fa-facebook-f"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="mailto:?subject=PR/ROC%e6%9b%b2%e7%ba%bf%e5%8f%8a%e5%85%b6%e7%9b%b8%e5%85%b3%e6%80%a7%e8%83%bd%e8%af%84%e4%bb%b7%e6%8c%87%e6%a0%87&amp;body=https://YuxinZhaozyx.github.io/post/pr-roc/" target="_blank" rel="noopener" class="share-btn-email">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.linkedin.com/shareArticle?url=https://YuxinZhaozyx.github.io/post/pr-roc/&amp;title=PR/ROC%e6%9b%b2%e7%ba%bf%e5%8f%8a%e5%85%b6%e7%9b%b8%e5%85%b3%e6%80%a7%e8%83%bd%e8%af%84%e4%bb%b7%e6%8c%87%e6%a0%87" target="_blank" rel="noopener" class="share-btn-linkedin">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://web.whatsapp.com/send?text=PR/ROC%e6%9b%b2%e7%ba%bf%e5%8f%8a%e5%85%b6%e7%9b%b8%e5%85%b3%e6%80%a7%e8%83%bd%e8%af%84%e4%bb%b7%e6%8c%87%e6%a0%87%20https://YuxinZhaozyx.github.io/post/pr-roc/" target="_blank" rel="noopener" class="share-btn-whatsapp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://service.weibo.com/share/share.php?url=https://YuxinZhaozyx.github.io/post/pr-roc/&amp;title=PR/ROC%e6%9b%b2%e7%ba%bf%e5%8f%8a%e5%85%b6%e7%9b%b8%e5%85%b3%e6%80%a7%e8%83%bd%e8%af%84%e4%bb%b7%e6%8c%87%e6%a0%87" target="_blank" rel="noopener" class="share-btn-weibo">
+          <i class="fab fa-weibo"></i>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+
+
+  
+
 </div>
 
     
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+</div>
+
+
+
+  <div class="article-container">
+
+    <div class="article-style" itemprop="articleBody">
+      
+
+<p>在分类模型的评价标准中，PR曲线和ROC曲线被广泛应用于模型的性能评估。本文对PR曲线和ROC曲线及其相关的性能指标AUC, EER进行介绍。</p>
+
+<h2 id="混淆矩阵-confusion-matrix">混淆矩阵 Confusion Matrix</h2>
+
+<div style = "text-align:center;" >
+<table align="center" style= "vertical-align: middle;">
+    <tr>
+        <td colspan="2" rowspan="2"></td>
+        <td colspan="2">Truth</td>
+        <td rowspan="2"> $\sum$ </td>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>0</td>
+    </tr>
+    <tr>
+        <td rowspan="2"> Estimate </td>
+        <td> 1</td>
+        <td> TP </td>
+        <td> FP </td>
+        <td> TP+FP </td>
+    </tr>
+    <tr>
+        <td> 0 </td>
+        <td> FN </td>
+        <td> FP </td>
+        <td> FN+FP </td>
+    </tr>
+    <tr>
+        <td colspan="2"> $\sum$ </td>
+        <td> TP+FN </td>
+        <td> FP+TN </td>
+        <td> TP+TN+FP+FN </td>
+    </tr>
+</table>
+</div>
+
+<ul>
+<li>真正例 (True Positive, TP): 预测值和真实值都为1</li>
+<li>假正例 (False Positive, FP): 预测值为1，真实值都为0</li>
+<li>真反例 (True Negative, TN): 预测值和真实值都为0</li>
+<li>假反例 (False Negative, FN): 预测值为0，真实值都为1</li>
+</ul>
+
+<p>由这四个指标衍生出的指标：</p>
+
+<ul>
+<li>查准率/准确率:                       $ \text{Precision} = \frac{TP}{TP+FP} $</li>
+<li>查全率/召回率:                       $\text{Recall} = \frac{TP}{TP+FN}$</li>
+<li>真阳率(True Positive Rate): $\text{TPR} = \frac{TP}{TP+FN}$</li>
+<li>假阳率(False Positive Rate): $\text{FPR} = \frac{FP}{FP+TN}$</li>
+</ul>
+
+<h2 id="roc曲线">ROC曲线</h2>
+
+<h3 id="roc定义">ROC定义</h3>
+
+<p>ROC曲线(Receiver Operating Characteristic Curve, 受试者工作特征曲线)是比较分类模型好坏的可视化工具。</p>
+
+<p>以FPR为x轴，TPR为y轴绘制图。如下图所示。</p>
+
+<p><img src="image/ROC.jpg" alt="" /></p>
+
+<p>在ROC曲线中又可衍生出EER, AUC两个指标。</p>
+
+<ul>
+<li>EER(equal error rate): TPR=FPR时的值。</li>
+<li>AUC(area under curve): ROC曲线下的面积</li>
+</ul>
+
+<h2 id="pr曲线">PR曲线</h2>
+
+<p>PR曲线中P是Precision, R是Recall。</p>
+
+<p>以Recall为x轴，Precision为y轴。</p>
+
+<p><img src="image/38381443447279.png" alt="img" /></p>
+
+    </div>
+
     
+
+<div class="article-tags">
+  
+  <a class="badge badge-light" href="/tags/pr/">PR</a>
+  
+  <a class="badge badge-light" href="/tags/roc/">ROC</a>
+  
+  <a class="badge badge-light" href="/tags/auc/">AUC</a>
+  
+  <a class="badge badge-light" href="/tags/eer/">EER</a>
+  
+  <a class="badge badge-light" href="/tags/computer-vision/">computer vision</a>
+  
+</div>
+
+
+
     
+      
+
+
+
+
+
+
+
+
+  
+  
     
-    <div class="article-widget">
-      <div class="hr-light"></div>
-      <h3>Latest</h3>
-      <ul>
+  
+  
+
+
+
+
+
+  
+  
+  
+    
+  
+  
+  <div class="media author-card" itemscope itemtype="http://schema.org/Person">
+    
+      
+      <img class="portrait mr-3" src="/authors/yuxinzhao/avatar_hu53c49a6bf84423129c94a7ea41b67289_336578_250x250_fill_q90_lanczos_center.jpg" itemprop="image" alt="Avatar">
+    
+
+    <div class="media-body">
+      <h5 class="card-title" itemprop="name"><a href="https://YuxinZhaozyx.github.io/">Yuxin Zhao 赵煜新</a></h5>
+      <h6 class="card-subtitle">Student of Software Engineering</h6>
+      <p class="card-text" itemprop="description">My research interests include Artificial Intelligence, Micro Service and Engineering.</p>
+      <ul class="network-icon" aria-hidden="true">
         
-        <li>
-          <a href="/post/pr-roc/">PR/ROC曲线及其相关性能评价指标</a>
-        </li>
+          
+          
+          
+            
+          
+          
+          
+          
+          
+            
+          
+          <li>
+            <a itemprop="sameAs" href="/#contact" >
+              <i class="fas fa-envelope"></i>
+            </a>
+          </li>
         
-        <li>
-          <a href="/post/what-is-iou/">What is IoU?</a>
-        </li>
-        
-        <li>
-          <a href="/post/what-is-roi-pooling/">What is RoI Pooling?</a>
-        </li>
-        
-        <li>
-          <a href="/post/what-is-roi/">What is RoI?</a>
-        </li>
-        
-        <li>
-          <a href="/paper-note/faster-r-cnn-towards-real-time-object-detection-with-region-proposal-networks/">[论文笔记] Faster R-CNN: Towards Real-Time Object Detection With Region Proposal Networks</a>
-        </li>
-        
-        <li>
-          <a href="/post/icons-of-hugo-academic/">Hugo Academic Icon配置</a>
-        </li>
-        
-        <li>
-          <a href="/post/gitalk-in-hugo/">Hugo博客集成Gitalk评论模块</a>
-        </li>
-        
-        <li>
-          <a href="/post/git-merge-already-up-to-date/">git merge命令提示Already up to date</a>
-        </li>
-        
-        <li>
-          <a href="/post/gitment-in-hugo/">Hugo博客集成Gitment评论模块</a>
-        </li>
-        
-        <li>
-          <a href="/post/gomicrobookshop-project/dev-note-1/">GoMicroBookshop项目开发笔记-1</a>
-        </li>
-        
-        <li>
-          <a href="/post/gomicrobookshop-project/dev-note-0/">GoMicroBookshop项目开发笔记-0</a>
-        </li>
-        
-        <li>
-          <a href="/post/latex-math-symbols/">$\LaTeX$ Math Symbols</a>
-        </li>
-        
-        <li>
-          <a href="/project/gomicrobookshop/">GoMicroBookshop</a>
-        </li>
+          
+          
+          
+            
+          
+          
+          
+          
+          
+            
+          
+          <li>
+            <a itemprop="sameAs" href="https://github.com/YuxinZhaozyx" target="_blank" rel="noopener">
+              <i class="fab fa-github"></i>
+            </a>
+          </li>
         
       </ul>
     </div>
   </div>
-  
+
+
+
+      
+      
+      <div class="article-widget">
+        <div class="hr-light"></div>
+        <h3>Related</h3>
+        <ul>
+          
+          <li><a href="/post/what-is-iou/">What is IoU?</a></li>
+          
+          <li><a href="/post/what-is-roi-pooling/">What is RoI Pooling?</a></li>
+          
+          <li><a href="/post/what-is-roi/">What is RoI?</a></li>
+          
+        </ul>
+      </div>
+      
+    
+
+    
+
+    
+<section id="comments">
+	<div id="gitalkContainer"></div>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+	<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+
+	<script>
+		var gitalk = new Gitalk({
+			clientID: "ec5806c0144b70a1b32e",
+			clientSecret: "aadae41a3747ffa5b36fd0e13c7e84026db07e0c",
+			repo: "YuxinZhaozyx.github.io",
+			owner: "YuxinZhaozyx",
+			admin: ["YuxinZhaozyx"],
+			id: '2019-07-15 21:05:58 \x2b0800 CST',      
+			labels: ["Comments"],
+			distractionFreeMode:  false ,  
+			pagerDirection: "last",
+			createIssueManually:  false ,
+			enableHotKey:  true ,
+			flipMoveOptions: {
+				staggerDelayBy:  150 ,
+				appearAnimation: "elevator",
+				enterAnimation: "elevator",
+				leaveAnimation: "elevator",
+			},
+		});
+		gitalk.render('gitalkContainer');
+	</script>
 </section>
+
+
+
+  </div>
+</article>
 
       
 
