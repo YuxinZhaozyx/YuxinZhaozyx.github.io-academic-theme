@@ -4,24 +4,59 @@
   
   <url>
     <loc>https://YuxinZhaozyx.github.io/authors/yuxinzhao/</loc>
-    <lastmod>2019-07-15T11:52:13+08:00</lastmod>
+    <lastmod>2019-07-15T20:20:32+08:00</lastmod>
   </url>
   
   <url>
     <loc>https://YuxinZhaozyx.github.io/authors/</loc>
-    <lastmod>2019-07-15T11:52:13+08:00</lastmod>
+    <lastmod>2019-07-15T20:20:32+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://YuxinZhaozyx.github.io/categories/</loc>
-    <lastmod>2019-07-15T11:52:13+08:00</lastmod>
+    <lastmod>2019-07-15T20:20:32+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://YuxinZhaozyx.github.io/tags/iou/</loc>
+    <lastmod>2019-07-15T20:20:32+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://YuxinZhaozyx.github.io/post/</loc>
-    <lastmod>2019-07-15T11:52:13+08:00</lastmod>
+    <lastmod>2019-07-15T20:20:32+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://YuxinZhaozyx.github.io/tags/</loc>
+    <lastmod>2019-07-15T20:20:32+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://YuxinZhaozyx.github.io/post/what-is-iou/</loc>
+    <lastmod>2019-07-15T20:20:32+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://YuxinZhaozyx.github.io/</loc>
+    <lastmod>2019-07-15T20:20:32+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://YuxinZhaozyx.github.io/categories/computer-vision/</loc>
+    <lastmod>2019-07-15T20:20:32+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://YuxinZhaozyx.github.io/tags/computer-vision/</loc>
+    <lastmod>2019-07-15T20:20:32+08:00</lastmod>
+    <priority>0</priority>
   </url>
   
   <url>
@@ -31,32 +66,8 @@
   </url>
   
   <url>
-    <loc>https://YuxinZhaozyx.github.io/tags/</loc>
-    <lastmod>2019-07-15T11:52:13+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>https://YuxinZhaozyx.github.io/post/what-is-roi-pooling/</loc>
     <lastmod>2019-07-15T11:52:13+08:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://YuxinZhaozyx.github.io/</loc>
-    <lastmod>2019-07-15T11:52:13+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://YuxinZhaozyx.github.io/categories/computer-vision/</loc>
-    <lastmod>2019-07-15T11:52:13+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://YuxinZhaozyx.github.io/tags/computer-vision/</loc>
-    <lastmod>2019-07-15T11:52:13+08:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>

@@ -28,10 +28,10 @@
   
     
   
-  <meta name="description" content="Student of Software Engineering">
+  <meta name="description" content="在目标检测任务中常常IoU来计算预测窗口与真实窗口的交叠率。本文介绍IoU的概念。 IoU (Intersection over Union) 是两个窗口的交集与并集面积之比。 区域 Region-1 与 Region-2 的交集如">
 
   
-  <link rel="alternate" hreflang="en-us" href="https://YuxinZhaozyx.github.io/categories/computer-vision/">
+  <link rel="alternate" hreflang="en-us" href="https://YuxinZhaozyx.github.io/post/what-is-iou/">
 
   
 
@@ -101,44 +101,42 @@
   
 
   
-  <link rel="alternate" href="/categories/computer-vision/index.xml" type="application/rss+xml" title="YuxinZhao">
-  <link rel="feed" href="/categories/computer-vision/index.xml" type="application/rss+xml" title="YuxinZhao">
-  
 
   <link rel="manifest" href="/site.webmanifest">
   <link rel="icon" type="image/png" href="/img/icon.png">
   <link rel="apple-touch-icon" type="image/png" href="/img/icon-192.png">
 
-  <link rel="canonical" href="https://YuxinZhaozyx.github.io/categories/computer-vision/">
+  <link rel="canonical" href="https://YuxinZhaozyx.github.io/post/what-is-iou/">
 
   
   
   
   
     
-    
   
-  <meta property="twitter:card" content="summary">
+  <meta property="twitter:card" content="summary_large_image">
   
   <meta property="og:site_name" content="YuxinZhao">
-  <meta property="og:url" content="https://YuxinZhaozyx.github.io/categories/computer-vision/">
-  <meta property="og:title" content="computer vision | YuxinZhao">
-  <meta property="og:description" content="Student of Software Engineering"><meta property="og:image" content="https://YuxinZhaozyx.github.io/img/icon-192.png">
-  <meta property="twitter:image" content="https://YuxinZhaozyx.github.io/img/icon-192.png"><meta property="og:locale" content="en-us">
+  <meta property="og:url" content="https://YuxinZhaozyx.github.io/post/what-is-iou/">
+  <meta property="og:title" content="What is IoU? | YuxinZhao">
+  <meta property="og:description" content="在目标检测任务中常常IoU来计算预测窗口与真实窗口的交叠率。本文介绍IoU的概念。 IoU (Intersection over Union) 是两个窗口的交集与并集面积之比。 区域 Region-1 与 Region-2 的交集如"><meta property="og:image" content="https://YuxinZhaozyx.github.io/post/what-is-iou/featured.png">
+  <meta property="twitter:image" content="https://YuxinZhaozyx.github.io/post/what-is-iou/featured.png"><meta property="og:locale" content="en-us">
   
-  <meta property="og:updated_time" content="2019-07-15T20:20:32&#43;08:00">
+  <meta property="article:published_time" content="2019-07-15T20:20:32&#43;08:00">
   
-
-  
-
-
+  <meta property="article:modified_time" content="2019-07-15T20:20:32&#43;08:00">
   
 
+  
+
+
+  
 
 
 
 
-  <title>computer vision | YuxinZhao</title>
+
+  <title>What is IoU? | YuxinZhao</title>
 
 </head>
 
@@ -371,6 +369,183 @@
 </nav>
 
 
+  <article class="article" itemscope itemtype="http://schema.org/Article">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
+
+<div class="article-container pt-3">
+  <h1 itemprop="name">What is IoU?</h1>
+
+  
+
+  
+
+
+
+<meta content="2019-07-15 20:20:32 &#43;0800 CST" itemprop="datePublished">
+<meta content="2019-07-15 20:20:32 &#43;0800 CST" itemprop="dateModified">
+
+<div class="article-metadata">
+
+  
+  
+  
+  
+  <div>
+    
+
+
+
+  <span itemprop="author name" itemtype="http://schema.org/Person"><a href="/authors/yuxinzhao/">Yuxin Zhao 赵煜新</a></span>
+
+  </div>
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+    
+    <time>Jul 15, 2019</time>
+  </span>
+  
+
+  
+
+  
+  <span class="middot-divider"></span>
+  <span class="article-reading-time">
+    1 min read
+  </span>
+  
+
+  
+  
+
+  
+  
+  <span class="middot-divider"></span>
+  <span class="article-categories">
+    <i class="fas fa-folder"></i>
+    <a href="/categories/computer-vision/">computer vision</a></span>
+  
+
+  
+    
+<div class="share-box" aria-hidden="true">
+  <ul class="share">
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://twitter.com/intent/tweet?url=https://YuxinZhaozyx.github.io/post/what-is-iou/&amp;text=What%20is%20IoU?" target="_blank" rel="noopener" class="share-btn-twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.facebook.com/sharer.php?u=https://YuxinZhaozyx.github.io/post/what-is-iou/&amp;t=What%20is%20IoU?" target="_blank" rel="noopener" class="share-btn-facebook">
+          <i class="fab fa-facebook-f"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="mailto:?subject=What%20is%20IoU?&amp;body=https://YuxinZhaozyx.github.io/post/what-is-iou/" target="_blank" rel="noopener" class="share-btn-email">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.linkedin.com/shareArticle?url=https://YuxinZhaozyx.github.io/post/what-is-iou/&amp;title=What%20is%20IoU?" target="_blank" rel="noopener" class="share-btn-linkedin">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://web.whatsapp.com/send?text=What%20is%20IoU?%20https://YuxinZhaozyx.github.io/post/what-is-iou/" target="_blank" rel="noopener" class="share-btn-whatsapp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://service.weibo.com/share/share.php?url=https://YuxinZhaozyx.github.io/post/what-is-iou/&amp;title=What%20is%20IoU?" target="_blank" rel="noopener" class="share-btn-weibo">
+          <i class="fab fa-weibo"></i>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+
+
+  
+
+</div>
+
   
 
 
@@ -384,59 +559,181 @@
 
 
 
+
+
+</div>
+
+
+<div class="article-header article-container featured-image-wrapper mt-4 mb-4" style="max-width: 399px; max-height: 246px;">
+  <div style="position: relative">
+    <img src="/post/what-is-iou/featured.png" alt="" class="featured-image">
+    <span class="article-header-caption">IoU</span>
+  </div>
+</div>
+
+
+
+  <div class="article-container">
+
+    <div class="article-style" itemprop="articleBody">
+      <p>在目标检测任务中常常IoU来计算预测窗口与真实窗口的交叠率。本文介绍IoU的概念。</p>
+
+<p>IoU (Intersection over Union) 是两个窗口的交集与并集面积之比。</p>
+
+<ul>
+<li>区域 Region-1 与 Region-2 的交集如上图黄色区域</li>
+<li>区域 Region-1 与 Region-2 的并集如上图绿色区域</li>
+</ul>
+
+<p><strong>IoU计算公式</strong>:
+$$
+IoU = \frac{\text{Region-1} \cap \text{Region-2}}{\text{Region-1} \cup \text{Region-2}}
+$$</p>
+
+    </div>
+
+    
+
+<div class="article-tags">
   
+  <a class="badge badge-light" href="/tags/iou/">IoU</a>
+  
+  <a class="badge badge-light" href="/tags/computer-vision/">computer vision</a>
+  
+</div>
+
+
+
+    
+      
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+  
+
+
+
+
 
   
   
   
     
   
-<div class="universal-wrapper pt-3">
-  <h1 itemprop="name">computer vision</h1>
-
   
-
-  
-</div>
-
-
-
-<div class="universal-wrapper">
-  
-
-  
-  
-  <div>
-    <h2><a href="/post/what-is-iou/">What is IoU?</a></h2>
-    <div class="article-style">
+  <div class="media author-card" itemscope itemtype="http://schema.org/Person">
+    
       
-      在目标检测任务中常常IoU来计算预测窗口与真实窗口的交叠率。本文介绍IoU的概念。 IoU (Intersection over Union) 是两个窗口的交集与并集面积之比。 区域 Region-1 与 Region-2 的交集如
-      
+      <img class="portrait mr-3" src="/authors/yuxinzhao/avatar_hu53c49a6bf84423129c94a7ea41b67289_336578_250x250_fill_q90_lanczos_center.jpg" itemprop="image" alt="Avatar">
+    
+
+    <div class="media-body">
+      <h5 class="card-title" itemprop="name"><a href="https://YuxinZhaozyx.github.io/">Yuxin Zhao 赵煜新</a></h5>
+      <h6 class="card-subtitle">Student of Software Engineering</h6>
+      <p class="card-text" itemprop="description">My research interests include Artificial Intelligence, Micro Service and Engineering.</p>
+      <ul class="network-icon" aria-hidden="true">
+        
+          
+          
+          
+            
+          
+          
+          
+          
+          
+            
+          
+          <li>
+            <a itemprop="sameAs" href="/#contact" >
+              <i class="fas fa-envelope"></i>
+            </a>
+          </li>
+        
+          
+          
+          
+            
+          
+          
+          
+          
+          
+            
+          
+          <li>
+            <a itemprop="sameAs" href="https://github.com/YuxinZhaozyx" target="_blank" rel="noopener">
+              <i class="fab fa-github"></i>
+            </a>
+          </li>
+        
+      </ul>
     </div>
   </div>
-  
-  <div>
-    <h2><a href="/post/what-is-roi-pooling/">What is RoI Pooling?</a></h2>
-    <div class="article-style">
-      
-      上文讲了什么是RoI(Region of Interest, 感兴趣区域)，本文讲述RoI Pooling的概念。 RoI Pooling 的作用 RoI Pooling是Pooling(池化)的
-      
-    </div>
-  </div>
-  
-  <div>
-    <h2><a href="/post/what-is-roi/">What is RoI?</a></h2>
-    <div class="article-style">
-      
-      本文解释RoI(Region of Interest)的概念
-      
-    </div>
-  </div>
-  
 
-  
 
-</div>
+
+      
+      
+      <div class="article-widget">
+        <div class="hr-light"></div>
+        <h3>Related</h3>
+        <ul>
+          
+          <li><a href="/post/what-is-roi-pooling/">What is RoI Pooling?</a></li>
+          
+          <li><a href="/post/what-is-roi/">What is RoI?</a></li>
+          
+        </ul>
+      </div>
+      
+    
+
+    
+
+    
+<section id="comments">
+	<div id="gitalkContainer"></div>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+	<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+
+	<script>
+		var gitalk = new Gitalk({
+			clientID: "ec5806c0144b70a1b32e",
+			clientSecret: "aadae41a3747ffa5b36fd0e13c7e84026db07e0c",
+			repo: "YuxinZhaozyx.github.io",
+			owner: "YuxinZhaozyx",
+			admin: ["YuxinZhaozyx"],
+			id: '2019-07-15 20:20:32 \x2b0800 CST',      
+			labels: ["Comments"],
+			distractionFreeMode:  false ,  
+			pagerDirection: "last",
+			createIssueManually:  false ,
+			enableHotKey:  true ,
+			flipMoveOptions: {
+				staggerDelayBy:  150 ,
+				appearAnimation: "elevator",
+				enterAnimation: "elevator",
+				leaveAnimation: "elevator",
+			},
+		});
+		gitalk.render('gitalkContainer');
+	</script>
+</section>
+
+
+
+  </div>
+</article>
 
       
 

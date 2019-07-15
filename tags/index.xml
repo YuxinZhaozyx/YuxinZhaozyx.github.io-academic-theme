@@ -7,10 +7,28 @@
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
     <language>en-us</language>
     <copyright>Copyright &amp;copy; {year} YuxinZhao</copyright>
-    <lastBuildDate>Mon, 15 Jul 2019 11:52:13 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 15 Jul 2019 20:20:32 +0800</lastBuildDate>
     
 	    <atom:link href="https://YuxinZhaozyx.github.io/tags/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>IoU</title>
+      <link>https://YuxinZhaozyx.github.io/tags/iou/</link>
+      <pubDate>Mon, 15 Jul 2019 20:20:32 +0800</pubDate>
+      
+      <guid>https://YuxinZhaozyx.github.io/tags/iou/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>computer vision</title>
+      <link>https://YuxinZhaozyx.github.io/tags/computer-vision/</link>
+      <pubDate>Mon, 15 Jul 2019 20:20:32 +0800</pubDate>
+      
+      <guid>https://YuxinZhaozyx.github.io/tags/computer-vision/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>RoI</title>
@@ -18,15 +36,6 @@
       <pubDate>Mon, 15 Jul 2019 11:52:13 +0800</pubDate>
       
       <guid>https://YuxinZhaozyx.github.io/tags/roi/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>computer vision</title>
-      <link>https://YuxinZhaozyx.github.io/tags/computer-vision/</link>
-      <pubDate>Mon, 15 Jul 2019 11:52:13 +0800</pubDate>
-      
-      <guid>https://YuxinZhaozyx.github.io/tags/computer-vision/</guid>
       <description></description>
     </item>
     
