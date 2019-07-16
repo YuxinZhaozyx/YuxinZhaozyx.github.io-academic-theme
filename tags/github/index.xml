@@ -7,10 +7,77 @@
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
     <language>en-us</language>
     <copyright>Copyright &amp;copy; {year} YuxinZhao</copyright>
-    <lastBuildDate>Tue, 09 Jul 2019 16:40:32 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 16 Jul 2019 16:39:48 +0800</lastBuildDate>
     
 	    <atom:link href="https://YuxinZhaozyx.github.io/tags/github/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Hugo Academic 自定义表格样式</title>
+      <link>https://YuxinZhaozyx.github.io/post/table-style-of-hugo-academic/</link>
+      <pubDate>Tue, 16 Jul 2019 16:39:48 +0800</pubDate>
+      
+      <guid>https://YuxinZhaozyx.github.io/post/table-style-of-hugo-academic/</guid>
+      <description>&lt;p&gt;Hugo Academic主题自带的表格样式个人感觉不是特别美观，我更喜欢GitHub的表格样式，因此我花了点时间将Hugo Academic主题的表格样式改成GitHub的样式。&lt;/p&gt;
+
+&lt;p&gt;在hugo建立的根目录下创建目录&lt;code&gt;assets/css/&lt;/code&gt;，再在新创建的目录下创建&lt;code&gt;custom.css&lt;/code&gt;。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;$ cd &amp;lt;your-hugo-website&amp;gt;
+$ mkdir -p assets/css/
+$ vi assets/css/custom.css
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;在&lt;code&gt;custom.css&lt;/code&gt;中添加以下样式代码。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-css&#34;&gt;table {
+    display: block;
+    overflow: auto;
+    width: 100%;
+}
+table tr {
+    background-color: #fff;
+    border-top: 1px solid #c6cbd1;
+}
+table tr:nth-child(even) {
+    background-color: #f6f8fa; 
+}
+table tr:nth-child(odd)  {
+    background-color: #fff; 
+}
+table&amp;gt;tbody&amp;gt;tr:nth-child(odd)&amp;gt;td, table&amp;gt;tbody&amp;gt;tr:nth-child(odd)&amp;gt;th {
+    background-color: #fff;
+}
+table&amp;gt;thead&amp;gt;tr&amp;gt;th, table&amp;gt;tbody&amp;gt;tr&amp;gt;th, table&amp;gt;tfoot&amp;gt;tr&amp;gt;th, table&amp;gt;thead&amp;gt;tr&amp;gt;td, table&amp;gt;tbody&amp;gt;tr&amp;gt;td, table&amp;gt;tfoot&amp;gt;tr&amp;gt;td {
+    padding: 6px 13px;
+}
+table th {
+    font-weight: 600;
+}
+table th, td  {
+    vertical-align: middle !important;
+    text-align: center;
+    border: 1px solid #dfe2e5;
+    padding: 6px 13px;
+}
+table img {
+    background-color: transparent;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;将&lt;code&gt;config/_default/params.toml&lt;/code&gt;中的&lt;code&gt;plugins_css&lt;/code&gt;设置为&lt;code&gt;[&amp;quot;custom&amp;quot;]&lt;/code&gt;，即&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;plugins_css = [&amp;quot;custom&amp;quot;]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;表格样式修改完成。&lt;/p&gt;
+
+&lt;p&gt;该表格样式会将内容水平和垂直居中，并且单双行不同色。&lt;/p&gt;
+
+&lt;p&gt;附带表格样式的效果图：&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;image/1563267815215.png&#34; alt=&#34;1563267815215&#34; /&gt;&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Hugo博客集成Gitalk评论模块</title>

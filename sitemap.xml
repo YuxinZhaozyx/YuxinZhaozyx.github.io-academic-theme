@@ -4,7 +4,77 @@
   
   <url>
     <loc>https://YuxinZhaozyx.github.io/authors/yuxinzhao/</loc>
-    <lastmod>2019-07-15T21:05:58+08:00</lastmod>
+    <lastmod>2019-07-16T16:39:48+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://YuxinZhaozyx.github.io/authors/</loc>
+    <lastmod>2019-07-16T16:39:48+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://YuxinZhaozyx.github.io/categories/</loc>
+    <lastmod>2019-07-16T16:39:48+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://YuxinZhaozyx.github.io/post/table-style-of-hugo-academic/</loc>
+    <lastmod>2019-07-16T16:39:48+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://YuxinZhaozyx.github.io/post/</loc>
+    <lastmod>2019-07-16T16:39:48+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://YuxinZhaozyx.github.io/tags/</loc>
+    <lastmod>2019-07-16T16:39:48+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://YuxinZhaozyx.github.io/</loc>
+    <lastmod>2019-07-16T16:39:48+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://YuxinZhaozyx.github.io/tags/academic/</loc>
+    <lastmod>2019-07-16T16:39:48+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://YuxinZhaozyx.github.io/tags/github/</loc>
+    <lastmod>2019-07-16T16:39:48+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://YuxinZhaozyx.github.io/tags/hugo/</loc>
+    <lastmod>2019-07-16T16:39:48+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://YuxinZhaozyx.github.io/categories/hugo/</loc>
+    <lastmod>2019-07-16T16:39:48+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://YuxinZhaozyx.github.io/tags/style/</loc>
+    <lastmod>2019-07-16T16:39:48+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://YuxinZhaozyx.github.io/tags/table/</loc>
+    <lastmod>2019-07-16T16:39:48+08:00</lastmod>
+    <priority>0</priority>
   </url>
   
   <url>
@@ -15,18 +85,6 @@
   
   <url>
     <loc>https://YuxinZhaozyx.github.io/tags/auc/</loc>
-    <lastmod>2019-07-15T21:05:58+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://YuxinZhaozyx.github.io/authors/</loc>
-    <lastmod>2019-07-15T21:05:58+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://YuxinZhaozyx.github.io/categories/</loc>
     <lastmod>2019-07-15T21:05:58+08:00</lastmod>
     <priority>0</priority>
   </url>
@@ -55,36 +113,19 @@
   </url>
   
   <url>
-    <loc>https://YuxinZhaozyx.github.io/post/</loc>
-    <lastmod>2019-07-15T21:05:58+08:00</lastmod>
-  </url>
-  
-  <url>
     <loc>https://YuxinZhaozyx.github.io/tags/roc/</loc>
     <lastmod>2019-07-15T21:05:58+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://YuxinZhaozyx.github.io/tags/</loc>
-    <lastmod>2019-07-15T21:05:58+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://YuxinZhaozyx.github.io/</loc>
+    <loc>https://YuxinZhaozyx.github.io/tags/computer-vision/</loc>
     <lastmod>2019-07-15T21:05:58+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://YuxinZhaozyx.github.io/categories/computer-vision/</loc>
-    <lastmod>2019-07-15T21:05:58+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://YuxinZhaozyx.github.io/tags/computer-vision/</loc>
     <lastmod>2019-07-15T21:05:58+08:00</lastmod>
     <priority>0</priority>
   </url>
@@ -187,25 +228,7 @@
   </url>
   
   <url>
-    <loc>https://YuxinZhaozyx.github.io/tags/academic/</loc>
-    <lastmod>2019-07-12T11:45:33+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>https://YuxinZhaozyx.github.io/tags/cdnjs/</loc>
-    <lastmod>2019-07-12T11:45:33+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://YuxinZhaozyx.github.io/categories/hugo/</loc>
-    <lastmod>2019-07-12T11:45:33+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://YuxinZhaozyx.github.io/tags/hugo/</loc>
     <lastmod>2019-07-12T11:45:33+08:00</lastmod>
     <priority>0</priority>
   </url>
@@ -234,19 +257,13 @@
   </url>
   
   <url>
-    <loc>https://YuxinZhaozyx.github.io/tags/github/</loc>
-    <lastmod>2019-07-09T16:40:32+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://YuxinZhaozyx.github.io/categories/git/</loc>
+    <loc>https://YuxinZhaozyx.github.io/tags/git/</loc>
     <lastmod>2019-07-09T14:45:33+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://YuxinZhaozyx.github.io/tags/git/</loc>
+    <loc>https://YuxinZhaozyx.github.io/categories/git/</loc>
     <lastmod>2019-07-09T14:45:33+08:00</lastmod>
     <priority>0</priority>
   </url>
@@ -325,13 +342,13 @@
   </url>
   
   <url>
-    <loc>https://YuxinZhaozyx.github.io/categories/math/</loc>
+    <loc>https://YuxinZhaozyx.github.io/tags/math/</loc>
     <lastmod>2019-07-04T20:04:20+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://YuxinZhaozyx.github.io/tags/math/</loc>
+    <loc>https://YuxinZhaozyx.github.io/categories/math/</loc>
     <lastmod>2019-07-04T20:04:20+08:00</lastmod>
     <priority>0</priority>
   </url>

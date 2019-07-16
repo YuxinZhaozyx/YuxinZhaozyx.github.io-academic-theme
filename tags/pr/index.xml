@@ -44,8 +44,8 @@
     &lt;tr&gt;
         &lt;th&gt; 0 &lt;/td&gt;
         &lt;td&gt; FN &lt;/td&gt;
-        &lt;td&gt; FP &lt;/td&gt;
-        &lt;td&gt; FN+FP &lt;/td&gt;
+        &lt;td&gt; TN &lt;/td&gt;
+        &lt;td&gt; FN+TN &lt;/td&gt;
     &lt;/tr&gt;
     &lt;tr&gt;
         &lt;th colspan=&#34;2&#34;&gt; $\sum$ &lt;/td&gt;
