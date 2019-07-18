@@ -52,27 +52,7 @@
 
 &lt;tr&gt;
 &lt;td&gt;RPN&lt;/td&gt;
-&lt;td&gt;Pegion Proposal Network&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td&gt;&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td&gt;&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td&gt;&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td&gt;&lt;/td&gt;
-&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;Region Proposal Network&lt;/td&gt;
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
@@ -282,7 +262,7 @@ $$&lt;/p&gt;
 &lt;h3 id=&#34;experiments-on-activitynet&#34;&gt;Experiments on ActivityNet&lt;/h3&gt;
 
 &lt;ul&gt;
-&lt;li&gt;sample frames at 3fps&lt;/li&gt;
+&lt;li&gt;sample frames at 3 fps&lt;/li&gt;
 &lt;li&gt;input buffer: 768&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;K=20, with scale values [1, 2, 3, 4, 5, 6, 7, 8, 10, 12, 14, 16, 20, 24, 28, 32, 40, 48, 56, 64]&lt;/strong&gt;&lt;/li&gt;
 &lt;/ul&gt;
@@ -290,7 +270,7 @@ $$&lt;/p&gt;
 &lt;h3 id=&#34;experiments-on-charades&#34;&gt;Experiments on Charades&lt;/h3&gt;
 
 &lt;ul&gt;
-&lt;li&gt;sample frames at 5fps&lt;/li&gt;
+&lt;li&gt;sample frames at 5 fps&lt;/li&gt;
 &lt;li&gt;input buffer: 768&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;K=18, with scale values [1, 2, 3, 4, 5, 6, 7, 8, 10, 12, 14, 16, 20, 24, 28, 32, 40, 48]&lt;/strong&gt;&lt;/li&gt;
 &lt;/ul&gt;
