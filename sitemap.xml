@@ -4,18 +4,71 @@
   
   <url>
     <loc>https://YuxinZhaozyx.github.io/authors/yuxinzhao/</loc>
-    <lastmod>2019-07-17T14:12:08+08:00</lastmod>
+    <lastmod>2019-07-17T18:44:03+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://YuxinZhaozyx.github.io/tags/activity-detection/</loc>
+    <lastmod>2019-07-17T18:44:03+08:00</lastmod>
+    <priority>0</priority>
   </url>
   
   <url>
     <loc>https://YuxinZhaozyx.github.io/authors/</loc>
-    <lastmod>2019-07-17T14:12:08+08:00</lastmod>
+    <lastmod>2019-07-17T18:44:03+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://YuxinZhaozyx.github.io/tags/c3d/</loc>
+    <lastmod>2019-07-17T18:44:03+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://YuxinZhaozyx.github.io/categories/</loc>
-    <lastmod>2019-07-17T14:12:08+08:00</lastmod>
+    <lastmod>2019-07-17T18:44:03+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://YuxinZhaozyx.github.io/paper-note/</loc>
+    <lastmod>2019-07-17T18:44:03+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://YuxinZhaozyx.github.io/tags/r-c3d/</loc>
+    <lastmod>2019-07-17T18:44:03+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://YuxinZhaozyx.github.io/tags/</loc>
+    <lastmod>2019-07-17T18:44:03+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://YuxinZhaozyx.github.io/</loc>
+    <lastmod>2019-07-17T18:44:03+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://YuxinZhaozyx.github.io/paper-note/r-c3d-region-convolutional-3d-network-for-temporal-activity-detection/</loc>
+    <lastmod>2019-07-17T18:44:03+08:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://YuxinZhaozyx.github.io/tags/deep-learning/</loc>
+    <lastmod>2019-07-17T18:44:03+08:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://YuxinZhaozyx.github.io/categories/paper-note/</loc>
+    <lastmod>2019-07-17T18:44:03+08:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -36,25 +89,13 @@
   </url>
   
   <url>
-    <loc>https://YuxinZhaozyx.github.io/tags/</loc>
-    <lastmod>2019-07-17T14:12:08+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://YuxinZhaozyx.github.io/</loc>
+    <loc>https://YuxinZhaozyx.github.io/categories/computer-vision/</loc>
     <lastmod>2019-07-17T14:12:08+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://YuxinZhaozyx.github.io/tags/computer-vision/</loc>
-    <lastmod>2019-07-17T14:12:08+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://YuxinZhaozyx.github.io/categories/computer-vision/</loc>
     <lastmod>2019-07-17T14:12:08+08:00</lastmod>
     <priority>0</priority>
   </url>
@@ -89,13 +130,13 @@
   </url>
   
   <url>
-    <loc>https://YuxinZhaozyx.github.io/tags/hugo/</loc>
+    <loc>https://YuxinZhaozyx.github.io/categories/hugo/</loc>
     <lastmod>2019-07-16T16:39:48+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://YuxinZhaozyx.github.io/categories/hugo/</loc>
+    <loc>https://YuxinZhaozyx.github.io/tags/hugo/</loc>
     <lastmod>2019-07-16T16:39:48+08:00</lastmod>
     <priority>0</priority>
   </url>
@@ -199,12 +240,6 @@
   </url>
   
   <url>
-    <loc>https://YuxinZhaozyx.github.io/paper-note/</loc>
-    <lastmod>2019-07-14T13:40:12+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>https://YuxinZhaozyx.github.io/tags/r-cnn/</loc>
     <lastmod>2019-07-14T13:40:12+08:00</lastmod>
     <priority>0</priority>
@@ -228,19 +263,7 @@
   </url>
   
   <url>
-    <loc>https://YuxinZhaozyx.github.io/tags/deep-learning/</loc>
-    <lastmod>2019-07-14T13:40:12+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>https://YuxinZhaozyx.github.io/tags/object-detection/</loc>
-    <lastmod>2019-07-14T13:40:12+08:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://YuxinZhaozyx.github.io/categories/paper-note/</loc>
     <lastmod>2019-07-14T13:40:12+08:00</lastmod>
     <priority>0</priority>
   </url>
@@ -280,13 +303,13 @@
   </url>
   
   <url>
-    <loc>https://YuxinZhaozyx.github.io/tags/git/</loc>
+    <loc>https://YuxinZhaozyx.github.io/categories/git/</loc>
     <lastmod>2019-07-09T14:45:33+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://YuxinZhaozyx.github.io/categories/git/</loc>
+    <loc>https://YuxinZhaozyx.github.io/tags/git/</loc>
     <lastmod>2019-07-09T14:45:33+08:00</lastmod>
     <priority>0</priority>
   </url>
@@ -365,13 +388,13 @@
   </url>
   
   <url>
-    <loc>https://YuxinZhaozyx.github.io/tags/math/</loc>
+    <loc>https://YuxinZhaozyx.github.io/categories/math/</loc>
     <lastmod>2019-07-04T20:04:20+08:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://YuxinZhaozyx.github.io/categories/math/</loc>
+    <loc>https://YuxinZhaozyx.github.io/tags/math/</loc>
     <lastmod>2019-07-04T20:04:20+08:00</lastmod>
     <priority>0</priority>
   </url>

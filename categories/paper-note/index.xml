@@ -7,10 +7,295 @@
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
     <language>en-us</language>
     <copyright>Copyright &amp;copy; {year} YuxinZhao</copyright>
-    <lastBuildDate>Sun, 14 Jul 2019 13:40:12 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 17 Jul 2019 18:44:03 +0800</lastBuildDate>
     
 	    <atom:link href="https://YuxinZhaozyx.github.io/categories/paper-note/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>[论文笔记] R-C3D: Region Convolutional 3D Network for Temporal Activity Detection</title>
+      <link>https://YuxinZhaozyx.github.io/paper-note/r-c3d-region-convolutional-3d-network-for-temporal-activity-detection/</link>
+      <pubDate>Wed, 17 Jul 2019 18:44:03 +0800</pubDate>
+      
+      <guid>https://YuxinZhaozyx.github.io/paper-note/r-c3d-region-convolutional-3d-network-for-temporal-activity-detection/</guid>
+      <description>
+
+&lt;p&gt;作者提出了R-C3D模型用于连续视频的行为检测(Activity Detection in Continuous Videos)。连续视频的行为检测需要完成两个目标：&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;识别出行为的类别&lt;/li&gt;
+&lt;li&gt;定位行为发生的时间范围&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;这两个问题正是R-C3D着力解决的。&lt;/p&gt;
+
+&lt;h3 id=&#34;术语缩写&#34;&gt;术语缩写&lt;/h3&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th&gt;缩写&lt;/th&gt;
+&lt;th&gt;全称&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td&gt;R-C3D&lt;/td&gt;
+&lt;td&gt;Region Convolutional 3D Network&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;RoI&lt;/td&gt;
+&lt;td&gt;Region of Interest&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;RPN&lt;/td&gt;
+&lt;td&gt;Pegion Proposal Network&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;td&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h2 id=&#34;r-c3d-的特点&#34;&gt;R-C3D 的特点&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;端到端的训练方式；&lt;/li&gt;
+&lt;li&gt;可以检测出任意时长的行为；&lt;/li&gt;
+&lt;li&gt;检测速度快，一次性能计算的帧仅受限于GPU内存；&lt;/li&gt;
+&lt;li&gt;推广Faster-RCNN的Region Proposal Network到时域；&lt;/li&gt;
+&lt;li&gt;推广Faster-RCNN的RoI Pooling算法到时域，提出3D RoI Pooling。&lt;/li&gt;
+&lt;li&gt;有监督学习(特别之处是允许一个视频中包含多种行为，且行为的时间范围有重叠)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;r-c3d-的网络结构&#34;&gt;R-C3D 的网络结构&lt;/h2&gt;
+
+&lt;p&gt;&lt;img src=&#34;image/1563363180600.png&#34; alt=&#34;1563363180600&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;image/R-C3D.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;div class=&#34;alert alert-note&#34;&gt;
+  &lt;div&gt;
+    上图为本人理解后绘制的网络结构图，如有错误，欢迎批评指正。
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;p&gt;作者提出的 R-C3D 网络包含3个组件：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;a shared 3D ConvNet feature extractor&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;a temporal proposal stage&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;an activity classification and refinement stage&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;3d-convolutional-feature-hierarchies&#34;&gt;3D Convolutional Feature Hierarchies&lt;/h3&gt;
+
+&lt;p&gt;&lt;strong&gt;Input:&lt;/strong&gt; sequence of RGB video frames with dimension $\mathbb{R}^{3 \times L \times H \times W}$.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;The input to the model is of &lt;strong&gt;variable length&lt;/strong&gt; (&lt;strong&gt;$L$ can be arbitrary&lt;/strong&gt; and is only limited by memory)&lt;/li&gt;
+&lt;li&gt;Adopt &lt;strong&gt;the convolutional layers (conv1a to conv5b) of C3D&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;本例中，$H=W=112$&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;&lt;strong&gt;Output:&lt;/strong&gt; a feature map $C_{conv5b} \in \mathbb{R}^{512 \times \frac{L}8 \times \frac{H}{16} \times \frac{W}{16} }$ (512 is the channel dimension of the layer conv5b) (activations)&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;$C_{conv5b}$ activations are the shared input to the proposal and classification subnets&lt;/strong&gt;.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;temporal-proposal-subnet&#34;&gt;Temporal Proposal Subnet&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&#34;image/1563368283613.png&#34; alt=&#34;1563368283613&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Function:&lt;/strong&gt; predicts &lt;strong&gt;potential proposal segments with respect to anchor segments&lt;/strong&gt; and &lt;strong&gt;a binary label indicating whether the predicted proposal contains an activity or not&lt;/strong&gt;.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;The anchor segments are pre-defined multi-scale windows centered at $L/8$ uniformly distributed temporal locations.&lt;/li&gt;
+&lt;li&gt;Each temporal locaiton specifies $K$ anchor segments, each at a different fixed scale. Thus, the total number of anchor segments is $(L/8) * K$ .&lt;/li&gt;
+&lt;li&gt;a &lt;strong&gt;3D convolutional filter with kernel size $3 \times 3 \times 3$&lt;/strong&gt; on top of $C_{conv5b}$ to extend the temporal proposal subnet.&lt;/li&gt;
+&lt;li&gt;a &lt;strong&gt;3D max-pooling filter with kernel size $1 \times \frac{H}{16} \times \frac{W}{16}$&lt;/strong&gt; to downsample the spatial dimensions (from $\frac{H}{16} \times \frac{W}{16}$ to $1 \times 1$) to a temporal only feature map $C_{tpn} \in \mathbb{R}^{512 \times \frac{L}8 \times 1 \times 1}$.&lt;/li&gt;
+&lt;li&gt;The 512-dimensional feature vector at each temporal location ($512 \times 1 \times 1 \times 1$) in $C_{tpn}$ is used &lt;strong&gt;to predict&lt;/strong&gt; :
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;a relative offset $\{ \delta c_i, \delta l_i \}$ to the center location&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;the length of each anchor segment $\{ c_i, l_i \},\, i \in \{ 1, \cdots, K \}$&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;the binary scores for each proposal being an activity or background&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;two $1 \times 1 \times 1$ convolutional layers&lt;/strong&gt; on top of $C_{tpn}$ to predict proposal offsets and scores.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;training-temporal-proposal-subnet&#34;&gt;Training Temporal Proposal Subnet&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Positive Label:&lt;/strong&gt;
+
+&lt;ul&gt;
+&lt;li&gt;if the anchor segment &lt;strong&gt;overlaps with some ground-truth activity with IoU &amp;gt; 0.7&lt;/strong&gt;.&lt;/li&gt;
+&lt;li&gt;or if the anchor segment has the &lt;strong&gt;highest IoU overlap with some ground-truth activity&lt;/strong&gt;.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Negative Label:&lt;/strong&gt;
+
+&lt;ul&gt;
+&lt;li&gt;if the anchor has &lt;strong&gt;IoU overlap lower than 0.3 with all ground-truth activities&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;All others are held out from training&lt;/li&gt;
+&lt;li&gt;sample balanced batches with a &lt;strong&gt;positive/negative ratio of 1:1&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;activity-classification-subnet&#34;&gt;Activity Classification Subnet&lt;/h3&gt;
+
+&lt;p&gt;&lt;img src=&#34;image/1563371361436.png&#34; alt=&#34;1563371361436&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;Functions:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;selecting proposal segments&lt;/strong&gt; from the previous stage.&lt;/li&gt;
+&lt;li&gt;three-dimensional region of interest &lt;strong&gt;(3D RoI) pooling to extract fixed-size features for selected proposals&lt;/strong&gt;.&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;activity classification and boundary regression&lt;/strong&gt; for the selected proposals based on the pooled features.&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;greedy &lt;strong&gt;Non-Maximum Suppression (NMS, threshold=0.7)&lt;/strong&gt; to eliminate highly overlapping and low confidence proposals.&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;3d-roi-pooling&#34;&gt;3D RoI Pooling&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;对于一个 $l \times h \times w$ 的不定输入张量（每次输入的张量的尺寸可以不一样），3D RoI Pooling 将其规约到固定的大小 $l_s \times h_s \times w_s$ .
+
+&lt;ul&gt;
+&lt;li&gt;$l \times h \times w$ 先被分成 $l_s \times h_s \times w_s$ 个大小约为 $\frac{l}{l_s} \times \frac{h}{h_s} \times \frac{w}{w_s}$ 的小张量，每个张量内做max pooling 得到 $l_s \times h_s \times w_s$ 的张量。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;在本例中，由于$H=W=112$，$C_{conv5b} \in \mathbb{R}^{512 \times \frac{L}8 \times 7 \times 7}$，将 $512 \times \frac{L}8 \times 7 \times 7$  的张量固定为 $512 \times 1 \times 4 \times 4$.&lt;/li&gt;
+&lt;li&gt;The output of the 3D RoI pooling is fed to a series of &lt;strong&gt;two fully connected layers&lt;/strong&gt;.&lt;/li&gt;
+&lt;li&gt;3D RoI pooling 的两层 fully connected layers 之后是 classification layer 和 regression layer.
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;classification layer 和 regression layer 是两个独立的双层 fully connected layers, 它们的输入都是 3D RoI pooling 后 fully connected layers 的输出。&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;training-classification-subnet&#34;&gt;Training Classification Subnet&lt;/h4&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Positive Label:&lt;/strong&gt;
+
+&lt;ul&gt;
+&lt;li&gt;if the proposal has the &lt;strong&gt;highest IoU&lt;/strong&gt; overlap with a ground-truth activity and &lt;strong&gt;IoU &amp;gt; 0.5&lt;/strong&gt;.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Negative Label:&lt;/strong&gt;
+
+&lt;ul&gt;
+&lt;li&gt;proposals with IoU overlap lower than 0.5 with all grouth-truth activities.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Positive : Negative = 1 : 3&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;optimization&#34;&gt;Optimization&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;Loss Function:&lt;/strong&gt;
+$$
+Loss = \frac1{N_{cls}} \sum_i L_{cls}(a_i, a_i^*) + \lambda \frac1{N_{reg}} a_i^* L_{reg}(t_i, t_i^*)
+$$&lt;/p&gt;
+
+&lt;p&gt;where,&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;$L_{cls}$ is softmax loss function&lt;/li&gt;
+&lt;li&gt;$L_{reg}$ is smooth L1 loss function&lt;/li&gt;
+&lt;li&gt;$N_{cls}$ is batch size&lt;/li&gt;
+&lt;li&gt;$N_{reg}$ is the number of anchor/proposal segments&lt;/li&gt;
+&lt;li&gt;$\lambda$ is the loss trade-off parameter and is set to 1.&lt;/li&gt;
+&lt;li&gt;$i$ is the anchor/proposal segments index in a batch&lt;/li&gt;
+&lt;li&gt;$a_i$ is the predicted probability of the proposal or activities&lt;/li&gt;
+&lt;li&gt;$a_i^*$ is the ground truth&lt;/li&gt;
+&lt;li&gt;$t_i = \{ \delta \hat{ c_i} , \delta \hat{ l_i} \}$ represents predicted relative offset to anchor segments or proposals.&lt;/li&gt;
+&lt;li&gt;$t_i^* = \{ \delta c_i , \delta l_i \}$ represents the coordinate transformation of ground truth segments to anchor segments or proposals.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;$$
+\begin{cases}
+\delta c_i = (c_i^* - c_i) / l_i \\&lt;br /&gt;
+\delta l_i = \log (l_i^* / l_i)
+\end{cases}
+$$&lt;/p&gt;
+
+&lt;p&gt;where $c_i$ and $l_i$ are the center location and the length of anchor segments or proposals while $c_i^*$ and $l_i^*$  denote the same for the ground truth activity segment.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;The above loss function is applied for both the temporal proposal subnet and the activity classification subnet.&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;In proposal subnet,&lt;/strong&gt;
+
+&lt;ul&gt;
+&lt;li&gt;$L_{cls}$ predicts whether the proposal contains an activity or not.&lt;/li&gt;
+&lt;li&gt;$L_{reg}$ optimizes the relative displacement between proposals and ground truths.&lt;br /&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;In classification subnet,&lt;/strong&gt;
+
+&lt;ul&gt;
+&lt;li&gt;$L_{cls}$ predicts the specific activity class for the proposal. (The number of classes are the number of activities + one for background)&lt;/li&gt;
+&lt;li&gt;$L_{reg}$ optimizes the relative displacement between activities and ground truths.&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;prediction&#34;&gt;Prediction&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;预测出$t_i$后需要逆变换把相对坐标变成绝对坐标。&lt;/li&gt;
+&lt;li&gt;为了充分利用向量化实现的优势，用最后一帧去填充视频较短不足的部分。&lt;/li&gt;
+&lt;li&gt;NMS at a lower threshold (0.1 less than the mAP evalution threshold) is appled to the predicted activities to get the final activity predictions.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;experiments&#34;&gt;Experiments&lt;/h2&gt;
+
+&lt;h3 id=&#34;experiments-on-thumos-14&#34;&gt;Experiments on THUMOS&amp;rsquo;14&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;divide 200 untrimmed videos from the validation set into 180 training and 20 held out videos to get the best hyperparameter setting.&lt;/li&gt;
+&lt;li&gt;Since the GPU memory is limited, the authors first create a buffer of 768 frames at 25 fps which means approximately 30 seconds of video.&lt;/li&gt;
+&lt;li&gt;The authors create the buffer by sliding from the beginning of the video to the end, denoted as the &amp;ldquo;one-way buffer&amp;rdquo;. An additional pass from the end of the video to the beginning is used to increase the amount of training data, denoted as &amp;ldquo;two-way buffer&amp;rdquo;.&lt;/li&gt;
+&lt;li&gt;initialize the 3D ConvNet part of our model with C3D weights trained on Sports-1M and finetuned on UCF101.&lt;/li&gt;
+&lt;li&gt;allow all the layers of R-C3D to be trained on THUMOS&amp;rsquo;14 with a f&lt;strong&gt;ixed learning rate of 0.0001&lt;/strong&gt;.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;K = 10, with scale values [2, 4, 5, 6, 8, 9, 10, 12, 14, 16]&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;experiments-on-activitynet&#34;&gt;Experiments on ActivityNet&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;sample frames at 3fps&lt;/li&gt;
+&lt;li&gt;input buffer: 768&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;K=20, with scale values [1, 2, 3, 4, 5, 6, 7, 8, 10, 12, 14, 16, 20, 24, 28, 32, 40, 48, 56, 64]&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;experiments-on-charades&#34;&gt;Experiments on Charades&lt;/h3&gt;
+
+&lt;ul&gt;
+&lt;li&gt;sample frames at 5fps&lt;/li&gt;
+&lt;li&gt;input buffer: 768&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;K=18, with scale values [1, 2, 3, 4, 5, 6, 7, 8, 10, 12, 14, 16, 20, 24, 28, 32, 40, 48]&lt;/strong&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
     
     <item>
       <title>[论文笔记] Faster R-CNN: Towards Real-Time Object Detection With Region Proposal Networks</title>

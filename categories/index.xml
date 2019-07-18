@@ -7,10 +7,19 @@
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
     <language>en-us</language>
     <copyright>Copyright &amp;copy; {year} YuxinZhao</copyright>
-    <lastBuildDate>Wed, 17 Jul 2019 14:12:08 +0800</lastBuildDate>
+    <lastBuildDate>Wed, 17 Jul 2019 18:44:03 +0800</lastBuildDate>
     
 	    <atom:link href="https://YuxinZhaozyx.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>paper-note</title>
+      <link>https://YuxinZhaozyx.github.io/categories/paper-note/</link>
+      <pubDate>Wed, 17 Jul 2019 18:44:03 +0800</pubDate>
+      
+      <guid>https://YuxinZhaozyx.github.io/categories/paper-note/</guid>
+      <description></description>
+    </item>
     
     <item>
       <title>computer vision</title>
@@ -27,15 +36,6 @@
       <pubDate>Tue, 16 Jul 2019 16:39:48 +0800</pubDate>
       
       <guid>https://YuxinZhaozyx.github.io/categories/hugo/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>paper-note</title>
-      <link>https://YuxinZhaozyx.github.io/categories/paper-note/</link>
-      <pubDate>Sun, 14 Jul 2019 13:40:12 +0800</pubDate>
-      
-      <guid>https://YuxinZhaozyx.github.io/categories/paper-note/</guid>
       <description></description>
     </item>
     
