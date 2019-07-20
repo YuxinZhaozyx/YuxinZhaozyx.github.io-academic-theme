@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>windows on YuxinZhao</title>
+    <link>https://YuxinZhaozyx.github.io/tags/windows/</link>
+    <description>Recent content in windows on YuxinZhao</description>
+    <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
+    <language>en-us</language>
+    <copyright>Copyright &amp;copy; {year} YuxinZhao</copyright>
+    <lastBuildDate>Sat, 20 Jul 2019 09:53:59 +0800</lastBuildDate>
+    
+	    <atom:link href="https://YuxinZhaozyx.github.io/tags/windows/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Windows PATH 长度限制最多2047个字符</title>
+      <link>https://YuxinZhaozyx.github.io/post/windows-path-limited-length/</link>
+      <pubDate>Sat, 20 Jul 2019 09:53:59 +0800</pubDate>
+      
+      <guid>https://YuxinZhaozyx.github.io/post/windows-path-limited-length/</guid>
+      <description>
+
+&lt;p&gt;最近使用windows安装一些软件的过程中，出现了环境变量PATH最长限制2047个字符的问题。所幸我习惯下载软件的zip包，自己解压后再将其添加到环境变量中，因此才能及时发现这个问题。用安装包安装可能还不会提示这个问题，出情况也就比较难去定位问题了。&lt;/p&gt;
+
+&lt;h2 id=&#34;problem-问题&#34;&gt;Problem 问题&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;环境变量PATH (或者是Path，windows的环境变量不区分大小写) 最大长度为2047个字符，要添加新的位置到环境变量中就超出了限制。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;solution-解决方法&#34;&gt;Solution 解决方法&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;用一个新的环境变量PATH2来拓展PATH&lt;/strong&gt;，具体步骤如下：&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;打开 &lt;code&gt;计算机 &amp;gt;&amp;gt; 属性 &amp;gt;&amp;gt; 高级系统设置 &amp;gt;&amp;gt; 环境变量&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;在&lt;strong&gt;系统变量&lt;/strong&gt;中找到 &lt;code&gt;PATH&lt;/code&gt; (不区分大小写)， 将其名称改成 &lt;code&gt;PATH2&lt;/code&gt;。&lt;/li&gt;
+&lt;li&gt;新建一环境变量 &lt;code&gt;PATH&lt;/code&gt;，在其中添加一个值&lt;code&gt;%PATH2%&lt;/code&gt; 用于将 &lt;code&gt;PATH2&lt;/code&gt; 包含进来。&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;完成。&lt;/p&gt;
+
+&lt;p&gt;由于新的 &lt;code&gt;PATH&lt;/code&gt; 的只有 &lt;code&gt;%PATH2%&lt;/code&gt; 一个值，后续要添加到环境变量中的位置都可以添加到 &lt;code&gt;PATH&lt;/code&gt; 中，相当于扩容了 &lt;code&gt;PATH&lt;/code&gt;，而 &lt;code&gt;PATH2&lt;/code&gt; 是透明的，对以后的操作并不会有什么影响。&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
