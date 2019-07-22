@@ -18,7 +18,16 @@
       <pubDate>Mon, 22 Jul 2019 17:37:53 +0800</pubDate>
       
       <guid>https://YuxinZhaozyx.github.io/project/pytorch-learning/</guid>
-      <description>&lt;p&gt;This project is to record my learning road of pytorch framework.&lt;/p&gt;
+      <description>
+
+&lt;p&gt;This project is to record my learning road of pytorch framework.&lt;/p&gt;
+
+&lt;h2 id=&#34;tutorial&#34;&gt;Tutorial&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://pytorch.org/tutorials/beginner/deep_learning_60min_blitz.html&#34; target=&#34;_blank&#34;&gt;官方教程&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/zergtant/pytorch-handbook&#34; target=&#34;_blank&#34;&gt;PyTorch中文手册&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
 </description>
     </item>
     

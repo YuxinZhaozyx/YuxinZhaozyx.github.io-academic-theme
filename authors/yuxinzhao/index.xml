@@ -7,10 +7,269 @@
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
     <language>en-us</language>
     <copyright>Copyright &amp;copy; {year} YuxinZhao</copyright>
-    <lastBuildDate>Mon, 22 Jul 2019 17:37:53 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 22 Jul 2019 18:11:52 +0800</lastBuildDate>
     
 	    <atom:link href="https://YuxinZhaozyx.github.io/authors/yuxinzhao/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>PyTorch Learning Note-1</title>
+      <link>https://YuxinZhaozyx.github.io/post/pytorch-learning/note-1/</link>
+      <pubDate>Mon, 22 Jul 2019 18:11:52 +0800</pubDate>
+      
+      <guid>https://YuxinZhaozyx.github.io/post/pytorch-learning/note-1/</guid>
+      <description>
+
+&lt;h2 id=&#34;pytorch-是什么&#34;&gt;PyTorch 是什么?&lt;/h2&gt;
+
+&lt;p&gt;基于Python的科学计算包，服务于以下两种场景:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;作为NumPy的替代品，可以使用GPU的强大计算能力&lt;/li&gt;
+&lt;li&gt;提供最大的灵活性和高速的深度学习研究平台&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;tensor-张量&#34;&gt;Tensor 张量&lt;/h2&gt;
+
+&lt;p&gt;Tensors与Numpy中的 ndarrays类似，但是在PyTorch中 Tensors 可以使用GPU进行计算.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;from __future__ import print_function
+import torch
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;创建一个  5x5 的矩阵，但未初始化:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;x = torch.empty(5, 3)
+print(x)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;tensor([[9.5511e-39, 1.0102e-38, 4.6837e-39],
+        [4.9592e-39, 5.0510e-39, 9.9184e-39],
+        [9.0000e-39, 1.0561e-38, 1.0653e-38],
+        [4.1327e-39, 8.9082e-39, 9.8265e-39],
+        [9.4592e-39, 1.0561e-38, 1.0653e-38]])
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;创建一个随机初始化的矩阵:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;x = torch.rand(5, 3)
+print(x)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;tensor([[0.6004, 0.9095, 0.5525],
+        [0.2870, 0.2680, 0.1937],
+        [0.9153, 0.0150, 0.5165],
+        [0.7875, 0.7397, 0.9305],
+        [0.8575, 0.1453, 0.2655]])
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;创建一个0填充的矩阵，数据类型为&lt;code&gt;long&lt;/code&gt;:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;x = torch.zeros(5, 3, dtype=torch.long)
+print(x)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;tensor([[0, 0, 0],
+        [0, 0, 0],
+        [0, 0, 0],
+        [0, 0, 0],
+        [0, 0, 0]])
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;创建tensor并使用现有数据初始化:&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;x = torch.tensor([5.5, 3])
+print(x)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;tensor([5.5000, 3.0000])
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;根据现有的张量创建张量&lt;/strong&gt;。 这些方法将重用输入张量的属性，例如， dtype，除非设置新的值进行覆盖&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;x = torch.tensor([5.5, 3])
+print(x)
+
+x = x.new_ones(5, 3, dtype=torch.double)      # new_* 方法来创建对象
+print(x)
+
+x = torch.randn_like(x, dtype=torch.float)    # 覆盖 dtype!
+print(x)                                      #  对象的size 是相同的，只是值和类型发生了变化
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;tensor([5.5000, 3.0000])
+tensor([[1., 1., 1.],
+        [1., 1., 1.],
+        [1., 1., 1.],
+        [1., 1., 1.],
+        [1., 1., 1.]], dtype=torch.float64)
+tensor([[-0.5648,  1.4639, -0.1247],
+        [ 0.4187,  0.0255, -0.0938],
+        [-1.2237,  0.3889,  0.9847],
+        [-0.2423, -3.3706, -0.3511],
+        [-1.1498, -1.1044,  0.4582]])
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;获取-size&#34;&gt;获取 size&lt;/h2&gt;
+
+&lt;div class=&#34;alert alert-note&#34;&gt;
+  &lt;div&gt;
+    使用&lt;code&gt;size&lt;/code&gt;方法与Numpy的&lt;code&gt;shape&lt;/code&gt;属性返回的相同，张量也支持&lt;code&gt;shape&lt;/code&gt;属性
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;x = torch.ones(5, 3)
+print(x)
+
+print(&amp;quot;x.size(): &amp;quot;, x.size())
+print(&amp;quot;x.shape:  &amp;quot;, x.shape)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;tensor([[1., 1., 1.],
+        [1., 1., 1.],
+        [1., 1., 1.],
+        [1., 1., 1.],
+        [1., 1., 1.]])
+x.size():  torch.Size([5, 3])
+x.shape:   torch.Size([5, 3])
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;div class=&#34;alert alert-note&#34;&gt;
+  &lt;div&gt;
+    &lt;code&gt;torch.Size()&lt;/code&gt;返回值是&lt;code&gt;tuple&lt;/code&gt;类型，所以它支持&lt;code&gt;tuple&lt;/code&gt;类型的所有操作
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&#34;operation-操作&#34;&gt;Operation 操作&lt;/h2&gt;
+
+&lt;h3 id=&#34;加法&#34;&gt;加法&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;x = torch.rand(5, 3)
+y = torch.rand(5, 3)
+
+sum = x + y                 # 加法1，操作符
+sum = torch.add(x, y)       # 加法2，函数
+torch.add(x, y, out=sum)    # 加法3，提供输出张量sum作为参数
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;替换&#34;&gt;替换&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;# add x to y
+y.add_(x)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;div class=&#34;alert alert-note&#34;&gt;
+  &lt;div&gt;
+    任何 以&lt;code&gt;_&lt;/code&gt; 结尾的操作都会用结果替换原变量. 例如: &lt;code&gt;x.copy_(y)&lt;/code&gt;, &lt;code&gt;x.t_()&lt;/code&gt;, 都会改变 &lt;code&gt;x&lt;/code&gt;.
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&#34;截取&#34;&gt;截取&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;print(x[:, 1])
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;view-reshape&#34;&gt;view / reshape&lt;/h3&gt;
+
+&lt;p&gt;&lt;code&gt;torch.view&lt;/code&gt; 可以改变张量的维度和大小，与numpy的reshape类似&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;x = torch.randn(4, 4)
+y = x.view(16)
+z = x.view(-1, 8)  #  size -1 从其他维度推断
+print(x.size(), y.size(), z.size())
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;torch.Size([4, 4]) torch.Size([16]) torch.Size([2, 8])
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;只有一个元素的张量取值&#34;&gt;只有一个元素的张量取值&lt;/h3&gt;
+
+&lt;p&gt;如果你有只有一个元素的张量，使用&lt;code&gt;.item()&lt;/code&gt;来得到Python数据类型的数值&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;x = torch.randn(1)
+print(x)
+print(x.item())
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;tensor([-0.2036])
+-0.203627809882164
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;div class=&#34;alert alert-note&#34;&gt;
+  &lt;div&gt;
+    更多操作&lt;a href=&#34;https://pytorch.org/docs/stable/torch.html&#34; target=&#34;_blank&#34;&gt;点击此处&lt;/a&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&#34;numpy-转换&#34;&gt;Numpy 转换&lt;/h2&gt;
+
+&lt;p&gt;Torch Tensor与NumPy数组&lt;strong&gt;共享底层内存地址&lt;/strong&gt;，修改一个会导致另一个的变化。&lt;/p&gt;
+
+&lt;h3 id=&#34;torch-tensor-转换成-numpy数组&#34;&gt;Torch Tensor 转换成 NumPy数组&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;a = torch.ones(5)
+print(a)
+
+b = a.numpy()
+print(b)
+
+a.add_(1)
+print(a)
+print(b)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;tensor([1., 1., 1., 1., 1.])
+[1. 1. 1. 1. 1.]
+tensor([2., 2., 2., 2., 2.])
+[2. 2. 2. 2. 2.]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;numpy数组-转换成-torch-tensor&#34;&gt;NumPy数组 转换成 Torch Tensor&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;a = np.ones(5)
+b = torch.from_numpy(a)
+print(a)
+print(b)
+
+np.add(a, 1, out=a)
+print(a)
+print(b)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;[1. 1. 1. 1. 1.]
+tensor([1., 1., 1., 1., 1.], dtype=torch.float64)
+[2. 2. 2. 2. 2.]
+tensor([2., 2., 2., 2., 2.], dtype=torch.float64)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;div class=&#34;alert alert-warning&#34;&gt;
+  &lt;div&gt;
+    所有的 &lt;code&gt;Tensor&lt;/code&gt; 类型默认都是基于CPU， &lt;code&gt;CharTensor&lt;/code&gt; 类型不支持到 NumPy 的转换.
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;h2 id=&#34;cuda-张量&#34;&gt;CUDA 张量&lt;/h2&gt;
+
+&lt;p&gt;使用&lt;code&gt;.to&lt;/code&gt; 方法 可以将Tensor移动到任何设备中&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;x = torch.rand(1)
+
+# is_available 函数判断是否有cuda可以使用
+# torch.device 将张量移动到指定的设备中
+if torch.cuda.is_available():
+    device = torch.device(&amp;quot;cuda&amp;quot;)          # a CUDA 设备对象
+    y = torch.ones_like(x, device=device)  # 直接从GPU创建张量
+    x = x.to(device)                       # 或者直接使用 .to(&amp;quot;cuda&amp;quot;) 将张量移动到cuda中
+    z = x + y
+    print(z)
+    print(z.to(&amp;quot;cpu&amp;quot;, torch.double))       # .to 也会对变量的类型做更改
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;tensor([1.2840], device=&#39;cuda:0&#39;)
+tensor([1.2840], dtype=torch.float64)
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
     
     <item>
       <title>PyTorch Learning</title>
@@ -18,7 +277,16 @@
       <pubDate>Mon, 22 Jul 2019 17:37:53 +0800</pubDate>
       
       <guid>https://YuxinZhaozyx.github.io/project/pytorch-learning/</guid>
-      <description>&lt;p&gt;This project is to record my learning road of pytorch framework.&lt;/p&gt;
+      <description>
+
+&lt;p&gt;This project is to record my learning road of pytorch framework.&lt;/p&gt;
+
+&lt;h2 id=&#34;tutorial&#34;&gt;Tutorial&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://pytorch.org/tutorials/beginner/deep_learning_60min_blitz.html&#34; target=&#34;_blank&#34;&gt;官方教程&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/zergtant/pytorch-handbook&#34; target=&#34;_blank&#34;&gt;PyTorch中文手册&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
 </description>
     </item>
     
@@ -3928,7 +4196,7 @@ go get github.com/micro/micro
     <item>
       <title></title>
       <link>https://YuxinZhaozyx.github.io/authors/yuxinzhao/</link>
-      <pubDate>Mon, 22 Jul 2019 17:37:53 +0800</pubDate>
+      <pubDate>Mon, 22 Jul 2019 18:11:52 +0800</pubDate>
       
       <guid>https://YuxinZhaozyx.github.io/authors/yuxinzhao/</guid>
       <description>&lt;p&gt;I&amp;rsquo;m a college student of software engineering at the South China University of Technology. My research interests include artificial intelligence, micro service and engineering.&lt;/p&gt;
