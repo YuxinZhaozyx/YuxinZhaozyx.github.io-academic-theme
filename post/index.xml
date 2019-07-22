@@ -7,10 +7,150 @@
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
     <language>en-us</language>
     <copyright>Copyright &amp;copy; {year} YuxinZhao</copyright>
-    <lastBuildDate>Mon, 22 Jul 2019 18:11:52 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 22 Jul 2019 19:20:28 +0800</lastBuildDate>
     
 	    <atom:link href="https://YuxinZhaozyx.github.io/post/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>PyTorch Learning Note-2</title>
+      <link>https://YuxinZhaozyx.github.io/post/pytorch-learning/note-2/</link>
+      <pubDate>Mon, 22 Jul 2019 19:20:28 +0800</pubDate>
+      
+      <guid>https://YuxinZhaozyx.github.io/post/pytorch-learning/note-2/</guid>
+      <description>
+
+&lt;h1 id=&#34;autograd-自动求导机制&#34;&gt;Autograd: 自动求导机制&lt;/h1&gt;
+
+&lt;p&gt;PyTorch 中所有神经网络的核心是 &lt;code&gt;autograd&lt;/code&gt; 包。 我们先简单介绍一下这个包，然后训练第一个简单的神经网络。&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;autograd&lt;/code&gt;包为张量上的所有操作提供了自动求导。 它是一个在运行时定义的框架，这意味着反向传播是根据你的代码来确定如何运行，并且每次迭代可以是不同的。&lt;/p&gt;
+
+&lt;h2 id=&#34;张量-tensor&#34;&gt;张量 Tensor&lt;/h2&gt;
+
+&lt;p&gt;&lt;code&gt;torch.Tensor&lt;/code&gt;是这个包的核心类。如果设置 &lt;code&gt;.requires_grad&lt;/code&gt; 为 &lt;code&gt;True&lt;/code&gt;，那么将会追踪所有对于该张量的操作。 当完成计算后通过调用 &lt;code&gt;.backward()&lt;/code&gt;，自动计算所有的梯度， 这个张量的所有梯度将会自动积累到 &lt;code&gt;.grad&lt;/code&gt; 属性。&lt;/p&gt;
+
+&lt;p&gt;要阻止张量跟踪历史记录，可以调用&lt;code&gt;.detach()&lt;/code&gt;方法将其与计算历史记录分离，并禁止跟踪它将来的计算记录。&lt;/p&gt;
+
+&lt;p&gt;为了防止跟踪历史记录（和使用内存），可以将代码块包装在&lt;code&gt;with torch.no_grad()：&lt;/code&gt;中。 在评估模型时特别有用，因为模型可能具有&lt;code&gt;requires_grad = True&lt;/code&gt;的可训练参数，但是我们不需要梯度计算。&lt;/p&gt;
+
+&lt;p&gt;在自动梯度计算中还有另外一个重要的类&lt;code&gt;Function&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;Tensor&lt;/code&gt; 和 &lt;code&gt;Function&lt;/code&gt;互相连接并生成一个非循环图，它表示和存储了完整的计算历史。 每个张量都有一个&lt;code&gt;.grad_fn&lt;/code&gt;属性，这个属性引用了一个创建了&lt;code&gt;Tensor&lt;/code&gt;的&lt;code&gt;Function&lt;/code&gt;（除非这个张量是用户手动创建的，即，这个张量的 &lt;code&gt;grad_fn&lt;/code&gt; 是 &lt;code&gt;None&lt;/code&gt;）。&lt;/p&gt;
+
+&lt;p&gt;如果需要计算导数，你可以在&lt;code&gt;Tensor&lt;/code&gt;上调用&lt;code&gt;.backward()&lt;/code&gt;。 如果&lt;code&gt;Tensor&lt;/code&gt;是一个标量（即它包含一个元素数据）则不需要为&lt;code&gt;backward()&lt;/code&gt;指定任何参数， 但是如果它有更多的元素，你需要指定一个&lt;code&gt;gradient&lt;/code&gt; 参数来匹配张量的形状。&lt;/p&gt;
+
+&lt;div class=&#34;alert alert-warning&#34;&gt;
+  &lt;div&gt;
+    在其他的文章中你可能会看到说将Tensor包裹到Variable中提供自动梯度计算，Variable 这个在0.41版中已经被标注为过期了，现在可以直接使用Tensor，官方文档在&lt;a href=&#34;https://pytorch.org/docs/stable/autograd.html#variable-deprecated&#34; target=&#34;_blank&#34;&gt;这里&lt;/a&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;p&gt;创建一个张量并设置 &lt;code&gt;requires_grad=True&lt;/code&gt; 用来追踪他的计算历史&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;x = torch.ones(2, 2, requires_grad=True)
+print(x)
+
+y = x + 2  # 对x进行操作
+print(y)
+print(&amp;quot;y.grad_fn: &amp;quot;, y.grad_fn)  # 结果y已经被计算出来了，所以，grad_fn已经被自动生成了
+
+z = y * y * 3  # 对y进行操作
+out = z.mean()
+print(z)
+print(out)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;tensor([[1., 1.],
+        [1., 1.]], requires_grad=True)
+tensor([[3., 3.],
+        [3., 3.]], grad_fn=&amp;lt;AddBackward0&amp;gt;)
+y.grad_fn:  &amp;lt;AddBackward0 object at 0x00000202022DAE48&amp;gt;
+tensor([[27., 27.],
+        [27., 27.]], grad_fn=&amp;lt;MulBackward0&amp;gt;)
+tensor(27., grad_fn=&amp;lt;MeanBackward0&amp;gt;)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;code&gt;.requires_grad_( ... )&lt;/code&gt; 可以改变现有张量的 &lt;code&gt;requires_grad&lt;/code&gt;属性。 如果没有指定的话，默认输入的flag是 &lt;code&gt;False&lt;/code&gt;。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;a = torch.ones(2, 2)
+a = (a * 3) / (a - 1)
+print(a.requires_grad)
+a.requires_grad_(True)
+print(a.requires_grad)
+b = (a * a).sum()
+print(b.grad_fn)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;False
+True
+&amp;lt;SumBackward0 object at 0x0000028141CBADA0&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;梯度&#34;&gt;梯度&lt;/h2&gt;
+
+&lt;p&gt;反向传播 因为 &lt;code&gt;out&lt;/code&gt;是一个纯量（scalar），&lt;code&gt;out.backward()&lt;/code&gt; 等于&lt;code&gt;out.backward(torch.tensor(1))&lt;/code&gt;。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;out.backward()
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;print gradients $\frac{d(out)}{dx}$&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;x = torch.ones(2, 2, requires_grad=True)
+y = x + 2  
+z = y * y * 3  
+out = z.mean()
+
+out.backward()
+print(x.grad)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;tensor([[4.5000, 4.5000],
+        [4.5000, 4.5000]])
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;可以用自动求导做更多操作&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;x = torch.randn(3, requires_grad=True)
+
+y = x * 2
+while y.data.norm() &amp;lt; 1000:
+    y = y * 2
+
+print(y)
+gradients = torch.tensor([0.1, 1.0, 0.0001], dtype=torch.float)
+y.backward(gradients)
+
+print(x.grad)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;tensor([-790.8533,  793.1236,  307.1018], grad_fn=&amp;lt;MulBackward0&amp;gt;)
+tensor([5.1200e+01, 5.1200e+02, 5.1200e-02])
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;如果&lt;code&gt;.requires_grad=True&lt;/code&gt;但是你又不希望进行autograd的计算， 那么可以将变量包裹在 &lt;code&gt;with torch.no_grad()&lt;/code&gt;中:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;print(x.requires_grad)
+print((x ** 2).requires_grad)
+
+with torch.no_grad():
+    print(x.requires_grad)
+    print((x ** 2).requires_grad)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;True
+True
+True
+False
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;div class=&#34;alert alert-note&#34;&gt;
+  &lt;div&gt;
+    &lt;strong&gt;更多阅读：&lt;/strong&gt; autograd 和 Function 的&lt;a href=&#34;https://pytorch.org/docs/autograd&#34; target=&#34;_blank&#34;&gt;官方文档&lt;/a&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</description>
+    </item>
     
     <item>
       <title>PyTorch Learning Note-1</title>
