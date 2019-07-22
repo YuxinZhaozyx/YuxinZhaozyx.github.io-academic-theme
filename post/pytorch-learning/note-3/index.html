@@ -1,0 +1,1148 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Source Themes Academic 4.3.1">
+
+  
+
+  
+  
+  
+  
+  
+    
+    
+    
+  
+  
+
+  <meta name="author" content="Yuxin Zhao 赵煜新">
+
+  
+  
+  
+    
+  
+  <meta name="description" content="[DEEP LEARNING WITH PYTORCH: A 60 MINUTE BLITZ] Neural Networks">
+
+  
+  <link rel="alternate" hreflang="en-us" href="https://YuxinZhaozyx.github.io/post/pytorch-learning/note-3/">
+
+  
+
+
+  
+
+  
+  
+  
+  <meta name="theme-color" content="#2962ff">
+  
+
+  
+  
+  
+  
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css" integrity="sha256-uFVgMKfistnJAfoCUQigIl+JfUaP47GrRKjf6CTPVmw=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.css" integrity="sha256-PF6MatZtiJ8/c9O9HQ8uSUXr++R9KBYu4gbNG5511WE=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" integrity="sha256-ygkqlh3CYSUri3LhQxzdcm0n1EQvH2Y+U5S2idbLtxs=" crossorigin="anonymous">
+
+    
+    
+    
+      
+    
+    
+      
+      
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/tomorrow-night-eighties.min.css" crossorigin="anonymous" title="hl-light">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/tomorrow-night-eighties.min.css" crossorigin="anonymous" title="hl-dark" disabled>
+      
+    
+
+    
+
+    
+
+  
+
+  
+  
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700|Roboto:400,400italic,700|Roboto+Mono&display=swap">
+  
+
+  
+  
+  
+  <link rel="stylesheet" href="/css/academic.min.3834c081887e44130d565828d71a7178.css">
+
+  
+    
+    
+    
+    
+      
+    
+    
+    
+    <link rel="stylesheet" href="/css/academic.3409bf82d42bbe8cdb9b6f5ed981ab8f.css">
+  
+
+  
+  
+  
+
+  
+
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="icon" type="image/png" href="/img/icon.png">
+  <link rel="apple-touch-icon" type="image/png" href="/img/icon-192.png">
+
+  <link rel="canonical" href="https://YuxinZhaozyx.github.io/post/pytorch-learning/note-3/">
+
+  
+  
+  
+  
+    
+  
+  <meta property="twitter:card" content="summary_large_image">
+  
+  <meta property="og:site_name" content="YuxinZhao">
+  <meta property="og:url" content="https://YuxinZhaozyx.github.io/post/pytorch-learning/note-3/">
+  <meta property="og:title" content="PyTorch Learning Note-3 | YuxinZhao">
+  <meta property="og:description" content="[DEEP LEARNING WITH PYTORCH: A 60 MINUTE BLITZ] Neural Networks"><meta property="og:image" content="https://YuxinZhaozyx.github.io/post/pytorch-learning/note-3/featured.png">
+  <meta property="twitter:image" content="https://YuxinZhaozyx.github.io/post/pytorch-learning/note-3/featured.png"><meta property="og:locale" content="en-us">
+  
+  <meta property="article:published_time" content="2019-07-22T20:48:56&#43;08:00">
+  
+  <meta property="article:modified_time" content="2019-07-22T20:48:56&#43;08:00">
+  
+
+  
+
+
+  
+
+
+
+
+
+  <title>PyTorch Learning Note-3 | YuxinZhao</title>
+
+</head>
+
+
+<body id="top" data-spy="scroll" data-target="#TableOfContents" data-offset="71" >
+
+  <aside class="search-results" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>Search</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="Search..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" role="textbox" spellcheck="false" type="search">
+        
+      </div>
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+  
+<nav class="navbar navbar-light fixed-top navbar-expand-lg py-0" id="navbar-main">
+  <div class="container">
+
+    
+      <a class="navbar-brand" href="/">YuxinZhao</a>
+      
+      <button type="button" class="navbar-toggler" data-toggle="collapse"
+              data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+        <span><i class="fas fa-bars"></i></span>
+      </button>
+      
+
+    
+    <div class="collapse navbar-collapse" id="navbar">
+
+      
+      
+      <ul class="navbar-nav mr-auto">
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#about"><span>Home</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#posts"><span>Posts</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#projects"><span>Projects</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#paper-notes"><span>Paper Notes</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#contact"><span>Contact</span></a>
+        </li>
+
+        
+        
+
+      
+      </ul>
+      <ul class="navbar-nav ml-auto">
+      
+
+        
+
+        
+        <li class="nav-item">
+          <a class="nav-link js-search" href="#"><i class="fas fa-search" aria-hidden="true"></i></a>
+        </li>
+        
+
+        
+
+        
+        <li class="nav-item">
+          <a class="nav-link js-dark-toggle" href="#"><i class="fas fa-moon" aria-hidden="true"></i></a>
+        </li>
+        
+
+      </ul>
+
+    </div>
+  </div>
+</nav>
+
+
+  <article class="article" itemscope itemtype="http://schema.org/Article">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+
+<div class="article-container pt-3">
+  <h1 itemprop="name">PyTorch Learning Note-3</h1>
+
+  
+  <p class="page-subtitle">[DEEP LEARNING WITH PYTORCH: A 60 MINUTE BLITZ] Neural Networks</p>
+  
+
+  
+
+
+
+<meta content="2019-07-22 20:48:56 &#43;0800 CST" itemprop="datePublished">
+<meta content="2019-07-22 20:48:56 &#43;0800 CST" itemprop="dateModified">
+
+<div class="article-metadata">
+
+  
+  
+  
+  
+  <div>
+    
+
+
+
+  <span itemprop="author name" itemtype="http://schema.org/Person"><a href="/authors/yuxinzhao/">Yuxin Zhao 赵煜新</a></span>
+
+  </div>
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+    
+    <time>Jul 22, 2019</time>
+  </span>
+  
+
+  
+
+  
+  <span class="middot-divider"></span>
+  <span class="article-reading-time">
+    4 min read
+  </span>
+  
+
+  
+  
+
+  
+  
+  <span class="middot-divider"></span>
+  <span class="article-categories">
+    <i class="fas fa-folder"></i>
+    <a href="/categories/deep-learning/">deep-learning</a></span>
+  
+
+  
+    
+<div class="share-box" aria-hidden="true">
+  <ul class="share">
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://twitter.com/intent/tweet?url=https://YuxinZhaozyx.github.io/post/pytorch-learning/note-3/&amp;text=PyTorch%20Learning%20Note-3" target="_blank" rel="noopener" class="share-btn-twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.facebook.com/sharer.php?u=https://YuxinZhaozyx.github.io/post/pytorch-learning/note-3/&amp;t=PyTorch%20Learning%20Note-3" target="_blank" rel="noopener" class="share-btn-facebook">
+          <i class="fab fa-facebook-f"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="mailto:?subject=PyTorch%20Learning%20Note-3&amp;body=https://YuxinZhaozyx.github.io/post/pytorch-learning/note-3/" target="_blank" rel="noopener" class="share-btn-email">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.linkedin.com/shareArticle?url=https://YuxinZhaozyx.github.io/post/pytorch-learning/note-3/&amp;title=PyTorch%20Learning%20Note-3" target="_blank" rel="noopener" class="share-btn-linkedin">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://web.whatsapp.com/send?text=PyTorch%20Learning%20Note-3%20https://YuxinZhaozyx.github.io/post/pytorch-learning/note-3/" target="_blank" rel="noopener" class="share-btn-whatsapp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://service.weibo.com/share/share.php?url=https://YuxinZhaozyx.github.io/post/pytorch-learning/note-3/&amp;title=PyTorch%20Learning%20Note-3" target="_blank" rel="noopener" class="share-btn-weibo">
+          <i class="fab fa-weibo"></i>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+
+
+  
+
+</div>
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="btn-links mb-3">
+  
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+  
+  <a class="btn btn-outline-primary my-1 mr-1" href="/project/pytorch-learning/">
+    Project
+  </a>
+  
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+
+</div>
+
+
+<div class="article-header article-container featured-image-wrapper mt-4 mb-4" style="max-width: 720px; max-height: 284px;">
+  <div style="position: relative">
+    <img src="/post/pytorch-learning/note-3/featured_hu9cfaec333decd49eb236ae31f6d1ba42_22268_720x0_resize_lanczos_2.png" alt="" class="featured-image">
+    
+  </div>
+</div>
+
+
+
+  <div class="article-container">
+
+    <div class="article-style" itemprop="articleBody">
+      
+
+<p>使用torch.nn包来构建神经网络。</p>
+
+<p><code>nn</code>包依赖<code>autograd</code>包来定义模型并求导。 一个<code>nn.Module</code>包含各个层和一个<code>forward(input)</code>方法，该方法返回<code>output</code>。</p>
+
+<p><img src="image/68747470733a2f2f7079746f7263682e6f72672f7475746f7269616c732f5f696d616765732f6d6e6973742e706e67.png" alt="img" /></p>
+
+<p>它是一个简单的前馈神经网络，它接受一个输入，然后一层接着一层地传递，最后输出计算的结果。</p>
+
+<p>神经网络的典型训练过程如下：</p>
+
+<ol>
+<li>定义包含一些可学习的参数(或者叫权重)神经网络模型；</li>
+<li>在数据集上迭代；</li>
+<li>通过神经网络处理输入；</li>
+<li>计算损失(输出结果和正确值的差值大小)；</li>
+<li>将梯度反向传播回网络的参数；</li>
+<li>更新网络的参数，主要使用如下简单的更新原则： <code>weight = weight - learning_rate * gradient</code></li>
+</ol>
+
+<h2 id="定义网络">定义网络</h2>
+
+<pre><code class="language-python">import torch
+import torch.nn as nn
+import torch.nn.functional as F 
+
+class Net(nn.Module):
+
+    def __init__(self):
+        super(Net, self).__init__()
+
+        # 1 input image channel
+        # 6 output image channel
+        # 5x5 square convolution kernel
+        self.conv1 = nn.Conv2d(1, 6, 5)
+        self.conv2 = nn.Conv2d(6, 16, 5)
+
+        # an affine operation: y = Wx + b
+        self.fc1 = nn.Linear(16 * 5 * 5, 120)
+        self.fc2 = nn.Linear(120, 84)
+        self.fc3 = nn.Linear(84, 10)
+
+    def forward(self, x):
+        # Max pooling over a (2, 2) window
+        x = F.max_pool2d(F.relu(self.conv1(x)), (2, 2))
+        # if the size is a square you can only specify a single number
+        x = F.max_pool2d(F.relu(self.conv2(x)), 2)
+
+        x = x.view(-1, self.num_flat_features(x))
+        x = F.relu(self.fc1(x))
+        x = F.relu(self.fc2(x))
+        x = self.fc3(x)
+        return x
+
+    def num_flat_features(self, x):
+        size = x.size()[1:]  # all dimensions except the batch dimension
+        
+        num_features = 1
+        for s in size:
+            num_features *= s
+        return num_features
+    
+net = Net()
+print(net)
+</code></pre>
+
+<pre><code class="language-python">Net(
+  (conv1): Conv2d(1, 6, kernel_size=(5, 5), stride=(1, 1))
+  (conv2): Conv2d(6, 16, kernel_size=(5, 5), stride=(1, 1))
+  (fc1): Linear(in_features=400, out_features=120, bias=True)
+  (fc2): Linear(in_features=120, out_features=84, bias=True)
+  (fc3): Linear(in_features=84, out_features=10, bias=True)
+)
+</code></pre>
+
+<p><strong>在模型中必须要定义 <code>forward</code> 函数</strong>，<code>backward</code> 函数（用来计算梯度）会被<code>autograd</code>自动创建。 可以在 <code>forward</code> 函数中使用任何针对 Tensor 的操作。</p>
+
+<p><strong><code>net.parameters()</code>返回可被学习的参数（权重）列表和值</strong></p>
+
+<pre><code class="language-python">params = list(net.parameters())
+print(len(params))
+print(params[0].size())  # params[0] == net.conv1.weight
+</code></pre>
+
+<pre><code class="language-python">10
+torch.Size([6, 1, 5, 5]
+</code></pre>
+
+<p>测试随机输入32×32。 注：这个网络（LeNet）期望的输入大小是32×32，如果使用MNIST数据集来训练这个网络，请把图片大小重新调整到32×32。</p>
+
+<pre><code class="language-python">input = torch.randn(1, 1, 32, 32)
+out = net(input)
+print(out)
+</code></pre>
+
+<pre><code class="language-python">tensor([[ 0.1052, -0.0361,  0.1122,  0.1072,  0.0887,  0.0477,
+ 0.0916, -0.0594,
+         -0.1450,  0.0574]], grad_fn=&lt;AddmmBackward&gt;)
+</code></pre>
+
+<p>将所有参数的梯度缓存清零，然后进行随机梯度的的反向传播：</p>
+
+<pre><code class="language-python">net.zero_grad()
+out.backward(torch.randn(1, 10))
+</code></pre>
+
+<div class="alert alert-note">
+  <div>
+    <code>torch.nn</code> 只支持小批量输入。整个 <code>torch.nn</code> 包都只支持小批量样本，而不支持单个样本。 例如，<code>nn.Conv2d</code> 接受一个4维的张量， <code>每一维分别是sSamples * nChannels * Height * Width（样本数*通道数*高*宽）</code>。 <strong>如果你有单个样本，只需使用 <code>input.unsqueeze(0)</code> 来添加其它的维数</strong>
+  </div>
+</div>
+
+<p>我们回顾一下到目前为止用到的类。</p>
+
+<p><strong>回顾:</strong></p>
+
+<ul>
+<li><code>torch.Tensor</code>：一个用过自动调用 <code>backward()</code>实现支持自动梯度计算的 <em>多维数组</em> ， 并且保存关于这个向量的梯度</li>
+<li><code>nn.Module</code>：神经网络模块。封装参数、移动到GPU上运行、导出、加载等。</li>
+<li><code>nn.Parameter</code>：一种变量，当把它赋值给一个<code>Module</code>时，被 自动地注册为一个参数。</li>
+<li><code>autograd.Function</code>：实现一个自动求导操作的前向和反向定义，每个变量操作至少创建一个函数节点，每一个<code>Tensor</code>的操作都h会创建一个接到创建<code>Tensor</code>和 编码其历史 的函数的<code>Function</code>节点。</li>
+</ul>
+
+<h2 id="损失函数">损失函数</h2>
+
+<p>一个损失函数接受一对 (output, target) 作为输入，计算一个值来估计网络的输出和目标值相差多少。</p>
+
+<p><a href="https://pytorch.org/docs/nn" target="_blank">nn包</a>中有很多不同的<a href="https://pytorch.org/docs/nn.html#loss-functions" target="_blank">损失函数</a>。 <code>nn.MSELoss</code>是一个比较简单的损失函数，它计算输出和目标间的<strong>均方误差</strong>， 例如：</p>
+
+<pre><code class="language-python">input = torch.randn(1, 1, 32, 32)
+output = net(input)
+target = torch.randn(10)  # 随机值作为样例
+target = target.view(1, -1)  # 使target和output的shape相同
+
+criterion = nn.MSELoss()
+loss = criterion(output, target)
+print(loss)
+
+</code></pre>
+
+<pre><code class="language-python">tensor(1.1509, grad_fn=&lt;MseLossBackward&gt;)
+</code></pre>
+
+<h2 id="反向传播">反向传播</h2>
+
+<p>调用<code>loss.backward()</code>获得反向传播的误差。</p>
+
+<p>但是在调用前需要清除已存在的梯度，否则梯度将被累加到已存在的梯度。</p>
+
+<p>现在，我们将调用<code>loss.backward()</code>，并查看conv1层的偏差（bias）项在反向传播前后的梯度。</p>
+
+<pre><code class="language-python">net.zero_grad()  # 清除梯度
+
+print('conv1.bias.grad before backward')
+print(net.conv1.bias.grad)
+
+loss.backward()
+
+print('conv1.bias.grad after backward')
+print(net.conv1.bias.grad)
+</code></pre>
+
+<pre><code class="language-python">conv1.bias.grad before backward
+None
+conv1.bias.grad after backward
+tensor([ 0.0027, -0.0142,  0.0197,  0.0021, -0.0018,  0.0001])
+</code></pre>
+
+<h2 id="更新权重">更新权重</h2>
+
+<p>在实践中最简单的权重更新规则是随机梯度下降（SGD）：</p>
+
+<pre><code class="language-python"> weight = weight - learning_rate * gradient
+</code></pre>
+
+<p>我们可以使用简单的Python代码实现这个规则：</p>
+
+<pre><code class="language-python">learning_rate = 0.01
+for f in net.parameters():
+    f.data.sub_(f.grad.data * learning_rate)
+</code></pre>
+
+<p>但是当使用神经网络是想要使用各种不同的更新规则时，比如SGD、Nesterov-SGD、Adam、RMSPROP等，PyTorch中构建了一个包<code>torch.optim</code>实现了所有的这些规则。 使用它们非常简单：</p>
+
+<pre><code class="language-python">import torch.optim as optim
+
+# create your optimizer
+optimizer = optim.SGD(net.parameters(), lr=0.01)
+criterion = nn.MSELoss()
+
+# in your training loop
+optimizer.zero_grad()   # zero the gradient buffers
+output = net(input)
+loss = criterion(output, target)
+loss.backward()
+optimizer.step()   # Does the update
+</code></pre>
+
+    </div>
+
+    
+
+<div class="article-tags">
+  
+  <a class="badge badge-light" href="/tags/pytorch/">pytorch</a>
+  
+  <a class="badge badge-light" href="/tags/deep-learning/">deep learning</a>
+  
+</div>
+
+
+
+    
+      
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+  
+
+
+
+
+
+  
+  
+  
+    
+  
+  
+  <div class="media author-card" itemscope itemtype="http://schema.org/Person">
+    
+      
+      <img class="portrait mr-3" src="/authors/yuxinzhao/avatar_hu53c49a6bf84423129c94a7ea41b67289_336578_250x250_fill_q90_lanczos_center.jpg" itemprop="image" alt="Avatar">
+    
+
+    <div class="media-body">
+      <h5 class="card-title" itemprop="name"><a href="https://YuxinZhaozyx.github.io/">Yuxin Zhao 赵煜新</a></h5>
+      <h6 class="card-subtitle">Student of Software Engineering</h6>
+      <p class="card-text" itemprop="description">My research interests include Artificial Intelligence, Micro Service and Engineering.</p>
+      <ul class="network-icon" aria-hidden="true">
+        
+          
+          
+          
+            
+          
+          
+          
+          
+          
+            
+          
+          <li>
+            <a itemprop="sameAs" href="/#contact" >
+              <i class="fas fa-envelope"></i>
+            </a>
+          </li>
+        
+          
+          
+          
+            
+          
+          
+          
+          
+          
+            
+          
+          <li>
+            <a itemprop="sameAs" href="https://github.com/YuxinZhaozyx" target="_blank" rel="noopener">
+              <i class="fab fa-github"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+
+
+      
+      
+      <div class="article-widget">
+        <div class="hr-light"></div>
+        <h3>Related</h3>
+        <ul>
+          
+          <li><a href="/post/pytorch-learning/note-2/">PyTorch Learning Note-2</a></li>
+          
+          <li><a href="/post/pytorch-learning/note-1/">PyTorch Learning Note-1</a></li>
+          
+          <li><a href="/project/pytorch-learning/">PyTorch Learning</a></li>
+          
+          <li><a href="/paper-note/r-c3d-region-convolutional-3d-network-for-temporal-activity-detection/">[论文笔记] R-C3D: Region Convolutional 3D Network for Temporal Activity Detection</a></li>
+          
+          <li><a href="/paper-note/faster-r-cnn-towards-real-time-object-detection-with-region-proposal-networks/">[论文笔记] Faster R-CNN: Towards Real-Time Object Detection With Region Proposal Networks</a></li>
+          
+        </ul>
+      </div>
+      
+    
+
+    
+
+    
+<section id="comments">
+	<div id="gitalkContainer"></div>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+	<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+
+	<script>
+		var gitalk = new Gitalk({
+			clientID: "ec5806c0144b70a1b32e",
+			clientSecret: "aadae41a3747ffa5b36fd0e13c7e84026db07e0c",
+			repo: "YuxinZhaozyx.github.io",
+			owner: "YuxinZhaozyx",
+			admin: ["YuxinZhaozyx"],
+			id: '2019-07-22 20:48:56 \x2b0800 CST',      
+			labels: ["Comments"],
+			distractionFreeMode:  false ,  
+			pagerDirection: "last",
+			createIssueManually:  false ,
+			enableHotKey:  true ,
+			flipMoveOptions: {
+				staggerDelayBy:  150 ,
+				appearAnimation: "elevator",
+				enterAnimation: "elevator",
+				leaveAnimation: "elevator",
+			},
+		});
+		gitalk.render('gitalkContainer');
+	</script>
+</section>
+
+
+
+  </div>
+</article>
+
+      
+
+    
+    
+    
+    <script src="/js/mathjax-config.js"></script>
+    
+
+    
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js" integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js" integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" integrity="sha256-X5PoE3KU5l+JcX+w09p/wHl9AzK333C4hJ2I9S5mD4M=" crossorigin="anonymous"></script>
+
+      
+
+      
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/highlight.min.js" integrity="sha256-aYTdUrn6Ow1DDgh5JTc3aDGnnju48y/1c8s1dgkYPQ8=" crossorigin="anonymous"></script>
+        
+        <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/languages/go.min.js"></script>
+        
+        <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/languages/shell.min.js"></script>
+        
+        <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/languages/toml.min.js"></script>
+        
+        <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/languages/taml.min.js"></script>
+        
+        <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/languages/cpp.min.js"></script>
+        
+        <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/languages/c.min.js"></script>
+        
+        <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/languages/xml.min.js"></script>
+        
+        <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/languages/html.min.js"></script>
+        
+        <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/languages/python.min.js"></script>
+        
+      
+
+      
+      
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS_CHTML-full" integrity="sha256-GhM+5JHb6QUzOQPXSJLEWP7R73CbkisjzK5Eyij4U9w=" crossorigin="anonymous" async></script>
+      
+    
+
+    
+    
+
+    
+    
+    
+
+    
+    
+    <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    
+    
+    <script>
+      const search_index_filename = "/index.json";
+      const i18n = {
+        'placeholder': "Search...",
+        'results': "results found",
+        'no_results': "No results found"
+      };
+      const content_type = {
+        'post': "Posts",
+        'project': "Projects",
+        'publication' : "Publications",
+        'talk' : "Talks"
+        };
+    </script>
+    
+
+    
+    
+
+    
+    
+    <script id="search-hit-fuse-template" type="text/x-template">
+      <div class="search-hit" id="summary-{{key}}">
+      <div class="search-hit-content">
+        <div class="search-hit-name">
+          <a href="{{relpermalink}}">{{title}}</a>
+          <div class="article-metadata search-hit-type">{{type}}</div>
+          <p class="search-hit-description">{{snippet}}</p>
+        </div>
+      </div>
+      </div>
+    </script>
+    
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js" integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
+    
+
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    
+    
+    
+    <script src="/js/academic.min.8cd55d839906ab9f8f6514a7081b20c1.js"></script>
+
+    
+
+
+  
+  <div class="container">
+    <footer class="site-footer">
+  
+
+  <p class="powered-by">
+    Copyright &copy; 2019 YuxinZhao &middot; 
+
+    Powered by the
+    <a href="https://sourcethemes.com/academic/" target="_blank" rel="noopener">Academic theme</a> for
+    <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a>.
+
+    
+    <span class="float-right" aria-hidden="true">
+      <a href="#" id="back_to_top">
+        <span class="button_icon">
+          <i class="fas fa-chevron-up fa-2x"></i>
+        </span>
+      </a>
+    </span>
+    
+  </p>
+</footer>
+
+  </div>
+  
+
+  
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Cite</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="tex hljs"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> Copy
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> Download
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
