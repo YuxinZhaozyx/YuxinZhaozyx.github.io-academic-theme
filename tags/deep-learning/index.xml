@@ -7,10 +7,380 @@
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
     <language>en-us</language>
     <copyright>Copyright &amp;copy; {year} YuxinZhao</copyright>
-    <lastBuildDate>Mon, 22 Jul 2019 20:48:56 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 23 Jul 2019 11:10:54 +0800</lastBuildDate>
     
 	    <atom:link href="https://YuxinZhaozyx.github.io/tags/deep-learning/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>PyTorch Learning Note-5</title>
+      <link>https://YuxinZhaozyx.github.io/post/pytorch-learning/note-5/</link>
+      <pubDate>Tue, 23 Jul 2019 11:10:54 +0800</pubDate>
+      
+      <guid>https://YuxinZhaozyx.github.io/post/pytorch-learning/note-5/</guid>
+      <description>
+
+&lt;p&gt;本文将学习如何使用 &lt;code&gt;DataParallel&lt;/code&gt; 来使用多GPU。&lt;/p&gt;
+
+&lt;p&gt;PyTorch非常容易就可以使用多GPU，用如下方式把一个模型放到GPU上：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;device = torch.device(&amp;quot;cuda:0&amp;quot;)
+model.to(device)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;然后复制所有的张量到GPU上：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;mytensor = my_tensor.to(device)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;div class=&#34;alert alert-note&#34;&gt;
+  &lt;div&gt;
+    只调用&lt;code&gt;my_tensor.to(device)&lt;/code&gt;并没有复制张量到GPU上，而是返回了一个copy。所以你需要把它赋值给一个新的张量并在GPU上使用这个张量。
+  &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;p&gt;在多GPU上执行前向和反向传播是自然而然的事。 但是&lt;strong&gt;PyTorch默认将只使用一个GPU&lt;/strong&gt;。&lt;/p&gt;
+
+&lt;p&gt;使用&lt;code&gt;DataParallel&lt;/code&gt;可以轻易的让模型并行运行在多个GPU上。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;model = nn.DataParallel(model)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;导入模块和定义参数&#34;&gt;导入模块和定义参数&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;# Parameters and DataLoaders
+input_size = 5
+output_size = 2
+
+batch_size = 30
+data_size = 100
+
+# Device
+device = torch.device(&amp;quot;cuda:0&amp;quot; if torch.cuda.is_available() else &amp;quot;cpu&amp;quot;)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;虚拟数据集&#34;&gt;虚拟数据集&lt;/h2&gt;
+
+&lt;p&gt;制作一个虚拟（随机）数据集， 你只需实现 &lt;code&gt;__getitem__&lt;/code&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;class RandomDataset(Dataset):
+
+    def __init__(self, size, length):
+        self.len = length
+        self.data = torch.randn(length, size)
+
+    def __getitem__(self, index):
+        return self.data[index]
+
+    def __len__(self):
+        return self.len
+
+
+rand_loader = DataLoader(dataset=RandomDataset(input_size, data_size), batch_size=batch_size, shuffle=True)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;简单模型&#34;&gt;简单模型&lt;/h2&gt;
+
+&lt;p&gt;作为演示，我们的模型只接受一个输入，执行一个线性操作，然后得到结果。 说明：&lt;code&gt;DataParallel&lt;/code&gt;能在任何模型（CNN，RNN，Capsule Net等）上使用。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;class Model(nn.Module):
+    
+    def __init__(self, input_size, output_size):
+        super(Model, self).__init__()
+        self.fc = nn.Linear(input_size, output_size)
+
+    def forward(self, input):
+        output = self.fc(input)
+        print(&amp;quot;\t In Model: input size&amp;quot;, input.size(), &amp;quot;output size&amp;quot;, output.size())
+        return output
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;创建一个模型和数据并行&#34;&gt;创建一个模型和数据并行&lt;/h2&gt;
+
+&lt;p&gt;首先，我们需要创建一个模型实例和检测我们是否有多个GPU。 如果有多个GPU，使用&lt;code&gt;nn.DataParallel&lt;/code&gt;来包装我们的模型。 然后通过&lt;code&gt;model.to(device)&lt;/code&gt;把模型放到GPU上。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;model = Model(input_size, output_size)
+if torch.cuda.device_count() &amp;gt; 1:
+    print(&amp;quot;Let&#39;s use&amp;quot;, torch.cuda.device_count(), &amp;quot;GPUs!&amp;quot;)
+    # dim = 0 [30, xxx] -&amp;gt; [10, ...], [10, ...], [10, ...] on 3 GPUs
+    model = nn.DataParallel(model)
+
+model.to(device)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;运行模型&#34;&gt;运行模型&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;for data in rand_loader:
+    input = data.to(device)
+    output = model(input)
+    print(&amp;quot;Outside: input size&amp;quot;, input.size(), &amp;quot;output_size&amp;quot;, output.size())
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;当没有或者只有一个GPU时，对30个输入和输出进行批处理，得到了期望的一样得到30个输入和输出，但是如果你有多个GPU，你得到如下的结果。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;2 GPUs&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;Let&#39;s use 2 GPUs!
+    In Model: input size torch.Size([15, 5]) output size torch.Size([15, 2])
+    In Model: input size torch.Size([15, 5]) output size torch.Size([15, 2])
+Outside: input size torch.Size([30, 5]) output_size torch.Size([30, 2])
+    In Model: input size torch.Size([15, 5]) output size torch.Size([15, 2])
+    In Model: input size torch.Size([15, 5]) output size torch.Size([15, 2])
+Outside: input size torch.Size([30, 5]) output_size torch.Size([30, 2])
+    In Model: input size torch.Size([15, 5]) output size torch.Size([15, 2])
+    In Model: input size torch.Size([15, 5]) output size torch.Size([15, 2])
+Outside: input size torch.Size([30, 5]) output_size torch.Size([30, 2])
+    In Model: input size torch.Size([5, 5]) output size torch.Size([5, 2])
+    In Model: input size torch.Size([5, 5]) output size torch.Size([5, 2])
+Outside: input size torch.Size([10, 5]) output_size torch.Size([10, 2])
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>PyTorch Learning Note-4</title>
+      <link>https://YuxinZhaozyx.github.io/post/pytorch-learning/note-4/</link>
+      <pubDate>Tue, 23 Jul 2019 09:40:02 +0800</pubDate>
+      
+      <guid>https://YuxinZhaozyx.github.io/post/pytorch-learning/note-4/</guid>
+      <description>
+
+&lt;p&gt;一般情况下处理图像、文本、音频和视频数据时，可以使用标准的Python包来加载数据到一个numpy数组中。 然后把这个数组转换成 &lt;code&gt;torch.*Tensor&lt;/code&gt;。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;图像可以使用 Pillow, OpenCV&lt;/li&gt;
+&lt;li&gt;音频可以使用 scipy, librosa&lt;/li&gt;
+&lt;li&gt;文本可以使用原始Python和Cython来加载，或者使用 NLTK或 SpaCy 处理&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;特别的，对于图像任务，&lt;code&gt;torchvision&lt;/code&gt; 包 包含了处理一些基本图像数据集的方法。这些数据集包括 Imagenet, CIFAR10, MNIST 等。除了数据加载以外，&lt;code&gt;torchvision&lt;/code&gt; 还包含了图像转换器， &lt;code&gt;torchvision.datasets&lt;/code&gt; 和 &lt;code&gt;torch.utils.data.DataLoader&lt;/code&gt;。&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;torchvision&lt;/code&gt;包不仅提供了巨大的便利，也避免了代码的重复。&lt;/p&gt;
+
+&lt;p&gt;以下使用的案例中，将使用CIFAR10数据集，它有如下10个类别 ：‘airplane’, ‘automobile’, ‘bird’, ‘cat’, ‘deer’, ‘dog’, ‘frog’, ‘horse’, ‘ship’, ‘truck’。CIFAR-10的图像都是 3x32x32大小的，即，3颜色通道，32x32像素。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;https://camo.githubusercontent.com/4ed11e8caab93da7138bafcf8d14441abe097151/68747470733a2f2f7079746f7263682e6f72672f7475746f7269616c732f5f696d616765732f636966617231302e706e67&#34; alt=&#34;img&#34; /&gt;&lt;/p&gt;
+
+&lt;h1 id=&#34;训练一个图像分类器&#34;&gt;训练一个图像分类器&lt;/h1&gt;
+
+&lt;p&gt;依次按照下列顺序进行：&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;使用&lt;code&gt;torchvision&lt;/code&gt;加载和归一化CIFAR10训练集和测试集&lt;/li&gt;
+&lt;li&gt;定义一个卷积神经网络&lt;/li&gt;
+&lt;li&gt;定义损失函数&lt;/li&gt;
+&lt;li&gt;在训练集上训练网络&lt;/li&gt;
+&lt;li&gt;在测试集上测试网络&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h2 id=&#34;读取和归一化-cifar10&#34;&gt;读取和归一化 CIFAR10&lt;/h2&gt;
+
+&lt;p&gt;使用&lt;code&gt;torchvision&lt;/code&gt;可以非常容易地加载CIFAR10。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;import torch
+import torchvision
+import torchvision.transforms as transforms 
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;torchvision的输出是[0,1]的PILImage图像，我们把它转换为归一化范围为[-1, 1]的张量。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;transform = transforms.Compose(
+    [transforms.ToTensor(),
+     transforms.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5))])
+
+trainset = torchvision.datasets.CIFAR10(root=&#39;./data&#39;, train=True, download=True, transform=transform)
+trainloader = torch.utils.data.DataLoader(trainset, batch_size=4, shuffle=True, num_workers=2)
+
+testset = torchvision.datasets.CIFAR10(root=&#39;./data&#39;, train=False, download=True, transform=transform)
+testloader = torch.utils.data.DataLoader(testset, batch_size=4, shuffle=False, num_workers=2)
+
+classes = (&#39;plane&#39;, &#39;car&#39;, &#39;bird&#39;, &#39;cat&#39;, &#39;deer&#39;, &#39;dog&#39;, &#39;frog&#39;, &#39;horse&#39;, &#39;ship&#39;, &#39;truck&#39;)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;展示一些训练图像&#34;&gt;展示一些训练图像&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;import matplotlib.pyplot as plt 
+import numpy as np 
+
+# 展示图像的函数
+def imshow(img):
+    img = img / 2 + 0.5  # unnormalize
+    npimg = img.numpy()
+    plt.imshow(np.transpose(npimg, (1, 2, 0)))
+    plt.show()
+
+# 获取随机数据
+dataiter = iter(trainloader)
+images, labels = dataiter.next()
+
+# 展示图像
+imshow(torchvision.utils.make_grid(images))
+
+# 显示图像标签
+print(&amp;quot; &amp;quot;.join(&amp;quot;%5s&amp;quot; % classes[labels[j]] for j in range(4)))
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;img src=&#34;image/1563855333962.png&#34; alt=&#34;1563855333962&#34; /&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;truck horse   dog  frog
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;定义一个卷积神经网络&#34;&gt;定义一个卷积神经网络&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;import torch.nn as nn
+import torch.nn.functional as F 
+
+class Net(nn.Module):
+    def __init__(self):
+        super(Net, self).__init__()
+        
+        self.conv1 = nn.Conv2d(3, 6, 5) # 3 input channels, 6 output channels, 5x5 convolutional kernel
+        self.pool = nn.MaxPool2d(2, 2)  # 池化层可以共用
+        self.conv2 = nn.Conv2d(6, 16, 5)
+        self.fc1 = nn.Linear(16 * 5 * 5, 120)
+        self.fc2 = nn.Linear(120, 84)
+        self.fc3 = nn.Linear(84, 10)
+
+    def forward(self, x):
+        x = self.pool(F.relu(self.conv1(x)))
+        x = self.pool(F.relu(self.conv2(x)))
+        x = x.view(-1, 16 * 5 * 5)
+        x = F.relu(self.fc1(x))
+        x = F.relu(self.fc2(x))
+        x = self.fc3(x)
+        return x
+    
+net = Net()
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;定义损失函数和优化器&#34;&gt;定义损失函数和优化器&lt;/h2&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;import torch.optim as optim
+
+criterion = nn.CrossEntropyLoss()
+optimizer = optim.SGD(net.parameters(), lr=0.001, momentum=0.9)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;训练网络&#34;&gt;训练网络&lt;/h2&gt;
+
+&lt;p&gt;我们只需在数据迭代器上循环，将数据输入给网络，并优化。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;for epoch in range(2):  # 多批次循环
+
+    running_loss = 0.0
+    for i, data in enumerate(trainloader, 0):
+        # 获取输入
+        inputs, labels = data
+
+        # 梯度置0
+        optimizer.zero_grad()
+
+        # 正向传播，反向传播，优化
+        outputs = net(inputs)
+        loss = criterion(outputs, labels)
+        loss.backward()
+        optimizer.step()
+
+        # 打印状态信息
+        running_loss += loss.item()
+        if i % 2000 == 1999: # 每2000批次打印一次
+            print(&#39;[%d, %5d] loss: %.3f&#39; % (epoch + 1, i + 1, running_loss / 2000))
+            running_loss = 0.0
+
+print(&amp;quot;Finished Training&amp;quot;)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;在测试集上测试网络&#34;&gt;在测试集上测试网络&lt;/h2&gt;
+
+&lt;p&gt;我们在整个训练集上进行了2次训练，但是我们需要检查网络是否从数据集中学习到有用的东西。 通过预测神经网络输出的类别标签与实际情况标签进行对比来进行检测。 如果预测正确，我们把该样本添加到正确预测列表。 第一步，显示测试集中的图片并熟悉图片内容。然后用&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;dataiter = iter(testloader)
+images, labels = dataiter.next()
+
+# 输出是10个标签的能量。 一个类别的能量越大，神经网络越认为它是这个类别。所以让我们得到最高能量的标签。
+outputs = net(images) 
+_, predicted = torch.max(outputs, 1) # (maxvalues, indices) is returned
+
+# 显示图片
+imshow(torchvision.utils.make_grid(images))
+print(&#39;GroundTruth: &#39;, &#39; &#39;.join(&#39;%5s&#39; % classes[labels[j]] for j in range(4)))
+print(&#39;Predicted:   &#39;, &#39; &#39;.join(&#39;%5s&#39; % classes[predicted[j]] for j in range(4)))
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;img src=&#34;image/1563857966974.png&#34; alt=&#34;1563857966974&#34; /&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;GroundTruth:    cat  ship  ship plane
+Predicted:     bird plane plane   dog
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;接下来让看看网络在整个测试集上的结果如何。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;correct = 0
+total = 0
+with torch.no_grad():
+    for data in testloader:
+        images, labels = data
+        outputs = net(images)
+        _, predicted = torch.max(outputs.data, 1)
+        total += labels.size(0)
+        correct += (predicted == labels).sum().item()
+
+print(&#39;Accuracy of the network on the 10000 test images: %d %%&#39; % (100 * correct / total))
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;Accuracy of the network on the 10000 test images: 49 %
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;在识别哪一类的时候好，哪一类不好呢？&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;class_correct = list(0. for i in range(10))
+class_total = list(0. for i in range(10))
+with torch.no_grad():
+    for data in testloader:
+        images, labels = data
+        outputs = net(images)
+        _, predicted = torch.max(outputs, 1)
+        c = (predicted == labels).squeeze()
+        for i in range(4):
+            label = labels[i]
+            class_correct[label] += c[i].item()
+            class_total[label] += 1
+
+for i in range(10):
+    print(&#39;Accuracy of %5s : %2d %%&#39; % (classes[i], 100 * class_correct[i] / class_total[i]))
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;Accuracy of plane : 69 %
+Accuracy of   car : 69 %
+Accuracy of  bird : 15 %
+Accuracy of   cat : 43 %
+Accuracy of  deer : 44 %
+Accuracy of   dog : 22 %
+Accuracy of  frog : 72 %
+Accuracy of horse : 58 %
+Accuracy of  ship : 41 %
+Accuracy of truck : 58 %
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;在gpu上训练&#34;&gt;在GPU上训练&lt;/h2&gt;
+
+&lt;p&gt;把一个神经网络移动到GPU上训练就像把一个Tensor转换GPU上一样简单。并且这个操作会递归遍历有所模块，并将其参数和缓冲区转换为CUDA张量。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;device = torch.device(&amp;quot;cuda:0&amp;quot; if torch.cuda.is_available() else &amp;quot;cpu&amp;quot;)
+
+# 确认我们的电脑支持CUDA，然后显示CUDA信息
+print(device)
+
+# 将递归遍历所有模块并将模块的参数和缓冲区 转换成CUDA张量
+net.to(device)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;记住: &lt;code&gt;inputs&lt;/code&gt; 和 &lt;code&gt;labels&lt;/code&gt; 也要转换。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;inputs, labels = inputs.to(device), labels.to(device)
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
     
     <item>
       <title>PyTorch Learning Note-3</title>

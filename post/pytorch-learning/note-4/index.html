@@ -1,0 +1,1172 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="generator" content="Source Themes Academic 4.3.1">
+
+  
+
+  
+  
+  
+  
+  
+    
+    
+    
+  
+  
+
+  <meta name="author" content="Yuxin Zhao 赵煜新">
+
+  
+  
+  
+    
+  
+  <meta name="description" content="[DEEP LEARNING WITH PYTORCH: A 60 MINUTE BLITZ] Training A Classifier">
+
+  
+  <link rel="alternate" hreflang="en-us" href="https://YuxinZhaozyx.github.io/post/pytorch-learning/note-4/">
+
+  
+
+
+  
+
+  
+  
+  
+  <meta name="theme-color" content="#2962ff">
+  
+
+  
+  
+  
+  
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.8.6/css/academicons.min.css" integrity="sha256-uFVgMKfistnJAfoCUQigIl+JfUaP47GrRKjf6CTPVmw=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.css" integrity="sha256-PF6MatZtiJ8/c9O9HQ8uSUXr++R9KBYu4gbNG5511WE=" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.css" integrity="sha256-ygkqlh3CYSUri3LhQxzdcm0n1EQvH2Y+U5S2idbLtxs=" crossorigin="anonymous">
+
+    
+    
+    
+      
+    
+    
+      
+      
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/tomorrow-night-eighties.min.css" crossorigin="anonymous" title="hl-light">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/styles/tomorrow-night-eighties.min.css" crossorigin="anonymous" title="hl-dark" disabled>
+      
+    
+
+    
+
+    
+
+  
+
+  
+  
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,700|Roboto:400,400italic,700|Roboto+Mono&display=swap">
+  
+
+  
+  
+  
+  <link rel="stylesheet" href="/css/academic.min.3834c081887e44130d565828d71a7178.css">
+
+  
+    
+    
+    
+    
+      
+    
+    
+    
+    <link rel="stylesheet" href="/css/academic.3409bf82d42bbe8cdb9b6f5ed981ab8f.css">
+  
+
+  
+  
+  
+
+  
+
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="icon" type="image/png" href="/img/icon.png">
+  <link rel="apple-touch-icon" type="image/png" href="/img/icon-192.png">
+
+  <link rel="canonical" href="https://YuxinZhaozyx.github.io/post/pytorch-learning/note-4/">
+
+  
+  
+  
+  
+    
+    
+  
+  <meta property="twitter:card" content="summary">
+  
+  <meta property="og:site_name" content="YuxinZhao">
+  <meta property="og:url" content="https://YuxinZhaozyx.github.io/post/pytorch-learning/note-4/">
+  <meta property="og:title" content="PyTorch Learning Note-4 | YuxinZhao">
+  <meta property="og:description" content="[DEEP LEARNING WITH PYTORCH: A 60 MINUTE BLITZ] Training A Classifier"><meta property="og:image" content="https://YuxinZhaozyx.github.io/img/icon-192.png">
+  <meta property="twitter:image" content="https://YuxinZhaozyx.github.io/img/icon-192.png"><meta property="og:locale" content="en-us">
+  
+  <meta property="article:published_time" content="2019-07-23T09:40:02&#43;08:00">
+  
+  <meta property="article:modified_time" content="2019-07-23T09:40:02&#43;08:00">
+  
+
+  
+
+
+  
+
+
+
+
+
+  <title>PyTorch Learning Note-4 | YuxinZhao</title>
+
+</head>
+
+
+<body id="top" data-spy="scroll" data-target="#TableOfContents" data-offset="71" >
+
+  <aside class="search-results" id="search">
+  <div class="container">
+    <section class="search-header">
+
+      <div class="row no-gutters justify-content-between mb-3">
+        <div class="col-6">
+          <h1>Search</h1>
+        </div>
+        <div class="col-6 col-search-close">
+          <a class="js-search" href="#"><i class="fas fa-times-circle text-muted" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <div id="search-box">
+        
+        <input name="q" id="search-query" placeholder="Search..." autocapitalize="off"
+        autocomplete="off" autocorrect="off" role="textbox" spellcheck="false" type="search">
+        
+      </div>
+
+    </section>
+    <section class="section-search-results">
+
+      <div id="search-hits">
+        
+      </div>
+
+    </section>
+  </div>
+</aside>
+
+
+  
+<nav class="navbar navbar-light fixed-top navbar-expand-lg py-0" id="navbar-main">
+  <div class="container">
+
+    
+      <a class="navbar-brand" href="/">YuxinZhao</a>
+      
+      <button type="button" class="navbar-toggler" data-toggle="collapse"
+              data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+        <span><i class="fas fa-bars"></i></span>
+      </button>
+      
+
+    
+    <div class="collapse navbar-collapse" id="navbar">
+
+      
+      
+      <ul class="navbar-nav mr-auto">
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#about"><span>Home</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#posts"><span>Posts</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#projects"><span>Projects</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#paper-notes"><span>Paper Notes</span></a>
+        </li>
+
+        
+        
+
+        
+
+        
+        
+        
+          
+        
+
+        
+        
+        
+        
+        
+        
+          
+          
+          
+            
+          
+          
+        
+
+        <li class="nav-item">
+          <a class="nav-link " href="/#contact"><span>Contact</span></a>
+        </li>
+
+        
+        
+
+      
+      </ul>
+      <ul class="navbar-nav ml-auto">
+      
+
+        
+
+        
+        <li class="nav-item">
+          <a class="nav-link js-search" href="#"><i class="fas fa-search" aria-hidden="true"></i></a>
+        </li>
+        
+
+        
+
+        
+        <li class="nav-item">
+          <a class="nav-link js-dark-toggle" href="#"><i class="fas fa-moon" aria-hidden="true"></i></a>
+        </li>
+        
+
+      </ul>
+
+    </div>
+  </div>
+</nav>
+
+
+  <article class="article" itemscope itemtype="http://schema.org/Article">
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+  
+  
+<div class="article-container pt-3">
+  <h1 itemprop="name">PyTorch Learning Note-4</h1>
+
+  
+  <p class="page-subtitle">[DEEP LEARNING WITH PYTORCH: A 60 MINUTE BLITZ] Training A Classifier</p>
+  
+
+  
+    
+
+
+
+<meta content="2019-07-23 09:40:02 &#43;0800 CST" itemprop="datePublished">
+<meta content="2019-07-23 09:40:02 &#43;0800 CST" itemprop="dateModified">
+
+<div class="article-metadata">
+
+  
+  
+  
+  
+  <div>
+    
+
+
+
+  <span itemprop="author name" itemtype="http://schema.org/Person"><a href="/authors/yuxinzhao/">Yuxin Zhao 赵煜新</a></span>
+
+  </div>
+  
+  
+
+  
+  <span class="article-date">
+    
+    
+      
+    
+    <time>Jul 23, 2019</time>
+  </span>
+  
+
+  
+
+  
+  <span class="middot-divider"></span>
+  <span class="article-reading-time">
+    4 min read
+  </span>
+  
+
+  
+  
+
+  
+  
+  <span class="middot-divider"></span>
+  <span class="article-categories">
+    <i class="fas fa-folder"></i>
+    <a href="/categories/deep-learning/">deep-learning</a></span>
+  
+
+  
+    
+<div class="share-box" aria-hidden="true">
+  <ul class="share">
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://twitter.com/intent/tweet?url=https://YuxinZhaozyx.github.io/post/pytorch-learning/note-4/&amp;text=PyTorch%20Learning%20Note-4" target="_blank" rel="noopener" class="share-btn-twitter">
+          <i class="fab fa-twitter"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.facebook.com/sharer.php?u=https://YuxinZhaozyx.github.io/post/pytorch-learning/note-4/&amp;t=PyTorch%20Learning%20Note-4" target="_blank" rel="noopener" class="share-btn-facebook">
+          <i class="fab fa-facebook-f"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="mailto:?subject=PyTorch%20Learning%20Note-4&amp;body=https://YuxinZhaozyx.github.io/post/pytorch-learning/note-4/" target="_blank" rel="noopener" class="share-btn-email">
+          <i class="fas fa-envelope"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://www.linkedin.com/shareArticle?url=https://YuxinZhaozyx.github.io/post/pytorch-learning/note-4/&amp;title=PyTorch%20Learning%20Note-4" target="_blank" rel="noopener" class="share-btn-linkedin">
+          <i class="fab fa-linkedin-in"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://web.whatsapp.com/send?text=PyTorch%20Learning%20Note-4%20https://YuxinZhaozyx.github.io/post/pytorch-learning/note-4/" target="_blank" rel="noopener" class="share-btn-whatsapp">
+          <i class="fab fa-whatsapp"></i>
+        </a>
+      </li>
+    
+      
+      
+      
+        
+      
+      
+      
+      <li>
+        <a href="https://service.weibo.com/share/share.php?url=https://YuxinZhaozyx.github.io/post/pytorch-learning/note-4/&amp;title=PyTorch%20Learning%20Note-4" target="_blank" rel="noopener" class="share-btn-weibo">
+          <i class="fab fa-weibo"></i>
+        </a>
+      </li>
+    
+  </ul>
+</div>
+
+
+  
+
+</div>
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="btn-links mb-3">
+  
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+  
+  <a class="btn btn-outline-primary my-1 mr-1" href="/project/pytorch-learning/">
+    Project
+  </a>
+  
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+
+  
+</div>
+
+
+
+  <div class="article-container">
+
+    <div class="article-style" itemprop="articleBody">
+      
+
+<p>一般情况下处理图像、文本、音频和视频数据时，可以使用标准的Python包来加载数据到一个numpy数组中。 然后把这个数组转换成 <code>torch.*Tensor</code>。</p>
+
+<ul>
+<li>图像可以使用 Pillow, OpenCV</li>
+<li>音频可以使用 scipy, librosa</li>
+<li>文本可以使用原始Python和Cython来加载，或者使用 NLTK或 SpaCy 处理</li>
+</ul>
+
+<p>特别的，对于图像任务，<code>torchvision</code> 包 包含了处理一些基本图像数据集的方法。这些数据集包括 Imagenet, CIFAR10, MNIST 等。除了数据加载以外，<code>torchvision</code> 还包含了图像转换器， <code>torchvision.datasets</code> 和 <code>torch.utils.data.DataLoader</code>。</p>
+
+<p><code>torchvision</code>包不仅提供了巨大的便利，也避免了代码的重复。</p>
+
+<p>以下使用的案例中，将使用CIFAR10数据集，它有如下10个类别 ：‘airplane’, ‘automobile’, ‘bird’, ‘cat’, ‘deer’, ‘dog’, ‘frog’, ‘horse’, ‘ship’, ‘truck’。CIFAR-10的图像都是 3x32x32大小的，即，3颜色通道，32x32像素。</p>
+
+<p><img src="https://camo.githubusercontent.com/4ed11e8caab93da7138bafcf8d14441abe097151/68747470733a2f2f7079746f7263682e6f72672f7475746f7269616c732f5f696d616765732f636966617231302e706e67" alt="img" /></p>
+
+<h1 id="训练一个图像分类器">训练一个图像分类器</h1>
+
+<p>依次按照下列顺序进行：</p>
+
+<ol>
+<li>使用<code>torchvision</code>加载和归一化CIFAR10训练集和测试集</li>
+<li>定义一个卷积神经网络</li>
+<li>定义损失函数</li>
+<li>在训练集上训练网络</li>
+<li>在测试集上测试网络</li>
+</ol>
+
+<h2 id="读取和归一化-cifar10">读取和归一化 CIFAR10</h2>
+
+<p>使用<code>torchvision</code>可以非常容易地加载CIFAR10。</p>
+
+<pre><code class="language-python">import torch
+import torchvision
+import torchvision.transforms as transforms 
+</code></pre>
+
+<p>torchvision的输出是[0,1]的PILImage图像，我们把它转换为归一化范围为[-1, 1]的张量。</p>
+
+<pre><code class="language-python">transform = transforms.Compose(
+    [transforms.ToTensor(),
+     transforms.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5))])
+
+trainset = torchvision.datasets.CIFAR10(root='./data', train=True, download=True, transform=transform)
+trainloader = torch.utils.data.DataLoader(trainset, batch_size=4, shuffle=True, num_workers=2)
+
+testset = torchvision.datasets.CIFAR10(root='./data', train=False, download=True, transform=transform)
+testloader = torch.utils.data.DataLoader(testset, batch_size=4, shuffle=False, num_workers=2)
+
+classes = ('plane', 'car', 'bird', 'cat', 'deer', 'dog', 'frog', 'horse', 'ship', 'truck')
+</code></pre>
+
+<h2 id="展示一些训练图像">展示一些训练图像</h2>
+
+<pre><code class="language-python">import matplotlib.pyplot as plt 
+import numpy as np 
+
+# 展示图像的函数
+def imshow(img):
+    img = img / 2 + 0.5  # unnormalize
+    npimg = img.numpy()
+    plt.imshow(np.transpose(npimg, (1, 2, 0)))
+    plt.show()
+
+# 获取随机数据
+dataiter = iter(trainloader)
+images, labels = dataiter.next()
+
+# 展示图像
+imshow(torchvision.utils.make_grid(images))
+
+# 显示图像标签
+print(&quot; &quot;.join(&quot;%5s&quot; % classes[labels[j]] for j in range(4)))
+</code></pre>
+
+<p><img src="image/1563855333962.png" alt="1563855333962" /></p>
+
+<pre><code class="language-python">truck horse   dog  frog
+</code></pre>
+
+<h2 id="定义一个卷积神经网络">定义一个卷积神经网络</h2>
+
+<pre><code class="language-python">import torch.nn as nn
+import torch.nn.functional as F 
+
+class Net(nn.Module):
+    def __init__(self):
+        super(Net, self).__init__()
+        
+        self.conv1 = nn.Conv2d(3, 6, 5) # 3 input channels, 6 output channels, 5x5 convolutional kernel
+        self.pool = nn.MaxPool2d(2, 2)  # 池化层可以共用
+        self.conv2 = nn.Conv2d(6, 16, 5)
+        self.fc1 = nn.Linear(16 * 5 * 5, 120)
+        self.fc2 = nn.Linear(120, 84)
+        self.fc3 = nn.Linear(84, 10)
+
+    def forward(self, x):
+        x = self.pool(F.relu(self.conv1(x)))
+        x = self.pool(F.relu(self.conv2(x)))
+        x = x.view(-1, 16 * 5 * 5)
+        x = F.relu(self.fc1(x))
+        x = F.relu(self.fc2(x))
+        x = self.fc3(x)
+        return x
+    
+net = Net()
+</code></pre>
+
+<h2 id="定义损失函数和优化器">定义损失函数和优化器</h2>
+
+<pre><code class="language-python">import torch.optim as optim
+
+criterion = nn.CrossEntropyLoss()
+optimizer = optim.SGD(net.parameters(), lr=0.001, momentum=0.9)
+</code></pre>
+
+<h2 id="训练网络">训练网络</h2>
+
+<p>我们只需在数据迭代器上循环，将数据输入给网络，并优化。</p>
+
+<pre><code class="language-python">for epoch in range(2):  # 多批次循环
+
+    running_loss = 0.0
+    for i, data in enumerate(trainloader, 0):
+        # 获取输入
+        inputs, labels = data
+
+        # 梯度置0
+        optimizer.zero_grad()
+
+        # 正向传播，反向传播，优化
+        outputs = net(inputs)
+        loss = criterion(outputs, labels)
+        loss.backward()
+        optimizer.step()
+
+        # 打印状态信息
+        running_loss += loss.item()
+        if i % 2000 == 1999: # 每2000批次打印一次
+            print('[%d, %5d] loss: %.3f' % (epoch + 1, i + 1, running_loss / 2000))
+            running_loss = 0.0
+
+print(&quot;Finished Training&quot;)
+</code></pre>
+
+<h2 id="在测试集上测试网络">在测试集上测试网络</h2>
+
+<p>我们在整个训练集上进行了2次训练，但是我们需要检查网络是否从数据集中学习到有用的东西。 通过预测神经网络输出的类别标签与实际情况标签进行对比来进行检测。 如果预测正确，我们把该样本添加到正确预测列表。 第一步，显示测试集中的图片并熟悉图片内容。然后用</p>
+
+<pre><code class="language-python">dataiter = iter(testloader)
+images, labels = dataiter.next()
+
+# 输出是10个标签的能量。 一个类别的能量越大，神经网络越认为它是这个类别。所以让我们得到最高能量的标签。
+outputs = net(images) 
+_, predicted = torch.max(outputs, 1) # (maxvalues, indices) is returned
+
+# 显示图片
+imshow(torchvision.utils.make_grid(images))
+print('GroundTruth: ', ' '.join('%5s' % classes[labels[j]] for j in range(4)))
+print('Predicted:   ', ' '.join('%5s' % classes[predicted[j]] for j in range(4)))
+</code></pre>
+
+<p><img src="image/1563857966974.png" alt="1563857966974" /></p>
+
+<pre><code class="language-python">GroundTruth:    cat  ship  ship plane
+Predicted:     bird plane plane   dog
+</code></pre>
+
+<p>接下来让看看网络在整个测试集上的结果如何。</p>
+
+<pre><code class="language-python">correct = 0
+total = 0
+with torch.no_grad():
+    for data in testloader:
+        images, labels = data
+        outputs = net(images)
+        _, predicted = torch.max(outputs.data, 1)
+        total += labels.size(0)
+        correct += (predicted == labels).sum().item()
+
+print('Accuracy of the network on the 10000 test images: %d %%' % (100 * correct / total))
+</code></pre>
+
+<pre><code class="language-python">Accuracy of the network on the 10000 test images: 49 %
+</code></pre>
+
+<p>在识别哪一类的时候好，哪一类不好呢？</p>
+
+<pre><code class="language-python">class_correct = list(0. for i in range(10))
+class_total = list(0. for i in range(10))
+with torch.no_grad():
+    for data in testloader:
+        images, labels = data
+        outputs = net(images)
+        _, predicted = torch.max(outputs, 1)
+        c = (predicted == labels).squeeze()
+        for i in range(4):
+            label = labels[i]
+            class_correct[label] += c[i].item()
+            class_total[label] += 1
+
+for i in range(10):
+    print('Accuracy of %5s : %2d %%' % (classes[i], 100 * class_correct[i] / class_total[i]))
+</code></pre>
+
+<pre><code class="language-python">Accuracy of plane : 69 %
+Accuracy of   car : 69 %
+Accuracy of  bird : 15 %
+Accuracy of   cat : 43 %
+Accuracy of  deer : 44 %
+Accuracy of   dog : 22 %
+Accuracy of  frog : 72 %
+Accuracy of horse : 58 %
+Accuracy of  ship : 41 %
+Accuracy of truck : 58 %
+</code></pre>
+
+<h2 id="在gpu上训练">在GPU上训练</h2>
+
+<p>把一个神经网络移动到GPU上训练就像把一个Tensor转换GPU上一样简单。并且这个操作会递归遍历有所模块，并将其参数和缓冲区转换为CUDA张量。</p>
+
+<pre><code class="language-python">device = torch.device(&quot;cuda:0&quot; if torch.cuda.is_available() else &quot;cpu&quot;)
+
+# 确认我们的电脑支持CUDA，然后显示CUDA信息
+print(device)
+
+# 将递归遍历所有模块并将模块的参数和缓冲区 转换成CUDA张量
+net.to(device)
+</code></pre>
+
+<p>记住: <code>inputs</code> 和 <code>labels</code> 也要转换。</p>
+
+<pre><code class="language-python">inputs, labels = inputs.to(device), labels.to(device)
+</code></pre>
+
+    </div>
+
+    
+
+<div class="article-tags">
+  
+  <a class="badge badge-light" href="/tags/pytorch/">pytorch</a>
+  
+  <a class="badge badge-light" href="/tags/deep-learning/">deep learning</a>
+  
+</div>
+
+
+
+    
+      
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+  
+
+
+
+
+
+  
+  
+  
+    
+  
+  
+  <div class="media author-card" itemscope itemtype="http://schema.org/Person">
+    
+      
+      <img class="portrait mr-3" src="/authors/yuxinzhao/avatar_hu53c49a6bf84423129c94a7ea41b67289_336578_250x250_fill_q90_lanczos_center.jpg" itemprop="image" alt="Avatar">
+    
+
+    <div class="media-body">
+      <h5 class="card-title" itemprop="name"><a href="https://YuxinZhaozyx.github.io/">Yuxin Zhao 赵煜新</a></h5>
+      <h6 class="card-subtitle">Student of Software Engineering</h6>
+      <p class="card-text" itemprop="description">My research interests include Artificial Intelligence, Micro Service and Engineering.</p>
+      <ul class="network-icon" aria-hidden="true">
+        
+          
+          
+          
+            
+          
+          
+          
+          
+          
+            
+          
+          <li>
+            <a itemprop="sameAs" href="/#contact" >
+              <i class="fas fa-envelope"></i>
+            </a>
+          </li>
+        
+          
+          
+          
+            
+          
+          
+          
+          
+          
+            
+          
+          <li>
+            <a itemprop="sameAs" href="https://github.com/YuxinZhaozyx" target="_blank" rel="noopener">
+              <i class="fab fa-github"></i>
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+
+
+      
+      
+      <div class="article-widget">
+        <div class="hr-light"></div>
+        <h3>Related</h3>
+        <ul>
+          
+          <li><a href="/post/pytorch-learning/note-3/">PyTorch Learning Note-3</a></li>
+          
+          <li><a href="/post/pytorch-learning/note-2/">PyTorch Learning Note-2</a></li>
+          
+          <li><a href="/post/pytorch-learning/note-1/">PyTorch Learning Note-1</a></li>
+          
+          <li><a href="/project/pytorch-learning/">PyTorch Learning</a></li>
+          
+          <li><a href="/paper-note/r-c3d-region-convolutional-3d-network-for-temporal-activity-detection/">[论文笔记] R-C3D: Region Convolutional 3D Network for Temporal Activity Detection</a></li>
+          
+        </ul>
+      </div>
+      
+    
+
+    
+
+    
+<section id="comments">
+	<div id="gitalkContainer"></div>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+	<script src="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.min.js"></script>
+
+	<script>
+		var gitalk = new Gitalk({
+			clientID: "ec5806c0144b70a1b32e",
+			clientSecret: "aadae41a3747ffa5b36fd0e13c7e84026db07e0c",
+			repo: "YuxinZhaozyx.github.io",
+			owner: "YuxinZhaozyx",
+			admin: ["YuxinZhaozyx"],
+			id: '2019-07-23 09:40:02 \x2b0800 CST',      
+			labels: ["Comments"],
+			distractionFreeMode:  false ,  
+			pagerDirection: "last",
+			createIssueManually:  false ,
+			enableHotKey:  true ,
+			flipMoveOptions: {
+				staggerDelayBy:  150 ,
+				appearAnimation: "elevator",
+				enterAnimation: "elevator",
+				leaveAnimation: "elevator",
+			},
+		});
+		gitalk.render('gitalkContainer');
+	</script>
+</section>
+
+
+
+  </div>
+</article>
+
+      
+
+    
+    
+    
+    <script src="/js/mathjax-config.js"></script>
+    
+
+    
+    
+    
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.imagesloaded/4.1.4/imagesloaded.pkgd.min.js" integrity="sha256-lqvxZrPLtfffUl2G/e7szqSvPBILGbwmsGE1MKlOi0Q=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.isotope/3.0.6/isotope.pkgd.min.js" integrity="sha256-CBrpuqrMhXwcLLUd5tvQ4euBHCdh7wGlDfNz8vbu/iI=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/fancybox/3.2.5/jquery.fancybox.min.js" integrity="sha256-X5PoE3KU5l+JcX+w09p/wHl9AzK333C4hJ2I9S5mD4M=" crossorigin="anonymous"></script>
+
+      
+
+      
+        
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/highlight.min.js" integrity="sha256-aYTdUrn6Ow1DDgh5JTc3aDGnnju48y/1c8s1dgkYPQ8=" crossorigin="anonymous"></script>
+        
+        <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/languages/go.min.js"></script>
+        
+        <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/languages/shell.min.js"></script>
+        
+        <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/languages/toml.min.js"></script>
+        
+        <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/languages/taml.min.js"></script>
+        
+        <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/languages/cpp.min.js"></script>
+        
+        <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/languages/c.min.js"></script>
+        
+        <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/languages/xml.min.js"></script>
+        
+        <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/languages/html.min.js"></script>
+        
+        <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.15.6/languages/python.min.js"></script>
+        
+      
+
+      
+      
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-AMS_CHTML-full" integrity="sha256-GhM+5JHb6QUzOQPXSJLEWP7R73CbkisjzK5Eyij4U9w=" crossorigin="anonymous" async></script>
+      
+    
+
+    
+    
+
+    
+    
+    
+
+    
+    
+    <script>hljs.initHighlightingOnLoad();</script>
+    
+
+    
+    
+    <script>
+      const search_index_filename = "/index.json";
+      const i18n = {
+        'placeholder': "Search...",
+        'results': "results found",
+        'no_results': "No results found"
+      };
+      const content_type = {
+        'post': "Posts",
+        'project': "Projects",
+        'publication' : "Publications",
+        'talk' : "Talks"
+        };
+    </script>
+    
+
+    
+    
+
+    
+    
+    <script id="search-hit-fuse-template" type="text/x-template">
+      <div class="search-hit" id="summary-{{key}}">
+      <div class="search-hit-content">
+        <div class="search-hit-name">
+          <a href="{{relpermalink}}">{{title}}</a>
+          <div class="article-metadata search-hit-type">{{type}}</div>
+          <p class="search-hit-description">{{snippet}}</p>
+        </div>
+      </div>
+      </div>
+    </script>
+    
+
+    
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fuse.js/3.2.1/fuse.min.js" integrity="sha256-VzgmKYmhsGNNN4Ph1kMW+BjoYJM2jV5i4IlFoeZA9XI=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mark.js/8.11.1/jquery.mark.min.js" integrity="sha256-4HLtjeVgH0eIB3aZ9mLYF6E8oU5chNdjU6p6rrXpl9U=" crossorigin="anonymous"></script>
+    
+
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+      
+    
+    
+    
+    
+    <script src="/js/academic.min.8cd55d839906ab9f8f6514a7081b20c1.js"></script>
+
+    
+
+
+  
+  <div class="container">
+    <footer class="site-footer">
+  
+
+  <p class="powered-by">
+    Copyright &copy; 2019 YuxinZhao &middot; 
+
+    Powered by the
+    <a href="https://sourcethemes.com/academic/" target="_blank" rel="noopener">Academic theme</a> for
+    <a href="https://gohugo.io" target="_blank" rel="noopener">Hugo</a>.
+
+    
+    <span class="float-right" aria-hidden="true">
+      <a href="#" id="back_to_top">
+        <span class="button_icon">
+          <i class="fas fa-chevron-up fa-2x"></i>
+        </span>
+      </a>
+    </span>
+    
+  </p>
+</footer>
+
+  </div>
+  
+
+  
+<div id="modal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Cite</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <pre><code class="tex hljs"></code></pre>
+      </div>
+      <div class="modal-footer">
+        <a class="btn btn-outline-primary my-1 js-copy-cite" href="#" target="_blank">
+          <i class="fas fa-copy"></i> Copy
+        </a>
+        <a class="btn btn-outline-primary my-1 js-download-cite" href="#" target="_blank">
+          <i class="fas fa-download"></i> Download
+        </a>
+        <div id="modal-error"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>
