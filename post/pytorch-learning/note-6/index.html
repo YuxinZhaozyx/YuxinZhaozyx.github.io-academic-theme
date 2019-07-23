@@ -28,10 +28,10 @@
   
     
   
-  <meta name="description" content="[DEEP LEARNING WITH PYTORCH: A 60 MINUTE BLITZ] Neural Networks">
+  <meta name="description" content="数据的加载和预处理">
 
   
-  <link rel="alternate" hreflang="en-us" href="https://YuxinZhaozyx.github.io/post/pytorch-learning/note-3/">
+  <link rel="alternate" hreflang="en-us" href="https://YuxinZhaozyx.github.io/post/pytorch-learning/note-6/">
 
   
 
@@ -104,7 +104,7 @@
   <link rel="icon" type="image/png" href="/img/icon.png">
   <link rel="apple-touch-icon" type="image/png" href="/img/icon-192.png">
 
-  <link rel="canonical" href="https://YuxinZhaozyx.github.io/post/pytorch-learning/note-3/">
+  <link rel="canonical" href="https://YuxinZhaozyx.github.io/post/pytorch-learning/note-6/">
 
   
   
@@ -115,26 +115,26 @@
   <meta property="twitter:card" content="summary_large_image">
   
   <meta property="og:site_name" content="YuxinZhao">
-  <meta property="og:url" content="https://YuxinZhaozyx.github.io/post/pytorch-learning/note-3/">
-  <meta property="og:title" content="PyTorch Learning Note-3 | YuxinZhao">
-  <meta property="og:description" content="[DEEP LEARNING WITH PYTORCH: A 60 MINUTE BLITZ] Neural Networks"><meta property="og:image" content="https://YuxinZhaozyx.github.io/post/pytorch-learning/note-3/featured.png">
-  <meta property="twitter:image" content="https://YuxinZhaozyx.github.io/post/pytorch-learning/note-3/featured.png"><meta property="og:locale" content="en-us">
+  <meta property="og:url" content="https://YuxinZhaozyx.github.io/post/pytorch-learning/note-6/">
+  <meta property="og:title" content="PyTorch Learning Note-6 | YuxinZhao">
+  <meta property="og:description" content="数据的加载和预处理"><meta property="og:image" content="https://YuxinZhaozyx.github.io/post/pytorch-learning/note-6/featured.png">
+  <meta property="twitter:image" content="https://YuxinZhaozyx.github.io/post/pytorch-learning/note-6/featured.png"><meta property="og:locale" content="en-us">
   
-  <meta property="article:published_time" content="2019-07-22T20:48:56&#43;08:00">
+  <meta property="article:published_time" content="2019-07-23T17:20:42&#43;08:00">
   
-  <meta property="article:modified_time" content="2019-07-22T20:48:56&#43;08:00">
+  <meta property="article:modified_time" content="2019-07-23T17:20:42&#43;08:00">
   
-
-  
-
 
   
 
 
+  
 
 
 
-  <title>PyTorch Learning Note-3 | YuxinZhao</title>
+
+
+  <title>PyTorch Learning Note-6 | YuxinZhao</title>
 
 </head>
 
@@ -397,18 +397,18 @@
 
 
 <div class="article-container pt-3">
-  <h1 itemprop="name">PyTorch Learning Note-3</h1>
+  <h1 itemprop="name">PyTorch Learning Note-6</h1>
 
   
-  <p class="page-subtitle">[DEEP LEARNING WITH PYTORCH: A 60 MINUTE BLITZ] Neural Networks</p>
+  <p class="page-subtitle">数据的加载和预处理</p>
   
 
   
 
 
 
-<meta content="2019-07-22 20:48:56 &#43;0800 CST" itemprop="datePublished">
-<meta content="2019-07-22 20:48:56 &#43;0800 CST" itemprop="dateModified">
+<meta content="2019-07-23 17:20:42 &#43;0800 CST" itemprop="datePublished">
+<meta content="2019-07-23 17:20:42 &#43;0800 CST" itemprop="dateModified">
 
 <div class="article-metadata">
 
@@ -433,7 +433,7 @@
     
       
     
-    <time>Jul 22, 2019</time>
+    <time>Jul 23, 2019</time>
   </span>
   
 
@@ -442,7 +442,7 @@
   
   <span class="middot-divider"></span>
   <span class="article-reading-time">
-    4 min read
+    3 min read
   </span>
   
 
@@ -470,7 +470,7 @@
       
       
       <li>
-        <a href="https://twitter.com/intent/tweet?url=https://YuxinZhaozyx.github.io/post/pytorch-learning/note-3/&amp;text=PyTorch%20Learning%20Note-3" target="_blank" rel="noopener" class="share-btn-twitter">
+        <a href="https://twitter.com/intent/tweet?url=https://YuxinZhaozyx.github.io/post/pytorch-learning/note-6/&amp;text=PyTorch%20Learning%20Note-6" target="_blank" rel="noopener" class="share-btn-twitter">
           <i class="fab fa-twitter"></i>
         </a>
       </li>
@@ -483,7 +483,7 @@
       
       
       <li>
-        <a href="https://www.facebook.com/sharer.php?u=https://YuxinZhaozyx.github.io/post/pytorch-learning/note-3/&amp;t=PyTorch%20Learning%20Note-3" target="_blank" rel="noopener" class="share-btn-facebook">
+        <a href="https://www.facebook.com/sharer.php?u=https://YuxinZhaozyx.github.io/post/pytorch-learning/note-6/&amp;t=PyTorch%20Learning%20Note-6" target="_blank" rel="noopener" class="share-btn-facebook">
           <i class="fab fa-facebook-f"></i>
         </a>
       </li>
@@ -496,7 +496,7 @@
       
       
       <li>
-        <a href="mailto:?subject=PyTorch%20Learning%20Note-3&amp;body=https://YuxinZhaozyx.github.io/post/pytorch-learning/note-3/" target="_blank" rel="noopener" class="share-btn-email">
+        <a href="mailto:?subject=PyTorch%20Learning%20Note-6&amp;body=https://YuxinZhaozyx.github.io/post/pytorch-learning/note-6/" target="_blank" rel="noopener" class="share-btn-email">
           <i class="fas fa-envelope"></i>
         </a>
       </li>
@@ -509,7 +509,7 @@
       
       
       <li>
-        <a href="https://www.linkedin.com/shareArticle?url=https://YuxinZhaozyx.github.io/post/pytorch-learning/note-3/&amp;title=PyTorch%20Learning%20Note-3" target="_blank" rel="noopener" class="share-btn-linkedin">
+        <a href="https://www.linkedin.com/shareArticle?url=https://YuxinZhaozyx.github.io/post/pytorch-learning/note-6/&amp;title=PyTorch%20Learning%20Note-6" target="_blank" rel="noopener" class="share-btn-linkedin">
           <i class="fab fa-linkedin-in"></i>
         </a>
       </li>
@@ -522,7 +522,7 @@
       
       
       <li>
-        <a href="https://web.whatsapp.com/send?text=PyTorch%20Learning%20Note-3%20https://YuxinZhaozyx.github.io/post/pytorch-learning/note-3/" target="_blank" rel="noopener" class="share-btn-whatsapp">
+        <a href="https://web.whatsapp.com/send?text=PyTorch%20Learning%20Note-6%20https://YuxinZhaozyx.github.io/post/pytorch-learning/note-6/" target="_blank" rel="noopener" class="share-btn-whatsapp">
           <i class="fab fa-whatsapp"></i>
         </a>
       </li>
@@ -535,7 +535,7 @@
       
       
       <li>
-        <a href="https://service.weibo.com/share/share.php?url=https://YuxinZhaozyx.github.io/post/pytorch-learning/note-3/&amp;title=PyTorch%20Learning%20Note-3" target="_blank" rel="noopener" class="share-btn-weibo">
+        <a href="https://service.weibo.com/share/share.php?url=https://YuxinZhaozyx.github.io/post/pytorch-learning/note-6/&amp;title=PyTorch%20Learning%20Note-6" target="_blank" rel="noopener" class="share-btn-weibo">
           <i class="fab fa-weibo"></i>
         </a>
       </li>
@@ -607,7 +607,7 @@
 
 <div class="article-header article-container featured-image-wrapper mt-4 mb-4" style="max-width: 720px; max-height: 284px;">
   <div style="position: relative">
-    <img src="/post/pytorch-learning/note-3/featured_hu9cfaec333decd49eb236ae31f6d1ba42_22268_720x0_resize_lanczos_2.png" alt="" class="featured-image">
+    <img src="/post/pytorch-learning/note-6/featured_hu9cfaec333decd49eb236ae31f6d1ba42_22268_720x0_resize_lanczos_2.png" alt="" class="featured-image">
     
   </div>
 </div>
@@ -619,258 +619,134 @@
     <div class="article-style" itemprop="articleBody">
       
 
-<p>使用torch.nn包来构建神经网络。</p>
+<p>PyTorch通过torch.utils.data对一般常用的数据加载进行了封装，可以很容易地实现多线程数据预读和批量加载。 并且torchvision已经预先实现了常用图像数据集，包括CIFAR-10，ImageNet、COCO、MNIST、LSUN等数据集，可通过torchvision.datasets方便地调用</p>
 
-<p><code>nn</code>包依赖<code>autograd</code>包来定义模型并求导。 一个<code>nn.Module</code>包含各个层和一个<code>forward(input)</code>方法，该方法返回<code>output</code>。</p>
+<h2 id="dataset">Dataset</h2>
 
-<p><img src="image/68747470733a2f2f7079746f7263682e6f72672f7475746f7269616c732f5f696d616765732f6d6e6973742e706e67.png" alt="img" /></p>
-
-<p>它是一个简单的前馈神经网络，它接受一个输入，然后一层接着一层地传递，最后输出计算的结果。</p>
-
-<p>神经网络的典型训练过程如下：</p>
+<p><code>Dataset</code>是一个抽象类, 为了能够方便的读取，需要将要使用的数据包装为<code>Dataset</code>类。 自定义的<code>Dataset</code>需要继承它并且实现两个成员方法：</p>
 
 <ol>
-<li>定义包含一些可学习的参数(或者叫权重)神经网络模型；</li>
-<li>在数据集上迭代；</li>
-<li>通过神经网络处理输入；</li>
-<li>计算损失(输出结果和正确值的差值大小)；</li>
-<li>将梯度反向传播回网络的参数；</li>
-<li>更新网络的参数，主要使用如下简单的更新原则： <code>weight = weight - learning_rate * gradient</code></li>
+<li><code>__getitem__()</code> 该方法定义用索引(<code>0</code> 到 <code>len(self)</code>)获取一条数据或一个样本</li>
+<li><code>__len__()</code> 该方法返回数据集的总长度</li>
 </ol>
 
-<h2 id="定义网络">定义网络</h2>
+<p>下面我们使用kaggle上的一个竞赛<a href="https://www.kaggle.com/c/bluebook-for-bulldozers/data" target="_blank">bluebook for bulldozers</a>自定义一个数据集，为了方便介绍，我们使用里面的数据字典来做说明（因为条数少）</p>
 
-<pre><code class="language-python">import torch
-import torch.nn as nn
-import torch.nn.functional as F 
+<pre><code class="language-python"># 定义一个数据集
+class BulldozerDataset(Dataset):
+    &quot;&quot;&quot; 数据集演示 &quot;&quot;&quot;
+    def __init__(self, csv_file):
+        &quot;&quot;&quot; 实现初始化方法，在初始化的时候将数据载入 &quot;&quot;&quot;
+        self.dataframe = pd.read_csv(csv_file)
 
-class Net(nn.Module):
+    def __len__(self):
+        &quot;&quot;&quot; 返回dataframe的长度 &quot;&quot;&quot;
+        return len(self.dataframe)
 
-    def __init__(self):
-        super(Net, self).__init__()
-
-        # 1 input image channel
-        # 6 output image channel
-        # 5x5 square convolution kernel
-        self.conv1 = nn.Conv2d(1, 6, 5)
-        self.conv2 = nn.Conv2d(6, 16, 5)
-
-        # an affine operation: y = Wx + b
-        self.fc1 = nn.Linear(16 * 5 * 5, 120)
-        self.fc2 = nn.Linear(120, 84)
-        self.fc3 = nn.Linear(84, 10)
-
-    def forward(self, x):
-        # Max pooling over a (2, 2) window
-        x = F.max_pool2d(F.relu(self.conv1(x)), (2, 2))
-        # if the size is a square you can only specify a single number
-        x = F.max_pool2d(F.relu(self.conv2(x)), 2)
-
-        x = x.view(-1, self.num_flat_features(x))
-        x = F.relu(self.fc1(x))
-        x = F.relu(self.fc2(x))
-        x = self.fc3(x)
-        return x
-
-    def num_flat_features(self, x):
-        size = x.size()[1:]  # all dimensions except the batch dimension
-        
-        num_features = 1
-        for s in size:
-            num_features *= s
-        return num_features
-    
-net = Net()
-print(net)
+    def __getitem__(self, idx):
+        &quot;&quot;&quot; 根据 idx 返回一行数据 &quot;&quot;&quot;
+        return self.dataframe.iloc[idx].SalePrice
 </code></pre>
 
-<pre><code class="language-python">Net(
-  (conv1): Conv2d(1, 6, kernel_size=(5, 5), stride=(1, 1))
-  (conv2): Conv2d(6, 16, kernel_size=(5, 5), stride=(1, 1))
-  (fc1): Linear(in_features=400, out_features=120, bias=True)
-  (fc2): Linear(in_features=120, out_features=84, bias=True)
-  (fc3): Linear(in_features=84, out_features=10, bias=True)
-)
+<p>至此，我们的数据集已经定义完成了，我们可以实例话一个对象访问他</p>
+
+<pre><code class="language-python">dataset_demo= BulldozerDataset('median_benchmark.csv')
 </code></pre>
 
-<p><strong>在模型中必须要定义 <code>forward</code> 函数</strong>，<code>backward</code> 函数（用来计算梯度）会被<code>autograd</code>自动创建。 可以在 <code>forward</code> 函数中使用任何针对 Tensor 的操作。</p>
+<p>我们可以直接使用如下命令查看数据集数据</p>
 
-<p><strong><code>net.parameters()</code>返回可被学习的参数（权重）列表和值</strong></p>
-
-<pre><code class="language-python">params = list(net.parameters())
-print(len(params))
-print(params[0].size())  # params[0] == net.conv1.weight
+<pre><code class="language-python">#实现了 __len__ 方法所以可以直接使用len获取数据总数
+len(dataset_demo)
+#用索引可以直接访问对应的数据, 对应 __getitem__ 方法
+dataset_demo[0]
 </code></pre>
 
-<pre><code class="language-python">10
-torch.Size([6, 1, 5, 5]
+<pre><code class="language-python">11573
+24000.0
 </code></pre>
 
-<p><strong><code>net.named_parameters</code>可同时返回可学习的参数及名称。</strong></p>
+<p>自定义的数据集已经创建好了，下面我们使用官方提供的数据载入器，读取数据</p>
 
-<pre><code class="language-python">for name,parameters in net.named_parameters():
-    print(name,':',parameters.size())
+<h2 id="dataloader">Dataloader</h2>
+
+<p><code>DataLoader</code>为我们提供了对<code>Dataset</code>的读取操作，常用参数有：<code>batch_size</code>(每个batch的大小), <code>shuffle</code>(是否进行shuffle操作), <code>num_workers</code>(加载数据的时候使用几个子进程)，下面做一个简单的操作</p>
+
+<pre><code class="language-python">dataloader = torch.utils.data.DataLoader(dataset_demo, batch_size=10, shuffle=True, num_workers=0)
 </code></pre>
 
-<pre><code class="language-python">conv1.weight : torch.Size([6, 1, 5, 5])
-conv1.bias : torch.Size([6])
-conv2.weight : torch.Size([16, 6, 5, 5])
-conv2.bias : torch.Size([16])
-fc1.weight : torch.Size([120, 400])
-fc1.bias : torch.Size([120])
-fc2.weight : torch.Size([10, 120])
-fc2.bias : torch.Size([10])
+<p>DataLoader返回的是一个可迭代对象，我们可以使用迭代器分次获取数据</p>
+
+<pre><code class="language-python">idata = iter(dataloader)
+print(next(idata))
 </code></pre>
 
-<p>测试随机输入32×32。 注：这个网络（LeNet）期望的输入大小是32×32，如果使用MNIST数据集来训练这个网络，请把图片大小重新调整到32×32。</p>
+<p>常见的用法是使用for循环对其进行遍历</p>
 
-<pre><code class="language-python">input = torch.randn(1, 1, 32, 32)
-out = net(input)
-print(out)
+<pre><code class="language-python">for i, data in enumerate(dl):
+    print(i,data)
 </code></pre>
 
-<pre><code class="language-python">tensor([[ 0.1052, -0.0361,  0.1122,  0.1072,  0.0887,  0.0477,
- 0.0916, -0.0594,
-         -0.1450,  0.0574]], grad_fn=&lt;AddmmBackward&gt;)
-</code></pre>
+<h2 id="torchvision-包">torchvision 包</h2>
 
-<p>将所有参数的梯度缓存清零，然后进行随机梯度的的反向传播：</p>
+<p>torchvision 是PyTorch中专门用来处理图像的库，PyTorch官网的安装教程中最新的pip install torchvision 就是安装这个包。</p>
 
-<pre><code class="language-python">net.zero_grad()
-out.backward(torch.randn(1, 10))
-</code></pre>
+<h3 id="torchvision-datasets">torchvision.datasets</h3>
 
-<div class="alert alert-note">
-  <div>
-    <code>torch.nn</code> 只支持小批量输入。整个 <code>torch.nn</code> 包都只支持小批量样本，而不支持单个样本。 例如，<code>nn.Conv2d</code> 接受一个4维的张量， <code>每一维分别是sSamples * nChannels * Height * Width（样本数*通道数*高*宽）</code>。 <strong>如果你有单个样本，只需使用 <code>input.unsqueeze(0)</code> 来添加其它的维数</strong>
-  </div>
-</div>
-
-<p>我们回顾一下到目前为止用到的类。</p>
-
-<p><strong>回顾:</strong></p>
+<p><code>torchvision.datasets</code> 可以理解为PyTorch团队自定义的dataset，这些dataset帮我们提前处理好了很多的图片数据集，我们拿来就可以直接使用：</p>
 
 <ul>
-<li><code>torch.Tensor</code>：一个用过自动调用 <code>backward()</code>实现支持自动梯度计算的 <em>多维数组</em> ， 并且保存关于这个向量的梯度</li>
-<li><code>nn.Module</code>：神经网络模块。封装参数、移动到GPU上运行、导出、加载等。</li>
-<li><code>nn.Parameter</code>：一种变量，当把它赋值给一个<code>Module</code>时，被 自动地注册为一个参数。</li>
-<li><code>autograd.Function</code>：实现一个自动求导操作的前向和反向定义，每个变量操作至少创建一个函数节点，每一个<code>Tensor</code>的操作都h会创建一个接到创建<code>Tensor</code>和 编码其历史 的函数的<code>Function</code>节点。</li>
+<li>MNIST</li>
+<li>COCO</li>
+<li>Captions</li>
+<li>Detection</li>
+<li>LSUN</li>
+<li>ImageFolder</li>
+<li>Imagenet-12</li>
+<li>CIFAR</li>
+<li>STL10</li>
+<li>SVHN</li>
+<li>PhotoTour</li>
 </ul>
 
-<h2 id="损失函数">损失函数</h2>
+<pre><code class="language-python">import torchvision.datasets as datasets
 
-<p>一个损失函数接受一对 (output, target) 作为输入，计算一个值来估计网络的输出和目标值相差多少。</p>
-
-<p><a href="https://pytorch.org/docs/nn" target="_blank">nn包</a>中有很多不同的<a href="https://pytorch.org/docs/nn.html#loss-functions" target="_blank">损失函数</a>。 <code>nn.MSELoss</code>是一个比较简单的损失函数，它计算输出和目标间的<strong>均方误差</strong>， 例如：</p>
-
-<pre><code class="language-python">input = torch.randn(1, 1, 32, 32)
-output = net(input)
-target = torch.randn(10)  # 随机值作为样例
-target = target.view(1, -1)  # 使target和output的shape相同
-
-criterion = nn.MSELoss()
-loss = criterion(output, target)
-print(loss)
-
+trainset = datasets.MNIST(root='./data',  # 表示 MNIST 数据的加载的目录
+                          train=True,     # 表示是否加载数据库的训练集，False的时候加载测试集
+                          download=True,  # 表示是否自动下载 MNIST 数据集
+                          transform=None) # 表示是否需要对数据进行预处理，None为不进行预处理
 </code></pre>
 
-<pre><code class="language-python">tensor(1.1509, grad_fn=&lt;MseLossBackward&gt;)
+<h3 id="torchvision-models">torchvision.models</h3>
+
+<p>torchvision不仅提供了常用图片数据集，还提供了训练好的模型，可以加载之后，直接使用，或者在进行迁移学习 torchvision.models模块的 子模块中包含以下模型结构。</p>
+
+<ul>
+<li>AlexNet</li>
+<li>VGG</li>
+<li>ResNet</li>
+<li>SqueezeNet</li>
+<li>DenseNet</li>
+</ul>
+
+<pre><code class="language-python">#我们直接可以使用训练好的模型，当然这个与datasets相同，都是需要从服务器下载的
+import torchvision.models as models
+
+resnet18 = models.resnet18(pretrained=True)
 </code></pre>
 
-<h3 id="常见损失函数">常见损失函数</h3>
+<h3 id="torchvision-transforms">torchvision.transforms</h3>
 
-<h4 id="nn-l1loss"><code>nn.L1Loss</code></h4>
+<p>transforms 模块提供了一般的图像转换操作类，用作数据处理和数据增强</p>
 
-<p>$$
-loss(x, y) =
-\begin{cases}
-\frac1n \sum \left| x_i - y_i \right|, &amp; \text{if reduction=&lsquo;mean&rsquo;} \\<br />
-\sum \left| x_i - y_i \right|, &amp; \text{if reduction=&lsquo;sum&rsquo;}
-\end{cases}
-$$</p>
+<pre><code class="language-python">from torchvision import transforms as transforms
 
-<h4 id="nn-nllloss"><code>nn.NLLLoss</code></h4>
-
-<p><strong>Negative Log Liklihood(NLL) Loss f 负对数似然损失函数</strong>
-$$
-loss(x, class) = -x_{class}
-$$</p>
-
-<h4 id="nn-mseloss"><code>nn.MSELoss</code></h4>
-
-<p><strong>Mean Squrare Error(MSE) Loss 均方损失函数</strong>
-$$
-loss(x, y) = \frac1n \sum(x_i - y_i)^2
-$$</p>
-
-<h4 id="nn-crossentropyloss"><code>nn.CrossEntropyLoss</code></h4>
-
-<p>多分类用的交叉熵损失函数，LogSoftMax和NLLLoss集成到一个类中，会调用nn.NLLLoss函数,可以理解为CrossEntropyLoss()=log_softmax() + NLLLoss()</p>
-
-<p>$$
-loss(x, class) = -\log \frac{\exp(x_{class})}{\sum_j \exp(x_j)} = - x_{class} + \log \left(\sum_j \exp(x_j) \right)
-$$</p>
-
-<h4 id="nn-bceloss"><code>nn.BCELoss</code></h4>
-
-<p>Binary Cross Entropy
-$$
-loss(x, t) = -\frac1n \sum_i \left(t_i *\log(x_i) + (1-t_i)*\log(1-x_i) \right)
-$$</p>
-
-<h2 id="反向传播">反向传播</h2>
-
-<p>调用<code>loss.backward()</code>获得反向传播的误差。</p>
-
-<p>但是在调用前需要清除已存在的梯度，否则梯度将被累加到已存在的梯度。</p>
-
-<p>现在，我们将调用<code>loss.backward()</code>，并查看conv1层的偏差（bias）项在反向传播前后的梯度。</p>
-
-<pre><code class="language-python">net.zero_grad()  # 清除梯度
-
-print('conv1.bias.grad before backward')
-print(net.conv1.bias.grad)
-
-loss.backward()
-
-print('conv1.bias.grad after backward')
-print(net.conv1.bias.grad)
-</code></pre>
-
-<pre><code class="language-python">conv1.bias.grad before backward
-None
-conv1.bias.grad after backward
-tensor([ 0.0027, -0.0142,  0.0197,  0.0021, -0.0018,  0.0001])
-</code></pre>
-
-<h2 id="更新权重">更新权重</h2>
-
-<p>在实践中最简单的权重更新规则是随机梯度下降（SGD）：</p>
-
-<pre><code class="language-python"> weight = weight - learning_rate * gradient
-</code></pre>
-
-<p>我们可以使用简单的Python代码实现这个规则：</p>
-
-<pre><code class="language-python">learning_rate = 0.01
-for f in net.parameters():
-    f.data.sub_(f.grad.data * learning_rate)
-</code></pre>
-
-<p>但是当使用神经网络是想要使用各种不同的更新规则时，比如SGD、Nesterov-SGD、Adam、RMSPROP等，PyTorch中构建了一个包<code>torch.optim</code>实现了所有的这些规则。 使用它们非常简单：</p>
-
-<pre><code class="language-python">import torch.optim as optim
-
-# create your optimizer
-optimizer = optim.SGD(net.parameters(), lr=0.01)
-criterion = nn.MSELoss()
-
-# in your training loop
-optimizer.zero_grad()   # zero the gradient buffers
-output = net(input)
-loss = criterion(output, target)
-loss.backward()    # calculate gradients
-optimizer.step()   # Does the update
+transform = transforms.Compose([
+    transforms.RandomCrop(32, padding=4),  #先四周填充0，在把图像随机裁剪成32*32
+    transforms.RandomHorizontalFlip(),  #图像一半的概率翻转，一半的概率不翻转
+    transforms.RandomRotation((-45,45)), #随机旋转
+    transforms.ToTensor(),
+    transforms.Normalize((0.4914, 0.4822, 0.4465), (0.229, 0.224, 0.225)), #R,G,B每层的归一化用到的均值和方差 mean=[0.485, 0.456, 0.406],std=[0.229, 0.224, 0.225]
+])
 </code></pre>
 
     </div>
@@ -972,15 +848,15 @@ optimizer.step()   # Does the update
         <h3>Related</h3>
         <ul>
           
+          <li><a href="/post/pytorch-learning/note-5/">PyTorch Learning Note-5</a></li>
+          
+          <li><a href="/post/pytorch-learning/note-4/">PyTorch Learning Note-4</a></li>
+          
+          <li><a href="/post/pytorch-learning/note-3/">PyTorch Learning Note-3</a></li>
+          
           <li><a href="/post/pytorch-learning/note-2/">PyTorch Learning Note-2</a></li>
           
           <li><a href="/post/pytorch-learning/note-1/">PyTorch Learning Note-1</a></li>
-          
-          <li><a href="/project/pytorch-learning/">PyTorch Learning</a></li>
-          
-          <li><a href="/paper-note/r-c3d-region-convolutional-3d-network-for-temporal-activity-detection/">[论文笔记] R-C3D: Region Convolutional 3D Network for Temporal Activity Detection</a></li>
-          
-          <li><a href="/paper-note/faster-r-cnn-towards-real-time-object-detection-with-region-proposal-networks/">[论文笔记] Faster R-CNN: Towards Real-Time Object Detection With Region Proposal Networks</a></li>
           
         </ul>
       </div>
@@ -1002,7 +878,7 @@ optimizer.step()   # Does the update
 			repo: "YuxinZhaozyx.github.io",
 			owner: "YuxinZhaozyx",
 			admin: ["YuxinZhaozyx"],
-			id: '2019-07-22 20:48:56 \x2b0800 CST',      
+			id: '2019-07-23 17:20:42 \x2b0800 CST',      
 			labels: ["Comments"],
 			distractionFreeMode:  false ,  
 			pagerDirection: "last",

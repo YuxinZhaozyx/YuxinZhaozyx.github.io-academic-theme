@@ -7,10 +7,150 @@
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
     <language>en-us</language>
     <copyright>Copyright &amp;copy; {year} YuxinZhao</copyright>
-    <lastBuildDate>Tue, 23 Jul 2019 11:10:54 +0800</lastBuildDate>
+    <lastBuildDate>Tue, 23 Jul 2019 17:20:42 +0800</lastBuildDate>
     
 	    <atom:link href="https://YuxinZhaozyx.github.io/tags/pytorch/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>PyTorch Learning Note-6</title>
+      <link>https://YuxinZhaozyx.github.io/post/pytorch-learning/note-6/</link>
+      <pubDate>Tue, 23 Jul 2019 17:20:42 +0800</pubDate>
+      
+      <guid>https://YuxinZhaozyx.github.io/post/pytorch-learning/note-6/</guid>
+      <description>
+
+&lt;p&gt;PyTorch通过torch.utils.data对一般常用的数据加载进行了封装，可以很容易地实现多线程数据预读和批量加载。 并且torchvision已经预先实现了常用图像数据集，包括CIFAR-10，ImageNet、COCO、MNIST、LSUN等数据集，可通过torchvision.datasets方便地调用&lt;/p&gt;
+
+&lt;h2 id=&#34;dataset&#34;&gt;Dataset&lt;/h2&gt;
+
+&lt;p&gt;&lt;code&gt;Dataset&lt;/code&gt;是一个抽象类, 为了能够方便的读取，需要将要使用的数据包装为&lt;code&gt;Dataset&lt;/code&gt;类。 自定义的&lt;code&gt;Dataset&lt;/code&gt;需要继承它并且实现两个成员方法：&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;code&gt;__getitem__()&lt;/code&gt; 该方法定义用索引(&lt;code&gt;0&lt;/code&gt; 到 &lt;code&gt;len(self)&lt;/code&gt;)获取一条数据或一个样本&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;__len__()&lt;/code&gt; 该方法返回数据集的总长度&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;下面我们使用kaggle上的一个竞赛&lt;a href=&#34;https://www.kaggle.com/c/bluebook-for-bulldozers/data&#34; target=&#34;_blank&#34;&gt;bluebook for bulldozers&lt;/a&gt;自定义一个数据集，为了方便介绍，我们使用里面的数据字典来做说明（因为条数少）&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;# 定义一个数据集
+class BulldozerDataset(Dataset):
+    &amp;quot;&amp;quot;&amp;quot; 数据集演示 &amp;quot;&amp;quot;&amp;quot;
+    def __init__(self, csv_file):
+        &amp;quot;&amp;quot;&amp;quot; 实现初始化方法，在初始化的时候将数据载入 &amp;quot;&amp;quot;&amp;quot;
+        self.dataframe = pd.read_csv(csv_file)
+
+    def __len__(self):
+        &amp;quot;&amp;quot;&amp;quot; 返回dataframe的长度 &amp;quot;&amp;quot;&amp;quot;
+        return len(self.dataframe)
+
+    def __getitem__(self, idx):
+        &amp;quot;&amp;quot;&amp;quot; 根据 idx 返回一行数据 &amp;quot;&amp;quot;&amp;quot;
+        return self.dataframe.iloc[idx].SalePrice
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;至此，我们的数据集已经定义完成了，我们可以实例话一个对象访问他&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;dataset_demo= BulldozerDataset(&#39;median_benchmark.csv&#39;)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;我们可以直接使用如下命令查看数据集数据&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;#实现了 __len__ 方法所以可以直接使用len获取数据总数
+len(dataset_demo)
+#用索引可以直接访问对应的数据, 对应 __getitem__ 方法
+dataset_demo[0]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;11573
+24000.0
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;自定义的数据集已经创建好了，下面我们使用官方提供的数据载入器，读取数据&lt;/p&gt;
+
+&lt;h2 id=&#34;dataloader&#34;&gt;Dataloader&lt;/h2&gt;
+
+&lt;p&gt;&lt;code&gt;DataLoader&lt;/code&gt;为我们提供了对&lt;code&gt;Dataset&lt;/code&gt;的读取操作，常用参数有：&lt;code&gt;batch_size&lt;/code&gt;(每个batch的大小), &lt;code&gt;shuffle&lt;/code&gt;(是否进行shuffle操作), &lt;code&gt;num_workers&lt;/code&gt;(加载数据的时候使用几个子进程)，下面做一个简单的操作&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;dataloader = torch.utils.data.DataLoader(dataset_demo, batch_size=10, shuffle=True, num_workers=0)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;DataLoader返回的是一个可迭代对象，我们可以使用迭代器分次获取数据&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;idata = iter(dataloader)
+print(next(idata))
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;常见的用法是使用for循环对其进行遍历&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;for i, data in enumerate(dl):
+    print(i,data)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;torchvision-包&#34;&gt;torchvision 包&lt;/h2&gt;
+
+&lt;p&gt;torchvision 是PyTorch中专门用来处理图像的库，PyTorch官网的安装教程中最新的pip install torchvision 就是安装这个包。&lt;/p&gt;
+
+&lt;h3 id=&#34;torchvision-datasets&#34;&gt;torchvision.datasets&lt;/h3&gt;
+
+&lt;p&gt;&lt;code&gt;torchvision.datasets&lt;/code&gt; 可以理解为PyTorch团队自定义的dataset，这些dataset帮我们提前处理好了很多的图片数据集，我们拿来就可以直接使用：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;MNIST&lt;/li&gt;
+&lt;li&gt;COCO&lt;/li&gt;
+&lt;li&gt;Captions&lt;/li&gt;
+&lt;li&gt;Detection&lt;/li&gt;
+&lt;li&gt;LSUN&lt;/li&gt;
+&lt;li&gt;ImageFolder&lt;/li&gt;
+&lt;li&gt;Imagenet-12&lt;/li&gt;
+&lt;li&gt;CIFAR&lt;/li&gt;
+&lt;li&gt;STL10&lt;/li&gt;
+&lt;li&gt;SVHN&lt;/li&gt;
+&lt;li&gt;PhotoTour&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;import torchvision.datasets as datasets
+
+trainset = datasets.MNIST(root=&#39;./data&#39;,  # 表示 MNIST 数据的加载的目录
+                          train=True,     # 表示是否加载数据库的训练集，False的时候加载测试集
+                          download=True,  # 表示是否自动下载 MNIST 数据集
+                          transform=None) # 表示是否需要对数据进行预处理，None为不进行预处理
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;torchvision-models&#34;&gt;torchvision.models&lt;/h3&gt;
+
+&lt;p&gt;torchvision不仅提供了常用图片数据集，还提供了训练好的模型，可以加载之后，直接使用，或者在进行迁移学习 torchvision.models模块的 子模块中包含以下模型结构。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;AlexNet&lt;/li&gt;
+&lt;li&gt;VGG&lt;/li&gt;
+&lt;li&gt;ResNet&lt;/li&gt;
+&lt;li&gt;SqueezeNet&lt;/li&gt;
+&lt;li&gt;DenseNet&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;#我们直接可以使用训练好的模型，当然这个与datasets相同，都是需要从服务器下载的
+import torchvision.models as models
+
+resnet18 = models.resnet18(pretrained=True)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;torchvision-transforms&#34;&gt;torchvision.transforms&lt;/h3&gt;
+
+&lt;p&gt;transforms 模块提供了一般的图像转换操作类，用作数据处理和数据增强&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;from torchvision import transforms as transforms
+
+transform = transforms.Compose([
+    transforms.RandomCrop(32, padding=4),  #先四周填充0，在把图像随机裁剪成32*32
+    transforms.RandomHorizontalFlip(),  #图像一半的概率翻转，一半的概率不翻转
+    transforms.RandomRotation((-45,45)), #随机旋转
+    transforms.ToTensor(),
+    transforms.Normalize((0.4914, 0.4822, 0.4465), (0.229, 0.224, 0.225)), #R,G,B每层的归一化用到的均值和方差 mean=[0.485, 0.456, 0.406],std=[0.229, 0.224, 0.225]
+])
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
     
     <item>
       <title>PyTorch Learning Note-5</title>
@@ -477,6 +617,22 @@ print(params[0].size())  # params[0] == net.conv1.weight
 torch.Size([6, 1, 5, 5]
 &lt;/code&gt;&lt;/pre&gt;
 
+&lt;p&gt;&lt;strong&gt;&lt;code&gt;net.named_parameters&lt;/code&gt;可同时返回可学习的参数及名称。&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;for name,parameters in net.named_parameters():
+    print(name,&#39;:&#39;,parameters.size())
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;conv1.weight : torch.Size([6, 1, 5, 5])
+conv1.bias : torch.Size([6])
+conv2.weight : torch.Size([16, 6, 5, 5])
+conv2.bias : torch.Size([16])
+fc1.weight : torch.Size([120, 400])
+fc1.bias : torch.Size([120])
+fc2.weight : torch.Size([10, 120])
+fc2.bias : torch.Size([10])
+&lt;/code&gt;&lt;/pre&gt;
+
 &lt;p&gt;测试随机输入32×32。 注：这个网络（LeNet）期望的输入大小是32×32，如果使用MNIST数据集来训练这个网络，请把图片大小重新调整到32×32。&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;input = torch.randn(1, 1, 32, 32)
@@ -532,6 +688,47 @@ print(loss)
 &lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;tensor(1.1509, grad_fn=&amp;lt;MseLossBackward&amp;gt;)
 &lt;/code&gt;&lt;/pre&gt;
 
+&lt;h3 id=&#34;常见损失函数&#34;&gt;常见损失函数&lt;/h3&gt;
+
+&lt;h4 id=&#34;nn-l1loss&#34;&gt;&lt;code&gt;nn.L1Loss&lt;/code&gt;&lt;/h4&gt;
+
+&lt;p&gt;$$
+loss(x, y) =
+\begin{cases}
+\frac1n \sum \left| x_i - y_i \right|, &amp;amp; \text{if reduction=&amp;lsquo;mean&amp;rsquo;} \\&lt;br /&gt;
+\sum \left| x_i - y_i \right|, &amp;amp; \text{if reduction=&amp;lsquo;sum&amp;rsquo;}
+\end{cases}
+$$&lt;/p&gt;
+
+&lt;h4 id=&#34;nn-nllloss&#34;&gt;&lt;code&gt;nn.NLLLoss&lt;/code&gt;&lt;/h4&gt;
+
+&lt;p&gt;&lt;strong&gt;Negative Log Liklihood(NLL) Loss f 负对数似然损失函数&lt;/strong&gt;
+$$
+loss(x, class) = -x_{class}
+$$&lt;/p&gt;
+
+&lt;h4 id=&#34;nn-mseloss&#34;&gt;&lt;code&gt;nn.MSELoss&lt;/code&gt;&lt;/h4&gt;
+
+&lt;p&gt;&lt;strong&gt;Mean Squrare Error(MSE) Loss 均方损失函数&lt;/strong&gt;
+$$
+loss(x, y) = \frac1n \sum(x_i - y_i)^2
+$$&lt;/p&gt;
+
+&lt;h4 id=&#34;nn-crossentropyloss&#34;&gt;&lt;code&gt;nn.CrossEntropyLoss&lt;/code&gt;&lt;/h4&gt;
+
+&lt;p&gt;多分类用的交叉熵损失函数，LogSoftMax和NLLLoss集成到一个类中，会调用nn.NLLLoss函数,可以理解为CrossEntropyLoss()=log_softmax() + NLLLoss()&lt;/p&gt;
+
+&lt;p&gt;$$
+loss(x, class) = -\log \frac{\exp(x_{class})}{\sum_j \exp(x_j)} = - x_{class} + \log \left(\sum_j \exp(x_j) \right)
+$$&lt;/p&gt;
+
+&lt;h4 id=&#34;nn-bceloss&#34;&gt;&lt;code&gt;nn.BCELoss&lt;/code&gt;&lt;/h4&gt;
+
+&lt;p&gt;Binary Cross Entropy
+$$
+loss(x, t) = -\frac1n \sum_i \left(t_i *\log(x_i) + (1-t_i)*\log(1-x_i) \right)
+$$&lt;/p&gt;
+
 &lt;h2 id=&#34;反向传播&#34;&gt;反向传播&lt;/h2&gt;
 
 &lt;p&gt;调用&lt;code&gt;loss.backward()&lt;/code&gt;获得反向传播的误差。&lt;/p&gt;
@@ -583,7 +780,7 @@ criterion = nn.MSELoss()
 optimizer.zero_grad()   # zero the gradient buffers
 output = net(input)
 loss = criterion(output, target)
-loss.backward()
+loss.backward()    # calculate gradients
 optimizer.step()   # Does the update
 &lt;/code&gt;&lt;/pre&gt;
 </description>
@@ -726,6 +923,53 @@ False
     &lt;strong&gt;更多阅读：&lt;/strong&gt; autograd 和 Function 的&lt;a href=&#34;https://pytorch.org/docs/autograd&#34; target=&#34;_blank&#34;&gt;官方文档&lt;/a&gt;
   &lt;/div&gt;
 &lt;/div&gt;
+
+&lt;h2 id=&#34;拓展autograd&#34;&gt;拓展Autograd&lt;/h2&gt;
+
+&lt;p&gt;如果需要自定义autograd扩展新的功能，就需要扩展Function类。因为Function使用autograd来计算结果和梯度，并对操作历史进行编码。 在Function类中最主要的方法就是&lt;code&gt;forward()&lt;/code&gt;和&lt;code&gt;backward()&lt;/code&gt;他们分别代表了前向传播和反向传播。&lt;/p&gt;
+
+&lt;p&gt;一个自定义的Function需要一下三个方法：&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;__init__ (optional)：如果这个操作需要额外的参数则需要定义这个Function的构造函数，不需要的话可以忽略。
+
+forward()：执行前向传播的计算代码
+
+backward()：反向传播时梯度计算的代码。 参数的个数和forward返回值的个数一样，每个参数代表传回到此操作的梯度。
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;# 引入Function便于扩展
+from torch.autograd.function import Function
+
+# 定义一个乘以常数的操作(输入参数是张量)
+# 方法必须是静态方法，所以要加上@staticmethod 
+class MulConstant(Function):
+    
+    @staticmethod 
+    def forward(ctx, tensor, constant):
+        # ctx 用来保存信息这里类似self，并且ctx的属性可以在backward中调用
+        ctx.constant=constant
+        return tensor *constant
+    
+    @staticmethod
+    def backward(ctx, grad_output):
+        # 返回的参数要与输入的参数一样.
+        # 第一个输入为3x3的张量，第二个为一个常数
+        # 常数的梯度必须是 None.
+        return grad_output, None
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;定义完我们的新操作后，我们来进行测试&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;a=torch.rand(3,3,requires_grad=True)
+b=MulConstant.apply(a,5)
+print(&amp;quot;a:&amp;quot;+str(a))
+print(&amp;quot;b:&amp;quot;+str(b)) # b为a的元素乘以5
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;反向传播，返回值不是标量，所以&lt;code&gt;backward&lt;/code&gt;方法需要参数&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;b.backward(torch.ones_like(a))
+&lt;/code&gt;&lt;/pre&gt;
 </description>
     </item>
     
@@ -857,6 +1101,33 @@ x.shape:   torch.Size([5, 3])
   &lt;/div&gt;
 &lt;/div&gt;
 
+&lt;h2 id=&#34;基础类型&#34;&gt;基础类型&lt;/h2&gt;
+
+&lt;h3 id=&#34;基本类型&#34;&gt;基本类型&lt;/h3&gt;
+
+&lt;p&gt;Tensor的基本数据类型有五种：&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;32位浮点型：torch.FloatTensor。 (默认)&lt;/li&gt;
+&lt;li&gt;64位整型：torch.LongTensor。&lt;/li&gt;
+&lt;li&gt;32位整型：torch.IntTensor。&lt;/li&gt;
+&lt;li&gt;16位整型：torch.ShortTensor。&lt;/li&gt;
+&lt;li&gt;64位浮点型：torch.DoubleTensor。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;除以上数字类型外，还有 byte和chart型&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;tensor = torch.tensor([3.1433223])  # tensor([3.1433])
+
+long = tensor.long()  # tensor([3])
+half = tensor.half()  # tensor([3.1426], dtype=torch.float16)
+int_t = tensor.int()  # tensor([3], dtype=torch.int32)
+flo = tensor.float()  # tensor([3.1433])
+short = tensor.short()  # tensor([3], dtype=torch.int16)
+ch = tensor.char()  # tensor([3], dtype=torch.int8)
+bt = tensor.byte()  # tensor([3], dtype=torch.uint8)
+&lt;/code&gt;&lt;/pre&gt;
+
 &lt;h2 id=&#34;operation-操作&#34;&gt;Operation 操作&lt;/h2&gt;
 
 &lt;h3 id=&#34;加法&#34;&gt;加法&lt;/h3&gt;
@@ -984,6 +1255,30 @@ if torch.cuda.is_available():
 
 &lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;tensor([1.2840], device=&#39;cuda:0&#39;)
 tensor([1.2840], dtype=torch.float64)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;一般情况下可以使用&lt;code&gt;.cuda&lt;/code&gt;方法和 &lt;code&gt;.cpu&lt;/code&gt; 方法将tensor在cpu和gpu之间移动 （需要cuda设备支持）&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;cpu_a = torch.rand(4, 3)
+cpu_a.type()  # torch.FloatTensor
+
+gpu_a = cpu_a.cuda()
+gpu_a.type()  # torch.cuda.FloatTensor
+
+cpu_b = gpu_a.cpu()
+cpu_b.type()  # torch.FloatTensor
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;创建变量与结果变量&#34;&gt;创建变量与结果变量&lt;/h2&gt;
+
+&lt;p&gt;&lt;code&gt;.is_leaf&lt;/code&gt;：记录是否是叶子节点。通过这个属性来确定这个变量的类型 在官方文档中所说的“graph leaves”,“leaf variables”，都是指像&lt;code&gt;x&lt;/code&gt;,&lt;code&gt;y&lt;/code&gt;这样的手动创建的、而非运算得到的变量，这些变量成为创建变量。 像&lt;code&gt;z&lt;/code&gt;这样的，是通过计算后得到的结果称为结果变量。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;print(&amp;quot;x.is_leaf=&amp;quot;+str(x.is_leaf))
+print(&amp;quot;z.is_leaf=&amp;quot;+str(z.is_leaf))
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;x.is_leaf=True
+z.is_leaf=False
 &lt;/code&gt;&lt;/pre&gt;
 </description>
     </item>

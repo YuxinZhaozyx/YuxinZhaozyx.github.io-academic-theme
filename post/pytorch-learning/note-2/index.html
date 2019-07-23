@@ -442,7 +442,7 @@
   
   <span class="middot-divider"></span>
   <span class="article-reading-time">
-    3 min read
+    4 min read
   </span>
   
 
@@ -748,6 +748,53 @@ False
     <strong>更多阅读：</strong> autograd 和 Function 的<a href="https://pytorch.org/docs/autograd" target="_blank">官方文档</a>
   </div>
 </div>
+
+<h2 id="拓展autograd">拓展Autograd</h2>
+
+<p>如果需要自定义autograd扩展新的功能，就需要扩展Function类。因为Function使用autograd来计算结果和梯度，并对操作历史进行编码。 在Function类中最主要的方法就是<code>forward()</code>和<code>backward()</code>他们分别代表了前向传播和反向传播。</p>
+
+<p>一个自定义的Function需要一下三个方法：</p>
+
+<pre><code>__init__ (optional)：如果这个操作需要额外的参数则需要定义这个Function的构造函数，不需要的话可以忽略。
+
+forward()：执行前向传播的计算代码
+
+backward()：反向传播时梯度计算的代码。 参数的个数和forward返回值的个数一样，每个参数代表传回到此操作的梯度。
+</code></pre>
+
+<pre><code class="language-python"># 引入Function便于扩展
+from torch.autograd.function import Function
+
+# 定义一个乘以常数的操作(输入参数是张量)
+# 方法必须是静态方法，所以要加上@staticmethod 
+class MulConstant(Function):
+    
+    @staticmethod 
+    def forward(ctx, tensor, constant):
+        # ctx 用来保存信息这里类似self，并且ctx的属性可以在backward中调用
+        ctx.constant=constant
+        return tensor *constant
+    
+    @staticmethod
+    def backward(ctx, grad_output):
+        # 返回的参数要与输入的参数一样.
+        # 第一个输入为3x3的张量，第二个为一个常数
+        # 常数的梯度必须是 None.
+        return grad_output, None
+</code></pre>
+
+<p>定义完我们的新操作后，我们来进行测试</p>
+
+<pre><code class="language-python">a=torch.rand(3,3,requires_grad=True)
+b=MulConstant.apply(a,5)
+print(&quot;a:&quot;+str(a))
+print(&quot;b:&quot;+str(b)) # b为a的元素乘以5
+</code></pre>
+
+<p>反向传播，返回值不是标量，所以<code>backward</code>方法需要参数</p>
+
+<pre><code class="language-python">b.backward(torch.ones_like(a))
+</code></pre>
 
     </div>
 
