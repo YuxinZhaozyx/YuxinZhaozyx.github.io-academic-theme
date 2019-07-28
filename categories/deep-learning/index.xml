@@ -7,10 +7,280 @@
     <generator>Source Themes Academic (https://sourcethemes.com/academic/)</generator>
     <language>en-us</language>
     <copyright>Copyright &amp;copy; {year} YuxinZhao</copyright>
-    <lastBuildDate>Tue, 23 Jul 2019 17:20:42 +0800</lastBuildDate>
+    <lastBuildDate>Sun, 28 Jul 2019 13:53:15 +0800</lastBuildDate>
     
 	    <atom:link href="https://YuxinZhaozyx.github.io/categories/deep-learning/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>PyTorch的可视化工具Visdom</title>
+      <link>https://YuxinZhaozyx.github.io/post/pytorch-learning/visdom/</link>
+      <pubDate>Sun, 28 Jul 2019 13:53:15 +0800</pubDate>
+      
+      <guid>https://YuxinZhaozyx.github.io/post/pytorch-learning/visdom/</guid>
+      <description>
+
+&lt;p&gt;&lt;strong&gt;Visdom:&lt;/strong&gt;一个灵活的可视化工具，可用来对于实时，富数据的创建，组织和共享。支持Torch和Numpy还有PyTorch。&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;visdom&lt;/strong&gt; 可以实现&lt;strong&gt;远程&lt;/strong&gt;数据的可视化，对科学实验有很大帮助。我们可以远程的发送图片和数据，并进行在ui界面显示出来，检查实验结果，或者debug&lt;/p&gt;
+
+&lt;h2 id=&#34;安装与启动&#34;&gt;安装与启动&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;安装&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;$ pip install visdom
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;启动&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-shell&#34;&gt;$ python -m visdom.server
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h2 id=&#34;接口&#34;&gt;接口&lt;/h2&gt;
+
+&lt;p&gt;大多数接口可以输入一个tensor(保存数据），和一个可选的tensor Y（标签或者时间戳）, 另外都可以指定窗口win,和汇出图添加到那个env上，另外options输入可以修改默认的绘图属性，输入参数基于表中键的匹配，有一些通用的options可以选择,下面列出了通用的可视化options(除了plot.image和plot.text外）&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;opts.title&lt;/code&gt; : figure title&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;opts.width&lt;/code&gt; : figure width&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;opts.height&lt;/code&gt; : figure height&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;opts.showlegend&lt;/code&gt; : show legend (&lt;code&gt;true&lt;/code&gt; or &lt;code&gt;false&lt;/code&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;opts.xtype&lt;/code&gt; : type of x-axis (&lt;code&gt;&#39;linear&#39;&lt;/code&gt; or &lt;code&gt;&#39;log&#39;&lt;/code&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;opts.xlabel&lt;/code&gt; : label of x-axis&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;opts.xtick&lt;/code&gt; : show ticks on x-axis (&lt;code&gt;boolean&lt;/code&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;opts.xtickmin&lt;/code&gt; : first tick on x-axis (&lt;code&gt;number&lt;/code&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;opts.xtickmax&lt;/code&gt; : last tick on x-axis (&lt;code&gt;number&lt;/code&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;opts.xtickvals&lt;/code&gt; : locations of ticks on x-axis (&lt;code&gt;table&lt;/code&gt; of &lt;code&gt;number&lt;/code&gt;s)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;opts.xticklabels&lt;/code&gt; : ticks labels on x-axis (&lt;code&gt;table&lt;/code&gt; of &lt;code&gt;string&lt;/code&gt;s)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;opts.xtickstep&lt;/code&gt; : distances between ticks on x-axis (&lt;code&gt;number&lt;/code&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;opts.ytype&lt;/code&gt; : type of y-axis (&lt;code&gt;&#39;linear&#39;&lt;/code&gt; or &lt;code&gt;&#39;log&#39;&lt;/code&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;opts.ylabel&lt;/code&gt; : label of y-axis&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;opts.ytick&lt;/code&gt; : show ticks on y-axis (&lt;code&gt;boolean&lt;/code&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;opts.ytickmin&lt;/code&gt; : first tick on y-axis (&lt;code&gt;number&lt;/code&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;opts.ytickmax&lt;/code&gt; : last tick on y-axis (&lt;code&gt;number&lt;/code&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;opts.ytickvals&lt;/code&gt; : locations of ticks on y-axis (&lt;code&gt;table&lt;/code&gt; of &lt;code&gt;number&lt;/code&gt;s)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;opts.yticklabels&lt;/code&gt; : ticks labels on y-axis (&lt;code&gt;table&lt;/code&gt; of &lt;code&gt;string&lt;/code&gt;s)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;opts.ytickstep&lt;/code&gt; : distances between ticks on y-axis (&lt;code&gt;number&lt;/code&gt;)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;opts.marginleft&lt;/code&gt; : left margin (in pixels)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;opts.marginright&lt;/code&gt; : right margin (in pixels)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;opts.margintop&lt;/code&gt; : top margin (in pixels)&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;opts.marginbottom&lt;/code&gt;: bottom margin (in pixels)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;使用&#34;&gt;使用&lt;/h2&gt;
+
+&lt;h3 id=&#34;导入&#34;&gt;导入&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;import torch
+import numpy as np
+from visdom import Visdom
+
+# 新建一个连接客户端
+# 指定env = u&#39;test1&#39;，默认端口为8097，host是‘localhost&#39;
+vis = visdom.Visdom(env=&amp;quot;test1&amp;quot;, use_incoming_socket=False)
+assert vis.check_connection()
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;曲线-vis-line&#34;&gt;曲线 &lt;code&gt;vis.line&lt;/code&gt;&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;# win窗口名为 &#39;sinx&#39;, 如果不指定回自动新分配一个pane，两次使用同一个win将覆盖
+# 标题为 &#39;y=sin(x)&#39;
+# visdom 支持pytorch的tensor 和 numpy的ndarray类型， 但不支持python的int,float等原生类型，需要转换成ndarray或者tensor
+x = torch.arange(1, 30, 0.01)
+y = torch.sin(x)
+vis.line(X=x, Y=y, win=&#39;sinx&#39;, opts={&#39;title&#39;: &#39;y=sin(x)&#39;}) 
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;img src=&#34;image/1564294474491.png&#34; alt=&#34;1564294474491&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;追加数据&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;# append 追加数据
+# y = x
+# 窗口名: polynomial
+for i in range(0, 10):
+    x = torch.Tensor([i])  # 要转成tensor，Visdom不支持python原生的int,float等
+    y = x
+    vis.line(X=x, Y=y, win=&#39;polynomial&#39;, update=&#39;append&#39; if i&amp;gt;0 else None)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;在同一附图新增曲线，而不覆盖&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;# update Trace 新增一条线，而不覆盖
+# y= (x**2)/9
+# 窗口名: polynomial
+x = torch.arange(0, 9, 0.1)
+y = (x ** 2) / 9
+vis.line(X=x, Y=y, win=&#39;polynomial&#39;, name=&#39;this is a new Trace&#39;, update=&#39;new&#39;)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;img src=&#34;image/1564294705223.png&#34; alt=&#34;1564294705223&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;附带label和对轴的控制&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;# y = x**3
+x = torch.arange(0, 2, 0.05)
+y = x**3
+vis.line(
+    X = x, 
+    Y = y, 
+    win = &#39;x3&#39;, 
+    opts = dict(
+        title = &#39;x^3&#39;,
+        legend = [&#39;y = x^3&#39;],
+        xlabel = &#39;x dim&#39;,
+        ylabel = &#39;y dim&#39;,
+        xtickmin = 0,
+        xtickmax = 1,
+        ytickmin = 0,
+        ytickmax = 1
+    )
+)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;img src=&#34;image/1564295944862.png&#34; alt=&#34;1564295944862&#34; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;图像-vis-image-vis-images&#34;&gt;图像 &lt;code&gt;vis.image / vis.images&lt;/code&gt;&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;# 图像 vis.image / vis.images
+# image的画图功能可分为如下两类：
+# image接收一个二维或三维向量，H x W 或 3 x H x W，前者是黑白图像，后者是彩色图像。
+# images接收一个四维向量 N x C x H x W ，C可以是1或3，分别代表黑白和彩色图像。可实现类似torchvision中make_grid的功能，将多张图片拼接在一起。images也可以接收一个二维或三维的向量，此时它所实现的功能与image一致。
+
+# 可视化一个随机的黑白图片
+vis.image(torch.randn(64, 64).numpy())
+
+# 可视化一个随机的彩色图片
+vis.image(torch.randn(3, 64, 64).numpy(), win=&#39;random2&#39;)
+
+# 可视化36张随机彩色图片，每行6张
+vis.images(torch.randn(36, 3, 64, 64).numpy(), nrow=6, win=&#39;random3&#39;, opts={&#39;title&#39;: &#39;random images&#39;})
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;img src=&#34;image/1564296112343.png&#34; alt=&#34;1564296112343&#34; /&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;import numpy as np 
+import cv2 as cv 
+
+# visdom 显示图像
+img = cv.imread(&#39;e:/image/avator.jpg&#39;)    # H x W x C (BGR)
+img = cv.cvtColor(img, cv.COLOR_BGR2RGB)  # H x W x C (RGB)
+img = np.transpose(img, [2, 0, 1])        # C x H x H
+vis.image(img, win=&#39;image_example&#39;)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;img src=&#34;image/1564296256444.png&#34; alt=&#34;1564296256444&#34; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;文本-vis-text&#34;&gt;文本 &lt;code&gt;vis.text&lt;/code&gt;&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;# 文本 vis.text
+# 支持所有html标签
+vis.text(u&#39;&#39;&#39; &amp;lt;h1&amp;gt; Hello Visdom &amp;lt;/h1&amp;gt; &amp;lt;br&amp;gt; 测试 &#39;&#39;&#39;,
+        win=&#39;visdom&#39;,
+        opts={&#39;title&#39;: &#39;visdom简介&#39;}
+)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;img src=&#34;image/1564296370982.png&#34; alt=&#34;1564296370982&#34; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;散点图-2d-3d-vis-scatter&#34;&gt;散点图（2D/3D） &lt;code&gt;vis.scatter&lt;/code&gt;&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;# 散点图 vis.scatter
+x = torch.rand(255, 2)          # [0, 1) 均匀分布
+y = (torch.randn(255) &amp;gt; 0) + 1  # 标准正太分布
+vis.scatter(X=x, Y=y, win=&#39;scatter&#39;, opts={&#39;title&#39;: &#39;散点图&#39;, &#39;maskersize&#39;:10, &#39;legend&#39;:[&#39;men&#39;, &#39;women&#39;]})
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;img src=&#34;image/1564296443526.png&#34; alt=&#34;1564296443526&#34; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;条形图-vis-bar&#34;&gt;条形图 &lt;code&gt;vis.bar&lt;/code&gt;&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;# 条形图 bar
+vis.bar(X=np.random.rand(20))
+vis.bar(
+    X = np.abs(np.random.rand(5, 3)),
+    opts = dict(
+        stacked = True,
+        legend = [&#39;Facebook&#39;, &#39;Google&#39;, &#39;Twitter&#39;],
+        rownames = [&#39;2012&#39;, &#39;2013&#39;, &#39;2014&#39;, &#39;2015&#39;, &#39;2016&#39;]
+    )
+)
+vis.bar(
+    X = np.random.rand(20, 3),
+    opts = dict(
+        stacked = False,
+        legend = [&#39;The Netherlands&#39;, &#39;France&#39;, &#39;United States&#39;]
+    )
+)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;img src=&#34;image/1564296648484.png&#34; alt=&#34;1564296648484&#34; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;直方图-vis-histogram&#34;&gt;直方图 &lt;code&gt;vis.histogram&lt;/code&gt;&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;# 直方图 histogram (横坐标0-1（最大值与最小值之间）， 纵坐标频数)
+vis.histogram(X=np.random.rand(10000), opts=dict(numbins=20, title=&#39;histogarm&#39;))
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;img src=&#34;image/1564296726597.png&#34; alt=&#34;1564296726597&#34; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;热程图-vis-heatmap&#34;&gt;热程图 &lt;code&gt;vis.heatmap&lt;/code&gt;&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;# heatmap
+vis.heatmap(
+    X=np.outer(np.arange(1, 6), np.arange(1, 11)),
+    opts=dict(
+        columnnames=[&#39;a&#39;, &#39;b&#39;, &#39;c&#39;, &#39;d&#39;, &#39;e&#39;, &#39;f&#39;, &#39;g&#39;, &#39;h&#39;, &#39;i&#39;, &#39;j&#39;],
+        rownames=[&#39;y1&#39;, &#39;y2&#39;, &#39;y3&#39;, &#39;y4&#39;, &#39;y5&#39;],
+        colormap=&#39;Electric&#39;,
+    )
+)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;img src=&#34;image/1564296813690.png&#34; alt=&#34;1564296813690&#34; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;等值线图-vis-contour&#34;&gt;等值线图 &lt;code&gt;vis.contour&lt;/code&gt;&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;# 等值线图 contour
+x = np.tile(np.arange(1, 101), (100, 1))
+y = x.transpose()
+X = np.exp((((x - 50) ** 2) + ((y - 50) ** 2)) / -(20.0 ** 2))
+vis.contour(X=X, opts=dict(colormap=&#39;Viridis&#39;))
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;img src=&#34;image/1564296966616.png&#34; alt=&#34;1564296966616&#34; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;表面图-vis-surf&#34;&gt;表面图 &lt;code&gt;vis.surf&lt;/code&gt;&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;# 表面图 surface
+vis.surf(X=X, opts=dict(colormap=&#39;Hot&#39;))
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;img src=&#34;image/1564297154348.png&#34; alt=&#34;1564297154348&#34; /&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;视频-vis-video&#34;&gt;视频 &lt;code&gt;vis.video&lt;/code&gt;&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;# 视频 video
+videofile = &#39;e:/video/001.mp4&#39;
+vis.video(videofile=videofile, opts={&#39;width&#39;: 864, &#39;height&#39;:480})
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;img src=&#34;image/1564297244983.png&#34; alt=&#34;1564297244983&#34; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&#34;保存与读取&#34;&gt;保存与读取&lt;/h2&gt;
+
+&lt;p&gt;&lt;strong&gt;创建时指定保存文件路径&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;vis = visdom.Visdom(env=&amp;quot;test1&amp;quot;, log_to_filename=&amp;quot;./log/test1.log&amp;quot;)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;strong&gt;读取时&lt;/strong&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;import visdom
+visdom.Visdom().replay_log(&amp;quot;./log/test1.log&amp;quot;)
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
     
     <item>
       <title>PyTorch Learning Note-6</title>
